@@ -149,8 +149,9 @@ def schedule_digest(items):
 
 
 class Engine:
-    def __init__(self, items, out_path, concurrency, seed, max_attempts=6):
+    def __init__(self, items, out_path, concurrency, seed, run_info=None, max_attempts=6):
         self.items = items
+        self.run_info = run_info or {}
         self.claimed = [False] * len(items)
         self.in_flight = set()
         self.lock = threading.Lock()
@@ -217,6 +218,7 @@ class Engine:
 
         base = {
             "schema": 1,
+            **self.run_info,
             "schedule_index": schedule_index,
             "cell": item["cell"],
             "repeat": item["repeat"],
@@ -388,7 +390,13 @@ def main():
     out_path = os.path.join(args.out, f"{run_name}.jsonl")
     print(f"run: {run_name}  items: {len(schedule)}  cells: {len(cells)}")
     print(f"records -> {out_path}")
-    engine = Engine(schedule, out_path, args.concurrency, args.seed)
+    engine = Engine(
+        schedule,
+        out_path,
+        args.concurrency,
+        args.seed,
+        run_info={"window": args.window, "mode": args.mode, "run_name": run_name},
+    )
     summary = engine.run()
 
     summary_path = os.path.join(args.out, f"{run_name}.done.json")

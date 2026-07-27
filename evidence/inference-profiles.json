@@ -1,0 +1,73 @@
+{
+  "all_required_profiles_active": true,
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "checked_at_utc": "2026-07-27T05:19:07.552744+00:00",
+  "checks": [
+    {
+      "bare_id": "anthropic.claude-opus-5",
+      "inference_types": [
+        "INFERENCE_PROFILE"
+      ],
+      "model": "opus-5",
+      "single_region_on_demand": false
+    },
+    {
+      "active": true,
+      "id": "us.anthropic.claude-opus-5",
+      "model": "opus-5",
+      "profile_form": "us"
+    },
+    {
+      "active": true,
+      "id": "global.anthropic.claude-opus-5",
+      "model": "opus-5",
+      "profile_form": "global"
+    },
+    {
+      "bare_id": "anthropic.claude-sonnet-5",
+      "inference_types": [
+        "INFERENCE_PROFILE"
+      ],
+      "model": "sonnet-5",
+      "single_region_on_demand": false
+    },
+    {
+      "active": true,
+      "id": "us.anthropic.claude-sonnet-5",
+      "model": "sonnet-5",
+      "profile_form": "us"
+    },
+    {
+      "active": true,
+      "id": "global.anthropic.claude-sonnet-5",
+      "model": "sonnet-5",
+      "profile_form": "global"
+    },
+    {
+      "bare_id": "anthropic.claude-haiku-4-5-20251001-v1:0",
+      "inference_types": [
+        "INFERENCE_PROFILE"
+      ],
+      "model": "haiku-4-5",
+      "single_region_on_demand": false
+    },
+    {
+      "active": true,
+      "id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "model": "haiku-4-5",
+      "profile_form": "us"
+    },
+    {
+      "active": true,
+      "id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "model": "haiku-4-5",
+      "profile_form": "global"
+    }
+  ],
+  "region": "us-east-1",
+  "verdict": {
+    "q2_reshaped": "US-bounded routing (us.) vs worldwide routing (global.), both system-defined inference profiles, both required ACTIVE.",
+    "single_region_on_demand": "UNAVAILABLE for all target models: inferenceTypesSupported is [INFERENCE_PROFILE] only, so the spec's original Q2 arm (bare model ID, single-region on-demand) cannot exist."
+  }
+}
