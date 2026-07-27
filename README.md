@@ -20,7 +20,7 @@ verified live in `evidence/smoke.json`). The study asks four questions:
 
 Method commitments — equivalence margin, endpoints, exclusion rules, controls,
 and what counts as a publishable null — are in [PREREGISTRATION.md](PREREGISTRATION.md)
-(currently DRAFT; frozen by tag `prereg-v1` before any confirmatory data).
+(v1.0, frozen at tag `prereg-v1`, before any confirmatory data).
 Execution steps are in [PROTOCOL.md](PROTOCOL.md). Measurement is deterministic
 code end to end; no model is in the measurement loop.
 
@@ -61,7 +61,7 @@ python3 -m harness.smoke                             # ~10 live calls, writes ev
 | Grid | 40 cells/window: (2 models x 4 tasks x 2 profiles x 2 thinking) + (Haiku anchor x 4 tasks x 2 profiles) |
 | Windows | low / mid / peak (UTC), compressed runs |
 | Primary endpoint | per-cell modal share of byte-identical response text, Wilson 95% |
-| Q2 test | TOST, delta = 1pp, alpha = 0.05, pooled per model |
+| Q2 test | TOST, delta = 2pp, alpha = 0.05, pooled per model (power >= 0.90 at n=100/cell; prereg section 5) |
 | Positive control | Haiku 4.5 @ temperature 0.7 (the 5-family rejects sampling — cross-model control, disclosed) |
 | Negative control | one request SHA-256 per cell; the hashed bytes are the sent bytes |
 

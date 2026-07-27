@@ -1,0 +1,2300 @@
+{
+  "cells": {
+    "pilot::haiku-4-5|classification|global|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|classification|global|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "global",
+        "task": "classification",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|classification|us|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|classification|us|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|extraction|global|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|extraction|global|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "global",
+        "task": "extraction",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|extraction|us|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|extraction|us|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "us",
+        "task": "extraction",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|open_generation|global|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|open_generation|global|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "global",
+        "task": "open_generation",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          18,
+          18,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          43,
+          43,
+          43,
+          43,
+          43,
+          45,
+          81,
+          91
+        ],
+        "modal_count": 1,
+        "modal_sha256": "b6ede920969bec3699a126fc64a1b759c7c19c5fd716bd8dcbd114282106d19d",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1590556073314694,
+        "norm_distance_mean_all": 0.15075540853259511,
+        "output_token_variance": 366.86,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::haiku-4-5|open_generation|us|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|open_generation|us|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          18,
+          18,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          43,
+          43,
+          43,
+          45,
+          81,
+          81,
+          81,
+          81
+        ],
+        "modal_count": 1,
+        "modal_sha256": "bb2d49151e06f5194062fa2f8076a2cff1ece57aac4368884ed9ceca35d10580",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1659105638366818,
+        "norm_distance_mean_all": 0.1537264516950075,
+        "output_token_variance": 153.89,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::haiku-4-5|structured_json|global|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|structured_json|global|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "global",
+        "task": "structured_json",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "modal_count": 14,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.7,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.04357541899441341,
+        "output_token_variance": 75.81,
+        "pairwise_agreement": 0.5578947368421052
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.4810271816464765,
+        0.8545227551323956
+      ]
+    },
+    "pilot::haiku-4-5|structured_json|us|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|structured_json|us|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "profile": "us",
+        "task": "structured_json",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "modal_count": 16,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.8,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.017689696626829787,
+        "output_token_variance": 32.2,
+        "pairwise_agreement": 0.6421052631578947
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.5839825677481064,
+        0.919342337420202
+      ]
+    },
+    "pilot::opus-5|classification|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 130.21,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 4.3,
+      "thinking_tokens_variance": 130.21,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 4.75,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.5,
+      "thinking_tokens_variance": 4.75,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 3.8474999999999993,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.45,
+      "thinking_tokens_variance": 3.8475,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|open_generation|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          27,
+          27,
+          55,
+          55,
+          81,
+          81
+        ],
+        "modal_count": 1,
+        "modal_sha256": "1c3bcb72f7b2a1816a75617f026da88ed5b1e38ec2a8ff64dfcc2d623148a379",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17273954116059378,
+        "norm_distance_mean_all": 0.16242041342328042,
+        "output_token_variance": 1492.9275,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 35.85,
+      "thinking_tokens_variance": 357.9275,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          61,
+          61,
+          61,
+          61,
+          70
+        ],
+        "modal_count": 1,
+        "modal_sha256": "8e29751e30f381b1c88d011819b8e8255e268ece46590d7adaad91e1d7dc5f78",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1477207155222158,
+        "norm_distance_mean_all": 0.140334679746105,
+        "output_token_variance": 2159.5274999999997,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          27,
+          27,
+          55,
+          55
+        ],
+        "modal_count": 1,
+        "modal_sha256": "26e7d3e0de0c64e88393dd7aeee684b3ed394d3f93613e4bc1754a4730c13752",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1680341319330489,
+        "norm_distance_mean_all": 0.15869256823366734,
+        "output_token_variance": 2405.91,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 53.95,
+      "thinking_tokens_variance": 2653.1475,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          61,
+          61,
+          61,
+          61,
+          70,
+          86
+        ],
+        "modal_count": 1,
+        "modal_sha256": "c90e08d0e1014f25b8eef844f6ad2875e37ad4e54685e257feefb9e1716ee6c4",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.16601815823605706,
+        "norm_distance_mean_all": 0.15464785606107706,
+        "output_token_variance": 878.4475,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|structured_json|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "modal_count": 13,
+        "modal_sha256": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+        "modal_share": 0.65,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.02516339869281046,
+        "output_token_variance": 5.6875,
+        "pairwise_agreement": 0.5210526315789473
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.43285427668523624,
+        0.818808175898918
+      ]
+    },
+    "pilot::opus-5|structured_json|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "global",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7,
+          7
+        ],
+        "modal_count": 17,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.85,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.010784313725490196,
+        "output_token_variance": 3.1875,
+        "pairwise_agreement": 0.7315789473684211
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.6395811352592431,
+        0.9476312541037835
+      ]
+    },
+    "pilot::opus-5|structured_json|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "modal_count": 12,
+        "modal_sha256": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+        "modal_share": 0.6,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.02875816993464052,
+        "output_token_variance": 6.0,
+        "pairwise_agreement": 0.49473684210526314
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.3865815007622531,
+        0.781193467627183
+      ]
+    },
+    "pilot::opus-5|structured_json|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "profile": "us",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7
+        ],
+        "modal_count": 18,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.9,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.00718954248366013,
+        "output_token_variance": 2.25,
+        "pairwise_agreement": 0.8105263157894737
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.6989663547715128,
+        0.9721335187862319
+      ]
+    },
+    "pilot::sonnet-5|classification|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|open_generation|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          186
+        ],
+        "modal_count": 1,
+        "modal_sha256": "773c67e3357992d194856a0fff11bad63198108438348b1e84fcc2c8aeaa6f13",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.16352603002235708,
+        "norm_distance_mean_all": 0.1553055744152929,
+        "output_token_variance": 1228.21,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          24,
+          56,
+          56,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89
+        ],
+        "modal_count": 1,
+        "modal_sha256": "f49d8c77e71d82b7f806dc532493ecd42e54d087265883237d2b1e75141099e5",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17308992562542258,
+        "norm_distance_mean_all": 0.16367206677744675,
+        "output_token_variance": 873.5475,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          33,
+          33,
+          33,
+          33,
+          33,
+          33,
+          33,
+          33,
+          33,
+          33
+        ],
+        "modal_count": 1,
+        "modal_sha256": "84608dee92f99ef20819161ec4cf72aba2cd69049ab50bba52b8ce1afd0cad8b",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1729145558932793,
+        "norm_distance_mean_all": 0.1625674243075663,
+        "output_token_variance": 1188.4475,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          24,
+          24,
+          24,
+          56,
+          56,
+          56,
+          56,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          169
+        ],
+        "modal_count": 1,
+        "modal_sha256": "e13fc36b4569bdcac333a094f335e94677fcae1aa5e9e001911fb3fa81355c0c",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17704011065006917,
+        "norm_distance_mean_all": 0.16728868344251352,
+        "output_token_variance": 505.64750000000004,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|structured_json|global|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|global|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          0,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "modal_count": 14,
+        "modal_sha256": "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "modal_share": 0.7,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.026815642458100558,
+        "output_token_variance": 33.747499999999995,
+        "pairwise_agreement": 0.531578947368421
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 1.1,
+      "thinking_tokens_variance": 22.99,
+      "wilson_ci": [
+        0.4810271816464765,
+        0.8545227551323956
+      ]
+    },
+    "pilot::sonnet-5|structured_json|global|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|global|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "global",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|structured_json|us|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|us|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "modal_count": 15,
+        "modal_sha256": "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "modal_share": 0.75,
+        "n": 20,
+        "norm_distance_max": 0.0782122905027933,
+        "norm_distance_mean_all": 0.019553072625698324,
+        "output_token_variance": 31.6875,
+        "pairwise_agreement": 0.6052631578947368
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.531299122381256,
+        0.8881382985923343
+      ]
+    },
+    "pilot::sonnet-5|structured_json|us|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|us|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "profile": "us",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    }
+  },
+  "comparisons": {
+    "q2_profile__haiku-4-5": {
+      "diff_ci95": [
+        -0.11696004054002598,
+        0.16696004054002603
+      ],
+      "global": {
+        "n": 80,
+        "rate": 0.6875,
+        "x": 55
+      },
+      "tost": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.09413662159421575,
+          0.1441366215942158
+        ],
+        "delta": 0.01,
+        "diff": 0.025000000000000022,
+        "equivalent": false,
+        "p": 0.5820328409371699,
+        "p_lower": 0.3144677458733033,
+        "p_upper": 0.5820328409371699,
+        "se": 0.07242992302909068
+      },
+      "us": {
+        "n": 80,
+        "rate": 0.7125,
+        "x": 57
+      }
+    },
+    "q2_profile__opus-5": {
+      "diff_ci95": [
+        -0.10041827226317968,
+        0.10041827226317968
+      ],
+      "global": {
+        "n": 160,
+        "rate": 0.7,
+        "x": 112
+      },
+      "tost": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.08427367066290906,
+          0.08427367066290906
+        ],
+        "delta": 0.01,
+        "diff": 0.0,
+        "equivalent": false,
+        "p": 0.4226260121098257,
+        "p_lower": 0.42262601210982564,
+        "p_upper": 0.4226260121098257,
+        "se": 0.051234753829797995
+      },
+      "us": {
+        "n": 160,
+        "rate": 0.7,
+        "x": 112
+      }
+    },
+    "q2_profile__sonnet-5": {
+      "diff_ci95": [
+        -0.09124447243412694,
+        0.10374447243412689
+      ],
+      "global": {
+        "n": 160,
+        "rate": 0.725,
+        "x": 116
+      },
+      "tost": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.07556994049682846,
+          0.08806994049682841
+        ],
+        "delta": 0.01,
+        "diff": 0.006249999999999978,
+        "equivalent": false,
+        "p": 0.4699532005934354,
+        "p_lower": 0.37195527278455487,
+        "p_upper": 0.4699532005934354,
+        "se": 0.04974299181166127
+      },
+      "us": {
+        "n": 160,
+        "rate": 0.73125,
+        "x": 117
+      }
+    },
+    "q3_thinking__opus-5": {
+      "adaptive": {
+        "n": 160,
+        "rate": 0.66875,
+        "x": 107
+      },
+      "diff_ci95": [
+        -0.16268451275747303,
+        0.037684512757473046
+      ],
+      "disabled": {
+        "n": 160,
+        "rate": 0.73125,
+        "x": 117
+      }
+    },
+    "q3_thinking__sonnet-5": {
+      "adaptive": {
+        "n": 160,
+        "rate": 0.69375,
+        "x": 111
+      },
+      "diff_ci95": [
+        -0.16595545656373908,
+        0.02845545656373913
+      ],
+      "disabled": {
+        "n": 160,
+        "rate": 0.7625,
+        "x": 122
+      }
+    },
+    "q4_window__pilot": {
+      "n": 800,
+      "rate": 0.71125,
+      "wilson_ci": [
+        0.6788960306806006,
+        0.7415848941225015
+      ],
+      "x": 569
+    }
+  },
+  "controls": {
+    "cache_tokens_nonzero_cells": [],
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {}
+  },
+  "delta": 0.01,
+  "inputs": [
+    "runs/pilot-pilot-20260727T134948Z.jsonl"
+  ]
+}

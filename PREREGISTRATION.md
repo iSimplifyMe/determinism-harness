@@ -1,12 +1,13 @@
 # Pre-registration: Reproducibility of AWS Bedrock Inference on Models Without Sampling Controls
 
-**Status: DRAFT v0.1 — NOT YET FROZEN.**
-This document becomes binding at the freeze commit (tag `prereg-v1`). Confirmatory
-windows run only after the freeze. The pilot may run before the freeze; its only
-permitted influence on this document is the final per-cell sample size (section 5)
-and any widening of the equivalence margin, both recorded here before freezing.
-The commit timestamp of the freeze, made before any confirmatory data exists, is
-what makes the eventual result checkable rather than asserted.
+**Status: v1.0 — FROZEN 2026-07-27 (tag `prereg-v1`).**
+This document is binding as of the freeze commit. Confirmatory windows run only
+after the freeze. The pilot ran before the freeze; its only influence on this
+document is the final per-cell sample size and the widening of the equivalence
+margin, both recorded in section 5 exactly as the draft reserved. The freeze
+commit predates all confirmatory data, which is what makes the eventual result
+checkable rather than asserted; the repository must be public before the first
+confirmatory window so the ordering is third-party visible.
 
 Analysis code referenced here (`analysis/analyze.py`, `analysis/stats.py`,
 `analysis/metrics.py`) is committed in this repository and pinned by the freeze
@@ -106,11 +107,12 @@ content is not returned).
 
 - **Q2 (primary confirmatory).** Per 5-family model, pooling valid calls across
   tasks, thinking arms, and windows: equivalence of exact-match rates between
-  `us.` and `global.` arms by TOST with **delta = 1 percentage point**,
-  **alpha = 0.05** (two one-sided Wald z tests, unpooled SE; Anscombe-adjusted
+  `us.` and `global.` arms by TOST with **delta = 2 percentage points**
+  (set from pilot variance; section 5), **alpha = 0.05**
+  (two one-sided Wald z tests, unpooled SE; Anscombe-adjusted
   SE only when both observed proportions sit exactly on 0 or 1; implementation
   `analysis/stats.py::two_prop_tost`, unit-tested against hand-derived values).
-  Claim on success: "a routing-scope penalty larger than 1pp is ruled out."
+  Claim on success: "a routing-scope penalty larger than 2pp is ruled out."
   Failure to reject is reported as inconclusive, never as equivalence.
   Per-task and per-window breakdowns are reported as secondary, with the same
   machinery, labeled non-confirmatory.
@@ -125,14 +127,28 @@ content is not returned).
   binomial test (`analysis/stats.py::binom_test`); none is pre-registered as
   primary.
 
-## 5. Sample size
+## 5. Sample size — FINAL (recorded at freeze, from the clean pilot)
 
-Pilot: n=20 per cell, single window, before the freeze. The final n per cell is
-set from pilot Wilson half-widths (target: half-width at most 5pp at the
-observed rates for the least reproducible 5-family cell) and recorded here as
-v1.0 before the freeze; n=100 is the default if the pilot supports it. If the
-pilot shows delta=1pp is underpowered at feasible n for Q2, the margin may be
-widened (recorded here, with reasoning, before the freeze) — never after.
+Pilot ran 2026-07-27, n=20 per cell, single window, all three models, 800/800
+calls completed, zero failures, all controls clean
+(`runs/pilot-pilot-20260727T134948Z.jsonl`, `reports/report-20260727T140910Z.*`).
+
+Observed structure: extraction and classification reproduce at 1.00 in every
+arm; open generation at 0.05 in every arm; structured JSON is the
+discriminating task (0.60–1.00 depending on model and thinking arm). The
+stratified variance term (mean of p(1-p) across a model's cells) is 0.0547
+for opus-5 and 0.0367 for sonnet-5.
+
+**Final n = 100 per cell per window.** At n=100 the pooled Q2 arm is 2,400
+calls per profile per model across three windows, giving TOST power at true
+difference zero of 0.91 (opus-5) and 0.98 (sonnet-5) at delta = 2pp.
+
+**Delta widened from the drafted 1pp to 2pp**, using exactly the mechanism
+this section reserved: at feasible n, delta = 1pp is unpowered (0.44 / 0.57
+at n=100; 0.57 / 0.72 even at n=150) because most cells sit near rates 0.05
+or 1.00 where reproduction is nearly deterministic in both directions. A
+2pp bound is still decisively below any operationally meaningful routing
+penalty, and both models clear 0.90 power at n=100.
 
 ## 6. Validity gates and exclusions
 
@@ -193,7 +209,7 @@ A null publishes when all four hold:
 1. the positive control fired;
 2. the negative control is clean in every analyzed cell;
 3. TOST rejects effects larger than delta, so the claim is a bounded one
-   ("we can rule out a routing penalty larger than 1pp"), not "we found
+   ("we can rule out a routing penalty larger than 2pp"), not "we found
    nothing";
 4. this pre-registration was frozen, with a commit timestamp earlier than all
    confirmatory data.
@@ -220,12 +236,15 @@ default recorded in this firm's own production standards.
    detect.
 4. **max_tokens set per family** (16,000 / 8,192) rather than one global value,
    for the truncation-vs-thinking reason in section 2.
+5. **Equivalence margin widened 1pp -> 2pp at freeze** via the section 5
+   mechanism, with the pilot power computation recorded there. Decided before
+   any confirmatory data existed.
 
-## Freeze checklist (to convert DRAFT to v1.0)
+## Freeze checklist
 
-- [ ] Pilot run complete; final n (and delta, if widened) recorded in sections 4–5
-- [x] Model access + request-shape assumptions verified live (`evidence/smoke.json`, 10/10)
+- [x] Pilot run complete; final n and delta recorded in sections 4–5
+- [x] Model access + request-shape assumptions verified live (`evidence/smoke.json`, 10/10, re-run post billing fix)
 - [x] Routing profiles verified live (`evidence/inference-profiles.json`)
-- [ ] This file bumped to v1.0 and tagged `prereg-v1`
-- [ ] Repository public (owner's call) so the freeze timestamp is third-party checkable
+- [x] This file bumped to v1.0 and tagged `prereg-v1`
+- [ ] Repository public (owner's call) — REQUIRED before the first confirmatory window
 - [ ] Confirmatory windows scheduled (PROTOCOL.md)

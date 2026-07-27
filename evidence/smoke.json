@@ -2,16 +2,16 @@
   "all_passed": true,
   "cases": [
     {
-      "aws_request_id": "4d035a5a-0e7b-48b3-a224-5456400f1444",
+      "aws_request_id": "61de842c-6de3-43ee-88bf-7673d19e2da9",
       "expect": "ok",
-      "latency_ms": 2752,
+      "latency_ms": 1525,
       "model_id": "us.anthropic.claude-opus-5",
       "name": "opus5-us-adaptive-extraction",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "262e24ef61057aac43c98b25d774183976ed1bde4e1b31f2496c11f2a7e6e064",
       "response_model": "claude-opus-5",
-      "sent_at_utc": "2026-07-27T05:19:07.751447+00:00",
+      "sent_at_utc": "2026-07-27T13:49:37.581905+00:00",
       "stop_reason": "end_turn",
       "text_head": "PO-83614-QN",
       "usage": {
@@ -22,24 +22,24 @@
         "cache_creation_input_tokens": 0,
         "cache_read_input_tokens": 0,
         "input_tokens": 364,
-        "output_tokens": 26,
+        "output_tokens": 10,
         "output_tokens_details": {
-          "thinking_tokens": 16
+          "thinking_tokens": 0
         },
         "service_tier": "standard"
       }
     },
     {
-      "aws_request_id": "36861ed7-fbee-4689-93bb-3f79c17c1789",
+      "aws_request_id": "5a433128-7bb9-45d1-b226-f223e1893f9e",
       "expect": "ok",
-      "latency_ms": 1100,
+      "latency_ms": 1255,
       "model_id": "us.anthropic.claude-opus-5",
       "name": "opus5-us-disabled-medium",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "95fbc80cfce489972ea6b7e143202134593ef91fa8ca012a9d2236f9e1928762",
       "response_model": "claude-opus-5",
-      "sent_at_utc": "2026-07-27T05:19:10.504203+00:00",
+      "sent_at_utc": "2026-07-27T13:49:39.108487+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -58,16 +58,16 @@
       }
     },
     {
-      "aws_request_id": "a72e3eb0-da75-419b-9c5c-04ff5d1f4f56",
+      "aws_request_id": "a498719f-9f30-4875-9c90-dff5a74e6e10",
       "expect": "ok",
-      "latency_ms": 1198,
+      "latency_ms": 1369,
       "model_id": "global.anthropic.claude-opus-5",
       "name": "opus5-global-adaptive",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01",
       "response_model": "claude-opus-5",
-      "sent_at_utc": "2026-07-27T05:19:11.604596+00:00",
+      "sent_at_utc": "2026-07-27T13:49:40.364635+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -86,16 +86,16 @@
       }
     },
     {
-      "aws_request_id": "0e15b0a1-3936-4f52-b510-e1a30eef5b99",
+      "aws_request_id": "c43fd312-2e95-49ec-8a1a-2885a90a38ff",
       "expect": "ok",
-      "latency_ms": 1423,
+      "latency_ms": 1453,
       "model_id": "us.anthropic.claude-sonnet-5",
       "name": "sonnet5-us-adaptive",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01",
       "response_model": "claude-sonnet-5",
-      "sent_at_utc": "2026-07-27T05:19:12.803558+00:00",
+      "sent_at_utc": "2026-07-27T13:49:41.734948+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -114,16 +114,16 @@
       }
     },
     {
-      "aws_request_id": "52f734d4-671f-4e4b-8fea-74dfed7f67e4",
+      "aws_request_id": "ab19b381-4913-405e-9f77-f2b9add70e9d",
       "expect": "ok",
-      "latency_ms": 1185,
+      "latency_ms": 1684,
       "model_id": "global.anthropic.claude-sonnet-5",
       "name": "sonnet5-global-adaptive",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01",
       "response_model": "claude-sonnet-5",
-      "sent_at_utc": "2026-07-27T05:19:14.227655+00:00",
+      "sent_at_utc": "2026-07-27T13:49:43.188252+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -142,16 +142,16 @@
       }
     },
     {
-      "aws_request_id": "35c524d9-e131-4af3-ae21-31f4ee0592b0",
+      "aws_request_id": "7f4d53ba-8ae6-47be-92bf-86da5c76d313",
       "expect": "ok",
-      "latency_ms": 743,
+      "latency_ms": 1072,
       "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
       "name": "haiku-us-none",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "0efb57bdaf4e0fe1928c6a7704590be2598adb600ada6842185de3bc72e4d40a",
       "response_model": "claude-haiku-4-5-20251001",
-      "sent_at_utc": "2026-07-27T05:19:15.413126+00:00",
+      "sent_at_utc": "2026-07-27T13:49:44.873049+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -166,16 +166,16 @@
       }
     },
     {
-      "aws_request_id": "a9112626-f8ec-406e-b6b1-81c86e4b987e",
+      "aws_request_id": "f9d8f115-1b7d-4dc8-a86a-1645250e72be",
       "expect": "ok",
-      "latency_ms": 1020,
+      "latency_ms": 1079,
       "model_id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
       "name": "haiku-global-none",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "0efb57bdaf4e0fe1928c6a7704590be2598adb600ada6842185de3bc72e4d40a",
       "response_model": "claude-haiku-4-5-20251001",
-      "sent_at_utc": "2026-07-27T05:19:16.156611+00:00",
+      "sent_at_utc": "2026-07-27T13:49:45.945985+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -190,16 +190,16 @@
       }
     },
     {
-      "aws_request_id": "f5565ef1-c261-4fa8-b2cc-b9c04ae7d83c",
+      "aws_request_id": "d36d9af0-2b5f-4870-820d-9c69f60f1cb6",
       "expect": "ok",
-      "latency_ms": 656,
+      "latency_ms": 1034,
       "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
       "name": "haiku-us-temp07-control-path",
       "outcome": "ok",
       "passed": true,
       "request_sha256": "994b0beb60c1e34aefaf256413582701275057001ca112e38dbcf13aeae5511c",
       "response_model": "claude-haiku-4-5-20251001",
-      "sent_at_utc": "2026-07-27T05:19:17.177459+00:00",
+      "sent_at_utc": "2026-07-27T13:49:47.025916+00:00",
       "stop_reason": "end_turn",
       "text_head": "BILLING",
       "usage": {
@@ -214,7 +214,7 @@
       }
     },
     {
-      "aws_request_id": "71cd9413-915f-4c03-bd9b-f552bc1f77ac",
+      "aws_request_id": "7d1f0c5e-e2b5-46d7-8c23-f80f8ed2c8a4",
       "error_code": "ValidationException",
       "error_message": "`temperature` may only be set to 1 when thinking is enabled or in adaptive mode. Please consult our documentation at https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
       "expect": "validation_error",
@@ -223,10 +223,10 @@
       "outcome": "client_error",
       "passed": true,
       "request_sha256": "7a0d3619a6551c9135df6eb1495a4f02497c26884e25cba80e1e305a0f53a655",
-      "sent_at_utc": "2026-07-27T05:19:17.837217+00:00"
+      "sent_at_utc": "2026-07-27T13:49:48.060855+00:00"
     },
     {
-      "aws_request_id": "28941830-d88d-49d6-9faf-4cdaa6a7f2f7",
+      "aws_request_id": "97b7ff5e-7a52-4eb8-bd52-281daf27a654",
       "error_code": "ValidationException",
       "error_message": "output_config.effort 'xhigh' is not supported when thinking is disabled on this model. Use effort 'high' or below, or enable thinking.",
       "expect": "validation_error",
@@ -235,9 +235,9 @@
       "outcome": "client_error",
       "passed": true,
       "request_sha256": "580f91b29b7605cdb1f7a380045d8c11f8d80ba334400c572b05d4d642a7f084",
-      "sent_at_utc": "2026-07-27T05:19:18.168067+00:00"
+      "sent_at_utc": "2026-07-27T13:49:48.309750+00:00"
     }
   ],
-  "ran_at_utc": "2026-07-27T05:19:18.461741+00:00",
+  "ran_at_utc": "2026-07-27T13:49:48.540590+00:00",
   "region": "us-east-1"
 }

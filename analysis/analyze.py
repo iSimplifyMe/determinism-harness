@@ -315,7 +315,7 @@ def main():
     parser = argparse.ArgumentParser(description="Analyze determinism run records")
     parser.add_argument("paths", nargs="+", help="runs/*.jsonl files")
     parser.add_argument("--out", default="reports")
-    parser.add_argument("--delta", type=float, default=0.01)
+    parser.add_argument("--delta", type=float, default=0.02)  # prereg v1.0, section 5
     args = parser.parse_args()
 
     records = []
