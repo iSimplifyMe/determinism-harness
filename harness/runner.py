@@ -58,6 +58,22 @@ def utc_now_iso():
     return datetime.now(timezone.utc).isoformat()
 
 
+def worker_seed(seed, worker_index):
+    """Integer per-worker RNG seed. random.Random rejects tuples on
+    Python 3.11+ — the 2026-07-27 pilot died on exactly that."""
+    return (seed * 1000003 + worker_index * 7919 + 17) & 0x7FFFFFFFFFFFFFFF
+
+
+def summary_is_complete(summary, expected):
+    """A run is complete only if every scheduled call produced a record and
+    no worker died. 'failures' are recorded per-call outcomes and do not
+    make a run incomplete; silent shortfall does."""
+    return (
+        summary.get("done") == expected
+        and not summary.get("fatal_worker_errors")
+    )
+
+
 def utc_stamp():
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
@@ -159,6 +175,7 @@ class Engine:
         self.done = 0
         self.retries = 0
         self.failures = 0
+        self.fatal = []
         self.concurrency = concurrency
         self.seed = seed
         self.max_attempts = max_attempts
@@ -298,19 +315,25 @@ class Engine:
         }
 
     def _worker(self, worker_index):
-        rng = random.Random((self.seed, "worker", worker_index))
-        while True:
-            idx = self._next_index()
-            if idx is None:
-                return
-            if idx == -1:
-                time.sleep(0.05)
-                continue
-            item = self.items[idx]
-            time.sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
-            record = self._execute(item, rng, idx)
-            self._write(record)
-            self._finish(item, failed=not record["ok"])
+        try:
+            rng = random.Random(worker_seed(self.seed, worker_index))
+            while True:
+                idx = self._next_index()
+                if idx is None:
+                    return
+                if idx == -1:
+                    time.sleep(0.05)
+                    continue
+                item = self.items[idx]
+                time.sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
+                record = self._execute(item, rng, idx)
+                self._write(record)
+                self._finish(item, failed=not record["ok"])
+        except Exception as err:  # engine bug: record loudly, let peers drain
+            detail = f"worker {worker_index}: {type(err).__name__}: {err}"
+            print(f"FATAL {detail}", flush=True)
+            with self.lock:
+                self.fatal.append(detail)
 
     def run(self):
         threads = [
@@ -322,7 +345,13 @@ class Engine:
         for t in threads:
             t.join()
         self.out.close()
-        return {"done": self.done, "retries": self.retries, "failures": self.failures}
+        return {
+            "done": self.done,
+            "expected": len(self.items),
+            "retries": self.retries,
+            "failures": self.failures,
+            "fatal_worker_errors": self.fatal,
+        }
 
 
 def main():
@@ -399,15 +428,28 @@ def main():
     )
     summary = engine.run()
 
+    complete = summary_is_complete(summary, len(schedule))
     summary_path = os.path.join(args.out, f"{run_name}.done.json")
     with open(summary_path, "w", encoding="utf-8") as fh:
         json.dump(
-            {**summary, "finished_utc": utc_now_iso(), "run_name": run_name},
+            {
+                **summary,
+                "complete": complete,
+                "finished_utc": utc_now_iso(),
+                "run_name": run_name,
+            },
             fh,
             indent=2,
             sort_keys=True,
         )
     print(f"finished: {summary}")
+    if not complete:
+        print(
+            f"INCOMPLETE RUN: done={summary['done']} of {len(schedule)} "
+            f"expected, fatal={summary['fatal_worker_errors']}",
+            flush=True,
+        )
+        return 2
     return 1 if summary["failures"] else 0
 
 

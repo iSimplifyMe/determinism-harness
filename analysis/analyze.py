@@ -326,6 +326,10 @@ def main():
                 if line:
                     records.append(json.loads(line))
 
+    if not records:
+        print("ERROR: zero records loaded — refusing to write an empty report")
+        return 2
+
     result = analyze_records(records)
     result["comparisons"] = comparisons(result["cells"], delta=args.delta)
     result["controls"] = controls_summary(result["cells"])
