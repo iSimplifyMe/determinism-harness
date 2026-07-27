@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 800,
+  "expected": 800,
+  "failures": 319,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-27T05:38:34.567936+00:00",
+  "retries": 0,
+  "run_name": "pilot-pilot-20260727T052919Z"
+}
