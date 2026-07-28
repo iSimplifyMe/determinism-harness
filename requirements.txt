@@ -1,3 +1,6 @@
 # Runner only. The analysis pipeline and test suite are Python stdlib by design:
 # every number in the paper must be reproducible with zero third-party code.
 boto3>=1.40
+# Study 2 cross-plane runner: Messages-plane clients (Claude Platform on AWS +
+# first-party API). Still runner-only; analysis remains stdlib.
+anthropic[aws]>=0.120

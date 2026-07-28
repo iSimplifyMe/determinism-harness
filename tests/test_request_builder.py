@@ -3,7 +3,12 @@ bytes within a cell) is only as good as this module's determinism."""
 import json
 import unittest
 
-from harness.request_builder import canonical_body, sha256_hex
+from harness.request_builder import (
+    canonical_body,
+    canonical_bytes,
+    canonical_messages_params,
+    sha256_hex,
+)
 
 CFG_5FAMILY = {"max_tokens": 16000, "effort": "medium"}
 CFG_HAIKU = {"max_tokens": 8192, "effort": None}
@@ -65,6 +70,73 @@ class TestCanonicalBody(unittest.TestCase):
         raw = canonical_body(CFG_HAIKU, "no-spaces-here", "none")
         self.assertNotIn(b": ", raw)
         self.assertNotIn(b", ", raw)
+
+
+class TestCanonicalMessagesParams(unittest.TestCase):
+    def test_shape_adaptive(self):
+        params = canonical_messages_params(
+            CFG_5FAMILY, "claude-opus-5", "PROMPT", "adaptive"
+        )
+        self.assertEqual(params["model"], "claude-opus-5")
+        self.assertNotIn("anthropic_version", params)
+        self.assertEqual(params["max_tokens"], 16000)
+        self.assertEqual(params["thinking"], {"type": "adaptive"})
+        self.assertEqual(params["output_config"], {"effort": "medium"})
+        self.assertEqual(
+            params["messages"],
+            [{"role": "user", "content": [{"type": "text", "text": "PROMPT"}]}],
+        )
+
+    def test_shape_disabled(self):
+        params = canonical_messages_params(
+            CFG_5FAMILY, "claude-sonnet-5", "PROMPT", "disabled"
+        )
+        self.assertEqual(params["thinking"], {"type": "disabled"})
+
+    def test_none_omits_thinking_and_effort(self):
+        params = canonical_messages_params(
+            CFG_HAIKU, "claude-haiku-4-5-20251001", "PROMPT", "none"
+        )
+        self.assertNotIn("thinking", params)
+        self.assertNotIn("output_config", params)
+
+    def test_extra_params_included(self):
+        params = canonical_messages_params(
+            CFG_HAIKU, "claude-haiku-4-5-20251001", "PROMPT", "none",
+            extra={"temperature": 0.7},
+        )
+        self.assertEqual(params["temperature"], 0.7)
+
+    def test_unknown_arm_raises(self):
+        with self.assertRaises(ValueError):
+            canonical_messages_params(CFG_5FAMILY, "claude-opus-5", "P", "bogus")
+
+    def test_deterministic_bytes(self):
+        a = canonical_bytes(
+            canonical_messages_params(CFG_5FAMILY, "claude-opus-5", "PROMPT", "adaptive")
+        )
+        b = canonical_bytes(
+            canonical_messages_params(CFG_5FAMILY, "claude-opus-5", "PROMPT", "adaptive")
+        )
+        self.assertEqual(a, b)
+        self.assertEqual(len(sha256_hex(a)), 64)
+
+    def test_cross_plane_semantic_identity(self):
+        """Prereg v2 section 4: the ONLY structural differences between the
+        Bedrock body and the Messages params are `anthropic_version` (Bedrock
+        only) and `model` (Messages only). Everything else must be equal."""
+        for cfg, arm, extra in (
+            (CFG_5FAMILY, "adaptive", None),
+            (CFG_5FAMILY, "disabled", None),
+            (CFG_HAIKU, "none", {"temperature": 0.7}),
+        ):
+            bedrock = json.loads(canonical_body(cfg, "PROMPT", arm, extra=extra))
+            messages = dict(
+                canonical_messages_params(cfg, "any-id", "PROMPT", arm, extra=extra)
+            )
+            del bedrock["anthropic_version"]
+            del messages["model"]
+            self.assertEqual(bedrock, messages)
 
 
 if __name__ == "__main__":

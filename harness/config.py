@@ -71,6 +71,32 @@ MODELS = {
     },
 }
 
+# --- Study 2 (cross-plane attribution, PREREGISTRATION-v2 DRAFT) ---------
+# Plane is the routing-analog factor; Bedrock is pinned to the `us.` profile
+# (v2 section 4). The Messages planes (Claude Platform on AWS, first-party
+# API) take bare model IDs with no provider prefix. Haiku keeps a dated ID on
+# every plane so the version-drift anchor survives the plane factor — on the
+# Messages planes that is the published dated full ID, not a constructed one.
+
+PLANES = ("bedrock", "p_aws", "anthropic_api")
+
+MESSAGES_MODEL_IDS = {
+    "opus-5": "claude-opus-5",
+    "sonnet-5": "claude-sonnet-5",
+    "haiku-4-5": "claude-haiku-4-5-20251001",
+}
+
+
+def plane_model_id(plane, model_key):
+    """Model ID to send for a (plane, model) pair. Bedrock: `us.` inference
+    profile (study-2 pin). Messages planes: bare / dated-full ID."""
+    if plane == "bedrock":
+        return MODELS[model_key]["profiles"]["us"]
+    if plane in ("p_aws", "anthropic_api"):
+        return MESSAGES_MODEL_IDS[model_key]
+    raise ValueError(f"unknown plane: {plane}")
+
+
 # Instrument-validity control: sampling parameters are removed on the Claude 5
 # family, so the divergence-detection check runs on Haiku 4.5 at temperature
 # 0.7 — a cross-model control, disclosed as such in the prereg.
