@@ -150,3 +150,24 @@ def grid_cells():
 
 def cell_key(cell):
     return f'{cell["model"]}|{cell["task"]}|{cell["profile"]}|{cell["thinking"]}'
+
+
+def grid_cells_study2():
+    """Study-2 factorial: model x task x plane x thinking. Plane takes the
+    slot profile held in study 1 (Bedrock pinned to `us.`, prereg v2 s2/s4)."""
+    from harness.tasks import TASKS
+
+    for model_key, cfg in MODELS.items():
+        for task_key in TASKS:
+            for plane in PLANES:
+                for arm in cfg["thinking_arms"]:
+                    yield {
+                        "model": model_key,
+                        "task": task_key,
+                        "plane": plane,
+                        "thinking": arm,
+                    }
+
+
+def cell_key2(cell):
+    return f'{cell["model"]}|{cell["task"]}|{cell["plane"]}|{cell["thinking"]}'

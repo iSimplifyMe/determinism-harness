@@ -31,9 +31,23 @@ import time
 from harness.config import REGION
 from harness.request_builder import sha256_hex
 
-# Statuses the runner may retry, matching the spirit of the Bedrock
-# RETRYABLE_CODES set: rate limits, overload, and server-side failures.
+# Statuses the runner may retry on the Messages planes: rate limits,
+# overload, and server-side failures.
 RETRYABLE_STATUS = {408, 429, 500, 502, 503, 504, 529}
+
+# Bedrock retry semantics are CODE-NAME based — exactly study 1's set. Some
+# retryable Bedrock codes ride non-retryable HTTP statuses (e.g.
+# ServiceQuotaExceededException arrives as a 400), so status-only
+# classification would silently change the Bedrock arm's behavior.
+BEDROCK_RETRYABLE_CODES = {
+    "ThrottlingException",
+    "TooManyRequestsException",
+    "ServiceUnavailableException",
+    "ModelNotReadyException",
+    "ModelTimeoutException",
+    "InternalServerException",
+    "ServiceQuotaExceededException",
+}
 
 
 def retryable_status(status_code):
@@ -218,8 +232,10 @@ class BedrockPlane:
         import json
 
         from botocore.exceptions import (
-            BotoCoreError,
             ClientError,
+            ConnectionClosedError,
+            EndpointConnectionError,
+            ReadTimeoutError,
         )
 
         start = time.monotonic()
@@ -237,14 +253,21 @@ class BedrockPlane:
         except ClientError as err:
             error = err.response.get("Error", {})
             meta = err.response.get("ResponseMetadata", {})
-            return _error_record(
-                error.get("Code", "ClientError"),
+            code = error.get("Code", "ClientError")
+            record = _error_record(
+                code,
                 str(err),
                 meta.get("HTTPStatusCode"),
                 meta.get("RequestId"),
                 body_bytes,
             )
-        except BotoCoreError as err:
+            record["retryable"] = record["retryable"] or code in BEDROCK_RETRYABLE_CODES
+            return record
+        except (
+            EndpointConnectionError,
+            ReadTimeoutError,
+            ConnectionClosedError,
+        ) as err:
             return _error_record(type(err).__name__, str(err), None, None, body_bytes)
 
 

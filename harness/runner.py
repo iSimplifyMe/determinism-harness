@@ -12,11 +12,21 @@ Controls implemented here, per the spec and PREREGISTRATION.md:
   is counted and recorded. Throttles back off exponentially; terminal errors
   are recorded as failures, never dropped.
 
+Study 2 (cross-plane, PREREGISTRATION-v2): the study2-* modes schedule the
+model x task x plane x thinking grid with per-plane payloads and dispatch
+through harness.planes. Records carry schema 2 and add `plane` plus
+`wire_sha256` (hash of the bytes actually sent — on Bedrock identical to
+`request_sha256` by construction). Credentials are run-scoped process env:
+ANTHROPIC_AWS_WORKSPACE_ID for p_aws, ANTHROPIC_API_KEY for anthropic_api.
+
 Usage:
   python3 -m harness.runner --mode pilot --window pilot --dry-run
   python3 -m harness.runner --mode full --window peak
   python3 -m harness.runner --mode positive-control --window control
   python3 -m harness.runner --mode effort-sweep --window control
+  python3 -m harness.runner --mode study2-pilot --window pilot --dry-run
+  python3 -m harness.runner --mode study2-full --window peak
+  python3 -m harness.runner --mode study2-positive-control --window control
 """
 import argparse
 import json
@@ -30,28 +40,33 @@ from datetime import datetime, timezone
 from harness.config import (
     EFFORT_SWEEP,
     MODELS,
+    PLANES,
     POSITIVE_CONTROL,
     REGION,
     REPEATS_FULL,
     REPEATS_PILOT,
     WINDOWS,
     cell_key,
+    cell_key2,
     grid_cells,
+    grid_cells_study2,
+    plane_model_id,
 )
-from harness.request_builder import canonical_body, sha256_hex
+from harness.planes import BEDROCK_RETRYABLE_CODES, make_plane
+from harness.request_builder import (
+    canonical_body,
+    canonical_bytes,
+    canonical_messages_params,
+    sha256_hex,
+)
 from harness.tasks import TASKS
 
-RETRYABLE_CODES = {
-    "ThrottlingException",
-    "TooManyRequestsException",
-    "ServiceUnavailableException",
-    "ModelNotReadyException",
-    "ModelTimeoutException",
-    "InternalServerException",
-    "ServiceQuotaExceededException",
-}
+# Single source of truth lives in harness.planes so the study-1 inline path
+# and BedrockPlane can never drift apart.
+RETRYABLE_CODES = BEDROCK_RETRYABLE_CODES
 
-MODES = ("pilot", "full", "positive-control", "effort-sweep")
+STUDY2_MODES = ("study2-pilot", "study2-full", "study2-positive-control")
+MODES = ("pilot", "full", "positive-control", "effort-sweep") + STUDY2_MODES
 
 
 def utc_now_iso():
@@ -87,6 +102,31 @@ def _item(cell_id, meta, body, model_id, repeat):
         "model_id": model_id,
         "repeat": repeat,
     }
+
+
+def _item2(cell_id, meta, plane, payload, sha, model_id, repeat):
+    return {
+        "cell": cell_id,
+        "meta": meta,
+        "plane": plane,
+        "payload": payload,
+        "sha": sha,
+        "model_id": model_id,
+        "repeat": repeat,
+    }
+
+
+def _study2_payload(model_cfg, plane, model_id, prompt, thinking, extra=None):
+    """Per-plane payload + planned-request hash. Bedrock: canonical bytes,
+    hashed == sent. Messages planes: the params dict; its hash is of the
+    canonical serialization, and the wire hash is captured at send time."""
+    if plane == "bedrock":
+        payload = canonical_body(model_cfg, prompt, thinking, extra=extra)
+        return payload, sha256_hex(payload)
+    payload = canonical_messages_params(
+        model_cfg, model_id, prompt, thinking, extra=extra
+    )
+    return payload, sha256_hex(canonical_bytes(payload))
 
 
 def build_schedule(mode):
@@ -140,6 +180,46 @@ def build_schedule(mode):
                 )
                 for r in range(es["repeats"]):
                     items.append(_item(cid, meta, body, model_id, r))
+    elif mode in ("study2-pilot", "study2-full"):
+        repeats = REPEATS_PILOT if mode == "study2-pilot" else REPEATS_FULL
+        for cell in grid_cells_study2():
+            mcfg = MODELS[cell["model"]]
+            model_id = plane_model_id(cell["plane"], cell["model"])
+            payload, sha = _study2_payload(
+                mcfg,
+                cell["plane"],
+                model_id,
+                TASKS[cell["task"]]["prompt"],
+                cell["thinking"],
+            )
+            cid = cell_key2(cell)
+            for r in range(repeats):
+                items.append(
+                    _item2(cid, dict(cell), cell["plane"], payload, sha, model_id, r)
+                )
+    elif mode == "study2-positive-control":
+        pc = POSITIVE_CONTROL
+        mcfg = MODELS[pc["model"]]
+        for plane in PLANES:
+            model_id = plane_model_id(plane, pc["model"])
+            payload, sha = _study2_payload(
+                mcfg,
+                plane,
+                model_id,
+                TASKS[pc["task"]]["prompt"],
+                pc["thinking"],
+                extra=pc["extra"],
+            )
+            meta = {
+                "model": pc["model"],
+                "task": pc["task"],
+                "plane": plane,
+                "thinking": pc["thinking"],
+                "control": "positive",
+            }
+            cid = cell_key2(meta) + "|temp=0.7"
+            for r in range(pc["repeats"]):
+                items.append(_item2(cid, dict(meta), plane, payload, sha, model_id, r))
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
@@ -165,7 +245,16 @@ def schedule_digest(items):
 
 
 class Engine:
-    def __init__(self, items, out_path, concurrency, seed, run_info=None, max_attempts=6):
+    def __init__(
+        self,
+        items,
+        out_path,
+        concurrency,
+        seed,
+        run_info=None,
+        max_attempts=6,
+        plane_clients=None,
+    ):
         self.items = items
         self.run_info = run_info or {}
         self.claimed = [False] * len(items)
@@ -181,16 +270,24 @@ class Engine:
         self.max_attempts = max_attempts
         self.out = open(out_path, "a", encoding="utf-8")
 
-        import boto3
-        from botocore.config import Config
+        needed = {it.get("plane") for it in items}
+        self.planes = dict(plane_clients or {})
+        for plane_name in sorted(p for p in needed if p):
+            if plane_name not in self.planes:
+                self.planes[plane_name] = make_plane(plane_name)
 
-        self.client = boto3.client(
-            "bedrock-runtime",
-            region_name=REGION,
-            config=Config(
-                read_timeout=600, connect_timeout=10, retries={"max_attempts": 0}
-            ),
-        )
+        self.client = None
+        if None in needed:  # study-1 items use the legacy inline Bedrock path
+            import boto3
+            from botocore.config import Config
+
+            self.client = boto3.client(
+                "bedrock-runtime",
+                region_name=REGION,
+                config=Config(
+                    read_timeout=600, connect_timeout=10, retries={"max_attempts": 0}
+                ),
+            )
 
     def _next_index(self):
         with self.lock:
@@ -314,6 +411,52 @@ class Engine:
             "error_message": last_error[1],
         }
 
+    def _execute_plane(self, item, rng, schedule_index):
+        """Study-2 execution: dispatch through harness.planes; retry on the
+        record's own retryable classification (Bedrock keeps study 1's
+        code-name semantics inside BedrockPlane)."""
+        plane = self.planes[item["plane"]]
+        base = {
+            "schema": 2,
+            **self.run_info,
+            "schedule_index": schedule_index,
+            "cell": item["cell"],
+            "repeat": item["repeat"],
+            "plane": item["plane"],
+            "model_id_sent": item["model_id"],
+            "request_sha256": item["sha"],
+            **{f"meta_{k}": v for k, v in item["meta"].items()},
+        }
+        attempts = 0
+        result = {"ok": False, "error_code": "unknown", "error_message": "no attempt made", "retryable": False}
+        while attempts < self.max_attempts:
+            attempts += 1
+            sent_at = utc_now_iso()
+            if item["plane"] == "bedrock":
+                result = plane.invoke(item["model_id"], item["payload"])
+            else:
+                result = plane.invoke(item["payload"])
+            if result["ok"]:
+                return {
+                    **base,
+                    **result,
+                    "attempts": attempts,
+                    "sent_at_utc": sent_at,
+                    "received_at_utc": utc_now_iso(),
+                }
+            if result["retryable"] and attempts < self.max_attempts:
+                with self.lock:
+                    self.retries += 1
+                time.sleep(min(60.0, 2.0 ** attempts) + rng.uniform(0, 1))
+                continue
+            break
+        return {
+            **base,
+            **result,
+            "attempts": attempts,
+            "sent_at_utc": utc_now_iso(),
+        }
+
     def _worker(self, worker_index):
         try:
             rng = random.Random(worker_seed(self.seed, worker_index))
@@ -326,7 +469,10 @@ class Engine:
                     continue
                 item = self.items[idx]
                 time.sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
-                record = self._execute(item, rng, idx)
+                if item.get("plane"):
+                    record = self._execute_plane(item, rng, idx)
+                else:
+                    record = self._execute(item, rng, idx)
                 self._write(record)
                 self._finish(item, failed=not record["ok"])
         except Exception as err:  # engine bug: record loudly, let peers drain
@@ -392,6 +538,9 @@ def main():
         "created_utc": utc_now_iso(),
         "dry_run": bool(args.dry_run),
     }
+    if args.mode in STUDY2_MODES:
+        manifest["schema"] = 2
+        manifest["planes"] = sorted({it["plane"] for it in schedule})
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")
@@ -401,6 +550,22 @@ def main():
         print(f"schedule sha256: {manifest['schedule_sha256']}")
         print(f"manifest written: {manifest_path}")
         return 0
+
+    if args.mode in STUDY2_MODES:
+        planes_present = {it["plane"] for it in schedule}
+        missing = []
+        if "p_aws" in planes_present and not os.environ.get(
+            "ANTHROPIC_AWS_WORKSPACE_ID"
+        ):
+            missing.append("ANTHROPIC_AWS_WORKSPACE_ID (Claude Platform on AWS)")
+        if "anthropic_api" in planes_present and not os.environ.get(
+            "ANTHROPIC_API_KEY"
+        ):
+            missing.append("ANTHROPIC_API_KEY (first-party plane, run-scoped)")
+        if missing:
+            for name in missing:
+                print(f"MISSING CREDENTIAL: {name}", flush=True)
+            return 3
 
     import boto3
 
