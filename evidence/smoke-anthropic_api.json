@@ -1,0 +1,186 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "expect": "ok",
+      "latency_ms": 2632,
+      "model_id": "claude-opus-5",
+      "name": "opus5-adaptive-extraction",
+      "outcome": "ok",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "4187fc487d12d1e5b860961143f97c21d1ceb8ff9ea8e857f51f1b84ca6d41ca",
+      "request_id": "req_011CdUwtiEi7aKicfPz7wHVH",
+      "response_model": "claude-opus-5",
+      "sent_at_utc": "2026-07-28T18:42:22.254625+00:00",
+      "stop_reason": "end_turn",
+      "text_head": "PO-83614-QN",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "global",
+        "input_tokens": 362,
+        "output_tokens": 10,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard"
+      },
+      "wire_sha256": "f128af43ded6f9d313b098583f03d28f2fe6ddd44a985941f51885cea9673fba"
+    },
+    {
+      "expect": "ok",
+      "latency_ms": 2491,
+      "model_id": "claude-opus-5",
+      "name": "opus5-disabled-medium",
+      "outcome": "ok",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "176a952066554e618459af1b3977f0df1e78d0cfd86dcf57990ce9348f6caa1c",
+      "request_id": "req_011CdUwtwMVyNwVrFDwpXk8n",
+      "response_model": "claude-opus-5",
+      "sent_at_utc": "2026-07-28T18:42:25.389789+00:00",
+      "stop_reason": "end_turn",
+      "text_head": "BILLING",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "global",
+        "input_tokens": 150,
+        "output_tokens": 6,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard"
+      },
+      "wire_sha256": "e81fd68bf5459a47b02d591dd44acdf54336f0257fd4fa58ac99e6c1f1fad8b2"
+    },
+    {
+      "expect": "ok",
+      "latency_ms": 10679,
+      "model_id": "claude-sonnet-5",
+      "name": "sonnet5-adaptive",
+      "outcome": "ok",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "d56a111f3ed6d99dead1f6efec64b104a2c2b8d00ed5b7a523434bd87fd63004",
+      "request_id": "req_011CdUwuARoScxCCD2j3Tgbi",
+      "response_model": "claude-sonnet-5",
+      "sent_at_utc": "2026-07-28T18:42:28.384696+00:00",
+      "stop_reason": "end_turn",
+      "text_head": "BILLING",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "global",
+        "input_tokens": 150,
+        "output_tokens": 6,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard"
+      },
+      "wire_sha256": "34218c29ace4aed51cba56499c16cb9dcce28f45a4b4b56443c225dccb5cb598"
+    },
+    {
+      "expect": "ok",
+      "latency_ms": 892,
+      "model_id": "claude-haiku-4-5-20251001",
+      "name": "haiku-none",
+      "outcome": "ok",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "d7388337edbb4c092900ab5d1edb45c720384abd714f4e72e095bb9e6042c4c5",
+      "request_id": "req_011CdUwuyx3dKt7ZxCN4Frb6",
+      "response_model": "claude-haiku-4-5-20251001",
+      "sent_at_utc": "2026-07-28T18:42:39.566109+00:00",
+      "stop_reason": "end_turn",
+      "text_head": "BILLING",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "not_available",
+        "input_tokens": 101,
+        "output_tokens": 5,
+        "service_tier": "standard"
+      },
+      "wire_sha256": "cd9caaa02338a9743864cd2274cbdcd9271a3cc84b22f52076f7b58ca32b6a46"
+    },
+    {
+      "expect": "ok",
+      "latency_ms": 708,
+      "model_id": "claude-haiku-4-5-20251001",
+      "name": "haiku-temp07-control-path",
+      "outcome": "ok",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "487acc425240c7f07792bc743b383171ea3e01017b8347187204221bd0b701ec",
+      "request_id": "req_011CdUwv5ySSx677ZFMAfciZ",
+      "response_model": "claude-haiku-4-5-20251001",
+      "sent_at_utc": "2026-07-28T18:42:40.959731+00:00",
+      "stop_reason": "end_turn",
+      "text_head": "BILLING",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "not_available",
+        "input_tokens": 101,
+        "output_tokens": 5,
+        "service_tier": "standard"
+      },
+      "wire_sha256": "0a0a38c44a90c6d8b9efdc3a5d4afc4a1536a371b4f1d7eaf1a59c943678185b"
+    },
+    {
+      "error_code": "invalid_request_error",
+      "error_message": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` may only be set to 1 when thinking is enabled or in adaptive mode. Please consult our documentation at https://platform.claude.com/docs/en/build-with-claude/extended-thinking'}, 'request_id': 'req_011CdUwvB52V19Sg1oUzFSrj'}",
+      "expect": "validation_error",
+      "model_id": "claude-opus-5",
+      "name": "opus5-temp07-must-reject",
+      "outcome": "api_error",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "095bc9cfafd0630d18c83e19cabc94bb130cd865c8f551f0e78b6e474eb8b5df",
+      "request_id": "req_011CdUwvB52V19Sg1oUzFSrj",
+      "sent_at_utc": "2026-07-28T18:42:42.171283+00:00",
+      "status_code": 400,
+      "wire_sha256": "71d5c58e50a8545e22b80b1687c1af7809171d0c0c1eda270bb10df17a769f8d"
+    },
+    {
+      "error_code": "invalid_request_error",
+      "error_message": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': \"output_config.effort 'xhigh' is not supported when thinking is disabled on this model. Use effort 'high' or below, or enable thinking.\"}, 'request_id': 'req_011CdUwvEo1pEKdvWMp4WtSx'}",
+      "expect": "validation_error",
+      "model_id": "claude-opus-5",
+      "name": "opus5-disabled-xhigh-must-reject",
+      "outcome": "api_error",
+      "passed": true,
+      "plane": "anthropic_api",
+      "planned_sha256": "123effa7ad19945d1ec69722e3cbe6ba6c36ba303d8c6c976dd839d40cb8bd3d",
+      "request_id": "req_011CdUwvEo1pEKdvWMp4WtSx",
+      "sent_at_utc": "2026-07-28T18:42:42.861812+00:00",
+      "status_code": 400,
+      "wire_sha256": "7447b158061e7ec3dad970912dacf758eeb6e2fad6885d4620d2d6bef8d176f6"
+    }
+  ],
+  "plane": "anthropic_api",
+  "ran_at_utc": "2026-07-28T18:42:43.723124+00:00"
+}
