@@ -117,3 +117,81 @@ def diff_ci(x1, n1, x2, n2, z=Z95):
     diff = p1 - p2
     se = math.sqrt(p1 * (1.0 - p1) / n1 + p2 * (1.0 - p2) / n2)
     return diff - z * se, diff + z * se
+
+
+def wald_diff(x1, n1, x2, n2, z=Z95):
+    """Difference of two proportions with its Wald SE exposed, so a
+    downstream difference-of-differences can propagate uncertainty."""
+    if n1 <= 0 or n2 <= 0:
+        raise ValueError("arm sizes must be positive")
+    p1, p2 = x1 / n1, x2 / n2
+    diff = p1 - p2
+    se = math.sqrt(p1 * (1.0 - p1) / n1 + p2 * (1.0 - p2) / n2)
+    return {"diff": diff, "se": se, "ci95": (diff - z * se, diff + z * se)}
+
+
+def stratified_diff(strata):
+    """Equal-weight stratified difference of two proportions.
+
+    strata: iterable of (x1, n1, x2, n2), one entry per matched stratum —
+    the same grid cell observed under both conditions. The estimate is the
+    unweighted mean of per-stratum differences; its variance is the sum of
+    per-stratum binomial variances over S^2.
+
+    This is the estimator study 2's power analysis uses, registered as the
+    PRIMARY test statistic for plane equivalence (prereg v2 Q2). Study 1's
+    recorded methodological miss was freezing a test whose SE came from
+    cross-stratum pooled counts — on a design whose cells sit near 0 and 1,
+    that SE is roughly twice the true stratified sampling error.
+    """
+    strata = list(strata)
+    if not strata:
+        raise ValueError("no strata")
+    diffs = []
+    var_sum = 0.0
+    for x1, n1, x2, n2 in strata:
+        if n1 <= 0 or n2 <= 0:
+            raise ValueError("stratum arm sizes must be positive")
+        p1, p2 = x1 / n1, x2 / n2
+        diffs.append(p1 - p2)
+        var_sum += p1 * (1.0 - p1) / n1 + p2 * (1.0 - p2) / n2
+    count = len(strata)
+    return {
+        "diff": sum(diffs) / count,
+        "se": math.sqrt(var_sum) / count,
+        "n_strata": count,
+    }
+
+
+def stratified_tost(strata, delta, alpha=0.05):
+    """TOST on the stratified difference — study 2's registered primary.
+
+    Degenerate strata (both arms exactly on 0 or 1) contribute zero
+    variance; if EVERY stratum is degenerate the SE is rescued from
+    Anscombe-adjusted proportions, the same policy as two_prop_tost — the
+    observed difference itself is never adjusted.
+    """
+    strata = list(strata)
+    est = stratified_diff(strata)
+    diff, se, count = est["diff"], est["se"], est["n_strata"]
+    if se == 0.0:
+        var_sum = 0.0
+        for x1, n1, x2, n2 in strata:
+            q1, q2 = _anscombe(x1, n1), _anscombe(x2, n2)
+            var_sum += q1 * (1.0 - q1) / n1 + q2 * (1.0 - q2) / n2
+        se = math.sqrt(var_sum) / count
+    p_lower = 1.0 - normal_cdf((diff + delta) / se)
+    p_upper = normal_cdf((diff - delta) / se)
+    p = max(p_lower, p_upper)
+    return {
+        "diff": diff,
+        "se": se,
+        "n_strata": count,
+        "p_lower": p_lower,
+        "p_upper": p_upper,
+        "p": p,
+        "equivalent": p < alpha,
+        "ci90": (diff - Z90 * se, diff + Z90 * se),
+        "delta": delta,
+        "alpha": alpha,
+    }

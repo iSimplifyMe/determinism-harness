@@ -10,13 +10,21 @@ observed in different load windows is never collapsed. Records without a
 window field (unit tests, ad hoc replays) group by bare cell key.
 """
 import argparse
+import itertools
 import json
 import os
 from collections import defaultdict
 from datetime import datetime, timezone
 
 from analysis.metrics import cell_metrics, pop_variance
-from analysis.stats import diff_ci, two_prop_tost, wilson_interval
+from analysis.stats import (
+    Z95,
+    diff_ci,
+    stratified_tost,
+    two_prop_tost,
+    wald_diff,
+    wilson_interval,
+)
 
 POSITIVE_CONTROL_MARKER = "|temp=0.7"
 
@@ -217,6 +225,138 @@ def comparisons(cells, delta=0.01):
                 "n": n_w,
                 "rate": x_w / n_w,
                 "wilson_ci": wilson_interval(x_w, n_w),
+            }
+
+    planes = sorted(
+        {
+            e["meta"].get("plane")
+            for e in cells.values()
+            if e.get("meta", {}).get("plane")
+        }
+    )
+    if planes:
+        out.update(_plane_comparisons(cells, planes, delta))
+    return out
+
+
+def _stratum_counts(cells, meta_filter):
+    """Per-cell (modal_count, n) keyed by (model, task, thinking, window)
+    for cells passing the filter — the matching key for plane pairs."""
+    strata = {}
+    for entry in cells.values():
+        metrics = entry.get("metrics")
+        if not metrics:
+            continue
+        if entry["cell"].endswith(POSITIVE_CONTROL_MARKER):
+            continue
+        meta = entry.get("meta", {})
+        if not meta_filter(meta):
+            continue
+        key = (
+            meta.get("model"),
+            meta.get("task"),
+            meta.get("thinking"),
+            meta.get("window"),
+        )
+        strata[key] = (metrics["modal_count"], metrics["n"])
+    return strata
+
+
+def _plane_comparisons(cells, planes, delta):
+    """Study-2 pre-registered contrasts (prereg v2).
+
+    Q1 (attribution): per model, per plane, the adaptive-minus-disabled
+    difference in structured-JSON modal share with 95% CI, plus the
+    cross-plane difference-of-differences with 95% CI.
+
+    Q2 (plane equivalence): pairwise TOST at delta with the STRATIFIED
+    estimator as the registered primary (strata = matched cells), and the
+    cross-stratum pooled Wald TOST demoted to labeled sensitivity — the
+    reverse of study 1's reporting, per its recorded lesson.
+    """
+    out = {}
+    models = sorted(
+        {
+            e["meta"].get("model")
+            for e in cells.values()
+            if e.get("meta", {}).get("plane") and e["meta"].get("model")
+        }
+    )
+
+    for model in models:
+        per_plane = {}
+        for plane in planes:
+            x_ad, n_ad = pool_success(
+                cells,
+                lambda m, mo=model, pl=plane: m.get("model") == mo
+                and m.get("plane") == pl
+                and m.get("task") == "structured_json"
+                and m.get("thinking") == "adaptive",
+            )
+            x_di, n_di = pool_success(
+                cells,
+                lambda m, mo=model, pl=plane: m.get("model") == mo
+                and m.get("plane") == pl
+                and m.get("task") == "structured_json"
+                and m.get("thinking") == "disabled",
+            )
+            if n_ad and n_di:
+                per_plane[plane] = {
+                    "adaptive": {"x": x_ad, "n": n_ad, "rate": x_ad / n_ad},
+                    "disabled": {"x": x_di, "n": n_di, "rate": x_di / n_di},
+                    "effect": wald_diff(x_ad, n_ad, x_di, n_di),
+                }
+        if not per_plane:
+            continue
+        dod = {}
+        for plane_a, plane_b in itertools.combinations(sorted(per_plane), 2):
+            eff_a = per_plane[plane_a]["effect"]
+            eff_b = per_plane[plane_b]["effect"]
+            diff = eff_a["diff"] - eff_b["diff"]
+            se = (eff_a["se"] ** 2 + eff_b["se"] ** 2) ** 0.5
+            dod[f"{plane_a}_vs_{plane_b}"] = {
+                "dod": diff,
+                "se": se,
+                "ci95": (diff - Z95 * se, diff + Z95 * se),
+            }
+        out[f"q1_attribution__{model}"] = {"planes": per_plane, "dod": dod}
+
+    scopes = [(model, model) for model in models]
+    if len(models) > 1:
+        scopes.append(("ALL", None))
+    for label, model in scopes:
+        for plane_a, plane_b in itertools.combinations(planes, 2):
+            strata_a = _stratum_counts(
+                cells,
+                lambda m, mo=model, pl=plane_a: m.get("plane") == pl
+                and (mo is None or m.get("model") == mo),
+            )
+            strata_b = _stratum_counts(
+                cells,
+                lambda m, mo=model, pl=plane_b: m.get("plane") == pl
+                and (mo is None or m.get("model") == mo),
+            )
+            common = sorted(set(strata_a) & set(strata_b))
+            if not common:
+                continue
+            strata = [
+                (
+                    strata_a[key][0],
+                    strata_a[key][1],
+                    strata_b[key][0],
+                    strata_b[key][1],
+                )
+                for key in common
+            ]
+            x_a = sum(s[0] for s in strata)
+            n_a = sum(s[1] for s in strata)
+            x_b = sum(s[2] for s in strata)
+            n_b = sum(s[3] for s in strata)
+            out[f"q2_plane__{label}__{plane_a}_vs_{plane_b}"] = {
+                plane_a: {"x": x_a, "n": n_a, "rate": x_a / n_a},
+                plane_b: {"x": x_b, "n": n_b, "rate": x_b / n_b},
+                "tost_stratified_primary": stratified_tost(strata, delta),
+                "tost_pooled_sensitivity": two_prop_tost(x_a, n_a, x_b, n_b, delta),
             }
     return out
 
