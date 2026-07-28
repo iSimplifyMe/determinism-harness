@@ -29,6 +29,7 @@ REGION = "us-east-1"
 
 REPEATS_FULL = 100   # confirmatory, per cell per window; pilot may revise (prereg)
 REPEATS_PILOT = 20   # single-window pilot, per spec section 5
+REPEATS_Q4 = 25      # study-2 Q4 sparse ladder, reduced-n (prereg v2)
 
 PROFILES = ("us", "global")
 
@@ -96,6 +97,25 @@ def plane_model_id(plane, model_key):
         return MESSAGES_MODEL_IDS[model_key]
     raise ValueError(f"unknown plane: {plane}")
 
+
+# Study 2 Q3 (exploratory): streamed delivery on the divergence-prone tasks,
+# adaptive thinking pinned; the non-streamed comparators are the main grid's
+# own cells. Runs in a control window.
+Q3_STREAMING = {
+    "models": ("opus-5", "sonnet-5"),
+    "tasks": ("structured_json", "open_generation"),
+    "thinking": "adaptive",
+    "repeats": REPEATS_FULL,
+}
+
+# Study 2 Q4 (exploratory): sparse input-length ladder on extraction,
+# adaptive thinking pinned, reduced repeats, cost-bounded. Control window.
+Q4_LENGTHS = {
+    "models": ("opus-5", "sonnet-5"),
+    "labels": ("1k", "10k", "50k"),
+    "thinking": "adaptive",
+    "repeats": REPEATS_Q4,
+}
 
 # Instrument-validity control: sampling parameters are removed on the Claude 5
 # family, so the divergence-detection check runs on Haiku 4.5 at temperature

@@ -41,12 +41,29 @@ def gate_cell(records):
     excluded = {"error": 0, "truncated_or_other_stop": 0}
     flags = {
         "negative_control_failed": False,
+        "wire_mismatch": False,
         "model_drift": False,
         "response_models": [],
     }
     hashes = {r.get("request_sha256") for r in records}
     if len(hashes) > 1:
         flags["negative_control_failed"] = True
+        return {
+            "valid": [],
+            "excluded": excluded,
+            "flags": flags,
+            "n_raw": len(records),
+        }
+    # Schema-2 records carry the SHA of the bytes actually sent (captured at
+    # the HTTP layer on the SDK planes). More than one distinct wire hash in
+    # a cell means the harness sent varying bytes — same class of failure as
+    # a planned-hash mismatch. Legacy records without the field are exempt.
+    wire_hashes = {
+        r.get("wire_sha256") for r in records if r.get("wire_sha256")
+    }
+    if len(wire_hashes) > 1:
+        flags["negative_control_failed"] = True
+        flags["wire_mismatch"] = True
         return {
             "valid": [],
             "excluded": excluded,

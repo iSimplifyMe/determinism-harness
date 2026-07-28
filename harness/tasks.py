@@ -90,3 +90,29 @@ TASKS = {
         ),
     },
 }
+
+# --- Study 2 Q4: sparse input-length ladder (prereg v2) --------------------
+# Deterministic context padding prepended to the extraction task. Char-exact
+# targets approximate 1k / 10k / 50k input tokens at typical English
+# tokenization (~3.7 chars per token); the exact token count is irrelevant —
+# the ladder is sparse, and the padded prompts are byte-identical within a
+# cell and across planes like every other fixture. Pure ASCII.
+
+_PAD_PARAGRAPH = (
+    "Background operations log (synthetic filler, not relevant to the task): "
+    "the warehouse floor completed its scheduled cycle count without "
+    "discrepancies, conveyor line three resumed after routine belt "
+    "maintenance, inbound dock assignments rotated per the standard weekly "
+    "plan, and the facilities team recorded nominal temperature and humidity "
+    "readings across all storage zones throughout the reporting period. "
+)
+
+PAD_CHAR_TARGETS = {"1k": 3_700, "10k": 37_000, "50k": 185_000}
+
+
+def padded_prompt(pad_label, base_prompt):
+    """base_prompt preceded by char-exact deterministic filler."""
+    target = PAD_CHAR_TARGETS[pad_label]
+    reps = -(-target // len(_PAD_PARAGRAPH))
+    filler = (_PAD_PARAGRAPH * reps)[:target]
+    return filler + "\n\n" + base_prompt

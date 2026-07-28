@@ -135,20 +135,34 @@ class MessagesPlane:
 
         return httpx.Timeout(600.0, connect=10.0)
 
-    def invoke(self, params):
-        """One Messages call; params from canonical_messages_params()."""
+    def invoke(self, params, stream=False):
+        """One Messages call; params from canonical_messages_params().
+
+        With stream=True the response is delivered over SSE and accumulated
+        to the same final message (the SDK stream helper), so the normalized
+        record is shape-identical; delivered_streaming records the mode. The
+        SDK adds the stream field to the wire body, so the wire hash differs
+        from the non-streamed cell's by construction — within-cell identity
+        is what the negative control checks, and that still holds.
+        """
         import anthropic
 
         start = time.monotonic()
         try:
-            msg = self.client.messages.create(**params)
+            if stream:
+                with self.client.messages.stream(**params) as stream_obj:
+                    msg = stream_obj.get_final_message()
+            else:
+                msg = self.client.messages.create(**params)
             latency_ms = int((time.monotonic() - start) * 1000)
-            return normalize_message(
+            record = normalize_message(
                 msg.to_dict(),
                 getattr(msg, "_request_id", None),
                 latency_ms,
                 self._capture.take(),
             )
+            record["delivered_streaming"] = stream
+            return record
         except anthropic.APIStatusError as err:
             code = getattr(err, "type", None) or f"http_{err.status_code}"
             request_id = None
@@ -228,7 +242,22 @@ class BedrockPlane:
             ),
         )
 
-    def invoke(self, model_id, body_bytes):
+    @staticmethod
+    def _client_error_record(err, body_bytes):
+        error = err.response.get("Error", {})
+        meta = err.response.get("ResponseMetadata", {})
+        code = error.get("Code", "ClientError")
+        record = _error_record(
+            code,
+            str(err),
+            meta.get("HTTPStatusCode"),
+            meta.get("RequestId"),
+            body_bytes,
+        )
+        record["retryable"] = record["retryable"] or code in BEDROCK_RETRYABLE_CODES
+        return record
+
+    def invoke(self, model_id, body_bytes, stream=False):
         import json
 
         from botocore.exceptions import (
@@ -238,6 +267,8 @@ class BedrockPlane:
             ReadTimeoutError,
         )
 
+        if stream:
+            return self._invoke_stream(model_id, body_bytes)
         start = time.monotonic()
         try:
             resp = self.client.invoke_model(
@@ -249,20 +280,74 @@ class BedrockPlane:
             latency_ms = int((time.monotonic() - start) * 1000)
             payload = json.loads(resp["body"].read())
             request_id = resp.get("ResponseMetadata", {}).get("RequestId")
-            return normalize_message(payload, request_id, latency_ms, body_bytes)
-        except ClientError as err:
-            error = err.response.get("Error", {})
-            meta = err.response.get("ResponseMetadata", {})
-            code = error.get("Code", "ClientError")
-            record = _error_record(
-                code,
-                str(err),
-                meta.get("HTTPStatusCode"),
-                meta.get("RequestId"),
-                body_bytes,
-            )
-            record["retryable"] = record["retryable"] or code in BEDROCK_RETRYABLE_CODES
+            record = normalize_message(payload, request_id, latency_ms, body_bytes)
+            record["delivered_streaming"] = False
             return record
+        except ClientError as err:
+            return self._client_error_record(err, body_bytes)
+        except (
+            EndpointConnectionError,
+            ReadTimeoutError,
+            ConnectionClosedError,
+        ) as err:
+            return _error_record(type(err).__name__, str(err), None, None, body_bytes)
+
+    def _invoke_stream(self, model_id, body_bytes):
+        """InvokeModelWithResponseStream, accumulated to the same normalized
+        record. The body is identical to the non-streamed call (Bedrock
+        selects streaming by endpoint, not by a body field), so hashed ==
+        sent holds unchanged. EventStreamError subclasses ClientError, so
+        mid-stream service errors land in the same classification."""
+        import json
+
+        from botocore.exceptions import (
+            ClientError,
+            ConnectionClosedError,
+            EndpointConnectionError,
+            ReadTimeoutError,
+        )
+
+        start = time.monotonic()
+        try:
+            resp = self.client.invoke_model_with_response_stream(
+                modelId=model_id,
+                body=body_bytes,
+                contentType="application/json",
+                accept="application/json",
+            )
+            message = {}
+            usage = {}
+            text_parts = []
+            stop_reason = None
+            for event in resp["body"]:
+                chunk = json.loads(event["chunk"]["bytes"])
+                ctype = chunk.get("type")
+                if ctype == "message_start":
+                    message = chunk.get("message", {})
+                    usage = dict(message.get("usage") or {})
+                elif ctype == "content_block_delta":
+                    delta = chunk.get("delta", {})
+                    if delta.get("type") == "text_delta":
+                        text_parts.append(delta.get("text", ""))
+                elif ctype == "message_delta":
+                    if (chunk.get("delta") or {}).get("stop_reason"):
+                        stop_reason = chunk["delta"]["stop_reason"]
+                    for key, value in (chunk.get("usage") or {}).items():
+                        usage[key] = value
+            latency_ms = int((time.monotonic() - start) * 1000)
+            payload = {
+                "id": message.get("id"),
+                "model": message.get("model"),
+                "stop_reason": stop_reason,
+                "usage": usage,
+                "content": [{"type": "text", "text": "".join(text_parts)}],
+            }
+            request_id = resp.get("ResponseMetadata", {}).get("RequestId")
+            record = normalize_message(payload, request_id, latency_ms, body_bytes)
+            record["delivered_streaming"] = True
+            return record
+        except ClientError as err:
+            return self._client_error_record(err, body_bytes)
         except (
             EndpointConnectionError,
             ReadTimeoutError,

@@ -42,6 +42,8 @@ from harness.config import (
     MODELS,
     PLANES,
     POSITIVE_CONTROL,
+    Q3_STREAMING,
+    Q4_LENGTHS,
     REGION,
     REPEATS_FULL,
     REPEATS_PILOT,
@@ -59,13 +61,19 @@ from harness.request_builder import (
     canonical_messages_params,
     sha256_hex,
 )
-from harness.tasks import TASKS
+from harness.tasks import TASKS, padded_prompt
 
 # Single source of truth lives in harness.planes so the study-1 inline path
 # and BedrockPlane can never drift apart.
 RETRYABLE_CODES = BEDROCK_RETRYABLE_CODES
 
-STUDY2_MODES = ("study2-pilot", "study2-full", "study2-positive-control")
+STUDY2_MODES = (
+    "study2-pilot",
+    "study2-full",
+    "study2-positive-control",
+    "study2-q3-streaming",
+    "study2-q4-lengths",
+)
 MODES = ("pilot", "full", "positive-control", "effort-sweep") + STUDY2_MODES
 
 
@@ -220,6 +228,54 @@ def build_schedule(mode):
             cid = cell_key2(meta) + "|temp=0.7"
             for r in range(pc["repeats"]):
                 items.append(_item2(cid, dict(meta), plane, payload, sha, model_id, r))
+    elif mode == "study2-q3-streaming":
+        q3 = Q3_STREAMING
+        for model_key in q3["models"]:
+            mcfg = MODELS[model_key]
+            for task_key in q3["tasks"]:
+                for plane in PLANES:
+                    model_id = plane_model_id(plane, model_key)
+                    payload, sha = _study2_payload(
+                        mcfg, plane, model_id, TASKS[task_key]["prompt"], q3["thinking"]
+                    )
+                    meta = {
+                        "model": model_key,
+                        "task": task_key,
+                        "plane": plane,
+                        "thinking": q3["thinking"],
+                        "delivery": "streaming",
+                    }
+                    cid = f'{model_key}|{task_key}|{plane}|{q3["thinking"]}|streamed'
+                    for r in range(q3["repeats"]):
+                        item = _item2(
+                            cid, dict(meta), plane, payload, sha, model_id, r
+                        )
+                        item["delivery"] = "streaming"
+                        items.append(item)
+    elif mode == "study2-q4-lengths":
+        q4 = Q4_LENGTHS
+        for model_key in q4["models"]:
+            mcfg = MODELS[model_key]
+            for label in q4["labels"]:
+                prompt = padded_prompt(label, TASKS["extraction"]["prompt"])
+                for plane in PLANES:
+                    model_id = plane_model_id(plane, model_key)
+                    payload, sha = _study2_payload(
+                        mcfg, plane, model_id, prompt, q4["thinking"]
+                    )
+                    task_label = f"extraction_pad_{label}"
+                    meta = {
+                        "model": model_key,
+                        "task": task_label,
+                        "plane": plane,
+                        "thinking": q4["thinking"],
+                        "pad": label,
+                    }
+                    cid = f'{model_key}|{task_label}|{plane}|{q4["thinking"]}'
+                    for r in range(q4["repeats"]):
+                        items.append(
+                            _item2(cid, dict(meta), plane, payload, sha, model_id, r)
+                        )
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
@@ -432,10 +488,13 @@ class Engine:
         while attempts < self.max_attempts:
             attempts += 1
             sent_at = utc_now_iso()
+            streaming = item.get("delivery") == "streaming"
             if item["plane"] == "bedrock":
-                result = plane.invoke(item["model_id"], item["payload"])
+                result = plane.invoke(
+                    item["model_id"], item["payload"], stream=streaming
+                )
             else:
-                result = plane.invoke(item["payload"])
+                result = plane.invoke(item["payload"], stream=streaming)
             if result["ok"]:
                 return {
                     **base,

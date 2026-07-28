@@ -71,8 +71,8 @@ class StubPlane:
         self.script = list(script)
         self.calls = []
 
-    def invoke(self, *args):
-        self.calls.append(args)
+    def invoke(self, *args, **kwargs):
+        self.calls.append((args, kwargs))
         return self.script.pop(0)
 
 
@@ -185,7 +185,15 @@ class TestEnginePlaneDispatch(unittest.TestCase):
         items[0]["payload"] = b"BYTES"
         stub = StubPlane([_ok()])
         _, records = self._run(items, {"bedrock": stub})
-        self.assertEqual(stub.calls[0], ("y", b"BYTES"))
+        self.assertEqual(stub.calls[0], (("y", b"BYTES"), {"stream": False}))
+        self.assertTrue(records[0]["ok"])
+
+    def test_streaming_delivery_dispatches_stream_kwarg(self):
+        items = _items(1)
+        items[0]["delivery"] = "streaming"
+        stub = StubPlane([_ok()])
+        _, records = self._run(items, {"p_aws": stub})
+        self.assertEqual(stub.calls[0][1], {"stream": True})
         self.assertTrue(records[0]["ok"])
 
     def test_no_legacy_client_for_plane_only_schedules(self):
