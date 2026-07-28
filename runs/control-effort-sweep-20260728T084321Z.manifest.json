@@ -1,0 +1,71 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "opus-5|classification|us|adaptive|effort=high",
+    "opus-5|classification|us|adaptive|effort=low",
+    "opus-5|classification|us|adaptive|effort=max",
+    "opus-5|classification|us|adaptive|effort=medium",
+    "opus-5|classification|us|adaptive|effort=xhigh",
+    "opus-5|open_generation|us|adaptive|effort=high",
+    "opus-5|open_generation|us|adaptive|effort=low",
+    "opus-5|open_generation|us|adaptive|effort=max",
+    "opus-5|open_generation|us|adaptive|effort=medium",
+    "opus-5|open_generation|us|adaptive|effort=xhigh"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-28T08:43:21.930405+00:00",
+  "dry_run": false,
+  "git_head": "2c8357b3ae1943a6750a924723f1ead7c15bf260",
+  "mode": "effort-sweep",
+  "n_cells": 10,
+  "n_items": 1000,
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "opus-5|classification|us|adaptive|effort=high",
+      "214e44fcedaf907dd30db42b66b595c98d0f45c328b0456cd498c832f80459c1"
+    ],
+    [
+      "opus-5|classification|us|adaptive|effort=low",
+      "980c022d96f38c6324ff5974f0c1486d9251000097ce5436cfaad93ec4700121"
+    ],
+    [
+      "opus-5|classification|us|adaptive|effort=max",
+      "1cae1acd70ebef1024536a957f191d9fb60c1dfea80b711d7975a2cb54d30df9"
+    ],
+    [
+      "opus-5|classification|us|adaptive|effort=medium",
+      "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01"
+    ],
+    [
+      "opus-5|classification|us|adaptive|effort=xhigh",
+      "13c43b74bb309b70c9d3cf0fef60d91d2ec09998bbfbb7c7b8e939a923808225"
+    ],
+    [
+      "opus-5|open_generation|us|adaptive|effort=high",
+      "3e8f798190a5e38495f0e1c7c6d8bc16fb5c64d2eb41da56de9ad1f699615ae7"
+    ],
+    [
+      "opus-5|open_generation|us|adaptive|effort=low",
+      "55037452668709a8e88196fb678f887eac38891669afcbcb38eb8720e587d59a"
+    ],
+    [
+      "opus-5|open_generation|us|adaptive|effort=max",
+      "9235180205f70bddf766aa07b97da5c48dfdc689def2678791ffd4a460f6b13e"
+    ],
+    [
+      "opus-5|open_generation|us|adaptive|effort=medium",
+      "122e6975aa63addbbcd6a72396a123a1b30404453a0df157672f40f06af2d4d6"
+    ],
+    [
+      "opus-5|open_generation|us|adaptive|effort=xhigh",
+      "6b0808ee2e050e51c1970b8028665d7ad1c51654bd563d61b3de5a541d3ed319"
+    ]
+  ],
+  "run_name": "control-effort-sweep-20260728T084321Z",
+  "schedule_sha256": "c9121a6e74729ced49b703c3cfdde805077bc3e6937d151876cae5d266f5e561",
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

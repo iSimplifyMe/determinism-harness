@@ -1,0 +1,1015 @@
+{
+  "cells": {
+    "control::opus-5|classification|us|adaptive|effort=high": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive|effort=high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "high",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 114.9651,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 67.43,
+      "thinking_tokens_variance": 114.9651,
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "control::opus-5|classification|us|adaptive|effort=low": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive|effort=low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "low",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "control::opus-5|classification|us|adaptive|effort=max": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive|effort=max",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "max",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 221.72440000000003,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 88.34,
+      "thinking_tokens_variance": 221.72440000000003,
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "control::opus-5|classification|us|adaptive|effort=medium": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive|effort=medium",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "medium",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 62.23759999999999,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 3.68,
+      "thinking_tokens_variance": 62.2376,
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "control::opus-5|classification|us|adaptive|effort=xhigh": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|us|adaptive|effort=xhigh",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "xhigh",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 241.2875,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 71.75,
+      "thinking_tokens_variance": 241.2875,
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "control::opus-5|open_generation|us|adaptive|effort=high": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive|effort=high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "high",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          72
+        ],
+        "modal_count": 1,
+        "modal_sha256": "241c017c9b99dd8c928feeecd089a3591c624a18a5532addbee229e89b988e5f",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.17181208053691274,
+        "norm_distance_mean_all": 0.16961716236260554,
+        "output_token_variance": 33089.6856,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 480.47,
+      "thinking_tokens_variance": 30763.829100000003,
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "control::opus-5|open_generation|us|adaptive|effort=low": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive|effort=low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "low",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          30,
+          30,
+          32,
+          32,
+          32,
+          73,
+          73
+        ],
+        "modal_count": 1,
+        "modal_sha256": "cd6648f4cc84a2851f1863154fba84835e75c0c9fbab7089ac4223936c7c44a9",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.16666666666666666,
+        "norm_distance_mean_all": 0.1646342008592746,
+        "output_token_variance": 1393.3075,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 10.6,
+      "thinking_tokens_variance": 28.84,
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "control::opus-5|open_generation|us|adaptive|effort=max": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive|effort=max",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "max",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          16,
+          16,
+          16,
+          16,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24
+        ],
+        "modal_count": 1,
+        "modal_sha256": "29f0f89e157f37618ba1ac291619d3a1d628a3de711171aee2f53455f12c5dfa",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.17256488035052242,
+        "norm_distance_mean_all": 0.1696186033122376,
+        "output_token_variance": 120885.66189999999,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 880.46,
+      "thinking_tokens_variance": 122191.8084,
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "control::opus-5|open_generation|us|adaptive|effort=medium": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive|effort=medium",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "medium",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          114
+        ],
+        "modal_count": 1,
+        "modal_sha256": "d750b6ed12777cb1a17c5564ab261f3e0adc428df5f01b5a4acbcebce1d10268",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.17414965986394557,
+        "norm_distance_mean_all": 0.17002129977994568,
+        "output_token_variance": 4241.6964,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 49.43,
+      "thinking_tokens_variance": 2461.4051,
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "control::opus-5|open_generation|us|adaptive|effort=xhigh": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|us|adaptive|effort=xhigh",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "effort": "xhigh",
+        "model": "opus-5",
+        "profile": "us",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "control"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          16,
+          52,
+          52,
+          66
+        ],
+        "modal_count": 1,
+        "modal_sha256": "f61c0138607629f40a8ca6dfb165d2957318ec830f13af0f2220aa4510e4ed34",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.18266143417766678,
+        "norm_distance_mean_all": 0.17269895468627705,
+        "output_token_variance": 37813.825600000004,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 621.32,
+      "thinking_tokens_variance": 35694.037599999996,
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    }
+  },
+  "comparisons": {
+    "q4_window__control": {
+      "n": 1000,
+      "rate": 0.505,
+      "wilson_ci": [
+        0.4740520072158691,
+        0.5359097251992754
+      ],
+      "x": 505
+    }
+  },
+  "controls": {
+    "cache_tokens_nonzero_cells": [],
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {}
+  },
+  "delta": 0.02,
+  "inputs": [
+    "/Users/jelstner/determinism-harness/runs/control-effort-sweep-20260728T084321Z.jsonl"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "haiku-4-5|open_generation|us|none|temp=0.7"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-27T16:37:08.740218+00:00",
+  "dry_run": false,
+  "git_head": "2c8357b3ae1943a6750a924723f1ead7c15bf260",
+  "mode": "positive-control",
+  "n_cells": 1,
+  "n_items": 100,
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "haiku-4-5|open_generation|us|none|temp=0.7",
+      "bdb83d6bfe6525bbd622be572af4bd20731af2704b4989aaaf231f54a37de727"
+    ]
+  ],
+  "run_name": "control-positive-control-20260727T163708Z",
+  "schedule_sha256": "8931992f0a4d7a8eff6c80a23aed4f7bb353635e97e77106d4738b45ef6a24ed",
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

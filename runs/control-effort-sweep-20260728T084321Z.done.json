@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 1000,
+  "expected": 1000,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-28T09:38:02.748325+00:00",
+  "retries": 34,
+  "run_name": "control-effort-sweep-20260728T084321Z"
+}
