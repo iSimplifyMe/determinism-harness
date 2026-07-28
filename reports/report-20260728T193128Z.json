@@ -1,0 +1,3964 @@
+{
+  "cells": {
+    "pilot::haiku-4-5|classification|anthropic_api|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|classification|anthropic_api|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "anthropic_api",
+        "task": "classification",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|classification|bedrock|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|classification|bedrock|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "bedrock",
+        "task": "classification",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|classification|p_aws|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|classification|p_aws|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "p_aws",
+        "task": "classification",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|extraction|anthropic_api|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|extraction|anthropic_api|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "anthropic_api",
+        "task": "extraction",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|extraction|bedrock|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|extraction|bedrock|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "bedrock",
+        "task": "extraction",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|extraction|p_aws|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|extraction|p_aws|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "p_aws",
+        "task": "extraction",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::haiku-4-5|open_generation|anthropic_api|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|open_generation|anthropic_api|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "anthropic_api",
+        "task": "open_generation",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          43,
+          43,
+          43,
+          43,
+          43,
+          70,
+          81,
+          100
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a001e72d4f3b3c8919c9b3e8e5c4f632ff454c3f5929a76096877322e71caf47",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.15676668707899571,
+        "norm_distance_mean_all": 0.14889489641987663,
+        "output_token_variance": 216.54000000000002,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::haiku-4-5|open_generation|bedrock|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|open_generation|bedrock|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "bedrock",
+        "task": "open_generation",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          43,
+          43,
+          43,
+          45,
+          81,
+          91,
+          100,
+          111
+        ],
+        "modal_count": 1,
+        "modal_sha256": "235af02dd17c49cb36c257742ca1cbc64f08a2cce3c4db829f0898fac4a01d73",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.16300541228907992,
+        "norm_distance_mean_all": 0.15306701504545722,
+        "output_token_variance": 253.55,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::haiku-4-5|open_generation|p_aws|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|open_generation|p_aws|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "p_aws",
+        "task": "open_generation",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          2,
+          18,
+          18,
+          18,
+          18,
+          30,
+          30,
+          30,
+          30,
+          30,
+          43,
+          43,
+          43,
+          43,
+          81,
+          81,
+          81,
+          91,
+          91
+        ],
+        "modal_count": 1,
+        "modal_sha256": "ab5d5dd9934dfc1337b2f5ce3e3ac083c419e05dd5ec1f29a2e26899241b6c1e",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.16666666666666666,
+        "norm_distance_mean_all": 0.15305778141083753,
+        "output_token_variance": 269.64,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::haiku-4-5|structured_json|anthropic_api|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|structured_json|anthropic_api|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "anthropic_api",
+        "task": "structured_json",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          32,
+          32
+        ],
+        "modal_count": 13,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.65,
+        "n": 20,
+        "norm_distance_max": 0.16847826086956522,
+        "norm_distance_mean_all": 0.040638749335112516,
+        "output_token_variance": 68.28999999999999,
+        "pairwise_agreement": 0.4473684210526316
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.43285427668523624,
+        0.818808175898918
+      ]
+    },
+    "pilot::haiku-4-5|structured_json|bedrock|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|structured_json|bedrock|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "bedrock",
+        "task": "structured_json",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          32,
+          32
+        ],
+        "modal_count": 15,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.75,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.02495226645923202,
+        "output_token_variance": 45.5475,
+        "pairwise_agreement": 0.5736842105263158
+      },
+      "service_tiers": [],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.531299122381256,
+        0.8881382985923343
+      ]
+    },
+    "pilot::haiku-4-5|structured_json|p_aws|none": {
+      "cache_tokens_total": 0,
+      "cell": "haiku-4-5|structured_json|p_aws|none",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "haiku-4-5",
+        "plane": "p_aws",
+        "task": "structured_json",
+        "thinking": "none",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "modal_count": 11,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.55,
+        "n": 20,
+        "norm_distance_max": 0.16847826086956522,
+        "norm_distance_mean_all": 0.03244272359435868,
+        "output_token_variance": 46.16,
+        "pairwise_agreement": 0.3736842105263158
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": null,
+      "thinking_tokens_variance": null,
+      "wilson_ci": [
+        0.34208534245034233,
+        0.7418021417443759
+      ]
+    },
+    "pilot::opus-5|classification|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 527.71,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 42.7,
+      "thinking_tokens_variance": 527.71,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 193.54749999999996,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 4.95,
+      "thinking_tokens_variance": 193.54749999999999,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 462.43999999999994,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 10.6,
+      "thinking_tokens_variance": 462.43999999999994,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|classification|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|classification|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|extraction|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|extraction|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|open_generation|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          27,
+          27,
+          27,
+          68,
+          68,
+          68,
+          68,
+          68,
+          68
+        ],
+        "modal_count": 1,
+        "modal_sha256": "abcede7fb4244a90e9e2accea8901a4a667874435fe142309282c72a4cc803be",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17540253511476533,
+        "norm_distance_mean_all": 0.16356979966723625,
+        "output_token_variance": 44582.0475,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 366.05,
+      "thinking_tokens_variance": 45934.447499999995,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          43,
+          43,
+          43,
+          43
+        ],
+        "modal_count": 1,
+        "modal_sha256": "b17d0abab338af5368f26369b74a0dbfa14ee78aa4f5053bff96e2b1f630f911",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1795861101367941,
+        "norm_distance_mean_all": 0.16296975733307884,
+        "output_token_variance": 1157.1100000000001,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          27,
+          27,
+          58,
+          58,
+          60
+        ],
+        "modal_count": 1,
+        "modal_sha256": "6679fdecef13d74fa8f8db330ae7deb5535863d2a3f007aa6b615f68b292a48e",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.18503794723527286,
+        "norm_distance_mean_all": 0.16622305540537027,
+        "output_token_variance": 7273.827500000001,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 61.35,
+      "thinking_tokens_variance": 6020.8275,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          61,
+          61,
+          61,
+          70,
+          70
+        ],
+        "modal_count": 1,
+        "modal_sha256": "c84ad3acdfe498019cac0a3286d600886b80b1965d49013b10c1bd423426e626",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.14875072632190586,
+        "norm_distance_mean_all": 0.14131319000581058,
+        "output_token_variance": 1658.8875,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          27,
+          55,
+          79,
+          79
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a4aa061a62556136f34615ca16530429c852f7e27ac6bbef68960783f6547052",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1693121693121693,
+        "norm_distance_mean_all": 0.15953624134216687,
+        "output_token_variance": 44857.89,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 196.15,
+      "thinking_tokens_variance": 38324.1275,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|open_generation|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|open_generation|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          85,
+          88,
+          88,
+          88,
+          88,
+          88,
+          96,
+          96,
+          96
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a915ef5c2b57d1b23c07e8cfb3c8bf7f6a395c03d6754e2356e02166cfbbcbc9",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17303142953700573,
+        "norm_distance_mean_all": 0.16031154186256175,
+        "output_token_variance": 1923.2475,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::opus-5|structured_json|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|structured_json|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "anthropic_api",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::opus-5|structured_json|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "modal_count": 11,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.55,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.032352941176470584,
+        "output_token_variance": 6.1875,
+        "pairwise_agreement": 0.4789473684210526
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.34208534245034233,
+        0.7418021417443759
+      ]
+    },
+    "pilot::opus-5|structured_json|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "bedrock",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7
+        ],
+        "modal_count": 18,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.9,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.00718954248366013,
+        "output_token_variance": 2.25,
+        "pairwise_agreement": 0.8105263157894737
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.6989663547715128,
+        0.9721335187862319
+      ]
+    },
+    "pilot::opus-5|structured_json|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7,
+          7
+        ],
+        "modal_count": 18,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.9,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.00718954248366013,
+        "output_token_variance": 29.959999999999997,
+        "pairwise_agreement": 0.8105263157894737
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 1.7,
+      "thinking_tokens_variance": 26.01,
+      "wilson_ci": [
+        0.6989663547715128,
+        0.9721335187862319
+      ]
+    },
+    "pilot::opus-5|structured_json|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "opus-5|structured_json|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-opus-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "opus-5",
+        "plane": "p_aws",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          7
+        ],
+        "modal_count": 19,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.95,
+        "n": 20,
+        "norm_distance_max": 0.0718954248366013,
+        "norm_distance_mean_all": 0.003594771241830065,
+        "output_token_variance": 1.1875,
+        "pairwise_agreement": 0.9
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.763868806553258,
+        0.9911185511992047
+      ]
+    },
+    "pilot::sonnet-5|classification|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "classification",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|classification|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|classification|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "classification",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "extraction",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|extraction|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|extraction|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "extraction",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|open_generation|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          24,
+          56,
+          56,
+          56,
+          56,
+          56,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          89,
+          169
+        ],
+        "modal_count": 1,
+        "modal_sha256": "4485f8f4edcfc33e1ad4f4d1c19853051019870975e1de5601fd9f49b8951026",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.16942422236929186,
+        "norm_distance_mean_all": 0.1609083965773923,
+        "output_token_variance": 534.8900000000001,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          24,
+          24,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          113,
+          113,
+          113,
+          133
+        ],
+        "modal_count": 1,
+        "modal_sha256": "66e700df26179c70fc40b19981162d4327b075909826734fd69dcae8d09263c8",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.18053596614950634,
+        "norm_distance_mean_all": 0.1674370232717507,
+        "output_token_variance": 984.7275,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          56,
+          94,
+          98,
+          98,
+          98,
+          113,
+          113,
+          168,
+          178,
+          185,
+          204
+        ],
+        "modal_count": 1,
+        "modal_sha256": "14380a238ffbba10a08afdaf5e4f69ad278641076735ee6a040c7185943fbe4d",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17765440666204024,
+        "norm_distance_mean_all": 0.16627491722288296,
+        "output_token_variance": 456.89,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          56,
+          56,
+          56,
+          56,
+          66,
+          66,
+          66,
+          66,
+          66,
+          66,
+          66,
+          66,
+          66,
+          66
+        ],
+        "modal_count": 1,
+        "modal_sha256": "3236f965765fec0b8bad615dadf26289e2ac3027972c3ca0cc350c8dc6e7ad43",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1855072463768116,
+        "norm_distance_mean_all": 0.1695053420531784,
+        "output_token_variance": 487.90999999999997,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "open_generation",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          24,
+          24,
+          24,
+          24,
+          56,
+          64,
+          64,
+          64,
+          64,
+          64,
+          64,
+          64
+        ],
+        "modal_count": 1,
+        "modal_sha256": "3902e635588b51a31c7a67ee0ae7a32475fb67709ea0f9d8d43716c8b7245a2d",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.1678688524590164,
+        "norm_distance_mean_all": 0.15947540983606556,
+        "output_token_variance": 837.0875,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|open_generation|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|open_generation|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "open_generation",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 20,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          24,
+          56,
+          56,
+          66,
+          98,
+          98,
+          98,
+          119,
+          119,
+          206,
+          206
+        ],
+        "modal_count": 1,
+        "modal_sha256": "f583c76f3a1ba06e0b4aa0de8766bfff0fbcd203ca97d03b3a1e0c6c7436ca8e",
+        "modal_share": 0.05,
+        "n": 20,
+        "norm_distance_max": 0.17883339154732797,
+        "norm_distance_mean_all": 0.16701102519505412,
+        "output_token_variance": 1035.24,
+        "pairwise_agreement": 0.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "pilot::sonnet-5|structured_json|anthropic_api|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|anthropic_api|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          0,
+          0
+        ],
+        "modal_count": 18,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.9,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.014525139664804471,
+        "output_token_variance": 54.347500000000004,
+        "pairwise_agreement": 0.8105263157894737
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 1.25,
+      "thinking_tokens_variance": 29.6875,
+      "wilson_ci": [
+        0.6989663547715128,
+        0.9721335187862319
+      ]
+    },
+    "pilot::sonnet-5|structured_json|anthropic_api|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|anthropic_api|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "anthropic_api",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "pilot::sonnet-5|structured_json|bedrock|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|bedrock|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          9,
+          9
+        ],
+        "modal_count": 15,
+        "modal_sha256": "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "modal_share": 0.75,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.029608938547486037,
+        "output_token_variance": 39.3275,
+        "pairwise_agreement": 0.5736842105263158
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.65,
+      "thinking_tokens_variance": 8.0275,
+      "wilson_ci": [
+        0.531299122381256,
+        0.8881382985923343
+      ]
+    },
+    "pilot::sonnet-5|structured_json|bedrock|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|bedrock|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "bedrock",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          0
+        ],
+        "modal_count": 19,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 0.95,
+        "n": 20,
+        "norm_distance_max": 0.07272727272727272,
+        "norm_distance_mean_all": 0.0036363636363636364,
+        "output_token_variance": 1.1875,
+        "pairwise_agreement": 0.9
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.763868806553258,
+        0.9911185511992047
+      ]
+    },
+    "pilot::sonnet-5|structured_json|p_aws|adaptive": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|p_aws|adaptive",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "structured_json",
+        "thinking": "adaptive",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          9,
+          9
+        ],
+        "modal_count": 11,
+        "modal_sha256": "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "modal_share": 0.55,
+        "n": 20,
+        "norm_distance_max": 0.1452513966480447,
+        "norm_distance_mean_all": 0.055307262569832406,
+        "output_token_variance": 67.11,
+        "pairwise_agreement": 0.38421052631578945
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 1.05,
+      "thinking_tokens_variance": 20.947499999999998,
+      "wilson_ci": [
+        0.34208534245034233,
+        0.7418021417443759
+      ]
+    },
+    "pilot::sonnet-5|structured_json|p_aws|disabled": {
+      "cache_tokens_total": 0,
+      "cell": "sonnet-5|structured_json|p_aws|disabled",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "claude-sonnet-5"
+          ]
+        },
+        "n_raw": 20
+      },
+      "meta": {
+        "model": "sonnet-5",
+        "plane": "p_aws",
+        "task": "structured_json",
+        "thinking": "disabled",
+        "window": "pilot"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 20,
+        "modal_sha256": "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "modal_share": 1.0,
+        "n": 20,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "service_tiers": [
+        "standard"
+      ],
+      "thinking_tokens_mean": 0.0,
+      "thinking_tokens_variance": 0.0,
+      "wilson_ci": [
+        0.8388748419471806,
+        1.0
+      ]
+    }
+  },
+  "comparisons": {
+    "q1_attribution__opus-5": {
+      "dod": {
+        "anthropic_api_vs_bedrock": {
+          "ci95": [
+            0.09539320983286131,
+            0.6046067901671386
+          ],
+          "dod": 0.35,
+          "se": 0.1299038105676658
+        },
+        "anthropic_api_vs_p_aws": {
+          "ci95": [
+            -0.11251162848323235,
+            0.2125116284832322
+          ],
+          "dod": 0.04999999999999993,
+          "se": 0.082915619758885
+        },
+        "bedrock_vs_p_aws": {
+          "ci95": [
+            -0.6020507357903395,
+            0.0020507357903394863
+          ],
+          "dod": -0.30000000000000004,
+          "se": 0.15411035007422444
+        }
+      },
+      "planes": {
+        "anthropic_api": {
+          "adaptive": {
+            "n": 20,
+            "rate": 1.0,
+            "x": 20
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 1.0,
+            "x": 20
+          },
+          "effect": {
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "diff": 0.0,
+            "se": 0.0
+          }
+        },
+        "bedrock": {
+          "adaptive": {
+            "n": 20,
+            "rate": 0.55,
+            "x": 11
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 0.9,
+            "x": 18
+          },
+          "effect": {
+            "ci95": [
+              -0.6046067901671386,
+              -0.09539320983286131
+            ],
+            "diff": -0.35,
+            "se": 0.1299038105676658
+          }
+        },
+        "p_aws": {
+          "adaptive": {
+            "n": 20,
+            "rate": 0.9,
+            "x": 18
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 0.95,
+            "x": 19
+          },
+          "effect": {
+            "ci95": [
+              -0.2125116284832322,
+              0.11251162848323235
+            ],
+            "diff": -0.04999999999999993,
+            "se": 0.082915619758885
+          }
+        }
+      }
+    },
+    "q1_attribution__sonnet-5": {
+      "dod": {
+        "anthropic_api_vs_bedrock": {
+          "ci95": [
+            -0.14984736507772012,
+            0.3498473650777201
+          ],
+          "dod": 0.09999999999999998,
+          "se": 0.12747548783981963
+        },
+        "anthropic_api_vs_p_aws": {
+          "ci95": [
+            0.09539320983286131,
+            0.6046067901671386
+          ],
+          "dod": 0.35,
+          "se": 0.1299038105676658
+        },
+        "bedrock_vs_p_aws": {
+          "ci95": [
+            -0.054426007511260144,
+            0.5544260075112601
+          ],
+          "dod": 0.25,
+          "se": 0.1553222456700907
+        }
+      },
+      "planes": {
+        "anthropic_api": {
+          "adaptive": {
+            "n": 20,
+            "rate": 0.9,
+            "x": 18
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 1.0,
+            "x": 20
+          },
+          "effect": {
+            "ci95": [
+              -0.2314783810864872,
+              0.031478381086487234
+            ],
+            "diff": -0.09999999999999998,
+            "se": 0.06708203932499368
+          }
+        },
+        "bedrock": {
+          "adaptive": {
+            "n": 20,
+            "rate": 0.75,
+            "x": 15
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 0.95,
+            "x": 19
+          },
+          "effect": {
+            "ci95": [
+              -0.412455033226224,
+              0.012455033226224127
+            ],
+            "diff": -0.19999999999999996,
+            "se": 0.10839741694339401
+          }
+        },
+        "p_aws": {
+          "adaptive": {
+            "n": 20,
+            "rate": 0.55,
+            "x": 11
+          },
+          "disabled": {
+            "n": 20,
+            "rate": 1.0,
+            "x": 20
+          },
+          "effect": {
+            "ci95": [
+              -0.668032229053619,
+              -0.2319677709463809
+            ],
+            "diff": -0.44999999999999996,
+            "se": 0.11124297730643495
+          }
+        }
+      }
+    },
+    "q2_plane__ALL__anthropic_api_vs_bedrock": {
+      "anthropic_api": {
+        "n": 400,
+        "rate": 0.74,
+        "x": 296
+      },
+      "bedrock": {
+        "n": 400,
+        "rate": 0.7075,
+        "x": 283
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.019472152850021907,
+          0.08447215285002185
+        ],
+        "delta": 0.02,
+        "diff": 0.03249999999999997,
+        "equivalent": false,
+        "p": 0.6538033859813704,
+        "p_lower": 0.04830058191463005,
+        "p_upper": 0.6538033859813704,
+        "se": 0.031596825394333526
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          0.009586149896615128,
+          0.05541385010338487
+        ],
+        "delta": 0.02,
+        "diff": 0.0325,
+        "equivalent": false,
+        "n_strata": 20,
+        "p": 0.8152214173168517,
+        "p_lower": 8.205875688638287e-05,
+        "p_upper": 0.8152214173168517,
+        "se": 0.013930631715755032
+      }
+    },
+    "q2_plane__ALL__anthropic_api_vs_p_aws": {
+      "anthropic_api": {
+        "n": 400,
+        "rate": 0.74,
+        "x": 296
+      },
+      "p_aws": {
+        "n": 400,
+        "rate": 0.71,
+        "x": 284
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.021904189565154615,
+          0.08190418956515466
+        ],
+        "delta": 0.02,
+        "diff": 0.030000000000000027,
+        "equivalent": false,
+        "p": 0.6243409796963645,
+        "p_lower": 0.05653891099057318,
+        "p_upper": 0.6243409796963645,
+        "se": 0.03155550665097932
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          0.008047211389877015,
+          0.05195278861012298
+        ],
+        "delta": 0.02,
+        "diff": 0.03,
+        "equivalent": false,
+        "n_strata": 20,
+        "p": 0.7731523501480354,
+        "p_lower": 8.971551875625039e-05,
+        "p_upper": 0.7731523501480354,
+        "se": 0.013346347815039138
+      }
+    },
+    "q2_plane__ALL__bedrock_vs_p_aws": {
+      "bedrock": {
+        "n": 400,
+        "rate": 0.7075,
+        "x": 283
+      },
+      "p_aws": {
+        "n": 400,
+        "rate": 0.71,
+        "x": 284
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.055343322789561146,
+          0.05034332278956125
+        ],
+        "delta": 0.02,
+        "diff": -0.0024999999999999467,
+        "equivalent": false,
+        "p": 0.2929722486624602,
+        "p_lower": 0.2929722486624602,
+        "p_upper": 0.2418520994146332,
+        "se": 0.03212645911083262
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.027631161932258487,
+          0.022631161932258483
+        ],
+        "delta": 0.02,
+        "diff": -0.0025000000000000022,
+        "equivalent": false,
+        "n_strata": 20,
+        "p": 0.1260241744505508,
+        "p_lower": 0.1260241744505508,
+        "p_upper": 0.07042378581188258,
+        "se": 0.015278661590597523
+      }
+    },
+    "q2_plane__haiku-4-5__anthropic_api_vs_bedrock": {
+      "anthropic_api": {
+        "n": 80,
+        "rate": 0.675,
+        "x": 54
+      },
+      "bedrock": {
+        "n": 80,
+        "rate": 0.7,
+        "x": 56
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.14550377175643797,
+          0.09550377175643816
+        ],
+        "delta": 0.02,
+        "diff": -0.02499999999999991,
+        "equivalent": false,
+        "p": 0.5272063097752366,
+        "p_lower": 0.5272063097752366,
+        "p_upper": 0.2695278885517694,
+        "se": 0.07326109131046302
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.09066551515037831,
+          0.04066551515037832
+        ],
+        "delta": 0.02,
+        "diff": -0.024999999999999994,
+        "equivalent": false,
+        "n_strata": 4,
+        "p": 0.5498351474561265,
+        "p_lower": 0.5498351474561265,
+        "p_upper": 0.12982817818522507,
+        "se": 0.03992179855667828
+      }
+    },
+    "q2_plane__haiku-4-5__anthropic_api_vs_p_aws": {
+      "anthropic_api": {
+        "n": 80,
+        "rate": 0.675,
+        "x": 54
+      },
+      "p_aws": {
+        "n": 80,
+        "rate": 0.65,
+        "x": 52
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.09793492847076087,
+          0.1479349284707609
+        ],
+        "delta": 0.02,
+        "diff": 0.025000000000000022,
+        "equivalent": false,
+        "p": 0.5266690890462592,
+        "p_lower": 0.2735557018269189,
+        "p_upper": 0.5266690890462592,
+        "se": 0.07473912964438374
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.04442081300019077,
+          0.09442081300019076
+        ],
+        "delta": 0.02,
+        "diff": 0.024999999999999994,
+        "equivalent": false,
+        "n_strata": 4,
+        "p": 0.5471522789828452,
+        "p_lower": 0.14316029839652955,
+        "p_upper": 0.5471522789828452,
+        "se": 0.04220485754033533
+      }
+    },
+    "q2_plane__haiku-4-5__bedrock_vs_p_aws": {
+      "bedrock": {
+        "n": 80,
+        "rate": 0.7,
+        "x": 56
+      },
+      "p_aws": {
+        "n": 80,
+        "rate": 0.65,
+        "x": 52
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.07163856610707109,
+          0.17163856610707096
+        ],
+        "delta": 0.02,
+        "diff": 0.04999999999999993,
+        "equivalent": false,
+        "p": 0.6575089412794415,
+        "p_lower": 0.1719282636314674,
+        "p_upper": 0.6575089412794415,
+        "se": 0.0739509972887452
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.01694069274996733,
+          0.11694069274996731
+        ],
+        "delta": 0.02,
+        "diff": 0.04999999999999999,
+        "equivalent": false,
+        "n_strata": 4,
+        "p": 0.7694856908615665,
+        "p_lower": 0.042713828051732405,
+        "p_upper": 0.7694856908615665,
+        "se": 0.04069705149024926
+      }
+    },
+    "q2_plane__opus-5__anthropic_api_vs_bedrock": {
+      "anthropic_api": {
+        "n": 160,
+        "rate": 0.7625,
+        "x": 122
+      },
+      "bedrock": {
+        "n": 160,
+        "rate": 0.69375,
+        "x": 111
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.012827390732443114,
+          0.15032739073244306
+        ],
+        "delta": 0.02,
+        "diff": 0.06874999999999998,
+        "equivalent": false,
+        "p": 0.8371843324322523,
+        "p_lower": 0.03676911777685099,
+        "p_upper": 0.8371843324322523,
+        "se": 0.04959553202532462
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          0.03535868643041125,
+          0.10214131356958873
+        ],
+        "delta": 0.02,
+        "diff": 0.06874999999999999,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.9918342409719596,
+        "p_lower": 6.160799448817755e-06,
+        "p_upper": 0.9918342409719596,
+        "se": 0.02030047721113964
+      }
+    },
+    "q2_plane__opus-5__anthropic_api_vs_p_aws": {
+      "anthropic_api": {
+        "n": 160,
+        "rate": 0.7625,
+        "x": 122
+      },
+      "p_aws": {
+        "n": 160,
+        "rate": 0.74375,
+        "x": 119
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.06052781631452203,
+          0.0980278163145219
+        ],
+        "delta": 0.02,
+        "diff": 0.018749999999999933,
+        "equivalent": false,
+        "p": 0.48965460749054435,
+        "p_lower": 0.21070317268998995,
+        "p_upper": 0.48965460749054435,
+        "se": 0.04819749004745994
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.007560428677621224,
+          0.04506042867762123
+        ],
+        "delta": 0.02,
+        "diff": 0.018750000000000003,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.4688557726229707,
+        "p_lower": 0.007706204647661585,
+        "p_upper": 0.4688557726229707,
+        "se": 0.015995604865087158
+      }
+    },
+    "q2_plane__opus-5__bedrock_vs_p_aws": {
+      "bedrock": {
+        "n": 160,
+        "rate": 0.69375,
+        "x": 111
+      },
+      "p_aws": {
+        "n": 160,
+        "rate": 0.74375,
+        "x": 119
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.13255531608979912,
+          0.03255531608979903
+        ],
+        "delta": 0.02,
+        "diff": -0.050000000000000044,
+        "equivalent": false,
+        "p": 0.7249892190357299,
+        "p_lower": 0.7249892190357299,
+        "p_upper": 0.08155342823588008,
+        "se": 0.050190068427428944
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.0874915240105748,
+          -0.012508475989425179
+        ],
+        "delta": 0.02,
+        "diff": -0.04999999999999999,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.9059432485371223,
+        "p_lower": 0.9059432485371223,
+        "p_upper": 0.0010664028939142423,
+        "se": 0.022793228161013087
+      }
+    },
+    "q2_plane__sonnet-5__anthropic_api_vs_bedrock": {
+      "anthropic_api": {
+        "n": 160,
+        "rate": 0.75,
+        "x": 120
+      },
+      "bedrock": {
+        "n": 160,
+        "rate": 0.725,
+        "x": 116
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.05588213352632189,
+          0.10588213352632193
+        ],
+        "delta": 0.02,
+        "diff": 0.025000000000000022,
+        "equivalent": false,
+        "p": 0.5404955091399383,
+        "p_lower": 0.18005927182265657,
+        "p_upper": 0.5404955091399383,
+        "se": 0.04917284565692736
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.007993309914415998,
+          0.057993309914416015
+        ],
+        "delta": 0.02,
+        "diff": 0.02500000000000001,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.5984243343211472,
+        "p_lower": 0.012434323112984647,
+        "p_upper": 0.5984243343211472,
+        "se": 0.020058508169851517
+      }
+    },
+    "q2_plane__sonnet-5__anthropic_api_vs_p_aws": {
+      "anthropic_api": {
+        "n": 160,
+        "rate": 0.75,
+        "x": 120
+      },
+      "p_aws": {
+        "n": 160,
+        "rate": 0.70625,
+        "x": 113
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.0379730069761766,
+          0.12547300697617653
+        ],
+        "delta": 0.02,
+        "diff": 0.043749999999999956,
+        "equivalent": false,
+        "p": 0.6836821971316396,
+        "p_lower": 0.0997271749588734,
+        "p_upper": 0.6836821971316396,
+        "se": 0.04968406041553971
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          0.010358686430411247,
+          0.07714131356958875
+        ],
+        "delta": 0.02,
+        "diff": 0.04375,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.878984069016175,
+        "p_lower": 0.0008438161390359467,
+        "p_upper": 0.878984069016175,
+        "se": 0.020300477211139645
+      }
+    },
+    "q2_plane__sonnet-5__bedrock_vs_p_aws": {
+      "bedrock": {
+        "n": 160,
+        "rate": 0.725,
+        "x": 116
+      },
+      "p_aws": {
+        "n": 160,
+        "rate": 0.70625,
+        "x": 113
+      },
+      "tost_pooled_sensitivity": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.06419246151677595,
+          0.10169246151677581
+        ],
+        "delta": 0.02,
+        "diff": 0.018749999999999933,
+        "equivalent": false,
+        "p": 0.4901116019880609,
+        "p_lower": 0.22110656462506562,
+        "p_upper": 0.4901116019880609,
+        "se": 0.05042543613470289
+      },
+      "tost_stratified_primary": {
+        "alpha": 0.05,
+        "ci90": [
+          -0.01895234961261498,
+          0.05645234961261496
+        ],
+        "delta": 0.02,
+        "diff": 0.01874999999999999,
+        "equivalent": false,
+        "n_strata": 8,
+        "p": 0.4782547853848352,
+        "p_lower": 0.04546045036322055,
+        "p_upper": 0.4782547853848352,
+        "se": 0.022921401026115312
+      }
+    },
+    "q3_thinking__opus-5": {
+      "adaptive": {
+        "n": 240,
+        "rate": 0.7166666666666667,
+        "x": 172
+      },
+      "diff_ci95": [
+        -0.11239826139512693,
+        0.04573159472846028
+      ],
+      "disabled": {
+        "n": 240,
+        "rate": 0.75,
+        "x": 180
+      }
+    },
+    "q3_thinking__sonnet-5": {
+      "adaptive": {
+        "n": 240,
+        "rate": 0.6958333333333333,
+        "x": 167
+      },
+      "diff_ci95": [
+        -0.14200478953620513,
+        0.017004789536205128
+      ],
+      "disabled": {
+        "n": 240,
+        "rate": 0.7583333333333333,
+        "x": 182
+      }
+    },
+    "q4_window__pilot": {
+      "n": 1200,
+      "rate": 0.7191666666666666,
+      "wilson_ci": [
+        0.6930711909422195,
+        0.7438634204602482
+      ],
+      "x": 863
+    }
+  },
+  "controls": {
+    "cache_tokens_nonzero_cells": [],
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {}
+  },
+  "delta": 0.02,
+  "inputs": [
+    "runs/pilot-study2-pilot-20260728T190240Z.jsonl"
+  ]
+}
