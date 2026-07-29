@@ -418,6 +418,10 @@ class LocalPlane:
         if name is not None:
             self.name = name
         self._timeout = timeout
+        # Raw payload of the most recent successful invoke — the normalized
+        # record is the interface, but probes (logprobs exposure) need to
+        # inspect fields the record deliberately does not carry.
+        self.last_payload = None
         if opener is None:
             import urllib.request
 
@@ -483,6 +487,7 @@ class LocalPlane:
             ) as resp:
                 payload = json.loads(resp.read())
             latency_ms = int((time.monotonic() - start) * 1000)
+            self.last_payload = payload
             record = normalize_local_message(payload, latency_ms, body_bytes)
             record["delivered_streaming"] = False
             return record

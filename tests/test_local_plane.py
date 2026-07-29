@@ -140,6 +140,8 @@ class TestLocalPlaneInvoke(unittest.TestCase):
         self.assertIs(record["delivered_streaming"], False)
         self.assertEqual(record["wire_sha256"], sha256_hex(body))
         self.assertGreaterEqual(record["latency_ms"], 0)
+        # raw payload retained for probes (logprobs exposure inspection)
+        self.assertEqual(plane.last_payload["message"]["content"], "hi there")
 
     def test_stream_not_supported(self):
         plane = LocalPlane(opener=_opener_returning(_ok_payload()))

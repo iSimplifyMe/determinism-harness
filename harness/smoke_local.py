@@ -30,6 +30,12 @@ from harness.request_builder import canonical_local_body, sha256_hex
 GREEDY_OPTIONS = {"temperature": 0, "seed": 42, "num_predict": 64}
 PROMPT = "Reply with exactly: LOCAL-PLANE-OK"
 
+# keep_alive is PER-REQUEST and OVERWRITES the model's current expiry. On
+# the production box the study models are resident with 24h keep-alives —
+# smoking them with a short keep_alive would schedule their unload. Pass
+# --keep-alive 24h there; the short default is for dedicated boxes.
+DEFAULT_KEEP_ALIVE = "2m"
+
 FAMILY_CASES = {
     "gpt-oss": [
         {"name": "greedy-none", "arm": "none", "expect": "ok"},
@@ -59,10 +65,10 @@ MISSING_MODEL_CASE = {
 }
 
 
-def run_case(plane, model_tag, case, seen_text_hashes):
+def run_case(plane, model_tag, case, seen_text_hashes, keep_alive):
     body = canonical_local_body(
         case.get("model", model_tag), PROMPT, case["arm"],
-        options=GREEDY_OPTIONS, keep_alive="2m",
+        options=GREEDY_OPTIONS, keep_alive=keep_alive,
     )
     record = {
         "name": case["name"],
@@ -115,6 +121,9 @@ def main():
     parser.add_argument("--family", choices=sorted(FAMILY_CASES), default="gpt-oss")
     parser.add_argument("--label", required=True,
                         help="box label for the evidence file, e.g. cuda-4090")
+    parser.add_argument("--keep-alive", default=DEFAULT_KEEP_ALIVE,
+                        help="per-request keep_alive; MUST be 24h when "
+                             "smoking resident models on the production box")
     parser.add_argument("--out", default="evidence")
     args = parser.parse_args()
 
@@ -126,10 +135,13 @@ def main():
         print(f"UNREACHABLE: {err}")
         return 3
 
+    box_state_start = plane.box_state()
     seen_text_hashes = {}
     cases = FAMILY_CASES[args.family] + [MISSING_MODEL_CASE]
-    results = [run_case(plane, args.model, case, seen_text_hashes)
-               for case in cases]
+    results = [
+        run_case(plane, args.model, case, seen_text_hashes, args.keep_alive)
+        for case in cases
+    ]
 
     evidence = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -139,7 +151,10 @@ def main():
         "model": args.model,
         "model_digest": digest,
         "greedy_options": GREEDY_OPTIONS,
+        "keep_alive": args.keep_alive,
+        "box_state_start": box_state_start,
         "cases": results,
+        "box_state_end": plane.box_state(),
     }
     os.makedirs(args.out, exist_ok=True)
     out_path = os.path.join(args.out, f"smoke-local-{args.label}.json")
