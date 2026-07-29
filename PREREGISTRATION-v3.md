@@ -138,9 +138,12 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
 
 - [ ] `LocalPlane` client + `canonical_local_body()` builder + invariant
       tests committed (harness build plan; ~90% reuse)
-- [ ] Ollama for Windows installed on the 4090; gpt-oss:20b pulled; **weights
-      digest verified identical to the Mac Pro's copy; engine version pinned
-      identical on both boxes** (arm confirmed IN 2026-07-29)
+- [x] Ollama for Windows installed on the 4090 — v0.30.5, **version-pinned
+      to the Mac Pro's release** (versioned GitHub installer, not latest);
+      gpt-oss:20b pulled; **weights digest identical across boxes
+      (`17052f91a42e`)**; CUDA smoke generation PASS. No autostart
+      registered — the server runs only inside study windows.
+      (2026-07-29; arm confirmed IN the same day)
 - [ ] Logprobs exposure verified in pilot → first-divergence/logprob-margin
       endpoints confirmed or struck; engine decision (Ollama vs llama.cpp)
       recorded — single engine for the whole confirmatory dataset
