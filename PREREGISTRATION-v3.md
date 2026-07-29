@@ -59,6 +59,13 @@ findings; cross-study comparisons are conceptual replications only.**
   study-2 latency-fingerprint readout (same weights, same engine, different
   silicon: what slope difference does a hardware swap actually produce?).
 
+Analysis code for the Q1–Q4 estimators and validity gates above is
+implemented and committed BEFORE any confirmatory data
+(`analysis/analyze_study3.py`, `a5443dc`): Q2's stratified estimator and
+MoE-minus-dense DoD, Q3's Wald difference, Q4's cross-box identity readout,
+the exact wire-hash negative control, warmup exclusion, and the temp07
+positive-control firing check.
+
 ## 2. Design (confirmatory grid — reduced factorial, NOT full cross)
 
 | Factor | Levels | Applied to |
