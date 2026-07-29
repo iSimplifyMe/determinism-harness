@@ -136,8 +136,12 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
 
 ## 5. Freeze checklist (OPEN — all must close before tag `prereg-v3`)
 
-- [ ] `LocalPlane` client + `canonical_local_body()` builder + invariant
-      tests committed (harness build plan; ~90% reuse)
+- [x] `LocalPlane` client + `canonical_local_body()` builder + invariant
+      tests committed (`c25b3b5`), with a live instrument smoke 6/6 PASS on
+      the pinned CUDA box (engine 0.30.5, gpt-oss effort-level AND bool
+      think acceptance verified on-engine, 404 classification verified;
+      `evidence/smoke-local-cuda-4090.json`). Qwen-family field acceptance
+      still to verify in a Mac Pro window (smoke_local `--family qwen`)
 - [x] Ollama for Windows installed on the 4090 — v0.30.5, **version-pinned
       to the Mac Pro's release** (versioned GitHub installer, not latest);
       gpt-oss:20b pulled; **weights digest identical across boxes
