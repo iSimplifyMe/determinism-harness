@@ -1,6 +1,7 @@
 """Per-plane clients presenting one normalized invoke surface.
 
-Three serving planes, one semantic request (PREREGISTRATION-v2 section 4):
+Three API serving planes, one semantic request (PREREGISTRATION-v2
+section 4), plus the study-3 local plane (PREREGISTRATION-v3):
 
 - bedrock       boto3 bedrock-runtime InvokeModel — the study-1 path,
                 pinned to the `us.` inference profile in study 2. The
@@ -11,6 +12,10 @@ Three serving planes, one semantic request (PREREGISTRATION-v2 section 4):
 - anthropic_api First-party Messages API via Anthropic. Run-scoped API key
                 (never a global export — resolve from the process
                 environment of the run). Bare model IDs.
+- local         Ollama /api/chat over stdlib urllib (study 3). The harness
+                owns every wire byte — hashed == sent by construction. One
+                instance per box, named per hardware arm (local_metal /
+                local_cuda).
 
 On the Messages planes the SDK owns wire serialization, so byte-identity is
 not assumed: a request event hook on the HTTP client captures the exact body
@@ -356,6 +361,130 @@ class BedrockPlane:
             return _error_record(type(err).__name__, str(err), None, None, body_bytes)
 
 
+def normalize_local_message(payload_dict, latency_ms, wire_bytes):
+    """Success-record shape for the local plane (Ollama /api/chat), mapped
+    onto the shared record surface: done_reason -> stop_reason,
+    prompt_eval_count / eval_count -> input / output tokens. Ollama returns
+    no response id. Duration fields (ns) ride in usage — eval_duration is
+    pure decode time, the cleanest per-token rate for the Q4 hardware
+    calibration. Thinking text (think-enabled models) is recorded as a size
+    covariate only; the endpoint hashes content text, as everywhere."""
+    message = payload_dict.get("message") or {}
+    text = message.get("content", "") or ""
+    usage = {}
+    for src, dst in (
+        ("prompt_eval_count", "input_tokens"),
+        ("eval_count", "output_tokens"),
+        ("total_duration", "total_duration_ns"),
+        ("load_duration", "load_duration_ns"),
+        ("prompt_eval_duration", "prompt_eval_duration_ns"),
+        ("eval_duration", "eval_duration_ns"),
+    ):
+        if payload_dict.get(src) is not None:
+            usage[dst] = payload_dict[src]
+    thinking = message.get("thinking")
+    if thinking is not None:
+        usage["thinking_chars"] = len(thinking)
+    return {
+        "ok": True,
+        "latency_ms": latency_ms,
+        "request_id": None,
+        "response_id": None,
+        "response_model": payload_dict.get("model"),
+        "stop_reason": payload_dict.get("done_reason"),
+        "usage": usage,
+        "text": text,
+        "text_sha256": sha256_hex(text.encode("utf-8")),
+        "wire_sha256": sha256_hex(wire_bytes) if wire_bytes else None,
+    }
+
+
+class LocalPlane:
+    """Study-3 local plane: Ollama HTTP over stdlib urllib — zero new
+    dependencies, and the canonical body bytes are sent verbatim (the exact
+    negative control). Instantiate one per box and name it per hardware arm
+    so records self-identify. No streamed arm is registered for study 3, so
+    invoke(stream=True) is a programming error, not a request option.
+
+    engine_version() and model_digest() feed the upgraded drift control:
+    engine release and weights digest recorded per run (prereg v3
+    section 3)."""
+
+    name = "local"
+
+    def __init__(self, base_url="http://127.0.0.1:11434", name=None,
+                 timeout=600.0, opener=None):
+        self.base_url = base_url.rstrip("/")
+        if name is not None:
+            self.name = name
+        self._timeout = timeout
+        if opener is None:
+            import urllib.request
+
+            opener = urllib.request.urlopen
+        self._opener = opener
+
+    def _request(self, path, body_bytes=None):
+        import urllib.request
+
+        headers = {"Content-Type": "application/json"} if body_bytes else {}
+        return urllib.request.Request(
+            self.base_url + path,
+            data=body_bytes,
+            headers=headers,
+            method="POST" if body_bytes else "GET",
+        )
+
+    def _get_json(self, path):
+        import json
+
+        with self._opener(self._request(path), timeout=self._timeout) as resp:
+            return json.loads(resp.read())
+
+    def engine_version(self):
+        return self._get_json("/api/version").get("version")
+
+    def model_digest(self, model_tag):
+        """Weights digest for an exact model tag (drift control; the Q4
+        cross-box identity check compares this value between boxes)."""
+        for model in self._get_json("/api/tags").get("models", []):
+            if model.get("name") == model_tag:
+                return model.get("digest")
+        raise KeyError(f"model not present: {model_tag}")
+
+    def invoke(self, body_bytes, stream=False):
+        import json
+        import urllib.error
+
+        if stream:
+            raise ValueError(
+                "study 3 registers no streamed arm on the local plane"
+            )
+        start = time.monotonic()
+        try:
+            with self._opener(
+                self._request("/api/chat", body_bytes), timeout=self._timeout
+            ) as resp:
+                payload = json.loads(resp.read())
+            latency_ms = int((time.monotonic() - start) * 1000)
+            record = normalize_local_message(payload, latency_ms, body_bytes)
+            record["delivered_streaming"] = False
+            return record
+        except urllib.error.HTTPError as err:
+            detail = ""
+            try:
+                detail = err.read().decode("utf-8", "replace")
+            except Exception:
+                pass
+            return _error_record(
+                f"http_{err.code}", detail or str(err), err.code, None, body_bytes
+            )
+        except (urllib.error.URLError, TimeoutError, OSError) as err:
+            return _error_record(
+                type(err).__name__, str(err), None, None, body_bytes
+            )
+
+
 def make_plane(plane_name, **kwargs):
     if plane_name == "bedrock":
         return BedrockPlane(**kwargs)
@@ -363,4 +492,6 @@ def make_plane(plane_name, **kwargs):
         return PAWSPlane(**kwargs)
     if plane_name == "anthropic_api":
         return FirstPartyPlane(**kwargs)
+    if plane_name == "local":
+        return LocalPlane(**kwargs)
     raise ValueError(f"unknown plane: {plane_name}")
