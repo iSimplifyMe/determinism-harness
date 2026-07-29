@@ -298,3 +298,17 @@ def grid_cells_study3(box):
 
 def cell_key3(cell):
     return f'{cell["model"]}|{cell["task"]}|{cell["sampling"]}|{cell["thinking"]}'
+
+
+# gpt-oss:120b — REGISTERED as a single-dedicated-window arm (owner decision
+# 2026-07-29; criterion met: active community use of the open-weights
+# release). Deliberately NOT in LOCAL_MODELS: loading its 65 GB evicts the
+# production residents, so its cells exist only in the study3-120b-window
+# mode and never join the core-grid modes.
+GPT_OSS_120B = {
+    "key": "gpt-oss-120b",
+    "tag": "gpt-oss:120b",
+    "arch": "moe",
+    "thinking_arms": ("effort_low", "effort_high"),
+    "box": "metal",
+}

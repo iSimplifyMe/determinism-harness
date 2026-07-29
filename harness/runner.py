@@ -39,6 +39,7 @@ from datetime import datetime, timezone
 
 from harness.config import (
     EFFORT_SWEEP,
+    GPT_OSS_120B,
     LOCAL_KEEP_ALIVE,
     LOCAL_MODELS,
     LOCAL_SAMPLING,
@@ -90,6 +91,7 @@ STUDY3_MODES = (
     "study3-full",
     "study3-q3-thinking",
     "study3-q2-concurrency",
+    "study3-120b-window",
 )
 MODES = (
     ("pilot", "full", "positive-control", "effort-sweep")
@@ -172,10 +174,12 @@ def _study2_payload(model_cfg, plane, model_id, prompt, thinking, extra=None):
     return payload, sha256_hex(canonical_bytes(payload))
 
 
-def _study3_item(cell, cid, repeat):
+def _study3_item(cell, cid, repeat, cfg=None):
     """Local-plane item: canonical bytes are the wire bytes (exact negative
-    control), keep_alive pinned so residency is part of the frozen request."""
-    cfg = LOCAL_MODELS[cell["model"]]
+    control), keep_alive pinned so residency is part of the frozen request.
+    `cfg` overrides the LOCAL_MODELS lookup for models that live outside the
+    core roster (the dedicated-window 120b arm)."""
+    cfg = cfg or LOCAL_MODELS[cell["model"]]
     body = canonical_local_body(
         cfg["tag"],
         TASKS[cell["task"]]["prompt"],
@@ -394,6 +398,35 @@ def build_schedule(mode, box=None, repeats=None):
             cid = cell_key3(cell)
             for r in range(n):
                 items.append(_study3_item(cell, cid, r))
+    elif mode == "study3-120b-window":
+        cfg = GPT_OSS_120B
+        if box != cfg["box"]:
+            raise ValueError(
+                f'study3-120b-window runs on {cfg["box"]} only (got {box})'
+            )
+        n = repeats or REPEATS_FULL
+        cells = [
+            {
+                "model": cfg["key"],
+                "task": task_key,
+                "sampling": sampling,
+                "thinking": cfg["thinking_arms"][0],
+                "hardware": box,
+            }
+            for task_key in TASKS
+            for sampling in sorted(LOCAL_SAMPLING)
+        ]
+        cells.append({
+            "model": cfg["key"],
+            "task": "structured_json",
+            "sampling": "greedy",
+            "thinking": cfg["thinking_arms"][1],
+            "hardware": box,
+        })
+        for cell in cells:
+            cid = cell_key3(cell)
+            for r in range(n):
+                items.append(_study3_item(cell, cid, r, cfg=cfg))
     elif mode == "study3-q2-concurrency":
         q2 = Q2_LOCAL_CONCURRENCY
         if box != q2["box"]:

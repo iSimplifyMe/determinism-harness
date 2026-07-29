@@ -81,10 +81,14 @@ positive-control firing check.
   small/fast models; n for qwen3.5:122b is set at freeze from pilot
   tokens/sec.** The registered estimator (section 1) is the basis for any
   n justification recorded at freeze.
-- gpt-oss:120b (65 GB): **optional single-dedicated-window arm — owner
-  decision OPEN.** Loading it evicts the production-resident models on the
-  Mac Pro; if approved it runs in exactly one dedicated window and is
-  registered (or struck) at freeze.
+- gpt-oss:120b (65 GB): **REGISTERED single-dedicated-window arm (owner
+  decision 2026-07-29; criterion: active community use of the open-weights
+  release — Apache-2.0 weights on Hugging Face, multiple commodity
+  inference providers, single-H100 deployment class).** Its 9-cell slice
+  (4 tasks × 2 sampling at pinned effort_low, plus the structured-JSON
+  effort_high cell) runs in exactly ONE dedicated window via the
+  `study3-120b-window` mode, Metal box only; it never joins core-grid
+  windows (loading 65 GB evicts the production residents).
 - Windows: runs occur only in owner-approved windows on the production box
   (see section 6); the window schedule is recorded at freeze.
 
@@ -176,7 +180,9 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
       section 6 at freeze
 - [ ] n/cell for qwen3.5:122b set from pilot tokens/sec; power basis recorded
       using the registered estimator
-- [ ] gpt-oss:120b arm registered or struck (owner decision)
+- [x] gpt-oss:120b arm REGISTERED (owner decision 2026-07-29, criterion:
+      active community use — verified same day); dedicated-window mode
+      implemented (`study3-120b-window`, single-flight, Metal only)
 - [ ] Window schedule on the production box approved and recorded
 - [ ] This file bumped to v3.0, tagged `prereg-v3`, pushed before any
       confirmatory call
