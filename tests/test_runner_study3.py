@@ -71,6 +71,9 @@ class TestStudy3Schedule(unittest.TestCase):
         self.assertEqual(seen["greedy"]["temperature"], 0)
         self.assertEqual(seen["temp07"]["temperature"], 0.7)
         self.assertIn("seed", seen["greedy"])
+        # the positive-control analog must stay unseeded: a seeded local
+        # engine reproduces temp-0.7 byte-for-byte (pilot #1, 2026-07-29)
+        self.assertNotIn("seed", seen["temp07"])
         self.assertIn("num_predict", seen["greedy"])
 
     def test_q3_thinking_mode_is_on_arm_sj_greedy_only(self):

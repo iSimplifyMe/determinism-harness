@@ -216,9 +216,12 @@ LOCAL_SAMPLING = {
     "greedy": {
         "temperature": 0, "seed": LOCAL_SEED, "num_predict": LOCAL_NUM_PREDICT,
     },
-    "temp07": {
-        "temperature": 0.7, "seed": LOCAL_SEED, "num_predict": LOCAL_NUM_PREDICT,
-    },
+    # UNSEEDED by design: a seeded local engine reproduces temp-0.7 sampling
+    # byte-for-byte (cuda pilot #1, 2026-07-29), which defeats this arm's
+    # purpose as the divergence-detection positive control. With no seed
+    # field the engine draws one per call, so byte-identical requests must
+    # produce varied output — the analog of study 1-2's temp-0.7 control.
+    "temp07": {"temperature": 0.7, "num_predict": LOCAL_NUM_PREDICT},
 }
 
 LOCAL_MODELS = {

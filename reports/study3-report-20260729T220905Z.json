@@ -1,0 +1,518 @@
+{
+  "estimators_source": "PREREGISTRATION-v3 (this module committed before any confirmatory study-3 data)",
+  "gates": {
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {
+      "all_fired": true,
+      "per_model": [
+        {
+          "box": "cuda",
+          "distinct": 10,
+          "fired": true,
+          "model": "gpt-oss-20b",
+          "n": 10
+        }
+      ]
+    }
+  },
+  "generated_utc": "2026-07-29T22:09:05.636583+00:00",
+  "q1_cells": {
+    "cuda::gpt-oss-20b|classification|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|classification|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 73.85,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 5.64,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          16,
+          16,
+          24,
+          35,
+          38
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a9c02d77bf2315cb9ed50166b8a18eed323db77542bab58f4aff906da9d1f448",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.1467048710601719,
+        "norm_distance_mean_all": 0.12167780163008798,
+        "output_token_variance": 4499.05,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "155aefe1c2b500bb2805d213ee4828071e15f4cf4a208347a882a0815d30d9db": 1,
+        "2f569c2323e9c9134ae2b86c09078708f8904cce1ba7dde4a8bc85521e4a67b6": 1,
+        "391022767560c6535a13d2d7a9dc88406013d16a47f695b6cd00be5db04e1854": 1,
+        "4a071e4cf892ea0b45916089931021d5570c81262e82a82cc11c7db657425d93": 1,
+        "5a4fffbf2d77e90d7dd60133e70d2d9c210de2d5ed01d46a528b5d0a41946f2c": 1,
+        "8f1202b4dc433f45ae1263e76b6befc5e7a08057af0f3810f215a6bed8d03ac9": 1,
+        "a0829567386077fe6dc0c6152b83f6ed50a975f61946797efcd6705001d3c451": 1,
+        "a2129d83b25901c1c836a0c69bd7493601b712f97fe36c8c34485257c1da0c63": 1,
+        "a9c02d77bf2315cb9ed50166b8a18eed323db77542bab58f4aff906da9d1f448": 1,
+        "db6ff01d24cdd2d828fd19dcd662cd609ce43584a1e61d240db5240b53b7e014": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_high": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          29,
+          29,
+          29,
+          29,
+          29,
+          102
+        ],
+        "modal_count": 4,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.4,
+        "n": 10,
+        "norm_distance_max": 0.04081632653061224,
+        "norm_distance_mean_all": 0.0184844881421602,
+        "output_token_variance": 1340.3600000000001,
+        "pairwise_agreement": 0.26666666666666666
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 4,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 4,
+        "f1043b610f77c936c60e20375102147232aedca92059e9fb09e6ddb0845437a1": 1,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 1
+      },
+      "wilson_ci": [
+        0.16818032970623614,
+        0.6873262302663417
+      ]
+    }
+  },
+  "q2_concurrency": {
+    "estimator": "equal-weight stratified diff over matched task strata (registered primary, prereg v3 Q2)",
+    "moe_minus_dense": null,
+    "per_model": [],
+    "skipped_strata": 0
+  },
+  "q3_thinking": {
+    "estimator": "ON-minus-OFF modal-share Wald difference on structured JSON, greedy (registered, prereg v3 Q3)",
+    "per_model": [
+      {
+        "box": "cuda",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "gpt-oss-20b",
+        "off_modal_share": 1.0,
+        "on_arm": "effort_high",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      }
+    ],
+    "skipped": 0
+  },
+  "q4_cross_box": {
+    "cells": [],
+    "cells_compared": 0,
+    "modal_matches": 0
+  },
+  "q4_decode_rate_tokens_per_sec": {
+    "cuda|gpt-oss-20b": {
+      "n": 90,
+      "p25": 157.9,
+      "p50": 159.9,
+      "p75": 161.8
+    }
+  },
+  "registered": true,
+  "totals": {
+    "cells": 9,
+    "records_in": 91,
+    "warmups_excluded": 1
+  }
+}

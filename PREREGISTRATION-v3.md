@@ -72,7 +72,7 @@ positive-control firing check.
 |---|---|---|
 | Model | qwen3.5:122b-a10b (MoE) · qwen3.6:35b-a3b-q8_0 (MoE) · qwen3-vl:32b-instruct-q8_0 (dense) · gpt-oss:20b | core grid |
 | Task | frozen study-1 ladder (4), byte-identical prompts | all |
-| Sampling | greedy temp 0 + fixed seed · seeded temp 0.7 (positive-control analog, per model) | all |
+| Sampling | greedy temp 0 + fixed seed · UNSEEDED temp 0.7 (positive-control analog, per model) | all |
 | Thinking | think on/off (Qwen hybrid) · effort low/high (gpt-oss) | Q3 cells only |
 | Concurrency | 1 · 4 | Q2 cells only |
 | Hardware | Metal (M2 Ultra) · CUDA (4090) | gpt-oss:20b only (Q4) |
@@ -183,8 +183,21 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
 
 ## 6. Pilot disclosure
 
-None yet. To be completed at freeze: pilot scope, results, and every
-pilot-informed design decision, following the study-2 template.
+To be completed at freeze following the study-2 template. Interim
+(pre-freeze) notes so far — exploratory, forming no part of the
+confirmatory dataset:
+
+- **CUDA pilot #1 (2026-07-29, 91/91 clean, n=10/cell):** the sampling arm
+  as originally drafted carried the fixed seed at temp 0.7, and the pinned
+  engine reproduced it byte-for-byte on open generation — a seeded local
+  sampler is NOT a divergence control. **Design change recorded here,
+  before any further runs: the temp-0.7 arm is UNSEEDED.** Hypotheses and
+  endpoints unchanged.
+- Same pilot, disclosed: 8/9 cells at modal share 1.0 under full control;
+  the sole below-ceiling cell was structured JSON under SEEDED temp 0.7
+  (0.70, two variants from byte-identical single-flight requests) —
+  consistent with sampling amplifying sub-argmax numeric jitter; the
+  registered logprob-margin endpoint exists to measure exactly this.
 
 ## 7. Confirmatory run plan (to finalize at freeze)
 

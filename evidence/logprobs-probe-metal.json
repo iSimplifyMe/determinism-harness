@@ -1,0 +1,61 @@
+{
+  "base_url": "http://127.0.0.1:11436",
+  "engine_version": "0.30.5",
+  "generated_utc": "2026-07-29T21:57:42.552418+00:00",
+  "keep_alive": "24h",
+  "label": "metal",
+  "model": "qwen3.6:35b-a3b-q8_0",
+  "model_digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+  "variants": [
+    {
+      "accepted": true,
+      "exposes_logprobs": true,
+      "logprob_keys": [
+        "logprobs",
+        "logprobs[0].logprob",
+        "logprobs[1].logprob",
+        "logprobs[2].logprob"
+      ],
+      "name": "top-level-logprobs",
+      "sent_at_utc": "2026-07-29T21:57:41.763782+00:00"
+    },
+    {
+      "accepted": true,
+      "exposes_logprobs": true,
+      "logprob_keys": [
+        "logprobs",
+        "logprobs[0].logprob",
+        "logprobs[0].top_logprobs",
+        "logprobs[0].top_logprobs[0].logprob",
+        "logprobs[0].top_logprobs[1].logprob",
+        "logprobs[0].top_logprobs[2].logprob",
+        "logprobs[1].logprob",
+        "logprobs[1].top_logprobs",
+        "logprobs[1].top_logprobs[0].logprob",
+        "logprobs[1].top_logprobs[1].logprob",
+        "logprobs[1].top_logprobs[2].logprob",
+        "logprobs[2].logprob",
+        "logprobs[2].top_logprobs",
+        "logprobs[2].top_logprobs[0].logprob",
+        "logprobs[2].top_logprobs[1].logprob",
+        "logprobs[2].top_logprobs[2].logprob"
+      ],
+      "name": "top-level-with-top-logprobs",
+      "sent_at_utc": "2026-07-29T21:57:42.215598+00:00"
+    },
+    {
+      "accepted": true,
+      "exposes_logprobs": false,
+      "logprob_keys": [],
+      "name": "options-logprobs",
+      "sent_at_utc": "2026-07-29T21:57:42.552385+00:00"
+    }
+  ],
+  "verdict": {
+    "exposes_logprobs": true,
+    "working_variants": [
+      "top-level-logprobs",
+      "top-level-with-top-logprobs"
+    ]
+  }
+}
