@@ -148,16 +148,30 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
       the pinned CUDA box (engine 0.30.5, gpt-oss effort-level AND bool
       think acceptance verified on-engine, 404 classification verified;
       `evidence/smoke-local-cuda-4090.json`). Qwen-family field acceptance
-      still to verify in a Mac Pro window (smoke_local `--family qwen`)
+      VERIFIED 2026-07-29 on the production box's resident models with
+      keep_alive 24h and box-state proof of undisturbed residency
+      (`evidence/smoke-local-metal-qwen36.json`,
+      `evidence/smoke-local-metal-qwen35-122b.json`, both 6/6: bool think
+      on/off accepted on qwen3.5-122b AND qwen3.6-35b; effort-level
+      spelling also accepted, recorded). ⚠️ qwen3-vl:32b (not resident;
+      loading it risks evicting production models) remains unverified —
+      its Q3 membership is decided at freeze
 - [x] Ollama for Windows installed on the 4090 — v0.30.5, **version-pinned
       to the Mac Pro's release** (versioned GitHub installer, not latest);
       gpt-oss:20b pulled; **weights digest identical across boxes
       (`17052f91a42e`)**; CUDA smoke generation PASS. No autostart
       registered — the server runs only inside study windows.
       (2026-07-29; arm confirmed IN the same day)
-- [ ] Logprobs exposure verified in pilot → first-divergence/logprob-margin
-      endpoints confirmed or struck; engine decision (Ollama vs llama.cpp)
-      recorded — single engine for the whole confirmatory dataset
+- [x] Logprobs exposure VERIFIED on the pinned engine (2026-07-29,
+      `evidence/logprobs-probe-metal.json`, qwen3.6:35b on 0.30.5):
+      top-level `logprobs: true` returns per-token logprobs and
+      `top_logprobs: N` returns ranked alternatives with logprobs; the
+      options-object spelling is accepted but inert. **Engine decision:
+      Ollama, no llama.cpp fallback — the first-divergence and
+      logprob-margin endpoints are REGISTERED, reading the top-level
+      fields.** Grid bodies remain logprob-free; logprob capture rides on
+      the registered request shape only if added at freeze as an explicit
+      field of the frozen bytes
 - [ ] Pilot (small n, both boxes, all models) run clean; disclosed in
       section 6 at freeze
 - [ ] n/cell for qwen3.5:122b set from pilot tokens/sec; power basis recorded
