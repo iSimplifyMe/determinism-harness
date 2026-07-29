@@ -452,6 +452,22 @@ class LocalPlane:
                 return model.get("digest")
         raise KeyError(f"model not present: {model_tag}")
 
+    def box_state(self):
+        """Residency snapshot (prereg v3 section 3 covariate): which models
+        the server holds resident right now, so production-box contention
+        appears in the record, not as silent noise."""
+        from datetime import datetime, timezone
+
+        keep = ("name", "digest", "size", "size_vram", "expires_at")
+        resident = [
+            {k: m.get(k) for k in keep if k in m}
+            for m in self._get_json("/api/ps").get("models", [])
+        ]
+        return {
+            "captured_utc": datetime.now(timezone.utc).isoformat(),
+            "resident_models": resident,
+        }
+
     def invoke(self, body_bytes, stream=False):
         import json
         import urllib.error

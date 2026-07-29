@@ -813,6 +813,7 @@ def main():
                 tag: local_plane.model_digest(tag)
                 for tag in sorted({it["model_id"] for it in schedule})
             }
+            manifest["box_state_start"] = local_plane.box_state()
         except Exception as err:
             print(f"LOCAL SERVER NOT READY at {args.local_url}: {err}", flush=True)
             return 3
@@ -854,6 +855,12 @@ def main():
     summary = engine.run()
 
     complete = summary_is_complete(summary, len(schedule))
+    box_state_end = None
+    if local_plane is not None:  # best-effort: the box may have died mid-run
+        try:
+            box_state_end = local_plane.box_state()
+        except Exception as err:
+            box_state_end = {"error": str(err)[:200]}
     summary_path = os.path.join(args.out, f"{run_name}.done.json")
     with open(summary_path, "w", encoding="utf-8") as fh:
         json.dump(
@@ -862,6 +869,7 @@ def main():
                 "complete": complete,
                 "finished_utc": utc_now_iso(),
                 "run_name": run_name,
+                **({"box_state_end": box_state_end} if box_state_end else {}),
             },
             fh,
             indent=2,

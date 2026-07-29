@@ -203,6 +203,25 @@ class TestLocalPlaneHelpers(unittest.TestCase):
         plane = LocalPlane(opener=_opener_returning({"version": "0.30.5"}))
         self.assertEqual(plane.engine_version(), "0.30.5")
 
+    def test_box_state_snapshot(self):
+        ps = {
+            "models": [
+                {"name": "gpt-oss:20b", "digest": "d1", "size": 13,
+                 "size_vram": 13, "expires_at": "soon", "irrelevant": "x"},
+            ]
+        }
+        plane = LocalPlane(opener=_opener_returning(ps))
+        state = plane.box_state()
+        self.assertEqual(state["resident_models"], [
+            {"name": "gpt-oss:20b", "digest": "d1", "size": 13,
+             "size_vram": 13, "expires_at": "soon"},
+        ])
+        self.assertIn("captured_utc", state)
+
+    def test_box_state_empty_server(self):
+        plane = LocalPlane(opener=_opener_returning({"models": []}))
+        self.assertEqual(plane.box_state()["resident_models"], [])
+
     def test_model_digest_from_tags(self):
         tags = {
             "models": [
