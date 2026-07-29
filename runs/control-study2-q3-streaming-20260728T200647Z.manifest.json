@@ -1,0 +1,87 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "opus-5|open_generation|anthropic_api|adaptive|streamed",
+    "opus-5|open_generation|bedrock|adaptive|streamed",
+    "opus-5|open_generation|p_aws|adaptive|streamed",
+    "opus-5|structured_json|anthropic_api|adaptive|streamed",
+    "opus-5|structured_json|bedrock|adaptive|streamed",
+    "opus-5|structured_json|p_aws|adaptive|streamed",
+    "sonnet-5|open_generation|anthropic_api|adaptive|streamed",
+    "sonnet-5|open_generation|bedrock|adaptive|streamed",
+    "sonnet-5|open_generation|p_aws|adaptive|streamed",
+    "sonnet-5|structured_json|anthropic_api|adaptive|streamed",
+    "sonnet-5|structured_json|bedrock|adaptive|streamed",
+    "sonnet-5|structured_json|p_aws|adaptive|streamed"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-28T20:06:47.433204+00:00",
+  "dry_run": false,
+  "git_head": "4d7c4e30bbcce4ff24830320e86c7a206f94f255",
+  "mode": "study2-q3-streaming",
+  "n_cells": 12,
+  "n_items": 1200,
+  "planes": [
+    "anthropic_api",
+    "bedrock",
+    "p_aws"
+  ],
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "opus-5|open_generation|anthropic_api|adaptive|streamed",
+      "6f80b821caa78251783abffdb2d3c5cf382d33356e235f8d95d8352652a8e21c"
+    ],
+    [
+      "opus-5|open_generation|bedrock|adaptive|streamed",
+      "122e6975aa63addbbcd6a72396a123a1b30404453a0df157672f40f06af2d4d6"
+    ],
+    [
+      "opus-5|open_generation|p_aws|adaptive|streamed",
+      "6f80b821caa78251783abffdb2d3c5cf382d33356e235f8d95d8352652a8e21c"
+    ],
+    [
+      "opus-5|structured_json|anthropic_api|adaptive|streamed",
+      "734ed2dff1756ba239144c61fa6fe2f260ce653c987d29e18faa5441a25d321d"
+    ],
+    [
+      "opus-5|structured_json|bedrock|adaptive|streamed",
+      "e3432c2841e9a98c62006d6b338693bae3d9a9bff06a55c36116b9d1cac17ac8"
+    ],
+    [
+      "opus-5|structured_json|p_aws|adaptive|streamed",
+      "734ed2dff1756ba239144c61fa6fe2f260ce653c987d29e18faa5441a25d321d"
+    ],
+    [
+      "sonnet-5|open_generation|anthropic_api|adaptive|streamed",
+      "6b5a00487e2ebc4ffe6c00ab6ce1f997254800c73ec9c0c54b686a42f0b2ac3b"
+    ],
+    [
+      "sonnet-5|open_generation|bedrock|adaptive|streamed",
+      "122e6975aa63addbbcd6a72396a123a1b30404453a0df157672f40f06af2d4d6"
+    ],
+    [
+      "sonnet-5|open_generation|p_aws|adaptive|streamed",
+      "6b5a00487e2ebc4ffe6c00ab6ce1f997254800c73ec9c0c54b686a42f0b2ac3b"
+    ],
+    [
+      "sonnet-5|structured_json|anthropic_api|adaptive|streamed",
+      "77fb7b1ff6f224ed612539691751cab2b96e1ad1baf648095be22d58a00276b4"
+    ],
+    [
+      "sonnet-5|structured_json|bedrock|adaptive|streamed",
+      "e3432c2841e9a98c62006d6b338693bae3d9a9bff06a55c36116b9d1cac17ac8"
+    ],
+    [
+      "sonnet-5|structured_json|p_aws|adaptive|streamed",
+      "77fb7b1ff6f224ed612539691751cab2b96e1ad1baf648095be22d58a00276b4"
+    ]
+  ],
+  "run_name": "control-study2-q3-streaming-20260728T200647Z",
+  "schedule_sha256": "500bf55b4c8bd7bb153951c3949977e1e61022af6f27362a69423955fff31f29",
+  "schema": 2,
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

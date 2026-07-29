@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 300,
+  "expected": 300,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-28T20:06:47.215670+00:00",
+  "retries": 0,
+  "run_name": "control-study2-positive-control-20260728T195249Z"
+}

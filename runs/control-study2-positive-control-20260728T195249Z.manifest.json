@@ -1,0 +1,42 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "haiku-4-5|open_generation|anthropic_api|none|temp=0.7",
+    "haiku-4-5|open_generation|bedrock|none|temp=0.7",
+    "haiku-4-5|open_generation|p_aws|none|temp=0.7"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-28T19:52:49.356648+00:00",
+  "dry_run": false,
+  "git_head": "4d7c4e30bbcce4ff24830320e86c7a206f94f255",
+  "mode": "study2-positive-control",
+  "n_cells": 3,
+  "n_items": 300,
+  "planes": [
+    "anthropic_api",
+    "bedrock",
+    "p_aws"
+  ],
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "haiku-4-5|open_generation|anthropic_api|none|temp=0.7",
+      "085ff83c495e779c0491e1cd63ae5d300d27353dff72b03289e583f124b9e270"
+    ],
+    [
+      "haiku-4-5|open_generation|bedrock|none|temp=0.7",
+      "bdb83d6bfe6525bbd622be572af4bd20731af2704b4989aaaf231f54a37de727"
+    ],
+    [
+      "haiku-4-5|open_generation|p_aws|none|temp=0.7",
+      "085ff83c495e779c0491e1cd63ae5d300d27353dff72b03289e583f124b9e270"
+    ]
+  ],
+  "run_name": "control-study2-positive-control-20260728T195249Z",
+  "schedule_sha256": "b3feb41a373043d66a614a1c29e278df21321e9f47e56c8dca62cf1c6b881737",
+  "schema": 2,
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

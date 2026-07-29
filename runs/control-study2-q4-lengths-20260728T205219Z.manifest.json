@@ -1,0 +1,117 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "opus-5|extraction_pad_10k|anthropic_api|adaptive",
+    "opus-5|extraction_pad_10k|bedrock|adaptive",
+    "opus-5|extraction_pad_10k|p_aws|adaptive",
+    "opus-5|extraction_pad_1k|anthropic_api|adaptive",
+    "opus-5|extraction_pad_1k|bedrock|adaptive",
+    "opus-5|extraction_pad_1k|p_aws|adaptive",
+    "opus-5|extraction_pad_50k|anthropic_api|adaptive",
+    "opus-5|extraction_pad_50k|bedrock|adaptive",
+    "opus-5|extraction_pad_50k|p_aws|adaptive",
+    "sonnet-5|extraction_pad_10k|anthropic_api|adaptive",
+    "sonnet-5|extraction_pad_10k|bedrock|adaptive",
+    "sonnet-5|extraction_pad_10k|p_aws|adaptive",
+    "sonnet-5|extraction_pad_1k|anthropic_api|adaptive",
+    "sonnet-5|extraction_pad_1k|bedrock|adaptive",
+    "sonnet-5|extraction_pad_1k|p_aws|adaptive",
+    "sonnet-5|extraction_pad_50k|anthropic_api|adaptive",
+    "sonnet-5|extraction_pad_50k|bedrock|adaptive",
+    "sonnet-5|extraction_pad_50k|p_aws|adaptive"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-28T20:52:19.715898+00:00",
+  "dry_run": false,
+  "git_head": "4d7c4e30bbcce4ff24830320e86c7a206f94f255",
+  "mode": "study2-q4-lengths",
+  "n_cells": 18,
+  "n_items": 450,
+  "planes": [
+    "anthropic_api",
+    "bedrock",
+    "p_aws"
+  ],
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "opus-5|extraction_pad_10k|anthropic_api|adaptive",
+      "e8c2faf5ce36ebe3cd8303ed52da0fe5282b393ec3b7f0817be0cb2fd2b790a0"
+    ],
+    [
+      "opus-5|extraction_pad_10k|bedrock|adaptive",
+      "d11d6dfc6f4140dea76d53efc4e207be1ff78162eb853a92cb2d9282409b1fc5"
+    ],
+    [
+      "opus-5|extraction_pad_10k|p_aws|adaptive",
+      "e8c2faf5ce36ebe3cd8303ed52da0fe5282b393ec3b7f0817be0cb2fd2b790a0"
+    ],
+    [
+      "opus-5|extraction_pad_1k|anthropic_api|adaptive",
+      "db3270ad136dbe35ecf1181c41c860997979407bf9ae2d73f283cbff989ce344"
+    ],
+    [
+      "opus-5|extraction_pad_1k|bedrock|adaptive",
+      "a1cb37c3f394c6aa152b34eefa76619695d787dff18a22d46750fe4ae0025162"
+    ],
+    [
+      "opus-5|extraction_pad_1k|p_aws|adaptive",
+      "db3270ad136dbe35ecf1181c41c860997979407bf9ae2d73f283cbff989ce344"
+    ],
+    [
+      "opus-5|extraction_pad_50k|anthropic_api|adaptive",
+      "38e6164b8a86a68931bf259c9ab21cd68687463001785b96db0e73461df3ddff"
+    ],
+    [
+      "opus-5|extraction_pad_50k|bedrock|adaptive",
+      "5fb3b5f2c58abcc1db3a7173253deaa2c2e53bdc6cd9395dda17669e715cb554"
+    ],
+    [
+      "opus-5|extraction_pad_50k|p_aws|adaptive",
+      "38e6164b8a86a68931bf259c9ab21cd68687463001785b96db0e73461df3ddff"
+    ],
+    [
+      "sonnet-5|extraction_pad_10k|anthropic_api|adaptive",
+      "437adea55e6e02c6132d9233af369085e2a8c8e0e12aa8b0610a2b23adfce6eb"
+    ],
+    [
+      "sonnet-5|extraction_pad_10k|bedrock|adaptive",
+      "d11d6dfc6f4140dea76d53efc4e207be1ff78162eb853a92cb2d9282409b1fc5"
+    ],
+    [
+      "sonnet-5|extraction_pad_10k|p_aws|adaptive",
+      "437adea55e6e02c6132d9233af369085e2a8c8e0e12aa8b0610a2b23adfce6eb"
+    ],
+    [
+      "sonnet-5|extraction_pad_1k|anthropic_api|adaptive",
+      "d261f3c7846f30acbbff197d5a84c2316ec6547cc874a03324c1daf31b7e9a61"
+    ],
+    [
+      "sonnet-5|extraction_pad_1k|bedrock|adaptive",
+      "a1cb37c3f394c6aa152b34eefa76619695d787dff18a22d46750fe4ae0025162"
+    ],
+    [
+      "sonnet-5|extraction_pad_1k|p_aws|adaptive",
+      "d261f3c7846f30acbbff197d5a84c2316ec6547cc874a03324c1daf31b7e9a61"
+    ],
+    [
+      "sonnet-5|extraction_pad_50k|anthropic_api|adaptive",
+      "94c8e81b4d3aa76cb9c566fe448fa103c3a3df4fff15537869f77b09cf3f1d6d"
+    ],
+    [
+      "sonnet-5|extraction_pad_50k|bedrock|adaptive",
+      "5fb3b5f2c58abcc1db3a7173253deaa2c2e53bdc6cd9395dda17669e715cb554"
+    ],
+    [
+      "sonnet-5|extraction_pad_50k|p_aws|adaptive",
+      "94c8e81b4d3aa76cb9c566fe448fa103c3a3df4fff15537869f77b09cf3f1d6d"
+    ]
+  ],
+  "run_name": "control-study2-q4-lengths-20260728T205219Z",
+  "schedule_sha256": "e533ec79b6b918eb258042b59f33555f89e7ef1ad51f3f05fa95bc8d2fac43b1",
+  "schema": 2,
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

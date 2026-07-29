@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 6000,
+  "expected": 6000,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-29T17:23:01.390032+00:00",
+  "retries": 2,
+  "run_name": "peak-study2-full-20260729T150537Z"
+}
