@@ -1,0 +1,539 @@
+{
+  "cells": {
+    "control::opus-5|structured_json|anthropic_api|adaptive|streamed": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "control::opus-5|structured_json|bedrock|adaptive|streamed": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "control::opus-5|structured_json|p_aws|adaptive|streamed": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "control::sonnet-5|structured_json|anthropic_api|adaptive|streamed": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 14,
+        "strict": 86
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "control::sonnet-5|structured_json|bedrock|adaptive|streamed": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 86,
+        "strict": 14
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "control::sonnet-5|structured_json|p_aws|adaptive|streamed": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 84,
+        "strict": 16
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::haiku-4-5|structured_json|anthropic_api|none": {
+      "byte_distinct": 4,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 46,
+        "strict": 54
+      },
+      "n": 100,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.95,
+      "semantic_variants": [
+        {
+          "count": 95,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 5,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "low::haiku-4-5|structured_json|bedrock|none": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 13,
+        "strict": 87
+      },
+      "n": 100,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.96,
+      "semantic_variants": [
+        {
+          "count": 96,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 4,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "low::haiku-4-5|structured_json|p_aws|none": {
+      "byte_distinct": 4,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 25,
+        "strict": 62
+      },
+      "n": 87,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.896551724137931,
+      "semantic_variants": [
+        {
+          "count": 78,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 9,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "low::opus-5|structured_json|anthropic_api|adaptive": {
+      "byte_distinct": 1,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::opus-5|structured_json|anthropic_api|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::opus-5|structured_json|bedrock|adaptive": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::opus-5|structured_json|bedrock|disabled": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::opus-5|structured_json|p_aws|adaptive": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::opus-5|structured_json|p_aws|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|anthropic_api|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 17,
+        "strict": 83
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|anthropic_api|disabled": {
+      "byte_distinct": 1,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|bedrock|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 85,
+        "strict": 15
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|bedrock|disabled": {
+      "byte_distinct": 1,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|p_aws|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 81,
+        "strict": 19
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "low::sonnet-5|structured_json|p_aws|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 2,
+        "strict": 98
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::haiku-4-5|structured_json|anthropic_api|none": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 28,
+        "strict": 72
+      },
+      "n": 100,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.97,
+      "semantic_variants": [
+        {
+          "count": 97,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 3,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "peak::haiku-4-5|structured_json|bedrock|none": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 18,
+        "strict": 82
+      },
+      "n": 100,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.96,
+      "semantic_variants": [
+        {
+          "count": 96,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 4,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "peak::haiku-4-5|structured_json|p_aws|none": {
+      "byte_distinct": 4,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 34,
+        "strict": 66
+      },
+      "n": 100,
+      "semantic_distinct": 2,
+      "semantic_modal_share": 0.91,
+      "semantic_variants": [
+        {
+          "count": 91,
+          "object": {
+            "in_stock": true,
+            "name": "Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        },
+        {
+          "count": 9,
+          "object": {
+            "in_stock": true,
+            "name": "Item Corvid CS-220 badge printer",
+            "quantity_on_hand": 17,
+            "reorder_threshold": 6,
+            "sku": "CS220-BDG-K",
+            "unit_price_usd": 349.5
+          }
+        }
+      ]
+    },
+    "peak::opus-5|structured_json|anthropic_api|adaptive": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::opus-5|structured_json|anthropic_api|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::opus-5|structured_json|bedrock|adaptive": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::opus-5|structured_json|bedrock|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::opus-5|structured_json|p_aws|adaptive": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::opus-5|structured_json|p_aws|disabled": {
+      "byte_distinct": 2,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|anthropic_api|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 9,
+        "strict": 91
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|anthropic_api|disabled": {
+      "byte_distinct": 1,
+      "byte_modal_share": null,
+      "modes": {
+        "strict": 100
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|bedrock|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 87,
+        "strict": 13
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|bedrock|disabled": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 5,
+        "strict": 95
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|p_aws|adaptive": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 86,
+        "strict": 14
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    },
+    "peak::sonnet-5|structured_json|p_aws|disabled": {
+      "byte_distinct": 3,
+      "byte_modal_share": null,
+      "modes": {
+        "fenced": 4,
+        "strict": 96
+      },
+      "n": 100,
+      "semantic_distinct": 1,
+      "semantic_modal_share": 1.0
+    }
+  },
+  "generated_utc": "2026-07-29T17:59:20.246457+00:00",
+  "inputs": [
+    "../../runs/control-study2-q3-streaming-20260728T200647Z.jsonl",
+    "../../runs/low-study2-full-20260729T070501Z.jsonl",
+    "../../runs/peak-study2-full-20260729T150537Z.jsonl"
+  ],
+  "totals": {
+    "cells": 36,
+    "cells_semantically_unstable": 6,
+    "fenced": 724,
+    "parse_fail": 0,
+    "sj_responses": 3587
+  }
+}
