@@ -149,6 +149,7 @@ WINDOWS = {
     "peak": "15:00-19:00 UTC (US business morning/midday)",
     "pilot": "any single window, recorded in the manifest",
     "control": "any, recorded in the manifest",
+    "local": "owner-approved window on the target box, recorded in the manifest",
 }
 
 
@@ -191,3 +192,106 @@ def grid_cells_study2():
 
 def cell_key2(cell):
     return f'{cell["model"]}|{cell["task"]}|{cell["plane"]}|{cell["thinking"]}'
+
+
+# --- Study 3 (local open-model baseline, PREREGISTRATION-v3 DRAFT) --------
+# Open weights on owned hardware — the control-ceiling rung. Model identity
+# includes the quantization tag; the weights digest recorded per run is the
+# drift control. Thinking arms are per-family (Qwen hybrid = bool think,
+# gpt-oss = reasoning-effort level), listed LOW/OFF first: the core grid
+# pins each model's first arm and Q3 adds the second on structured JSON, so
+# the thinking factor lives in Q3 cells only (design doc section 4).
+# Per-model think-field acceptance is pilot-verified on the pinned engine
+# before freeze (qwen3-vl may prove non-hybrid and be struck from Q3).
+
+LOCAL_BOXES = ("metal", "cuda")  # hardware arms; base URL supplied at run time
+
+REPEATS_STUDY3_PILOT = 10
+
+LOCAL_SEED = 42
+LOCAL_KEEP_ALIVE = "10m"
+LOCAL_NUM_PREDICT = 4096
+
+LOCAL_SAMPLING = {
+    "greedy": {
+        "temperature": 0, "seed": LOCAL_SEED, "num_predict": LOCAL_NUM_PREDICT,
+    },
+    "temp07": {
+        "temperature": 0.7, "seed": LOCAL_SEED, "num_predict": LOCAL_NUM_PREDICT,
+    },
+}
+
+LOCAL_MODELS = {
+    "qwen3.5-122b": {
+        "tag": "qwen3.5:122b-a10b",
+        "arch": "moe",
+        "thinking_arms": ("think_off", "think_on"),
+        "boxes": ("metal",),
+    },
+    "qwen3.6-35b": {
+        "tag": "qwen3.6:35b-a3b-q8_0",
+        "arch": "moe",
+        "thinking_arms": ("think_off", "think_on"),
+        "boxes": ("metal",),
+    },
+    "qwen3-vl-32b": {
+        "tag": "qwen3-vl:32b-instruct-q8_0",
+        "arch": "dense",
+        "thinking_arms": ("think_off", "think_on"),
+        "boxes": ("metal",),
+    },
+    "gpt-oss-20b": {
+        "tag": "gpt-oss:20b",
+        "arch": "moe",
+        "thinking_arms": ("effort_low", "effort_high"),
+        "boxes": ("metal", "cuda"),
+    },
+}
+
+# Q2 (concurrency): the registered MoE-vs-dense contrast — the Qwen trio on
+# the Metal box at concurrency 4; the single-flight comparators are the core
+# grid's own cells.
+Q2_LOCAL_CONCURRENCY = {
+    "models": ("qwen3.5-122b", "qwen3.6-35b", "qwen3-vl-32b"),
+    "level": 4,
+    "box": "metal",
+}
+
+
+def local_pinned_arm(model_cfg):
+    """Core-grid thinking arm: the model's LOW/OFF level (listed first)."""
+    return model_cfg["thinking_arms"][0]
+
+
+def local_on_arm(model_cfg):
+    """Q3 thinking arm: the model's ON/HIGH level (listed second)."""
+    return model_cfg["thinking_arms"][1]
+
+
+def local_models_for_box(box):
+    if box not in LOCAL_BOXES:
+        raise ValueError(f"unknown box: {box}")
+    return {key: cfg for key, cfg in LOCAL_MODELS.items() if box in cfg["boxes"]}
+
+
+def grid_cells_study3(box):
+    """Study-3 core factorial for one box: model x task x sampling, thinking
+    pinned at the model's LOW/OFF arm. Single-flight (Q1's registered
+    condition); hardware rides in the cell meta, not the cell key, so Q4
+    compares identical cells across boxes."""
+    from harness.tasks import TASKS
+
+    for model_key, cfg in local_models_for_box(box).items():
+        for task_key in TASKS:
+            for sampling in sorted(LOCAL_SAMPLING):
+                yield {
+                    "model": model_key,
+                    "task": task_key,
+                    "sampling": sampling,
+                    "thinking": local_pinned_arm(cfg),
+                    "hardware": box,
+                }
+
+
+def cell_key3(cell):
+    return f'{cell["model"]}|{cell["task"]}|{cell["sampling"]}|{cell["thinking"]}'

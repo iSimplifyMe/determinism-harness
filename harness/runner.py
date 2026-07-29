@@ -39,25 +39,36 @@ from datetime import datetime, timezone
 
 from harness.config import (
     EFFORT_SWEEP,
+    LOCAL_KEEP_ALIVE,
+    LOCAL_MODELS,
+    LOCAL_SAMPLING,
+    LOCAL_SEED,
     MODELS,
     PLANES,
     POSITIVE_CONTROL,
+    Q2_LOCAL_CONCURRENCY,
     Q3_STREAMING,
     Q4_LENGTHS,
     REGION,
     REPEATS_FULL,
     REPEATS_PILOT,
+    REPEATS_STUDY3_PILOT,
     WINDOWS,
     cell_key,
     cell_key2,
+    cell_key3,
     grid_cells,
     grid_cells_study2,
+    grid_cells_study3,
+    local_models_for_box,
+    local_on_arm,
     plane_model_id,
 )
 from harness.planes import BEDROCK_RETRYABLE_CODES, make_plane
 from harness.request_builder import (
     canonical_body,
     canonical_bytes,
+    canonical_local_body,
     canonical_messages_params,
     sha256_hex,
 )
@@ -74,7 +85,31 @@ STUDY2_MODES = (
     "study2-q3-streaming",
     "study2-q4-lengths",
 )
-MODES = ("pilot", "full", "positive-control", "effort-sweep") + STUDY2_MODES
+STUDY3_MODES = (
+    "study3-pilot",
+    "study3-full",
+    "study3-q3-thinking",
+    "study3-q2-concurrency",
+)
+MODES = (
+    ("pilot", "full", "positive-control", "effort-sweep")
+    + STUDY2_MODES
+    + STUDY3_MODES
+)
+
+
+def study3_run_settings(mode):
+    """Execution constraints per study-3 mode. Q1's registered condition is
+    single-flight, so the core modes force concurrency 1; the Q2 arm runs
+    same-cell parallel at the registered level. None for non-study3 modes."""
+    if mode not in STUDY3_MODES:
+        return None
+    if mode == "study3-q2-concurrency":
+        return {
+            "concurrency": Q2_LOCAL_CONCURRENCY["level"],
+            "allow_same_cell_concurrency": True,
+        }
+    return {"concurrency": 1, "allow_same_cell_concurrency": False}
 
 
 def utc_now_iso():
@@ -137,8 +172,70 @@ def _study2_payload(model_cfg, plane, model_id, prompt, thinking, extra=None):
     return payload, sha256_hex(canonical_bytes(payload))
 
 
-def build_schedule(mode):
-    """Deterministic, unshuffled schedule for a mode."""
+def _study3_item(cell, cid, repeat):
+    """Local-plane item: canonical bytes are the wire bytes (exact negative
+    control), keep_alive pinned so residency is part of the frozen request."""
+    cfg = LOCAL_MODELS[cell["model"]]
+    body = canonical_local_body(
+        cfg["tag"],
+        TASKS[cell["task"]]["prompt"],
+        cell["thinking"],
+        options=LOCAL_SAMPLING[cell["sampling"]],
+        keep_alive=LOCAL_KEEP_ALIVE,
+    )
+    return _item2(
+        cid, dict(cell), "local", body, sha256_hex(body), cfg["tag"], repeat
+    )
+
+
+def _study3_q3_cells(box):
+    for model_key, cfg in local_models_for_box(box).items():
+        yield {
+            "model": model_key,
+            "task": "structured_json",
+            "sampling": "greedy",
+            "thinking": local_on_arm(cfg),
+            "hardware": box,
+        }
+
+
+def build_warmup_items(items):
+    """One tiny recorded call per distinct local model in the schedule,
+    prepended (never shuffled) so every grid cell runs against a warm model
+    (prereg v3 Q1). Records carry meta control=warmup; analysis excludes
+    them like pilot data."""
+    warmups = {}
+    for it in items:
+        if it.get("plane") != "local" or it["model_id"] in warmups:
+            continue
+        body = canonical_local_body(
+            it["model_id"],
+            "warmup",
+            "none",
+            options={"temperature": 0, "seed": LOCAL_SEED, "num_predict": 8},
+            keep_alive=LOCAL_KEEP_ALIVE,
+        )
+        meta = {
+            "model": it["meta"]["model"],
+            "control": "warmup",
+            "hardware": it["meta"].get("hardware"),
+        }
+        warmups[it["model_id"]] = _item2(
+            f'warmup|{it["meta"]["model"]}',
+            meta,
+            "local",
+            body,
+            sha256_hex(body),
+            it["model_id"],
+            0,
+        )
+    return list(warmups.values())
+
+
+def build_schedule(mode, box=None, repeats=None):
+    """Deterministic, unshuffled schedule for a mode. Study-3 modes require
+    `box` (one run targets one box); `repeats` overrides the mode default
+    (pilot-sizing of arms — the override is recorded in the manifest)."""
     items = []
     if mode in ("pilot", "full"):
         repeats = REPEATS_PILOT if mode == "pilot" else REPEATS_FULL
@@ -276,6 +373,48 @@ def build_schedule(mode):
                         items.append(
                             _item2(cid, dict(meta), plane, payload, sha, model_id, r)
                         )
+    elif mode in ("study3-pilot", "study3-full"):
+        if box is None:
+            raise ValueError("study3 modes require a box (metal/cuda)")
+        n = repeats or (
+            REPEATS_STUDY3_PILOT if mode == "study3-pilot" else REPEATS_FULL
+        )
+        cells = list(grid_cells_study3(box))
+        if mode == "study3-pilot":  # pilot exercises the Q3 arm too
+            cells += list(_study3_q3_cells(box))
+        for cell in cells:
+            cid = cell_key3(cell)
+            for r in range(n):
+                items.append(_study3_item(cell, cid, r))
+    elif mode == "study3-q3-thinking":
+        if box is None:
+            raise ValueError("study3 modes require a box (metal/cuda)")
+        n = repeats or REPEATS_FULL
+        for cell in _study3_q3_cells(box):
+            cid = cell_key3(cell)
+            for r in range(n):
+                items.append(_study3_item(cell, cid, r))
+    elif mode == "study3-q2-concurrency":
+        q2 = Q2_LOCAL_CONCURRENCY
+        if box != q2["box"]:
+            raise ValueError(
+                f'study3-q2-concurrency runs on {q2["box"]} only (got {box})'
+            )
+        n = repeats or REPEATS_FULL
+        for model_key in q2["models"]:
+            cfg = LOCAL_MODELS[model_key]
+            for task_key in TASKS:
+                cell = {
+                    "model": model_key,
+                    "task": task_key,
+                    "sampling": "greedy",
+                    "thinking": cfg["thinking_arms"][0],
+                    "hardware": box,
+                    "concurrency": q2["level"],
+                }
+                cid = cell_key3(cell) + f'|c{q2["level"]}'
+                for r in range(n):
+                    items.append(_study3_item(cell, cid, r))
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
@@ -310,11 +449,16 @@ class Engine:
         run_info=None,
         max_attempts=6,
         plane_clients=None,
+        allow_same_cell_concurrency=False,
     ):
         self.items = items
         self.run_info = run_info or {}
         self.claimed = [False] * len(items)
         self.in_flight = set()
+        # Ordering control default: no two calls from one cell in flight.
+        # The study-3 Q2 arm inverts this deliberately — same-cell parallel
+        # load IS the manipulation (prereg v3 section 1).
+        self.allow_same_cell_concurrency = allow_same_cell_concurrency
         self.lock = threading.Lock()
         self.write_lock = threading.Lock()
         self.done = 0
@@ -352,7 +496,10 @@ class Engine:
             for idx, taken in enumerate(self.claimed):
                 if taken:
                     continue
-                if self.items[idx]["cell"] in self.in_flight:
+                if (
+                    not self.allow_same_cell_concurrency
+                    and self.items[idx]["cell"] in self.in_flight
+                ):
                     continue
                 self.claimed[idx] = True
                 self.in_flight.add(self.items[idx]["cell"])
@@ -567,11 +714,30 @@ def main():
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--seed", type=int, default=20260727)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--box", choices=("metal", "cuda"),
+                        help="study3 modes: which hardware arm this run is")
+    parser.add_argument("--local-url", default="http://127.0.0.1:11434",
+                        help="study3 modes: Ollama base URL for the box")
+    parser.add_argument("--repeats", type=int,
+                        help="study3 modes: override the mode's repeats "
+                             "(recorded in the manifest)")
     args = parser.parse_args()
 
-    schedule = build_schedule(args.mode)
+    schedule = build_schedule(args.mode, box=args.box, repeats=args.repeats)
     rng = random.Random(args.seed)
     rng.shuffle(schedule)
+
+    settings = study3_run_settings(args.mode)
+    warmups = []
+    if settings:
+        if args.concurrency != settings["concurrency"]:
+            print(
+                f'{args.mode} enforces concurrency='
+                f'{settings["concurrency"]} (--concurrency ignored)'
+            )
+        args.concurrency = settings["concurrency"]
+        warmups = build_warmup_items(schedule)
+        schedule = warmups + schedule  # warm every model before its cells
 
     cells = sorted({it["cell"] for it in schedule})
     stamp = utc_stamp()
@@ -600,6 +766,14 @@ def main():
     if args.mode in STUDY2_MODES:
         manifest["schema"] = 2
         manifest["planes"] = sorted({it["plane"] for it in schedule})
+    elif args.mode in STUDY3_MODES:
+        manifest["schema"] = 3
+        manifest["planes"] = ["local"]
+        manifest["box"] = args.box
+        manifest["local_url"] = args.local_url
+        manifest["repeats_override"] = args.repeats
+        manifest["warmup_items"] = len(warmups)
+        manifest["run_settings"] = settings
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")
@@ -626,15 +800,32 @@ def main():
                 print(f"MISSING CREDENTIAL: {name}", flush=True)
             return 3
 
-    import boto3
+    local_plane = None
+    if args.mode in STUDY3_MODES:
+        # Reachability + drift-control capture, fail-fast like credentials:
+        # engine version and per-model weights digests go in the manifest.
+        local_plane = make_plane(
+            "local", base_url=args.local_url, name=f"local_{args.box}"
+        )
+        try:
+            manifest["engine_version"] = local_plane.engine_version()
+            manifest["model_digests"] = {
+                tag: local_plane.model_digest(tag)
+                for tag in sorted({it["model_id"] for it in schedule})
+            }
+        except Exception as err:
+            print(f"LOCAL SERVER NOT READY at {args.local_url}: {err}", flush=True)
+            return 3
+    else:
+        import boto3
 
-    try:
-        ident = boto3.client("sts").get_caller_identity()
-        manifest["aws_account"] = ident.get("Account")
-        manifest["caller_arn"] = ident.get("Arn")
-    except Exception as err:  # provenance is best-effort, never blocking
-        manifest["aws_account"] = None
-        manifest["identity_error"] = str(err)[:200]
+        try:
+            ident = boto3.client("sts").get_caller_identity()
+            manifest["aws_account"] = ident.get("Account")
+            manifest["caller_arn"] = ident.get("Arn")
+        except Exception as err:  # provenance is best-effort, never blocking
+            manifest["aws_account"] = None
+            manifest["identity_error"] = str(err)[:200]
 
     manifest_path = os.path.join(args.out, f"{run_name}.manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as fh:
@@ -643,12 +834,22 @@ def main():
     out_path = os.path.join(args.out, f"{run_name}.jsonl")
     print(f"run: {run_name}  items: {len(schedule)}  cells: {len(cells)}")
     print(f"records -> {out_path}")
+    run_info = {"window": args.window, "mode": args.mode, "run_name": run_name}
+    engine_kwargs = {}
+    if args.mode in STUDY3_MODES:
+        run_info["schema"] = 3
+        run_info["box"] = args.box
+        engine_kwargs = {
+            "plane_clients": {"local": local_plane},
+            "allow_same_cell_concurrency": settings["allow_same_cell_concurrency"],
+        }
     engine = Engine(
         schedule,
         out_path,
         args.concurrency,
         args.seed,
-        run_info={"window": args.window, "mode": args.mode, "run_name": run_name},
+        run_info=run_info,
+        **engine_kwargs,
     )
     summary = engine.run()
 
