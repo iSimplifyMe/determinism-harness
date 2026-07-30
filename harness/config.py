@@ -316,3 +316,54 @@ GPT_OSS_120B = {
     "thinking_arms": ("effort_low", "effort_high"),
     "box": "metal",
 }
+
+
+def local_model_cfg(model_key):
+    """Model config lookup covering the dedicated-window 120b arm, which
+    deliberately lives outside LOCAL_MODELS (65 GB load evicts production
+    residents; only explicitly-labeled modes may schedule it)."""
+    if model_key in LOCAL_MODELS:
+        return LOCAL_MODELS[model_key]
+    if model_key == GPT_OSS_120B["key"]:
+        return GPT_OSS_120B
+    raise KeyError(f"unknown local model: {model_key}")
+
+
+# --- Follow-up companions (FOLLOWUP-COMPANIONS.md, exploratory) ------------
+# Both companions are post-freeze exploratory work with their plan committed
+# before any data; neither touches the frozen prereg-v3 grid nor joins the
+# confirmatory dataset. Cell ids are suffixed (|arm=..., |logprobs) so no
+# companion cell can collide with a frozen cell key.
+
+# The probe-verified working spelling on Ollama 0.30.5 (both boxes):
+# top-level fields; the options spelling is accepted but inert.
+MARGINS_LOGPROB_FIELDS = {"logprobs": True, "top_logprobs": 5}
+
+# Companion A: reload-churn A/B on the section-6 tension cell. The measured
+# bodies are byte-identical across arms; the churn manipulation is an
+# out-of-band unload side-call confirmed via /api/ps before every churn call.
+CHURN_AB = {
+    "model": "gpt-oss-20b",
+    "task": "open_generation",
+    "sampling": "greedy",
+    "boxes": ("metal", "cuda"),
+    "n_per_arm": 100,
+    "mini_block": 10,
+}
+
+# Companion B: logprob-margin battery. Listed in run order — per-model
+# blocks are emitted in this order, so the 120b eviction block is LAST on
+# Metal. `thinking` defaults to the model's pinned LOW/OFF arm.
+MARGINS_BATTERY = {
+    "metal": (
+        {"model": "gpt-oss-20b", "task": "structured_json", "n": 50},
+        {"model": "qwen3-vl-32b", "task": "open_generation", "n": 20},
+        {"model": "gpt-oss-120b", "task": "structured_json", "n": 50},
+        {"model": "gpt-oss-120b", "task": "structured_json", "n": 50,
+         "thinking": "effort_high"},
+    ),
+    "cuda": (
+        {"model": "gpt-oss-20b", "task": "structured_json", "n": 50},
+        {"model": "gpt-oss-20b", "task": "open_generation", "n": 20},
+    ),
+}

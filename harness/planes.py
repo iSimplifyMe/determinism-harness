@@ -472,6 +472,51 @@ class LocalPlane:
             "resident_models": resident,
         }
 
+    def model_resident(self, model_tag):
+        """Is the model currently loaded on the server? (/api/ps)"""
+        models = self._get_json("/api/ps").get("models", [])
+        return any(m.get("name") == model_tag for m in models)
+
+    def unload(self, model_tag, wait_timeout=120.0, poll_interval=0.25):
+        """Ask the server to unload a model NOW and confirm it is gone.
+
+        The request is the documented idiom — an empty-messages /api/chat
+        with keep_alive 0 — but the unload response is advisory; the
+        verdict is the /api/ps poll (companion-A's manipulation gate needs
+        observed absence, not an acknowledgment). Companion use only:
+        never point this at a production resident.
+        """
+        from harness.request_builder import canonical_bytes
+
+        body = canonical_bytes(
+            {"keep_alive": 0, "messages": [], "model": model_tag}
+        )
+        start = time.monotonic()
+        try:
+            with self._opener(
+                self._request("/api/chat", body), timeout=self._timeout
+            ) as resp:
+                resp.read()
+        except Exception:
+            pass  # the /api/ps poll below is the actual verdict
+        polls = 0
+        while True:
+            polls += 1
+            try:
+                resident = self.model_resident(model_tag)
+            except Exception:
+                resident = True  # unreachable reads as still-resident
+            elapsed_ms = int((time.monotonic() - start) * 1000)
+            if not resident:
+                return {
+                    "unloaded": True, "wait_ms": elapsed_ms, "ps_polls": polls,
+                }
+            if time.monotonic() - start >= wait_timeout:
+                return {
+                    "unloaded": False, "wait_ms": elapsed_ms, "ps_polls": polls,
+                }
+            time.sleep(poll_interval)
+
     def invoke(self, body_bytes, stream=False):
         import json
         import urllib.error

@@ -38,12 +38,15 @@ import time
 from datetime import datetime, timezone
 
 from harness.config import (
+    CHURN_AB,
     EFFORT_SWEEP,
     GPT_OSS_120B,
     LOCAL_KEEP_ALIVE,
     LOCAL_MODELS,
     LOCAL_SAMPLING,
     LOCAL_SEED,
+    MARGINS_BATTERY,
+    MARGINS_LOGPROB_FIELDS,
     MODELS,
     PLANES,
     POSITIVE_CONTROL,
@@ -61,10 +64,13 @@ from harness.config import (
     grid_cells,
     grid_cells_study2,
     grid_cells_study3,
+    local_model_cfg,
     local_models_for_box,
     local_on_arm,
+    local_pinned_arm,
     plane_model_id,
 )
+from harness.logprob_capture import compact_margins
 from harness.planes import BEDROCK_RETRYABLE_CODES, make_plane
 from harness.request_builder import (
     canonical_body,
@@ -86,13 +92,20 @@ STUDY2_MODES = (
     "study2-q3-streaming",
     "study2-q4-lengths",
 )
+# Follow-up companion modes (FOLLOWUP-COMPANIONS.md): exploratory,
+# plan-committed-pre-data. Their schedules are FIXED — the schedule IS the
+# manipulation (churn) or the eviction-ordering constraint (margins) — so
+# main() must not shuffle, re-block, or auto-prepend warmups.
+COMPANION_MODES = ("study3-churn-ab", "study3-margins")
+FIXED_SCHEDULE_MODES = COMPANION_MODES
+
 STUDY3_MODES = (
     "study3-pilot",
     "study3-full",
     "study3-q3-thinking",
     "study3-q2-concurrency",
     "study3-120b-window",
-)
+) + COMPANION_MODES
 MODES = (
     ("pilot", "full", "positive-control", "effort-sweep")
     + STUDY2_MODES
@@ -252,6 +265,24 @@ def build_warmup_items(items):
             0,
         )
     return list(warmups.values())
+
+
+def _companion_warmup(model_tag, model_key, box):
+    """One tiny recorded warmup at a companion block head — same body shape
+    as build_warmup_items, emitted inline because companion schedules are
+    fixed and never pass through apply_model_blocks."""
+    body = canonical_local_body(
+        model_tag,
+        "warmup",
+        "none",
+        options={"temperature": 0, "seed": LOCAL_SEED, "num_predict": 8},
+        keep_alive=LOCAL_KEEP_ALIVE,
+    )
+    meta = {"model": model_key, "control": "warmup", "hardware": box}
+    return _item2(
+        f"warmup|{model_key}", meta, "local", body, sha256_hex(body),
+        model_tag, 0,
+    )
 
 
 def build_schedule(mode, box=None, repeats=None):
@@ -466,6 +497,78 @@ def build_schedule(mode, box=None, repeats=None):
                 cid = cell_key3(cell) + f'|c{q2["level"]}'
                 for r in range(n):
                     items.append(_study3_item(cell, cid, r))
+    elif mode == "study3-churn-ab":
+        if box not in CHURN_AB["boxes"]:
+            raise ValueError(
+                f'study3-churn-ab runs on {CHURN_AB["boxes"]} (got {box})'
+            )
+        n = repeats or CHURN_AB["n_per_arm"]
+        cfg = LOCAL_MODELS[CHURN_AB["model"]]
+        core = {
+            "model": CHURN_AB["model"],
+            "task": CHURN_AB["task"],
+            "sampling": CHURN_AB["sampling"],
+            "thinking": local_pinned_arm(cfg),
+            "hardware": box,
+        }
+        items.append(_companion_warmup(cfg["tag"], core["model"], box))
+        # Alternating mini-blocks (B,C,B,C,...) for time balance; the
+        # measured bodies are byte-identical across arms — the churn
+        # manipulation is the pre_unload flag, executed out-of-band.
+        block = CHURN_AB["mini_block"]
+        counts = {"blocked": 0, "churn": 0}
+        position = 0
+        while counts["blocked"] < n or counts["churn"] < n:
+            arm = "blocked" if position % 2 == 0 else "churn"
+            position += 1
+            take = min(block, n - counts[arm])
+            if take <= 0:
+                continue
+            for _ in range(take):
+                cell = dict(core, arm=arm)
+                item = _study3_item(cell, cell_key3(core) + f"|arm={arm}",
+                                    counts[arm])
+                if arm == "churn":
+                    item["pre_unload"] = True
+                items.append(item)
+                counts[arm] += 1
+    elif mode == "study3-margins":
+        if box not in MARGINS_BATTERY:
+            raise ValueError(
+                f"study3-margins runs on {sorted(MARGINS_BATTERY)} (got {box})"
+            )
+        last_model = None
+        for spec in MARGINS_BATTERY[box]:
+            cfg = local_model_cfg(spec["model"])
+            if spec["model"] != last_model:
+                items.append(
+                    _companion_warmup(cfg["tag"], spec["model"], box)
+                )
+                last_model = spec["model"]
+            thinking = spec.get("thinking") or cfg["thinking_arms"][0]
+            cell = {
+                "model": spec["model"],
+                "task": spec["task"],
+                "sampling": "greedy",
+                "thinking": thinking,
+                "hardware": box,
+                "exploratory": "margins",
+            }
+            cid = cell_key3(cell) + "|logprobs"
+            body = canonical_local_body(
+                cfg["tag"],
+                TASKS[spec["task"]]["prompt"],
+                thinking,
+                options=LOCAL_SAMPLING["greedy"],
+                keep_alive=LOCAL_KEEP_ALIVE,
+                extra=MARGINS_LOGPROB_FIELDS,
+            )
+            sha = sha256_hex(body)
+            for r in range(repeats or spec["n"]):
+                item = _item2(cid, dict(cell), "local", body, sha,
+                              cfg["tag"], r)
+                item["capture_logprobs"] = True
+                items.append(item)
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
@@ -683,8 +786,13 @@ class Engine:
         }
         attempts = 0
         result = {"ok": False, "error_code": "unknown", "error_message": "no attempt made", "retryable": False}
+        unload_info = None
         while attempts < self.max_attempts:
             attempts += 1
+            # Companion-A churn arm: unload + confirm absence before EVERY
+            # attempt (a retried attempt must still be a cold-load call).
+            if item.get("pre_unload") and hasattr(plane, "unload"):
+                unload_info = plane.unload(item["model_id"])
             sent_at = utc_now_iso()
             streaming = item.get("delivery") == "streaming"
             if item["plane"] == "bedrock":
@@ -694,25 +802,39 @@ class Engine:
             else:
                 result = plane.invoke(item["payload"], stream=streaming)
             if result["ok"]:
-                return {
+                record = {
                     **base,
                     **result,
                     "attempts": attempts,
                     "sent_at_utc": sent_at,
                     "received_at_utc": utc_now_iso(),
                 }
+                if unload_info is not None:
+                    record["pre_unload_confirmed"] = unload_info["unloaded"]
+                    record["unload_wait_ms"] = unload_info["wait_ms"]
+                if item.get("capture_logprobs"):
+                    margins = compact_margins(
+                        getattr(plane, "last_payload", None)
+                    )
+                    if margins is not None:
+                        record["logprob_margins"] = margins
+                return record
             if result["retryable"] and attempts < self.max_attempts:
                 with self.lock:
                     self.retries += 1
                 time.sleep(min(60.0, 2.0 ** attempts) + rng.uniform(0, 1))
                 continue
             break
-        return {
+        record = {
             **base,
             **result,
             "attempts": attempts,
             "sent_at_utc": utc_now_iso(),
         }
+        if unload_info is not None:
+            record["pre_unload_confirmed"] = unload_info["unloaded"]
+            record["unload_wait_ms"] = unload_info["wait_ms"]
+        return record
 
     def _worker(self, worker_index):
         try:
@@ -775,8 +897,10 @@ def main():
     args = parser.parse_args()
 
     schedule = build_schedule(args.mode, box=args.box, repeats=args.repeats)
+    fixed = args.mode in FIXED_SCHEDULE_MODES
     rng = random.Random(args.seed)
-    rng.shuffle(schedule)
+    if not fixed:
+        rng.shuffle(schedule)
 
     settings = study3_run_settings(args.mode)
     warmups = []
@@ -787,9 +911,17 @@ def main():
                 f'{settings["concurrency"]} (--concurrency ignored)'
             )
         args.concurrency = settings["concurrency"]
-        warmups = build_warmup_items(schedule)
-        schedule = warmups + schedule  # warm every model before its cells
-        schedule = apply_model_blocks(schedule, args.seed)
+        if fixed:
+            # Companion schedules ship their own warmup heads and encode
+            # their ordering constraint — count, never reorder.
+            warmups = [
+                it for it in schedule
+                if it["meta"].get("control") == "warmup"
+            ]
+        else:
+            warmups = build_warmup_items(schedule)
+            schedule = warmups + schedule  # warm every model before its cells
+            schedule = apply_model_blocks(schedule, args.seed)
 
     cells = sorted({it["cell"] for it in schedule})
     stamp = utc_stamp()
@@ -826,7 +958,11 @@ def main():
         manifest["repeats_override"] = args.repeats
         manifest["warmup_items"] = len(warmups)
         manifest["run_settings"] = settings
-        manifest["schedule_blocking"] = "per-model"
+        manifest["schedule_blocking"] = "fixed" if fixed else "per-model"
+        manifest["schedule_fixed"] = fixed
+        if args.mode in COMPANION_MODES:
+            manifest["exploratory"] = True
+            manifest["companion_plan"] = "FOLLOWUP-COMPANIONS.md"
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")
