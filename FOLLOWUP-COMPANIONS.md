@@ -459,6 +459,38 @@ share bytes in this session and the standing mapping is session-scoped
 after all. Gate failing = timing does not control the state as D's
 evidence indicated; report and stop — no further same-night designs.
 
+### Companion E results (post-data, 2026-07-30 night) — TIMING FALSIFIED
+
+Session qualified on attempt 1 (prewarm prefills [284.1, 16.3, 16.1,
+16.5] ms — the fourth session reproducing both state variants'
+bytes: `45e27daf…` fresh-load, `cf2c66c8…` cached). A/B ran 102/102,
+zero failures (`runs/local-study3-cache-timing-20260730T233649Z.*`,
+`reports/cache-timing-report-20260730T234514Z.*`).
+
+- **Manipulation gate FAILED — the stated stop condition.** Adjacent
+  median 36.1 ms ≈ gapped median 36.3 ms: truly back-to-back calls
+  (pre-sleep 0, jitter suppressed) landed in the checkpoint state
+  exactly like 600 ms-gapped calls. **Inter-call timing does not control
+  the state; companion D's timing inference is falsified.** Both arms:
+  modal 1.0, one shared variant — `20310cdd…` again.
+- **The pattern that survives every run (A, C, D, E + prewarms):** the
+  full-KV ~16–18 ms state exists only on a model instance that has NOT
+  yet served a different prompt. The first different-prompt call (the
+  warmup, a flusher) forms the persistent template-prefix checkpoint the
+  serve logs show being restored, and every subsequent identical-prompt
+  call lands at ~34–41 ms regardless of gap or repetition — until a
+  reload resets the instance (companion A's post-churn blocks are the
+  17 ms state for exactly this reason).
+- **Standing hypothesis (for a future designed test, not tonight per the
+  stop rule):** instance history, not timing — arms on fresh instances
+  with the manipulation being a single interposed different-prompt call.
+  Requires a warmup-free schedule variant.
+- **What is now established descriptively across four server sessions:**
+  three prefill states, each internally byte-deterministic (n up to
+  100), each byte-stable per state across every session observed:
+  fresh-load → `45e27daf…` · full-KV → `cf2c66c8…` · checkpoint →
+  `20310cdd…`. The registered manipulated confirmation remains open.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
