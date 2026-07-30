@@ -1,0 +1,47 @@
+{
+  "base_url": "http://127.0.0.1:11435",
+  "calls": 4,
+  "consecutive": 3,
+  "distinct_shas": [
+    "45e27daf2ae249dec5aab86a52af873bd43638db96ac7712bc2f4fd838448af8",
+    "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+  ],
+  "engine_version": "0.30.5",
+  "generated_utc": "2026-07-30T23:19:15.409481+00:00",
+  "label": "cuda-d1",
+  "max_calls": 40,
+  "model_digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+  "qualified": true,
+  "request_sha256": "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47",
+  "threshold_ms": 25.0,
+  "trajectory": [
+    {
+      "call": 0,
+      "load_s": 5.2,
+      "ok": true,
+      "prefill_ms": 215.998,
+      "text_sha256": "45e27daf2ae249dec5aab86a52af873bd43638db96ac7712bc2f4fd838448af8"
+    },
+    {
+      "call": 1,
+      "load_s": 0.377,
+      "ok": true,
+      "prefill_ms": 17.833,
+      "text_sha256": "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+    },
+    {
+      "call": 2,
+      "load_s": 0.378,
+      "ok": true,
+      "prefill_ms": 16.296,
+      "text_sha256": "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+    },
+    {
+      "call": 3,
+      "load_s": 0.375,
+      "ok": true,
+      "prefill_ms": 17.876,
+      "text_sha256": "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+    }
+  ]
+}
