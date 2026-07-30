@@ -1,0 +1,138 @@
+{
+  "box": "metal",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T00:35:35.382878+00:00",
+    "resident_models": [
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T19:33:39.360138-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "2d0a26462393ce989905021dde175b6694fe5720303c52c43610e1ea3c61032b",
+        "expires_at": "2026-07-29T19:45:35.176289-05:00",
+        "name": "qwen3-vl:32b-instruct-q8_0",
+        "size": 39498400398,
+        "size_vram": 39498400398
+      },
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-29T19:44:25.492106-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12889966508,
+        "size_vram": 12889966508
+      }
+    ]
+  },
+  "cells": [
+    "qwen3-vl-32b|classification|greedy|think_off|c4",
+    "qwen3-vl-32b|extraction|greedy|think_off|c4",
+    "qwen3-vl-32b|open_generation|greedy|think_off|c4",
+    "qwen3-vl-32b|structured_json|greedy|think_off|c4",
+    "qwen3.5-122b|classification|greedy|think_off|c4",
+    "qwen3.5-122b|extraction|greedy|think_off|c4",
+    "qwen3.5-122b|open_generation|greedy|think_off|c4",
+    "qwen3.5-122b|structured_json|greedy|think_off|c4",
+    "qwen3.6-35b|classification|greedy|think_off|c4",
+    "qwen3.6-35b|extraction|greedy|think_off|c4",
+    "qwen3.6-35b|open_generation|greedy|think_off|c4",
+    "qwen3.6-35b|structured_json|greedy|think_off|c4",
+    "warmup|qwen3-vl-32b",
+    "warmup|qwen3.5-122b",
+    "warmup|qwen3.6-35b"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-07-30T00:35:35.280264+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "git_head": "085b0783c6776f63cd6a863a1abddf152399f82e",
+  "local_url": "http://127.0.0.1:11436",
+  "mode": "study3-q2-concurrency",
+  "model_digests": {
+    "qwen3-vl:32b-instruct-q8_0": "2d0a26462393ce989905021dde175b6694fe5720303c52c43610e1ea3c61032b",
+    "qwen3.5:122b-a10b": "8b9d11d807c57feb1e2ecb0d6cbf40334c37dcc3523bed5540af4f927f112a37",
+    "qwen3.6:35b-a3b-q8_0": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77"
+  },
+  "n_cells": 15,
+  "n_items": 123,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": 10,
+  "request_sha_by_cell": [
+    [
+      "qwen3-vl-32b|classification|greedy|think_off|c4",
+      "e434e2a4c2ec2cd05c6a49af737fab1c5dadfc666a185e46e58e0679043aa1ad"
+    ],
+    [
+      "qwen3-vl-32b|extraction|greedy|think_off|c4",
+      "a0454bfc6dd82f38327dc991387259d7138ce80640c6d83700f45bcdbb39b85f"
+    ],
+    [
+      "qwen3-vl-32b|open_generation|greedy|think_off|c4",
+      "9858b077f671fb3a56c9ce9e94aaa04faf661e06c3d6ae8ede98db85d82b8210"
+    ],
+    [
+      "qwen3-vl-32b|structured_json|greedy|think_off|c4",
+      "acb9655c5972ea6b3bccff253f9c8c6857da550997765b3f72329d0e22ec1787"
+    ],
+    [
+      "qwen3.5-122b|classification|greedy|think_off|c4",
+      "f12117a9946cc78ac4acbdcd3e49839ef31d3bcaffc954bffd2a9fcf4fd1ed5c"
+    ],
+    [
+      "qwen3.5-122b|extraction|greedy|think_off|c4",
+      "82d07f1000ffb3480b0dbbbb83fe344ac39393b09d3a638a125d994fef402426"
+    ],
+    [
+      "qwen3.5-122b|open_generation|greedy|think_off|c4",
+      "5b9d7addeb934081e0dfc1ac57860bf202435af299218a4538681e545667693a"
+    ],
+    [
+      "qwen3.5-122b|structured_json|greedy|think_off|c4",
+      "4a8635500b4be8c00dcd4ff68ecf3e565ea2afafd9a6452dd3c0e696d559a868"
+    ],
+    [
+      "qwen3.6-35b|classification|greedy|think_off|c4",
+      "6871763a334feed99ca02f2996b1ea3e4063762310aa442fe9fa1553b20cd568"
+    ],
+    [
+      "qwen3.6-35b|extraction|greedy|think_off|c4",
+      "164283116d06950f18da0698e34675b4db4dfeea013e445044740ba7bf9ab677"
+    ],
+    [
+      "qwen3.6-35b|open_generation|greedy|think_off|c4",
+      "dbd7a111fdf4a6c857f3a1fe5bb9c9fefad2850a4daeaf7938e6beaef43b479a"
+    ],
+    [
+      "qwen3.6-35b|structured_json|greedy|think_off|c4",
+      "18440acd9b4cb9100f2e563f3865f78359bb468815df2b0e4c4c1f1ba20ad22b"
+    ],
+    [
+      "warmup|qwen3-vl-32b",
+      "29d6076128fa0db6d0dd3551df19a2be98f7db10018333aa853828282a2fbe6d"
+    ],
+    [
+      "warmup|qwen3.5-122b",
+      "5a0e1671798f157edf725da21a9e1247e6a262952967d7f3e2fd6600aba186dd"
+    ],
+    [
+      "warmup|qwen3.6-35b",
+      "4198182d085bd2816b1d0a0815eb165172deacd5e4d8e05a43e2377ff4f72666"
+    ]
+  ],
+  "run_name": "local-study3-q2-concurrency-20260730T003535Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": true,
+    "concurrency": 4
+  },
+  "schedule_sha256": "76d350e09e41e73353727aad165d3c04359922addbbf2b0d23a18b36f1c0c1db",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 3,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

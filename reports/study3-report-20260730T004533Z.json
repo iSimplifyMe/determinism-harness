@@ -1,0 +1,3206 @@
+{
+  "estimators_source": "PREREGISTRATION-v3 (this module committed before any confirmatory study-3 data)",
+  "gates": {
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {
+      "all_fired": true,
+      "per_model": [
+        {
+          "box": "cuda",
+          "distinct": 10,
+          "fired": true,
+          "model": "gpt-oss-20b",
+          "n": 10
+        },
+        {
+          "box": "metal",
+          "distinct": 10,
+          "fired": true,
+          "model": "gpt-oss-20b",
+          "n": 10
+        },
+        {
+          "box": "metal",
+          "distinct": 10,
+          "fired": true,
+          "model": "qwen3-vl-32b",
+          "n": 10
+        },
+        {
+          "box": "metal",
+          "distinct": 10,
+          "fired": true,
+          "model": "qwen3.5-122b",
+          "n": 10
+        },
+        {
+          "box": "metal",
+          "distinct": 10,
+          "fired": true,
+          "model": "qwen3.6-35b",
+          "n": 10
+        }
+      ]
+    }
+  },
+  "generated_utc": "2026-07-30T00:45:33.838511+00:00",
+  "q1_cells": {
+    "cuda::gpt-oss-20b|classification|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|classification|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 73.85,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 5.64,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          16,
+          16,
+          24,
+          35,
+          38
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a9c02d77bf2315cb9ed50166b8a18eed323db77542bab58f4aff906da9d1f448",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.1467048710601719,
+        "norm_distance_mean_all": 0.12167780163008798,
+        "output_token_variance": 4499.05,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "155aefe1c2b500bb2805d213ee4828071e15f4cf4a208347a882a0815d30d9db": 1,
+        "2f569c2323e9c9134ae2b86c09078708f8904cce1ba7dde4a8bc85521e4a67b6": 1,
+        "391022767560c6535a13d2d7a9dc88406013d16a47f695b6cd00be5db04e1854": 1,
+        "4a071e4cf892ea0b45916089931021d5570c81262e82a82cc11c7db657425d93": 1,
+        "5a4fffbf2d77e90d7dd60133e70d2d9c210de2d5ed01d46a528b5d0a41946f2c": 1,
+        "8f1202b4dc433f45ae1263e76b6befc5e7a08057af0f3810f215a6bed8d03ac9": 1,
+        "a0829567386077fe6dc0c6152b83f6ed50a975f61946797efcd6705001d3c451": 1,
+        "a2129d83b25901c1c836a0c69bd7493601b712f97fe36c8c34485257c1da0c63": 1,
+        "a9c02d77bf2315cb9ed50166b8a18eed323db77542bab58f4aff906da9d1f448": 1,
+        "db6ff01d24cdd2d828fd19dcd662cd609ce43584a1e61d240db5240b53b7e014": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_high": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          29,
+          29,
+          29,
+          29,
+          29,
+          102
+        ],
+        "modal_count": 4,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.4,
+        "n": 10,
+        "norm_distance_max": 0.04081632653061224,
+        "norm_distance_mean_all": 0.0184844881421602,
+        "output_token_variance": 1340.3600000000001,
+        "pairwise_agreement": 0.26666666666666666
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 4,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 4,
+        "f1043b610f77c936c60e20375102147232aedca92059e9fb09e6ddb0845437a1": 1,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 1
+      },
+      "wilson_ci": [
+        0.16818032970623614,
+        0.6873262302663417
+      ]
+    },
+    "metal::gpt-oss-20b|classification|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|classification|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 78.21000000000001,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|extraction|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|extraction|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 6.890000000000001,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|open_generation|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          16,
+          16,
+          29,
+          29
+        ],
+        "modal_count": 6,
+        "modal_sha256": "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6",
+        "modal_share": 0.6,
+        "n": 10,
+        "norm_distance_max": 0.11999062573236466,
+        "norm_distance_mean_all": 0.047996250292945866,
+        "output_token_variance": 4637.039999999999,
+        "pairwise_agreement": 0.37777777777777777
+      },
+      "text_hash_counts": {
+        "58c3321250022b2bc8390ddffb905d0896727112e5d7123582794919018eb17c": 2,
+        "9f63430bd22c6b0fa9a373ab3ced22454d0cfa585f1c25048e0ceacf52f77978": 2,
+        "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6": 6
+      },
+      "wilson_ci": [
+        0.31267376973365824,
+        0.8318196702937638
+      ]
+    },
+    "metal::gpt-oss-20b|open_generation|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          0,
+          0,
+          15,
+          16,
+          16,
+          16,
+          16,
+          16,
+          27
+        ],
+        "modal_count": 1,
+        "modal_sha256": "ae0907934b5b2e7657f1b54b56c4948f110f6cf24590b2395d05072d7392371a",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.12965307672828563,
+        "norm_distance_mean_all": 0.11379567064328755,
+        "output_token_variance": 5191.89,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "1acd746c8b54c2c7be403887db152154c1bb1aaba00c9142d7ad4814bcec331f": 1,
+        "5275d8f99b065d1b2684afb17258bde6375f6546d2910b4303dd04ef92ab1764": 1,
+        "5c72c2a2117883e83d45438d13ec96f2618e8d8f4171923c6bdd71a5556c4888": 1,
+        "5cbf3a640352b72448876dc700a63171763c1351ed54da9ad30e81bb27c64d83": 1,
+        "6f956dfe2abebe0c58ac6e0a7a80241db5d6068ce597cb8f5f6eb074cba57e9a": 1,
+        "8f3e4dc4fd792f7c2e3137a55fcad2fb4ce859cbe8d8233244004289fa2afc64": 1,
+        "ae0907934b5b2e7657f1b54b56c4948f110f6cf24590b2395d05072d7392371a": 1,
+        "af519a083887113239fc3e9c8c4db4fc885c3f509d06f411973f37d9bbc4517b": 1,
+        "c239cac84526658b2a508fe0ac9c551853fc1173b60bbbadf74b61f6e3340774": 1,
+        "f11a2e160a81733f8d7a02db31b98892e617da4802d726e64cad23c8a7545acb": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|greedy|effort_high": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 18349.489999999998,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 872.4399999999999,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          29,
+          29,
+          29,
+          29
+        ],
+        "modal_count": 6,
+        "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+        "modal_share": 0.6,
+        "n": 10,
+        "norm_distance_max": 0.0410958904109589,
+        "norm_distance_mean_all": 0.014383561643835616,
+        "output_token_variance": 504.76000000000005,
+        "pairwise_agreement": 0.4
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 3,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 6,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 1
+      },
+      "wilson_ci": [
+        0.31267376973365824,
+        0.8318196702937638
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          16
+        ],
+        "modal_count": 1,
+        "modal_sha256": "5c322a09680a29483b9c80e43ea3d916c29c574962786d76843e893afe590a80",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.16207660652105096,
+        "norm_distance_mean_all": 0.1458689458689459,
+        "output_token_variance": 588.6899999999999,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "1278ad4aec51093448adddf9051a9414a6a3cd394fc4f389537d6a74e7453bd4": 1,
+        "442da3f82721c5d5d17873da0541f746911eb9328aa9c1c4f1acae2ae8a873ed": 1,
+        "4d201dad707f5ec33044ee286cb5531390c15049fd4ab44ccab1144fb8b89bfe": 1,
+        "58c0ee8a63d564b4e924e57f0fefc503e3cb4036e5f417c0523947921420a3c5": 1,
+        "5c322a09680a29483b9c80e43ea3d916c29c574962786d76843e893afe590a80": 1,
+        "83d9d93373066afff0449fcdb93ae6bdeaa1c21e23af61469ab3c835d03bf9e9": 1,
+        "a4132e96332ecd8376850b4f540e8a92d9f044221ae698fdf1a678a009663bd6": 1,
+        "bfbd956286cc5332c7e069aff853dfcb97983f569c735b024c2d60db52663054": 1,
+        "d81a72eab2319d7db205a730894f6156c969acad78c7195039c0e0bd53ddcd20": 1,
+        "dda710c4900bbad04b0d2f85907170d8ceaed23649459be90d36cab4536808ba": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|greedy|think_on": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|greedy|think_on",
+      "gate": {
+        "excluded": {
+          "error": 10,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_on"
+      }
+    },
+    "metal::qwen3-vl-32b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          25,
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          26
+        ],
+        "modal_count": 1,
+        "modal_sha256": "93298c70197d251a1fab18ea8ca9c11b1a2787fed88eab99464b5ffa2f232ae4",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.15161385845424932,
+        "norm_distance_mean_all": 0.13609305264949373,
+        "output_token_variance": 651.6400000000001,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "13a8ba57967fb6cd7e213fb7744f93c6b8754783e24306d82b337fff02c9abdd": 1,
+        "4f37297dd95d350cf3e7fdd6d0936063005d4c0182936bfe579b07139d4554a8": 1,
+        "75569ad06bf009e6f7374890d7fa8761d3b1c1b11074b6bad63bff7a394e5b5a": 1,
+        "825050763af9fc27595715cdbaf19f640e218bdbdb4540d14912408bc036a235": 1,
+        "895f51f44b1ec3538ef7b612f1492085c3f7c214b4c4be840335b25fba68672c": 1,
+        "8aa800de51802dbfbcc99655a13b0cb7c32661837898d95b795a0829c2f1f52b": 1,
+        "93298c70197d251a1fab18ea8ca9c11b1a2787fed88eab99464b5ffa2f232ae4": 1,
+        "c1b11b626ce140392c56092ee56df10fa3c14883dbd4365ac1dd5fbd9368afea": 1,
+        "f9b3b24f22d5faa317c126082f2925655382359bfd01cefddc24a1ba89eb9f93": 1,
+        "fdcc3ba0c517ba0722be750e61e95945a00b8e5876ec504c66c5d7a5ff6ae9ef": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_on": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_on",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_on"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 5,
+        "divergence_char_indices": [
+          7,
+          7,
+          7,
+          7,
+          29
+        ],
+        "modal_count": 5,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.5,
+        "n": 10,
+        "norm_distance_max": 0.10191082802547771,
+        "norm_distance_mean_all": 0.03888680249950723,
+        "output_token_variance": 27.04,
+        "pairwise_agreement": 0.24444444444444444
+      },
+      "text_hash_counts": {
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b": 1,
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 5,
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 1,
+        "8fa82eaaf63be8957cf060c68d7f772e312c008bc4dc20fb69ea3b4933e2e16c": 2,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 1
+      },
+      "wilson_ci": [
+        0.236593090512564,
+        0.7634069094874361
+      ]
+    },
+    "metal::qwen3.6-35b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "modal_count": 6,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 0.6,
+        "n": 10,
+        "norm_distance_max": 0.8888888888888888,
+        "norm_distance_mean_all": 0.3555555555555555,
+        "output_token_variance": 0.96,
+        "pairwise_agreement": 0.4666666666666667
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 4,
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 6
+      },
+      "wilson_ci": [
+        0.31267376973365824,
+        0.8318196702937638
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          0,
+          0,
+          25,
+          26,
+          26,
+          26,
+          27,
+          57,
+          57
+        ],
+        "modal_count": 1,
+        "modal_sha256": "170e46e8ad796f08ed37872b439883a7bdb04222a5a7d03ef8825b2785aa850f",
+        "modal_share": 0.1,
+        "n": 10,
+        "norm_distance_max": 0.15027883768711475,
+        "norm_distance_mean_all": 0.13525095391840328,
+        "output_token_variance": 827.96,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "170e46e8ad796f08ed37872b439883a7bdb04222a5a7d03ef8825b2785aa850f": 1,
+        "24ca73f4e9164bcb6fcd79f18675d1a451adbd7bf276ce35a7e120a327188851": 1,
+        "36a0bf712269f20625b1252148dd876d8cf912636a2cfe5aaec2162de07dfdc2": 1,
+        "4e7570da2bcc2ea8be9a1767dbf531d8f7269374ce0a8512bb91e0193076d677": 1,
+        "7b787968b67241f4d6e3adede6449b7304121f8a7ce7bcd02932da4d57da4a7d": 1,
+        "82f75285239c974de3e74ed16e52f206656763e8a2d51411d35ee0554252006b": 1,
+        "891e591376ae38b4cc1965e5221c61305d130e087cc359c41cf59cd0f1132d7c": 1,
+        "9283b49dd632a1b1afb3f1375fbff73346274654e08fd383fa90a1038b1832b1": 1,
+        "a10c5b1a7ceea54cb44215e128c3690db8e0b7d2818eda91eb5e0ec1989e755c": 1,
+        "ac0467c2db3c08afc539a18d7cc6c4db1ac01248921c1a5e4e6ed6616d774cf1": 1
+      },
+      "wilson_ci": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_on": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_on",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_on"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 10,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 10,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 10
+      },
+      "wilson_ci": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 10
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 6,
+        "divergence_char_indices": [
+          1,
+          7,
+          7,
+          7,
+          7,
+          7,
+          32
+        ],
+        "modal_count": 3,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 0.3,
+        "n": 10,
+        "norm_distance_max": 0.1118421052631579,
+        "norm_distance_mean_all": 0.059535170356571465,
+        "output_token_variance": 55.089999999999996,
+        "pairwise_agreement": 0.1111111111111111
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 2,
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 1,
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 3,
+        "8fa82eaaf63be8957cf060c68d7f772e312c008bc4dc20fb69ea3b4933e2e16c": 1,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 1,
+        "f1043b610f77c936c60e20375102147232aedca92059e9fb09e6ddb0845437a1": 2
+      },
+      "wilson_ci": [
+        0.10779126740630099,
+        0.6032218525388546
+      ]
+    }
+  },
+  "q2_concurrency": {
+    "estimator": "equal-weight stratified diff over matched task strata (registered primary, prereg v3 Q2)",
+    "moe_minus_dense": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "dense_strata": 4,
+      "diff": 0.0,
+      "moe_strata": 8,
+      "se": 0.0
+    },
+    "per_model": [
+      {
+        "arch": "dense",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3-vl-32b",
+        "n_strata": 4,
+        "se": 0.0
+      },
+      {
+        "arch": "moe",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.5-122b",
+        "n_strata": 4,
+        "se": 0.0
+      },
+      {
+        "arch": "moe",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.6-35b",
+        "n_strata": 4,
+        "se": 0.0
+      }
+    ],
+    "skipped_strata": 0
+  },
+  "q3_thinking": {
+    "estimator": "ON-minus-OFF modal-share Wald difference on structured JSON, greedy (registered, prereg v3 Q3)",
+    "per_model": [
+      {
+        "box": "cuda",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "gpt-oss-20b",
+        "off_modal_share": 1.0,
+        "on_arm": "effort_high",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "gpt-oss-20b",
+        "off_modal_share": 1.0,
+        "on_arm": "effort_high",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.5-122b",
+        "off_modal_share": 1.0,
+        "on_arm": "think_on",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.6-35b",
+        "off_modal_share": 1.0,
+        "on_arm": "think_on",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      }
+    ],
+    "skipped": 1
+  },
+  "q4_cross_box": {
+    "cells": [
+      {
+        "cell": "gpt-oss-20b|classification|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|classification|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6",
+          "modal_share": 0.6,
+          "n": 10
+        },
+        "modal_match": false,
+        "overlap": {
+          "cuda_only_variants": 1,
+          "cuda_records_matched_in_metal": 0.0,
+          "metal_only_variants": 3,
+          "metal_records_matched_in_cuda": 0.0,
+          "shared_variants": 0
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "a9c02d77bf2315cb9ed50166b8a18eed323db77542bab58f4aff906da9d1f448",
+          "modal_share": 0.1,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "ae0907934b5b2e7657f1b54b56c4948f110f6cf24590b2395d05072d7392371a",
+          "modal_share": 0.1,
+          "n": 10
+        },
+        "modal_match": false,
+        "overlap": {
+          "cuda_only_variants": 10,
+          "cuda_records_matched_in_metal": 0.0,
+          "metal_only_variants": 10,
+          "metal_records_matched_in_cuda": 0.0,
+          "shared_variants": 0
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+        "cuda": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 10
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 0.4,
+          "n": 10
+        },
+        "metal": {
+          "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+          "modal_share": 0.6,
+          "n": 10
+        },
+        "modal_match": false,
+        "overlap": {
+          "cuda_only_variants": 1,
+          "cuda_records_matched_in_metal": 0.9,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 3
+        }
+      }
+    ],
+    "cells_compared": 9,
+    "modal_matches": 6
+  },
+  "q4_decode_rate_tokens_per_sec": {
+    "cuda|gpt-oss-20b": {
+      "n": 90,
+      "p25": 157.9,
+      "p50": 159.9,
+      "p75": 161.8
+    },
+    "metal|gpt-oss-20b": {
+      "n": 90,
+      "p25": 97.5,
+      "p50": 97.9,
+      "p75": 98.7
+    },
+    "metal|qwen3-vl-32b": {
+      "n": 120,
+      "p25": 18.0,
+      "p50": 18.6,
+      "p75": 20.3
+    },
+    "metal|qwen3.5-122b": {
+      "n": 130,
+      "p25": 43.9,
+      "p50": 46.6,
+      "p75": 50.7
+    },
+    "metal|qwen3.6-35b": {
+      "n": 130,
+      "p25": 42.4,
+      "p50": 71.6,
+      "p75": 77.1
+    }
+  },
+  "registered": true,
+  "totals": {
+    "cells": 57,
+    "records_in": 578,
+    "warmups_excluded": 8
+  }
+}
