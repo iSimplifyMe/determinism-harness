@@ -1,0 +1,36 @@
+{
+  "box_state_end": {
+    "captured_utc": "2026-07-30T07:14:05.450897+00:00",
+    "resident_models": [
+      {
+        "digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+        "expires_at": "2026-07-31T01:37:52.587711-05:00",
+        "name": "qwen3.6:35b-a3b-q8_0",
+        "size": 38145338898,
+        "size_vram": 38145338898
+      },
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T20:20:48.982723-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-30T02:24:05.453692-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12889966508,
+        "size_vram": 12889966508
+      }
+    ]
+  },
+  "complete": true,
+  "done": 303,
+  "expected": 303,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-30T07:14:05.452364+00:00",
+  "retries": 0,
+  "run_name": "local-study3-q3-thinking-20260730T053554Z"
+}

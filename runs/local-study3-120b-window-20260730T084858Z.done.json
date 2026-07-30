@@ -1,0 +1,36 @@
+{
+  "box_state_end": {
+    "captured_utc": "2026-07-30T10:03:18.902307+00:00",
+    "resident_models": [
+      {
+        "digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+        "expires_at": "2026-07-31T04:43:59.589492-05:00",
+        "name": "qwen3.6:35b-a3b-q8_0",
+        "size": 38145338898,
+        "size_vram": 38145338898
+      },
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T20:20:48.982723-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "a951a23b46a1f6093dafee2ea481d634b4e31ac720a8a16f3f91e04f5a40ecd9",
+        "expires_at": "2026-07-30T05:13:18.933938-05:00",
+        "name": "gpt-oss:120b",
+        "size": 64475082259,
+        "size_vram": 64475082259
+      }
+    ]
+  },
+  "complete": true,
+  "done": 901,
+  "expected": 901,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-30T10:03:18.904546+00:00",
+  "retries": 0,
+  "run_name": "local-study3-120b-window-20260730T084858Z"
+}

@@ -1,0 +1,94 @@
+{
+  "box": "metal",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T05:35:54.370657+00:00",
+    "resident_models": [
+      {
+        "digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+        "expires_at": "2026-07-31T00:04:13.105837-05:00",
+        "name": "qwen3.6:35b-a3b-q8_0",
+        "size": 38145338898,
+        "size_vram": 38145338898
+      },
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T20:20:48.982723-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "8b9d11d807c57feb1e2ecb0d6cbf40334c37dcc3523bed5540af4f927f112a37",
+        "expires_at": "2026-07-30T00:45:53.940404-05:00",
+        "name": "qwen3.5:122b-a10b",
+        "size": 81178352678,
+        "size_vram": 81178352678
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|structured_json|greedy|effort_high",
+    "qwen3.5-122b|structured_json|greedy|think_on",
+    "qwen3.6-35b|structured_json|greedy|think_on",
+    "warmup|gpt-oss-20b",
+    "warmup|qwen3.5-122b",
+    "warmup|qwen3.6-35b"
+  ],
+  "concurrency": 1,
+  "created_utc": "2026-07-30T05:35:54.161067+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "git_head": "3184ecfd843472836e939f1207fcb0e38e8f2d17",
+  "local_url": "http://127.0.0.1:11436",
+  "mode": "study3-q3-thinking",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+    "qwen3.5:122b-a10b": "8b9d11d807c57feb1e2ecb0d6cbf40334c37dcc3523bed5540af4f927f112a37",
+    "qwen3.6:35b-a3b-q8_0": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77"
+  },
+  "n_cells": 6,
+  "n_items": 303,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|structured_json|greedy|effort_high",
+      "86af0c70ffb13aea63b501204d993473a88cfdabd63bb64fb663f4556fb4dc0a"
+    ],
+    [
+      "qwen3.5-122b|structured_json|greedy|think_on",
+      "cba2b38a7d091d7e2560362e67e4049bf66f0a7016471da9f4654b9d3744a008"
+    ],
+    [
+      "qwen3.6-35b|structured_json|greedy|think_on",
+      "dcf119621db64d9183095f9fb3b74ed329d2475517012a8a2776ef82505df57f"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ],
+    [
+      "warmup|qwen3.5-122b",
+      "5a0e1671798f157edf725da21a9e1247e6a262952967d7f3e2fd6600aba186dd"
+    ],
+    [
+      "warmup|qwen3.6-35b",
+      "4198182d085bd2816b1d0a0815eb165172deacd5e4d8e05a43e2377ff4f72666"
+    ]
+  ],
+  "run_name": "local-study3-q3-thinking-20260730T053554Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "per-model",
+  "schedule_sha256": "af328faa2e26fa1d1f82ae053a584022627872fe98822baf08d3c7722086bef8",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 3,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

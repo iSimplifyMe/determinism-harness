@@ -1,0 +1,231 @@
+{
+  "box": "metal",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T01:09:13.154241+00:00",
+    "resident_models": [
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T20:02:28.825816-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|classification|greedy|effort_low",
+    "gpt-oss-20b|classification|temp07|effort_low",
+    "gpt-oss-20b|extraction|greedy|effort_low",
+    "gpt-oss-20b|extraction|temp07|effort_low",
+    "gpt-oss-20b|open_generation|greedy|effort_low",
+    "gpt-oss-20b|open_generation|temp07|effort_low",
+    "gpt-oss-20b|structured_json|greedy|effort_low",
+    "gpt-oss-20b|structured_json|temp07|effort_low",
+    "qwen3-vl-32b|classification|greedy|think_off",
+    "qwen3-vl-32b|classification|temp07|think_off",
+    "qwen3-vl-32b|extraction|greedy|think_off",
+    "qwen3-vl-32b|extraction|temp07|think_off",
+    "qwen3-vl-32b|open_generation|greedy|think_off",
+    "qwen3-vl-32b|open_generation|temp07|think_off",
+    "qwen3-vl-32b|structured_json|greedy|think_off",
+    "qwen3-vl-32b|structured_json|temp07|think_off",
+    "qwen3.5-122b|classification|greedy|think_off",
+    "qwen3.5-122b|classification|temp07|think_off",
+    "qwen3.5-122b|extraction|greedy|think_off",
+    "qwen3.5-122b|extraction|temp07|think_off",
+    "qwen3.5-122b|open_generation|greedy|think_off",
+    "qwen3.5-122b|open_generation|temp07|think_off",
+    "qwen3.5-122b|structured_json|greedy|think_off",
+    "qwen3.5-122b|structured_json|temp07|think_off",
+    "qwen3.6-35b|classification|greedy|think_off",
+    "qwen3.6-35b|classification|temp07|think_off",
+    "qwen3.6-35b|extraction|greedy|think_off",
+    "qwen3.6-35b|extraction|temp07|think_off",
+    "qwen3.6-35b|open_generation|greedy|think_off",
+    "qwen3.6-35b|open_generation|temp07|think_off",
+    "qwen3.6-35b|structured_json|greedy|think_off",
+    "qwen3.6-35b|structured_json|temp07|think_off",
+    "warmup|gpt-oss-20b",
+    "warmup|qwen3-vl-32b",
+    "warmup|qwen3.5-122b",
+    "warmup|qwen3.6-35b"
+  ],
+  "concurrency": 1,
+  "created_utc": "2026-07-30T01:09:13.042198+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "git_head": "3184ecfd843472836e939f1207fcb0e38e8f2d17",
+  "local_url": "http://127.0.0.1:11436",
+  "mode": "study3-full",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+    "qwen3-vl:32b-instruct-q8_0": "2d0a26462393ce989905021dde175b6694fe5720303c52c43610e1ea3c61032b",
+    "qwen3.5:122b-a10b": "8b9d11d807c57feb1e2ecb0d6cbf40334c37dcc3523bed5540af4f927f112a37",
+    "qwen3.6:35b-a3b-q8_0": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77"
+  },
+  "n_cells": 36,
+  "n_items": 3204,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|classification|greedy|effort_low",
+      "e670b3635ad4dae1996346ae765ac8b10b4e7b57e352ceda453bc5e96e652ea4"
+    ],
+    [
+      "gpt-oss-20b|classification|temp07|effort_low",
+      "d1a8267a51b5771e47a5a250f68b7e83c9331f3ee511e4529ea2424cd5a24758"
+    ],
+    [
+      "gpt-oss-20b|extraction|greedy|effort_low",
+      "644aa9f1df4bc461ed249701a8912c7f9f63d91cf829193b047a391819f89c14"
+    ],
+    [
+      "gpt-oss-20b|extraction|temp07|effort_low",
+      "4d2f5271e7eb9ad45dc02ea86e1f884596af46354f755496c864aba2f6c5d7c1"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|temp07|effort_low",
+      "46ac7cdb9574861c24e50faeec9c9c0256c4c05ab9edd5ad95dd4b18197a37f6"
+    ],
+    [
+      "gpt-oss-20b|structured_json|greedy|effort_low",
+      "70ee3c3bba23604303c26b55b7f805e5658f6f05537ae10f2089eb93088d3f55"
+    ],
+    [
+      "gpt-oss-20b|structured_json|temp07|effort_low",
+      "ac30e4ba46ab0f5a92b36d841abc3edea4bbe996e01f4b1fdd8915c5c2a50d4b"
+    ],
+    [
+      "qwen3-vl-32b|classification|greedy|think_off",
+      "e434e2a4c2ec2cd05c6a49af737fab1c5dadfc666a185e46e58e0679043aa1ad"
+    ],
+    [
+      "qwen3-vl-32b|classification|temp07|think_off",
+      "58dbac89d56c730ab9e2a3125c4ca0b1a2f7e577d2807f15da36e24b08963638"
+    ],
+    [
+      "qwen3-vl-32b|extraction|greedy|think_off",
+      "a0454bfc6dd82f38327dc991387259d7138ce80640c6d83700f45bcdbb39b85f"
+    ],
+    [
+      "qwen3-vl-32b|extraction|temp07|think_off",
+      "72fdec5e6fb2a902c30c3b6e20b617ef31d687f761e60cb575e5d76ecd703557"
+    ],
+    [
+      "qwen3-vl-32b|open_generation|greedy|think_off",
+      "9858b077f671fb3a56c9ce9e94aaa04faf661e06c3d6ae8ede98db85d82b8210"
+    ],
+    [
+      "qwen3-vl-32b|open_generation|temp07|think_off",
+      "6453cc463f883ac35bfd08edaf1a2c8ea71571e3610216cda33adea2536ede47"
+    ],
+    [
+      "qwen3-vl-32b|structured_json|greedy|think_off",
+      "acb9655c5972ea6b3bccff253f9c8c6857da550997765b3f72329d0e22ec1787"
+    ],
+    [
+      "qwen3-vl-32b|structured_json|temp07|think_off",
+      "4f598c3c7d2143ee2d5d6956d128bd966ac036fbaa590789b3bd86728f6daad7"
+    ],
+    [
+      "qwen3.5-122b|classification|greedy|think_off",
+      "f12117a9946cc78ac4acbdcd3e49839ef31d3bcaffc954bffd2a9fcf4fd1ed5c"
+    ],
+    [
+      "qwen3.5-122b|classification|temp07|think_off",
+      "cec6ca4959d1bd2446e9d8b63ccc6f1558cdf09f92a232602b50003cb789f6ed"
+    ],
+    [
+      "qwen3.5-122b|extraction|greedy|think_off",
+      "82d07f1000ffb3480b0dbbbb83fe344ac39393b09d3a638a125d994fef402426"
+    ],
+    [
+      "qwen3.5-122b|extraction|temp07|think_off",
+      "a520f8a83368784190050a8dc5d28309d8c51be5fc2250f4560343081209ca11"
+    ],
+    [
+      "qwen3.5-122b|open_generation|greedy|think_off",
+      "5b9d7addeb934081e0dfc1ac57860bf202435af299218a4538681e545667693a"
+    ],
+    [
+      "qwen3.5-122b|open_generation|temp07|think_off",
+      "70f1fd057d317e80621ce14b32607910481b277aa40dcd46598e6f753859aac6"
+    ],
+    [
+      "qwen3.5-122b|structured_json|greedy|think_off",
+      "4a8635500b4be8c00dcd4ff68ecf3e565ea2afafd9a6452dd3c0e696d559a868"
+    ],
+    [
+      "qwen3.5-122b|structured_json|temp07|think_off",
+      "ba00ea5a6da35d36315188df23f932f55b9d1c9626002278969a4fa839b50a0b"
+    ],
+    [
+      "qwen3.6-35b|classification|greedy|think_off",
+      "6871763a334feed99ca02f2996b1ea3e4063762310aa442fe9fa1553b20cd568"
+    ],
+    [
+      "qwen3.6-35b|classification|temp07|think_off",
+      "f809b1b20148f159fb0f5fe6db92d22862d1b592d89a2cbd43882b3471df9418"
+    ],
+    [
+      "qwen3.6-35b|extraction|greedy|think_off",
+      "164283116d06950f18da0698e34675b4db4dfeea013e445044740ba7bf9ab677"
+    ],
+    [
+      "qwen3.6-35b|extraction|temp07|think_off",
+      "ebb11794221af74834c00812700981669ae2426803e0ac9b95d75d7eff32e72b"
+    ],
+    [
+      "qwen3.6-35b|open_generation|greedy|think_off",
+      "dbd7a111fdf4a6c857f3a1fe5bb9c9fefad2850a4daeaf7938e6beaef43b479a"
+    ],
+    [
+      "qwen3.6-35b|open_generation|temp07|think_off",
+      "58f2d696c7aa887657e984e6bad8a506c3bcc1104e0eb0f33f24273a93b04604"
+    ],
+    [
+      "qwen3.6-35b|structured_json|greedy|think_off",
+      "18440acd9b4cb9100f2e563f3865f78359bb468815df2b0e4c4c1f1ba20ad22b"
+    ],
+    [
+      "qwen3.6-35b|structured_json|temp07|think_off",
+      "6b1f25971d88d02bba5be847b134b8bf38785c0381b1f049babbd7206fa0b59a"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ],
+    [
+      "warmup|qwen3-vl-32b",
+      "29d6076128fa0db6d0dd3551df19a2be98f7db10018333aa853828282a2fbe6d"
+    ],
+    [
+      "warmup|qwen3.5-122b",
+      "5a0e1671798f157edf725da21a9e1247e6a262952967d7f3e2fd6600aba186dd"
+    ],
+    [
+      "warmup|qwen3.6-35b",
+      "4198182d085bd2816b1d0a0815eb165172deacd5e4d8e05a43e2377ff4f72666"
+    ]
+  ],
+  "run_name": "local-study3-full-20260730T010913Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "per-model",
+  "schedule_sha256": "87d60240fbc9024b5af4d282f708c3d4fb7f85fba83b0d8dc903fa8925d1a7f0",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 4,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

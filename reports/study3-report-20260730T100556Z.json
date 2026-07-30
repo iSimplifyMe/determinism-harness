@@ -1,0 +1,5080 @@
+{
+  "estimators_source": "PREREGISTRATION-v3 (this module committed before any confirmatory study-3 data)",
+  "gates": {
+    "model_drift_cells": [],
+    "negative_control_failed_cells": [],
+    "positive_control": {
+      "all_fired": true,
+      "per_model": [
+        {
+          "box": "cuda",
+          "distinct": 100,
+          "fired": true,
+          "model": "gpt-oss-20b",
+          "n": 100
+        },
+        {
+          "box": "metal",
+          "distinct": 100,
+          "fired": true,
+          "model": "gpt-oss-120b",
+          "n": 100
+        },
+        {
+          "box": "metal",
+          "distinct": 100,
+          "fired": true,
+          "model": "gpt-oss-20b",
+          "n": 100
+        },
+        {
+          "box": "metal",
+          "distinct": 100,
+          "fired": true,
+          "model": "qwen3-vl-32b",
+          "n": 100
+        },
+        {
+          "box": "metal",
+          "distinct": 100,
+          "fired": true,
+          "model": "qwen3.5-122b",
+          "n": 100
+        },
+        {
+          "box": "metal",
+          "distinct": 100,
+          "fired": true,
+          "model": "qwen3.6-35b",
+          "n": 100
+        }
+      ]
+    }
+  },
+  "generated_utc": "2026-07-30T10:05:55.996395+00:00",
+  "q1_cells": {
+    "cuda::gpt-oss-20b|classification|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|classification|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 81.7684,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|extraction|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 16.1544,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|open_generation|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          24,
+          24,
+          24,
+          24,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          45
+        ],
+        "modal_count": 1,
+        "modal_sha256": "d1b4636b81fb24f9e287577744675501b9a651b38fd3070c207143af5735c7b4",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.1277763913151984,
+        "norm_distance_mean_all": 0.12490602039101165,
+        "output_token_variance": 3400.2090999999996,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "048e208d104afe9083f3c7e2137c8ea933d9a13127a5a0b5766c95a89560fbc6": 1,
+        "0d4a2073599440ca9a7805b11850e95b9ad0b22823c973899f79212138b080e2": 1,
+        "0eca3a1895f66563d407fa7444f51733d1e5301522968d7906e983c28baf8bf9": 1,
+        "0f2deaba0df4e4aee13eca506db576f4a0f1ae1d63e2f202480ed3b1ff3b7365": 1,
+        "0fd1389aeb0247e9f454dc431caf02a998c402d08fa2e0f98b3d081ba8a0835e": 1,
+        "10b57f0fda3ce4535ef568d43d52950ee31f40f884ccd625c0cc31b34e1f4535": 1,
+        "133c4d1be3a789d385a49873068ffb6699213ea034e19b12e20fc95980fe5511": 1,
+        "15f2b1679ce8b944b62b5d6a6e47c55418093befcd00e319e608b5985207ac03": 1,
+        "18b515241cc4a41bd6b3a95f7a86de9810d4e86072a3c99bc85932aae681a390": 1,
+        "19e20780ec838a723f803c2ac0acb40680776f4d2c94733e81e695893f25d59d": 1,
+        "1c1a6acf9500b0e7a6ed5f28d2a99a61fc7ca8cddcad4a73d913fd7b99698983": 1,
+        "286d9819bc5b37d7e4ca51b18c93154e48dfa8b73b1baf24c16996f62e27aad5": 1,
+        "29373f8a4acc840510c16735cdff804fc6e4d5be992eab61e51c1c3373d6d6e4": 1,
+        "30071303625c5ae038b975c4ce38500bf828842b35e8fb9edd692601dc01d2de": 1,
+        "30e30305761b0e3109877381409de93fd6f4f9e7ea2387e67e84f6995c44670e": 1,
+        "347a905b53c65c36bc3f6a04e64e2eb9bc3d9fdcfe3d4ee99956822cefb2d756": 1,
+        "36fa1fd0ff44978dd990105f4d8f435f68c278a847f49c080eb63a8d224a3ee4": 1,
+        "3f26feceb426a527b238bcfdc7b46f6e1188f0ee148a6f9bae499957d7966e49": 1,
+        "400d0e2917d0bf2d9e64bb73a6fd8d0d32c711b4b1658b50ebaf40809493ab1b": 1,
+        "42021ba01586e9bae6d197c0e3402901bf6443ba15c4fd39f9b996be8d635f41": 1,
+        "42400fc65bb637094469005f4cdf8ce80beb6b7e0dacd07728fd56fadda6525a": 1,
+        "48105c0cfabd2174011a26bbc19d2f269ea573ca1821122abb3f05b62c4f54a6": 1,
+        "4ba86191122e6a8f4d35e6928731e4fe35c7433dbc0d9a52c4b43208023bf1c9": 1,
+        "4ff79beb82c059049d15a399b983e5cea30f0b0f454e22ee7f1ffe2f9df781c5": 1,
+        "53725fa92acc1f0884bd0fac73643a21e99a6a229a0e410eb0e0c7ae92c739bf": 1,
+        "5431ca7a856ac734be8466f3518afac7190dc89bed32a4d35e9ec30e7f90bd44": 1,
+        "54774ec7709ec5b22495645e169d0f537ed32ff8bd9574b6ee89f891f9bde296": 1,
+        "54f2035b5deb7f5b7e5e03f0f452611d9e3eefe6fc3f816403d74d0b06b45c6b": 1,
+        "574703085c2ad4ccc6cd880309f5bd1c35342634330b3992a72daaf20e3b79c8": 1,
+        "5be8d7fc20751b7f5f00fffbee7a1fc66b95d3d505ce57f3ebfd63a946b68e0f": 1,
+        "5cf1a78d7ed746d4ac64b17fbb88c34fc21f0c478aefc0d87e232a37d9bb2708": 1,
+        "5e1d2cd3f302af62b1c3043da5b3e6e7579b0df26c17e5b6fdf6c30b442dc669": 1,
+        "63e8112e37a2879a687a3c5365b909310da7ed7882a256d742ccae79748cb849": 1,
+        "65b40cc2967069fbafc141c67601bb757f0bc86d92a6eec3b5ba2ee760a7ac32": 1,
+        "68712c89b501b4d7d4d76ec0edac4d95719e11ecdb5455f48be779316c3e8e3f": 1,
+        "6924cfbe74506ba5363279fe6442c8661d02173f0b84bf61b82a685b1e21b2f2": 1,
+        "6cde26911495d6838d9c12699761017c96ad0ba4bb58fb6e4bd37b9d5d8b194e": 1,
+        "6efb723c105be12a5215be159ada24aa694400c821602f55955b2b2035761eba": 1,
+        "717447ab9949d1e6dec9885c05a524fdbfae1b061083d95c5e93a5ec846b971d": 1,
+        "739c3339e1d249ddbd4aeed85d13d4abcdbf2023afcf53e8f88863ed67b9b027": 1,
+        "73e25cb72e39fe04b64af3763609be83805cc7eed8b36dde4b08ad53a03537e4": 1,
+        "7575202998e77adfb93cd9fbd44802dea82ec5245c44e0dbce84b0aa68bbb618": 1,
+        "768d72bc16774161ba70edf4b7bcc97e11be2bff681022a043b3e2467390d771": 1,
+        "7a90489b36cce4c0acdc31448b366b48d3b5434cac8b7d123e432aaa876eabd9": 1,
+        "7b6b36d546763779e0cec3e5bb7d064cd05c6ed151ddfe24a5326e48f8a78324": 1,
+        "7c4ecf860322f558739503dba5bddcb8f1b02d33ffff2c61975fb7fa5804ea1b": 1,
+        "7cc931cdb3034ba8ab6b614911306f5b47dae099a20e0f7a36407cdfd612f694": 1,
+        "7deac3f8690adb99ac8ed0736e0d3461e3c393288f3aa5876fb5bb931f4e9360": 1,
+        "7fcff3ff0307335db531048c4761c03b166d6e3fe5f47d20b7ff0b8dbda6b24a": 1,
+        "7fdd1f89bda397fd926994d964e57a11ef379700f79d7f76acf5a2444b84985b": 1,
+        "80da16977f8a375ea83063a4b385dd22d4bf7312853aa2d59998e27b5385b3c5": 1,
+        "85ce83259197e5b535065e4eebeebfa497d65a71593b766f99bc9b8e248227af": 1,
+        "8e98086728904ff5a451dff46dd97c3686e5fe18c800c834232a7ac1f6896290": 1,
+        "90c62e1c10f672c192a6d42670818115288bb3880c36fc8ae33b95567ae954ef": 1,
+        "911b13466c9fec8e38c5029146462b906e2e4a91c86824921f93a6cf55a0f59a": 1,
+        "91844e683706244c64eb32de2468683bcd65a3122ebab8f8a07b049fcc9aa07c": 1,
+        "94101ec14d3475777387144ee9bdf8d1c6d85a54ea7b6af828ebb0b502cf2f8e": 1,
+        "9726db848c659d917f1a4f3a0b2d6550a5955c6718740798ada679f1c0c98cf7": 1,
+        "9bf0996528eb93c0ed02775f77ccca009e5b8862ccce3f4b0a9f4632e1b1d8cf": 1,
+        "a00a6d1a0819eadb0295390e23ab543b1670b4d52331f0bd7010545cfc2f2e85": 1,
+        "a6b3fb564cddb84a8204fe27e5d2977afd8ee6a0ca414b3c8ba8e38e45fc096e": 1,
+        "a787f8fa7ff540e4b43b9de87e8702679c3dfb6eb48eed707303533ed26247bd": 1,
+        "ac08d984e0c5523bbcf4f5dcdd8dc8acdde77380a8402070ec22c4acd3572b19": 1,
+        "ac265051f9ac4e8d1490d6ef3b38b4dab53c188fac4bd9ebe5f1cdd9fed2f9bb": 1,
+        "acdab2a93fa0a25d766d15d805a11c4f31e8b685f1cb485ff0175d219d67c21e": 1,
+        "ace860cd3ab2a387b3fb5849973ca7ba0e917dac9e3a76b50b3a10ec7c1a1552": 1,
+        "aec5be80761ee172e343a7eb17724d757d9be797b0fe3f662881217ae6210496": 1,
+        "aed2cd4c0c5c115ea51a87a5491ecf56f9982ff29ecc3cb7dc6976479fb48af0": 1,
+        "b2d80179fabc353148ef1114abde9a79a3f9c7e7fdba8b405f0a668e49960ae3": 1,
+        "b47c1c1962c4a9bdd2b33f2f636eccb2fd9836e6378c365223d102b39a5c4b68": 1,
+        "b481bd3cd37d6de737e850e261e91748cbccb2a5ec12eff78ebd1adcee11dfdb": 1,
+        "b4ef093a6091350dc4001895bc79995cea322e70fc81ae215bcda81d7b7000eb": 1,
+        "b6221c18e70d34ef1c7b9eb608778ec06fb2988e243f68faaf1ff4c5ff3cab2c": 1,
+        "b6cdb2a35810b523721bb1344bc3891bfd211a77fc0d54a71a836155eb3d065a": 1,
+        "be1c4642c03a74cc0d390415ed76eb1797e454ae4d96e17f5ca625a13978c689": 1,
+        "be338cc93130207e37051e380fbb641c52dc4f4d2ccfc2224b0c1578fc44303c": 1,
+        "bf9838f9794770d4e1be2c76189b0bbd2896dc0d23eb9820d642d074aad67d55": 1,
+        "bfd8a89368c8833dc0731b99d071d21a48ccbbee5abacb6ab52e1f608eaf9cce": 1,
+        "c2f55af9186b5bb7f6a7ff735442136b5e2ad90967ed2aa62171f8ebc5bc5727": 1,
+        "c9efd098b3195e80aa1710c0536ef9834327b96b5017bc211a3f58887adc9b03": 1,
+        "cb3935f6367af3f8a6e42bc1e0b87ce68e80e21a9f18f34363926fca0ace5eae": 1,
+        "ceecce27475e31e3ad8a2a2244358e19a4c09b829e1506b674e8d1fcc86c7dbe": 1,
+        "d1b4636b81fb24f9e287577744675501b9a651b38fd3070c207143af5735c7b4": 1,
+        "decdcbdbea536b74a2a68e5cbe84ba8a3c42f2f6200b035be86973a5b5038dde": 1,
+        "dfcdc09c0df784725ab5fb6adbaff1468a0185faa5c0075b2dab8fd17ed052bc": 1,
+        "e6d269e2c8bb0745c6ac2ff74d9ef64240928b31f5171bf91b11eb4d41a05aa4": 1,
+        "e768db1a762d705aa658f4cc1ffcf674949e898ba997de409e4c11416e37d260": 1,
+        "e87e02f5141e1c76eeaf836f34315709bbff314479faca4bc94b66d7c6d97923": 1,
+        "e8996928d1416d5624ec54e845f2cedb2cffeb764ae7e2b46823ff0a09c4cdb9": 1,
+        "e8c69e94f54818eece07bab651860683fc6342a15f7ed52c85a16a38b33c0384": 1,
+        "e9ad3e274798cbe8238ef2d396cc94f514d58ed913ff9e07cfdbe7749ff95726": 1,
+        "ea613bf9085a84a9e699a36580b98139818f0256b31871e0ce485ee156ad723d": 1,
+        "ec5d22aaf8275e8e41e374cae7d7b438230af1416db32c0d37c72c62c9272568": 1,
+        "f148b6d0affc957ccf3cdf8e21798c4875d9215b43bc39b936032f8ec4dd226b": 1,
+        "f1b9698daa6ea894e4b7c2a9bcbacf83cad163278b92178b749577b06b8ec390": 1,
+        "f372b5774d994e47b72a4672aa0a97056294f5c07c217f41801b8194c01b9862": 1,
+        "fb689bf2d7c624c0d4eafa2200c6d902fb3ebe2482792d55e99673ede1d39bdc": 1,
+        "fc7d3ba5aa9c143f810901f32b49eac6e66328ef7d109eb593de334a79ac4aea": 1,
+        "fd9c3aacb1029ab92b51578bddd890b392d5ad58d19570eccbf7207157d199ee": 1,
+        "fec6c04398e11b8d0ec288d07c334a736b8cc5921bdecf6ef33e3ee3c3efbde3": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_high": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          29
+        ],
+        "modal_count": 99,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.99,
+        "n": 100,
+        "norm_distance_max": 0.03424657534246575,
+        "norm_distance_mean_all": 0.00034246575342465754,
+        "output_token_variance": 0.009899999999999999,
+        "pairwise_agreement": 0.98
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 99,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 1
+      },
+      "wilson_ci": [
+        0.9455138038212946,
+        0.9982325679358593
+      ]
+    },
+    "cuda::gpt-oss-20b|structured_json|temp07|effort_low": {
+      "box": "cuda",
+      "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "cuda",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          107,
+          107,
+          107,
+          107,
+          107,
+          107,
+          107
+        ],
+        "modal_count": 49,
+        "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+        "modal_share": 0.49,
+        "n": 100,
+        "norm_distance_max": 0.0410958904109589,
+        "norm_distance_mean_all": 0.015613176777560338,
+        "output_token_variance": 1064.71,
+        "pairwise_agreement": 0.42424242424242425
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 43,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 49,
+        "f1043b610f77c936c60e20375102147232aedca92059e9fb09e6ddb0845437a1": 7,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 1
+      },
+      "wilson_ci": [
+        0.3942199893044113,
+        0.5865198806597283
+      ]
+    },
+    "metal::gpt-oss-120b|classification|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 14.7744,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|classification|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 68.9859,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|extraction|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|extraction|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 6.9171000000000005,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|open_generation|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "757b645b413c821ed131226f6cff67884e0642321677a82419f5b5764d8f623f",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "757b645b413c821ed131226f6cff67884e0642321677a82419f5b5764d8f623f": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|open_generation|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          29,
+          29,
+          29,
+          29,
+          29
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a4c07f0d2043eeda2aba166ee62414a6db82574c32c7f9cc4739b0a495db764b",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.14562002275312855,
+        "norm_distance_mean_all": 0.14303095609638,
+        "output_token_variance": 2017.0475,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "06e53b5605e73be80234b64576b052b4effb46ded2a47fbb462eb632aa282d56": 1,
+        "09cdb0951f1f14cc29e6f524784b93ec8619cb86bdfc9bcee4357e1a69cf7cc6": 1,
+        "1015dd1c39a361096c2fae17aac9a6254384e3142329c00cf9bd8f058361f08c": 1,
+        "104aaddbc5a22217729a08d57689d0f23dd37f0068132bf69c52a18221569495": 1,
+        "10b7d0a5941ed2c011e266cc90148255f0a061ffd0f8ece722ba4e2830c5db07": 1,
+        "12c1b48a074db7774c36dbc7b0ee9ff6f63507b5ceb32ec6d7a2245c8ae9dee5": 1,
+        "144420da690ea10a90c6c115a9e97872281c1c8b4ecee3019724edf5ce69a910": 1,
+        "17824e6f6ee74b75d57b1bcf2374749d27ace9312bec3d081ddf9fe2705154ff": 1,
+        "179b9e104d12d387d8a8bdb0375ba84de4c095612811990dac1dec880be46992": 1,
+        "192459cbd0b4ec85e33fc242f5a58df28601508e47c895e12c9932d33d93e582": 1,
+        "1945d407498cd6d583edd9040aa4f3704f455efc5a46066e3be58ca37c69e461": 1,
+        "1a1e7a6080f7a092d612f4177d2aa399277fe98118f339a0f6a5a69eb7cf7bce": 1,
+        "1ae4120a6e3cce0501a7bc8e9e88de650a6d663865d7abcfc6e2814e7915e581": 1,
+        "1b2c2b7441ee79fd2c170b258a1c5000d044fa1b612dc2d61248a303a57f82e1": 1,
+        "1d6769c163dedc8a63d05919c0d5d5e07158153334c4cd2962f59463b64231c1": 1,
+        "1df28780d845b9304620df9ebed90f844bb5b817fb0050aec06e715a51fb8082": 1,
+        "21ec52d76206af6d86f65045d033ec87e902d4fe15ea71181fc6f7e6070eb07f": 1,
+        "2364f0cf9aafe4db47b171ec0bc25ddf6cea402ade59ca1fb27b90cacf9a33df": 1,
+        "280c2311dfa113e7cbc8bc8e61717249ec138ce6aa2f87eaab9839c46298777e": 1,
+        "2fedf2f126cf5fdf67226cc4df1a7371cf27d2f380255cc622ace5c60803397d": 1,
+        "30851fceaccbf0f5e36a09c416f1cbe58be73ada54ce91ced1303978c954046b": 1,
+        "31b42118af27794f7533fe5344b24ad518f8d0890a6c55440648624e258af73f": 1,
+        "31d090e94d5dd7aea37d6cf2143f20b2f501345b87f9261fada29ea9632661ac": 1,
+        "3578cf3aa38cd827a047e790cc64524ba974a6da7c36a3a41fc68d1e87207a77": 1,
+        "3859da635a5f68b3bd93ba41e28e5428c3c2fd865a2b81b3c175b5b1ec178be6": 1,
+        "39289031181306add2e59d0641c4dcbc5c083d8d9de0ea37aebd92d26b0fc8c1": 1,
+        "3aca1bb3d4b6a9b045efc43c8a3e456bd4122f86496ae1c48b0f15345744e999": 1,
+        "3afd0d197d9df9037b771947f8ba691ea0f5fa13bf238918b951a77cc52f9280": 1,
+        "3c535d09b415ca5eb0d2f1e11c305fafcbb6d3794230f8b6e24be4fea853d46d": 1,
+        "3f70962f30fc2cbfe9ad5e7e6963773e058b4153004f61657cd33c0d363bcadf": 1,
+        "407d5734ff6045a15046195f450be5035bbf287fc4d5540bfdd53f9aee5e55e2": 1,
+        "42904e3dd51ab0542ee07ee62c9a12f30474d61f873ae554013d70de18ec0838": 1,
+        "4e86da84a6e2f22d8ec51bbd77946342f3d6349e05fa0b5cd0d737e26dde4fe4": 1,
+        "4eeeedb05f9a2426504e8927ea9b95bf9c330a50d0f18798628e92c79e0a7964": 1,
+        "50aa6af24eee078838c2dc8002cf6cacc50a706df18a99b3cb20e756f51b241a": 1,
+        "523d8779eb722e58f34375a87d534e8f8fb637b1297254af14eeac402da33139": 1,
+        "537f17af5d65b2b48d222012939c041519f387762bcaa8d99a0dd2e0e2d3d2e5": 1,
+        "53b5828b41fce8bb7c6c4e46c341e60996898f2f3d7970a9eaca9f24a5f3ae57": 1,
+        "5a4e36c9e3e1303dbc3c552ce19f550a787ae5eba8ec047fea881fd9b1157faf": 1,
+        "5ac6df9c5487f9b7584ce3ca4ce4f5f463f0173844260d78ddeaf46f3c9e6c44": 1,
+        "5ee38d5716c606f620fd985aa23eaf999094db87a0b49bf21115a30792dadc8c": 1,
+        "6051ece11aec31510e80d53f205e11cf6b99e647fd2d5d24b29fad9d02c67bd2": 1,
+        "687e441ebff238ce5d6f0ff33a385f9cb617803ff98109d3d36c873ba8649297": 1,
+        "688c837c5b3c5378d2bcabdb248c960f37519dc50366bc13af0cd0065f52481c": 1,
+        "7091a7df2cacc6cc17d221ca504654ab4288c096109700bfe384e7261ceae0d1": 1,
+        "73b8b5569e8a549fb6054c4d8675245f86885cba2fc6c16569c4d0c6aea82780": 1,
+        "74eaaa0d437bc5870e3220dbe5b1fbfcb72bf8886dc9b1773c822e2b079e24d2": 1,
+        "75320a5c48f7c349d4a5ef85b97e8df4735736f0167af11708bba663dd7aab6f": 1,
+        "75aceea3422749646e39c7d72ecff01e725ad683f01f01c12d5eedd7742256f4": 1,
+        "7ae24b98b73e3266e5523364008ce41640ee2bd0bf5891a7a7951f032839c0fc": 1,
+        "7b7636c0659d2b10c971ff5bb4400d54e3c1cc656d463977a1215e7f99f60fec": 1,
+        "7ccc52e6d14eb757806a21a77238054661595e0c033a1aab633d22cc089e6b34": 1,
+        "7e9d9652ec9243f677bb4b1f01ac487b2d804f3fe0c72984eb30e0f9bd7ae7ad": 1,
+        "80710d350b058f50f796c7d2ac6640abc7b5f41b110cbe8ffa816c046432fd0d": 1,
+        "82bde16e2a709467a1f7c003e9a3f49decae31f6ec89632f4cb2da34d711628e": 1,
+        "83d199e8e6d8f3ef9080064fc7da9dc6fb0568bb23cb3db62c46f48bb7fe2831": 1,
+        "854316ff9a6b4fccc303b699a42c4b39d4c985e24707439151afbb377a0fe6e8": 1,
+        "878062a380dafc5e7946f76567eff6aae3cbc3105574800579cb4f1175608a74": 1,
+        "894a180edf07051e09f536961e0af5a5909e9024865d037a9cd57d8c05ab54fa": 1,
+        "8f4a61bc5e04dd005b96c397d2d9e3061a821d3ed358bd8bc560c13f9916f7c5": 1,
+        "961359b7001405e1fbabf2cc9d597136555a027a3f9410032f0e9ccecf612a29": 1,
+        "9a995210c90398a2cfdbf2db497513e78afd5bb6883dae3fa0487ae3840f73cd": 1,
+        "9f01f1d90d992feaee5fd2d0a2c44b92d125adeb9e6a910157106efa17316f66": 1,
+        "9fd44112992c896b3c50ae1f7aed826fd16483b752f3ff37b1191c27258fd381": 1,
+        "a4b68e2ab8d985450dd5da9520eb51c22dc44aa7c67cddba21bb3be2227dde5f": 1,
+        "a4c07f0d2043eeda2aba166ee62414a6db82574c32c7f9cc4739b0a495db764b": 1,
+        "a560ae9414cec51f2db1896fc3f7a408fc1ba96f45ebca234bd312db2978ef14": 1,
+        "a59dbd9fc5dde65aeece8134fcdfe21cda8979f83aed2aacece33224972e74f1": 1,
+        "a7ac66014d153be773d0425e99ec2be28404d0c5261c4369c398d04fba3a963c": 1,
+        "a93c75e6299b42f4a51e4a11a71c9329574fd5dcfce37f3a31ae149fcd14424a": 1,
+        "b24f001392dbe373418c41d47ad7bb02353961e687f55e4270cb538f8b6e63d2": 1,
+        "b2d8762f6e81ad2e353e8979db40f89b00564fbf77d5f86347a18d8880658331": 1,
+        "b35de3a47d79da8b29060475ec49314e069abb825d037f858b62a503b6613253": 1,
+        "b4e0049d224927ee77a18b71e7d46d4c4bbb0d381ba682ccec95e739caf18326": 1,
+        "b6c07cbdfbcc9cc2f68608527eb9196173eeb2c7e1f13661d9ecd163ecba2ebb": 1,
+        "b712d4869a1c97b7e190d1055ef92d7ec45ad995aaf7f148072b20cb3e5ee654": 1,
+        "b7e65106d2bef3fdcebf93d1bdfa1b9493c70ced7db798da25c81122f3b88650": 1,
+        "be1be47e02bb8a7b5009135a2fc99b4986a84b5d49035e7546352fcfa2dc337f": 1,
+        "bf8cf45825465140e756dcea544e394afafc3ed7702982bf3859e9f138306517": 1,
+        "c321fd04436fafabe4fa23c9de82ceea6e8cda9badeaa420967fc3c26709e8f9": 1,
+        "c6b7b735130a40564c6af1e01086e7c61b31504a5a333c5136d9688f4ef86f22": 1,
+        "cceaa4dc1aeb81f233cb2a18f5d4a4261ba3318e92f5ff55db3975b5fe5448ec": 1,
+        "cd51227b1df56a3aeee96496febf65453472878a5530900c551d52fdbe666f81": 1,
+        "cda680046a35df8d10bfc07d63aacc67e9f7e922f46eaad9d6c894ead5596548": 1,
+        "d0092e39828b9048c9e8491579e2a9733d7b85ba4b9c2036029d83731e7fbc23": 1,
+        "d08eae2834896e0a06bf6160b06e9af19e1911f305d6bf57a7cf91a97489e33e": 1,
+        "d0d4b8feba7df38b17170903257eb2b0d757aae9bceb383efd1566d0a069d7af": 1,
+        "d2e2b77cb6efb388f1b03c91291c297401a7174aedd70892e10f9db32ad44ad5": 1,
+        "d74ed0dfd6f27797d6f9593233b9397a12e48c9ce01296398bf617ffec6062e1": 1,
+        "d88b0dff2f9525cf2c8384e199f2ba07a6c52ed934379fd43d9ab374c740cb77": 1,
+        "dda89870d4a338b8cd4370f1c0f69fcfcad446ece2c38f03a76120107a3c706b": 1,
+        "de525512b311f84a4c1c4e9b26338f6b8fce9f7aa3d7102d127788d49595a541": 1,
+        "df554080cc681f55a47ae0dd3d7d9414b3ab867d2a1eb051f8e7d901d8db7373": 1,
+        "e2357e0b3f8130553d49a4887aa4e1afd81873eb5848e029c02e1cba0f897d86": 1,
+        "e2a2e92333f8ffad85376d44a88b0deeb457a5b372d20761f947fc5a426f29b4": 1,
+        "ea4ddea5e0d7826e8ee0d6e18bffae49bbd2fb32e63f422dc3710bb2976d4ef6": 1,
+        "f595f9a11b86d16ec982d1c7e74a65c561292fbf70f9008293a50ee1ca4c12aa": 1,
+        "f6a670090fb891f5c6640a80a9894153c585429b59f48b2f8c5f46afb3d776a4": 1,
+        "f9e117d71ae5f208b54766bef54924a4f9ef9f5c07b5a5f327532e8d8fd28cf6": 1,
+        "fa04c27bb645ead9c934b08bdd4f917b6f7b6668909b959d2275b0acdc339b00": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "metal::gpt-oss-120b|structured_json|greedy|effort_high": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "modal_count": 89,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.89,
+        "n": 100,
+        "norm_distance_max": 0.15060240963855423,
+        "norm_distance_mean_all": 0.016566265060240965,
+        "output_token_variance": 225.5616,
+        "pairwise_agreement": 0.8022222222222222
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 89,
+        "3b29def7cb759617ac20b929416e60824e5c4fec6dc0e239acfcbdc8f1038b57": 11
+      },
+      "wilson_ci": [
+        0.8136870349691969,
+        0.9374580364293543
+      ]
+    },
+    "metal::gpt-oss-120b|structured_json|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-120b|structured_json|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-120b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:120b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-120b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 3,
+        "divergence_char_indices": [
+          1,
+          1,
+          1,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118,
+          118
+        ],
+        "modal_count": 61,
+        "modal_sha256": "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19",
+        "modal_share": 0.61,
+        "n": 100,
+        "norm_distance_max": 0.15568862275449102,
+        "norm_distance_mean_all": 0.006826347305389222,
+        "output_token_variance": 30.585899999999995,
+        "pairwise_agreement": 0.49757575757575756
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 3,
+        "3b29def7cb759617ac20b929416e60824e5c4fec6dc0e239acfcbdc8f1038b57": 36,
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 61
+      },
+      "wilson_ci": [
+        0.5120301704584073,
+        0.6998312599360558
+      ]
+    },
+    "metal::gpt-oss-20b|classification|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|classification|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|classification|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|classification|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 81.1304,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|extraction|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|extraction|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 13.081900000000001,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|open_generation|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|open_generation|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          27
+        ],
+        "modal_count": 1,
+        "modal_sha256": "dfd5fe9c31fa0e2c94249132558757c7ebbe67bc2dcdbf4de05e2b9bdab21e78",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.13209494324045407,
+        "norm_distance_mean_all": 0.1273779767488866,
+        "output_token_variance": 3415.0690999999997,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "01ef97189a6b064540f94ea1de1f4e4ef6284a6162be645a00cd8cd06d035461": 1,
+        "043e1e251f951dc35dd2bc41b3b9c1c3bacc56d26aa280d50607e65228a953b4": 1,
+        "0902088ecb202eae9e0d22af64cf1fa63ce5a92cbaced4d2d0a0ec1a6d223ee0": 1,
+        "09d3262dcbdb17cb6b91b5873cfee74d33a6fc2dfb90b7cac86db7dc26768476": 1,
+        "0ec836e711485f8b1b26f1ea15b5c3285180251624b18c007456aa6581f467a4": 1,
+        "11e95c74cc3ad56894af9d5d2259b757a0cfba3be7be7d6b6657ed7562a26aa6": 1,
+        "148c6f221913c8041884d24dbd93dc508a5b95b8af7e7876a7b671615dbf814b": 1,
+        "14da9db02b1d9571becf98ae3e40ecd3721e01adf8f50308140e14271f9c4721": 1,
+        "1a4ea1d8b50147e1e3083bbaf2b0d9b3c1702d26cf6a80d03d4ecce6d18a0962": 1,
+        "1d0d6ebdf67bd4d23b91f428ac452e0c5ebce64da86fdd06d2c98d78cc399f1d": 1,
+        "1d494806aa972e481f15d95ddcf3ed387987a377a28b35de9a9a0958a726519c": 1,
+        "1fce8536787a2f8a4519c99cd33b148a0ce657b7e6f2f8ea43cbdeb6d2a4ccc4": 1,
+        "20a0e45f195c2e661790a724e54a41022134c662b9d98c7f72c95b6ac5ca65ca": 1,
+        "21cdbbb7b4e6c82353b3bcce76825ea0f9271c67b323d5351aee2d8c20f82503": 1,
+        "21e80c3fd5940f70c9874f33e9f2a688e25e4b3d9854d1d79af9306e4d7324c6": 1,
+        "237cc4577a3622cc274225e54f61a668b48b7cce4e08cc08d3af65d9940b75ee": 1,
+        "34997bd1c54c483d68f16c8e87127855bb587c568be19652d1747112fed3c8f7": 1,
+        "34a22d5ff6ea0a6ce12f90491c3137875940fcd93299de7c521508ad4880c84e": 1,
+        "392fca15640b64e573d69d61d58aabfff93e3eebe326066be3fcd125c62edd40": 1,
+        "3a7b0cf7d46637913ac7cf876dab79d73962181a0fe10388aaff2034b84bf8be": 1,
+        "3cd6a249eb79c679a613f30c82557f89d643a1768d1570ae1a9f1ed014653c9c": 1,
+        "3f6aa06e3d0e7d6f23dc41b8cbb291b6a6a08efee2122975aa450096a121cde4": 1,
+        "4644c7c44a2a6a43877eb3deac0af342b1368d995e68dafc56c16c9486230d24": 1,
+        "466a528d1524e30309ccbe82dda6a77e98cfb10a25cae63f6ee875fe412bb08f": 1,
+        "467d6293449b39a3abe6b9d8c4fbd4a3bb8b84784f7265751f5e5deede87deb5": 1,
+        "46c2303adb3226c02c44276207dcb32f6d7647c27df6147edcf24cc072a92867": 1,
+        "4707857b5c9db7cbf4ea293f68cc72a0ccc7a2fc99f4bdc8bac025c3413a401a": 1,
+        "49228653aceb292320a562f972446bd0add3e53e577c8cef0568d2a7dfb7fe62": 1,
+        "5118162e267f6b858c03056c1c316b58d38a83654c916cf631d963ab68769e75": 1,
+        "561c922993ad904c598e73d949debf8d793a55a253863006f1b3328c2fb8d9d2": 1,
+        "5a8ecb3d8af85ffadbc5c1c13e2ad5904d1a99502cef5472d10eecb956d03bce": 1,
+        "5b064e67b1f4fe2e4b0b54565759cd1c803330d5ba3fd0229607392f92c2db73": 1,
+        "5c774eb3793d8d458487d3794627395182fee8c47732705335ac3894cf3725bd": 1,
+        "6647585e6a1012037bbe231855638a028ae38656958659a9d2fea38266aaf424": 1,
+        "687b07278870990b3705d3d7c8d91bea5f4a3388e6cb659e0afaba21d67ea22d": 1,
+        "6a9123cc796333136aa2fba907e0c220f9b2c25b5fd8fe19b4b5879328741bb5": 1,
+        "6dfa8138520860c853aa3cda0ae06b805a6e13cc8cc49cad9dbb35eea3f54573": 1,
+        "6fc3a3e144c6138c519cf871a82dd0959a9720f20d76559995e002fc9135f174": 1,
+        "7360eb979a44e635697b0eeb56af8effc6b5042f6e1fbf640b26446b268f339f": 1,
+        "774fee8bac4d829b81c5b894a93218ca2603cfe5c752918518a4f667b577fd1c": 1,
+        "7b662c6a0c4783b66e6eac8fef59f52aa491ead01abfada96304a1cad99b56c2": 1,
+        "7ee5bedaae3dc6ea9316f254cd1a8e7a0a39b2915030608e7bbf48750843e6e0": 1,
+        "83976f6fce861dfa41bc40f9de2f9fa4ee3b5a31965303316c3c0b6e2ac3f495": 1,
+        "8549ef10ad50558466b4d93190a1261bec400a400cd600ea615f4df236ea66c1": 1,
+        "88ee952982f11bd3fb481a8872e6002ca23265049e3b519970372ad912743331": 1,
+        "8919a1c9326d970a856e55c300cb23e110c0407ea10ad229846236f98ecef026": 1,
+        "89f146cc71e187bf3ea3a75f64a45176fa9d0130d9f701e271c693892c7288a8": 1,
+        "8f73a32cabf32058f7a5235204943aac7d6420b37e7e5c88b8c58153b0a8d56c": 1,
+        "8faeb9d6f9656dcd0835d9a83a907b80b332ba4b94a5a1bbf835693212bf06af": 1,
+        "96021538755c064edd3af65542398abf62488fa2c3bc6525db1e76d3c4be5894": 1,
+        "9789e5cea917b8a974a089de15ece3a1eb77e356d55de5a7efed603842fbfa49": 1,
+        "98ffbca187ca9c044484b0528285ef3ef55f57439f605268472bfaaff6aa0e01": 1,
+        "9aa469824668c5eb8d662bfa121b87675a04bb77b41c1c3219b8a100055104f7": 1,
+        "9da4210e6911f17633a3846498fd853d5c61aca6f5422e450447fd3ef84fa288": 1,
+        "9eca9fe30106dd5125c03c1b81f1db493545b8ca7c54ce4373a9bd2d70f3dab8": 1,
+        "9ed7031403641d8b97aaae7b0b7547d52a55e62ebd9f5149e109c1773e0fe104": 1,
+        "a128e003a6866eae8e80d0b3f8253c4cea3ecde6ab037b47d1c444bb14a0725d": 1,
+        "a48685e882e736ed258609069f4973c09cd688ccb3ebe696b0d47f0f0607cca4": 1,
+        "a7681e7d2642348bc0573b5a35f576f78fa1a2d7079247047bdd0c1ee2be01c6": 1,
+        "a9c911b69dbff3bbece84d14883ea61a0fbc7b788eb46171b28091ba75efc609": 1,
+        "ae9641c25f46a2362f5d008c7c02c25028155d8f2793671fc2a3bb5bca940a4d": 1,
+        "b384501eda0efe8099c62cf1f172db2c5ee07b40852da24cc55daae99fc6fa33": 1,
+        "b4ca2ecda6a231f76bd7bbdfab4617fde81b6d9ba4d43891f9e8cf8fbd2817a0": 1,
+        "b825c69d16e7d7c9c0627048c3d9dc17305c2b8ac9cd35420ac30249f82eb8cb": 1,
+        "b94e4dd367adca97ecf0d6807b2aa1fabc53d82d9aeb25fe53b3f4c35ca597e3": 1,
+        "bb2f102e54dab21574de0752ab8528fc2036673d9f6c4fdb6092bd66d1eca4c2": 1,
+        "bc6467571d0f3024d43e037c2f6478e18090a1cd5483e30f8e79b2b01f5587f0": 1,
+        "bddbda44e5c41230319b014e3fe1570df00ec6f90454b2c8b03e4104e75d9fa8": 1,
+        "be288f3b160a86787f1e61196d9346c59fd59c9b885d519fb4457edc8a5ddd08": 1,
+        "c5e0b923d218ba91b3abb9ddfd4ebdc5875aa68f1ca5eca3f9b2e93b60cfbfb4": 1,
+        "c64d90c5f6904082a77d0f3c9b52a7c2eff5c249359f07bb125eddf745d8c375": 1,
+        "c72d4005823f48cf4a5cb0b43b4e4e06b78d2381e0a2d9434d0e9c2bb9360e95": 1,
+        "c795be9ecd935c19c2ede250e5a3f3a2be528a239423333693250dab0fabdea1": 1,
+        "c88d2a8475ffd1beb998e5a75c047d1904a66a8bc37154145a554d1d3884dc99": 1,
+        "ca7f2ecdd7e07bcdf24ca75b8d81365d2d5c0036cdd46db8ad0cf34a9e4d019e": 1,
+        "cb6a59a44707973e0367e72878f8e6f717f70790d23936f07e4b54d16645391d": 1,
+        "cd6dd1d2c87965a0a54ebd60384a0bf38be0f969a71814fa5dd76ee9a7c8d635": 1,
+        "cfe0e99d516bd2da2fbe38a22d5ee585c4f63fc9fe5f9e611f93581d75684642": 1,
+        "d26743ba1b03a5a8bae37918b30182b1958c77b21df7e17a224ca4aa61943cae": 1,
+        "d59a6879cbaca1e46741d545a6255bc388807950a43540ffe0180371e0064706": 1,
+        "d692f86e7ef18835d64f0ee73fa6382e0233dae0a2f1c572609c79776dd8f3fd": 1,
+        "d75bdda548f84f8dd6458ee04e4461f60d35442451984840664b56b7aa1673bf": 1,
+        "dabea59f253392b4a404339590a537a3e3f18df468b23df11ff3e9482861ff82": 1,
+        "db0de29e22699148a4bd1ab003d3410e496a44f829f881d3b848a794eb96ec96": 1,
+        "dd290332af877fbea9f0caa10971ffdf9ea43d6bd785cc1db212788d8e9c7b07": 1,
+        "dd93f5e9665febbc81e46680e77597ecebf408fb0bf4d47763e1b6161446e8a6": 1,
+        "dfd5fe9c31fa0e2c94249132558757c7ebbe67bc2dcdbf4de05e2b9bdab21e78": 1,
+        "e237343c78ce78e47b591a38395cda7d2cbbb7d5cb0f95b65006f6f08e7dd7ac": 1,
+        "e27e931847b2946f738c4fda85c7e7f7020a6155aa838af643d8226436848731": 1,
+        "e3481f794692a460e5db4e73385286e972f6a5e35c13c6361102010ddc15de17": 1,
+        "e7dcff8d6eb32ff02fa8f444354ccd4f9613204f63ddd6c87d32cc2f4fc27a05": 1,
+        "e965f070818739267e15a4aa5ba27eb90f55cae442fb2444f32dbe4584a2560b": 1,
+        "eab3d2ea3947bbf1e3864c2598bfc27d2d2c411619f30b4d7d2f61f3fde1a538": 1,
+        "efa5ad081402817556922b8aa8722e453f904e1ffde38a9b2a3793b0f66ee388": 1,
+        "f24553edf600c396aac34d617a91ced1f6be26801b0cfbc431cc28113fbc165b": 1,
+        "f38ea3afa7078c7755d9d62258cb33e9db3664689583739fa0912a2d39da2aa8": 1,
+        "fb6393cdd67217ea01c0304764a708117b3f8d79d5d111e03a6f3c5775098a0d": 1,
+        "fdb86d25f553b01d09d8c32ee099ff74fc784e607e283e9b43ae638ffafad7ef": 1,
+        "fe104200f46c148b973f4d5bdf09dcaa42c50383df88538ae36ffa432dba9bd7": 1,
+        "ffe511209c970be1a3783f59b17308e1e087024e830ed8066721907d548e0eea": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|greedy|effort_high": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_high"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 23.769899999999996,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|greedy|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.1476,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::gpt-oss-20b|structured_json|temp07|effort_low": {
+      "box": "metal",
+      "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "gpt-oss:20b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "gpt-oss-20b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "effort_low"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 4,
+        "divergence_char_indices": [
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          29,
+          107,
+          107,
+          107,
+          107,
+          107,
+          107
+        ],
+        "modal_count": 58,
+        "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+        "modal_share": 0.58,
+        "n": 100,
+        "norm_distance_max": 0.0410958904109589,
+        "norm_distance_mean_all": 0.012805423539278724,
+        "output_token_variance": 1064.74,
+        "pairwise_agreement": 0.4571717171717172
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 35,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 58,
+        "f1043b610f77c936c60e20375102147232aedca92059e9fb09e6ddb0845437a1": 6,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 1
+      },
+      "wilson_ci": [
+        0.4820648670304296,
+        0.6720161732564526
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056
+        ],
+        "modal_count": 78,
+        "modal_sha256": "c799354388cd93cd64cb4b4501d1c336ebdfafc866e9a780514b670033f1cb4f",
+        "modal_share": 0.78,
+        "n": 100,
+        "norm_distance_max": 0.1683656691877672,
+        "norm_distance_mean_all": 0.03704044722130878,
+        "output_token_variance": 186.87239999999997,
+        "pairwise_agreement": 0.6533333333333333
+      },
+      "text_hash_counts": {
+        "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997": 22,
+        "c799354388cd93cd64cb4b4501d1c336ebdfafc866e9a780514b670033f1cb4f": 78
+      },
+      "wilson_ci": [
+        0.6892964648501421,
+        0.8499871761539459
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056,
+          1056
+        ],
+        "modal_count": 76,
+        "modal_sha256": "c799354388cd93cd64cb4b4501d1c336ebdfafc866e9a780514b670033f1cb4f",
+        "modal_share": 0.76,
+        "n": 100,
+        "norm_distance_max": 0.1683656691877672,
+        "norm_distance_mean_all": 0.040407760605064125,
+        "output_token_variance": 198.6336,
+        "pairwise_agreement": 0.6315151515151515
+      },
+      "text_hash_counts": {
+        "586dd9649c53bd273e35da0d0e09c101eca7aac88e3a7971252b1b9b665af997": 24,
+        "c799354388cd93cd64cb4b4501d1c336ebdfafc866e9a780514b670033f1cb4f": 76
+      },
+      "wilson_ci": [
+        0.6676766365018553,
+        0.8330867444305122
+      ]
+    },
+    "metal::qwen3-vl-32b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          53,
+          90,
+          90
+        ],
+        "modal_count": 1,
+        "modal_sha256": "163e3cbafb4645ff79070b72ca3793c4ff8c6035303e4559b136fa5721646549",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.16090509113764928,
+        "norm_distance_mean_all": 0.15875016863852745,
+        "output_token_variance": 1426.4939,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "0076d85eb4f21d449c464f34d1ceffce62e205a456e89e4d60952694f954c0e5": 1,
+        "07c7804f0b21b8a60ee65018bd2417da96dafe7b326580578db0f36123c182d9": 1,
+        "08ab5ede6940c58e87855018cd9e8a2ffdb52d053ae0dff5d02cd54adaf2491c": 1,
+        "0acee865f90ed1b119033fe5b7a8f207078bc4e3c215a6788078c22108c50f03": 1,
+        "0d558855a51e3dd7aab9d3d9b79e1e00c53dd8c7bb5458a90e582a2f0a4206a6": 1,
+        "11293f32dea6ffd5ca8c48f40e820bf7b93b242b76419f607f6641393e8fc3f4": 1,
+        "123d6e93de09041a3c4004a192daf7081eaaf6c52b761a13108ea05637373f01": 1,
+        "1508e64586fe9febab7f87efb8941ce7dbb7225e085c8708db77e524df780d26": 1,
+        "15e7723bde5e13298fa088b365270190c31a7728410cc7a2239048dd8b12310f": 1,
+        "163e3cbafb4645ff79070b72ca3793c4ff8c6035303e4559b136fa5721646549": 1,
+        "1822b4c3d1502d2388e1e7689264f0c25d70c49667b2fb2116d4f03ce369f050": 1,
+        "1906b33159a3a0a6631c0fa2aff0f17a4ff17f2a241fa6e6b8bcd824036fba56": 1,
+        "19ce56c45c0111ec78c681499782263f508e2877512947f4ae9ab97f3e4a4875": 1,
+        "1cec3436e551b49cb750e868d4252ce81eee15e940959154d02776e30293d160": 1,
+        "1d01809586ecae3952a990277947669afaddb6463b20d7189dfa323495a976c3": 1,
+        "1ea65684489b0736de1798a1187d1e45c85e4de952f61135ef5bf08af8081bde": 1,
+        "1f0599d0cd6ddd9bd28d1cb75c923f0b8b7ddc973a67e2c47646d11c36858d1e": 1,
+        "1f5b7222a0a6c7784abed55692208415a8cec088d3480e0759f56ec9b298b279": 1,
+        "22c0e702fa5d721593669f864c9221f596c2cc102071fa125e72ddff8185037d": 1,
+        "23e9e1476f10a2190ee9dc92b0f2937a531da588e7b818e952ed93a6af5da7d9": 1,
+        "2a1e9f0b680a1d3e527c9e89567bb9d90cbe73f433f57ceb490a0c1cde89dc12": 1,
+        "2bab46d5f83b342622397da5a3843044d04699564615a75643a39edbc3ab2c60": 1,
+        "2d9a45a0e28cc94ab583217ccfcdb65bc844b31ff2c80a52813dd0bdef52b4e5": 1,
+        "320c0446acf7282f95602369b427bdd95f2ba04e7fa8969b19947ce909f7c918": 1,
+        "33c378a762db685f5f746801e096f5a78554243c5725094418d469c089c10336": 1,
+        "33cb78deaaf5ea036a47759ed5e07833a2ae526bb7d7f0b6a894df53928c9f7b": 1,
+        "381b347dad9363e593ae5b8c86b2fa50c7344f33797355fd31fbb8f5d3b4eac9": 1,
+        "43fc506c6c758942516276d1f33c90d29fb9855a873a70d3ffe4b6252a1777bd": 1,
+        "44065a32ecf3b9dd7c7f34c519f69bad5e775429f4e541147ef9725bdb2002a3": 1,
+        "4452f1ab5317434ac14cb8bd07bdb326617454b366237e134ae9c6556f49a87b": 1,
+        "46867b9050bbc3434d5defc471fbe6f9dddac9eb3240cb25b97db458d0503823": 1,
+        "4887158e74d1262dfc0d7aafbfab7d0d121dfb2051f01dfcff34db9d81c24bf6": 1,
+        "49148df2ebd48525c4de0e786be493b44313799e78cbdb5851768a8a9f889793": 1,
+        "517cf84750feec5be519b3681ad7aae8ad7afd36e8cfcc6f5196f072fdeda64f": 1,
+        "523dc0ccae7bf411919d2d3c3c64537b5f8b4d76bb378fd5091c1f7fe50bead1": 1,
+        "52b947e3550d1a69267d9fd40805f8e3d97b1ce3668bf0177a261374bf1798bd": 1,
+        "531518e7f4645a531e5de462e7aa2a35e5206e1bf8ee240e0eae98ed9934d2ea": 1,
+        "5ec65b3a65f225570a71e3d78ba9b7bce6a96139b0a2abc70def99623eafc939": 1,
+        "60e0dbb3ed71e44ab814a13c468d34b42ca5a9b7f3c203690949026df80b6a80": 1,
+        "63da6d696e5817ff1c21fe7772e7aacb296c853c7a4ed26ac99d1731739b0d5c": 1,
+        "66d18fc007d9024d93022d5cec04608c79ebcc8ebb51704bd911cafc8bc16495": 1,
+        "679a06c2a420f10f1174650000c6515dd162f6c4cd716a690df8334156ab7185": 1,
+        "67c017f9280d9c93be52f643ff22e8e496e476db860cab82c24da119375d4708": 1,
+        "6b07a24dd485d4dac7b1a58f0292e300d99bb6c68f39b066ca99e059ed53cc7a": 1,
+        "6becca66cb4aa87505b6ac9d80479cf0a6b5f202f02b4de9791323011e747a31": 1,
+        "6c6fd823286abbc0dc5c5ba58c797dda8b11731821ed0c0e8bd29623c9c1a023": 1,
+        "6dbbdf3fe0c4e2eac23f537a36f3208ada3dd0d4406d780cfde1a47d85d9ed4c": 1,
+        "709ae0fa78819eb661cc87725c6f6439c830f8bfde17b7404df0f23236ea5df2": 1,
+        "780642ec45ac5ae4d0101f1e8a88529ad1ca61c520ab8fbe73875f08eb9a6148": 1,
+        "7b1567d6293cc07ea0c1197e859d25e8ed7b08b7b9ce6ea447026734251f1bcf": 1,
+        "7bbe5d3cff608acbc16f20a24134a417cc4a721d1f2007c865a60c3f1c996bf9": 1,
+        "8200a1dfad3575e1f93a47546872e0c88cd4fa7c9c0321a9c8341fd4c3ed52ea": 1,
+        "83c58731f6501807e6fff51fccf1293ac5f7ede1eff2b38e4cc695c180298e48": 1,
+        "8512f1151b49fdbdce13d5064be2825cc2fb67e4a7b07f013070bfd3af6678de": 1,
+        "87a1292bb6d92c2603d4723cb3580ab95f3e4019fc0c08aa7c9d555987e49af5": 1,
+        "8b28873dccd71e9d0897b67abda53efbd3c96650e5fc7329eebd6283773fb70f": 1,
+        "8dfd9b844d215442ffd9f5492abb7548038214ea17b5e4706bd322d236add907": 1,
+        "97651728939b4f0dc248ecc109aef4f5c1283d025c3eb20695bb42d8c1aa87ed": 1,
+        "979aa35565720905cf1d612b45d038cd3633c1bad6dda21913a2cf5685aa06fb": 1,
+        "9bbdb41e6c571e0d47909d2b349c4eb1247395ea06960a9cdac2ff14f477d5d8": 1,
+        "9c2036759b4bb8f3ba567830ef1ece4a14a1b190a5632618553b58e7b2b030c2": 1,
+        "a495c09a73b2e066ba764ef6b4e5c63310cc558d6d7474c3525bd0af2dca8e41": 1,
+        "a714c13b0f77ef9d8f0539d541f2531f9813f062cb8b1af2f4f5e543e3ce2519": 1,
+        "a9e51d7556907e7e427160b993d20b9da5387a346b2606274b96b223aefb6493": 1,
+        "aa56f37bdc8edd8021e5151028cf07b941938c16db6e42f25aa93e5c172dc24f": 1,
+        "b336dd7954c2bbf12bae089358bee1ea68eedd22389f9b2379a1c7077bc8a497": 1,
+        "b3c4dc6c3870f2632c9af5fa3f9ab710a5172e0eccc44918c8a7d8b128857ca5": 1,
+        "b5dc8236ed3df8a8736d67a41a0f40f6d32e6d136716aaf74de2b7b2eb3bd169": 1,
+        "b61d92d985a572be32fd7c39f2efcfc68c016321ffbf263c54ed511b2b3fe7eb": 1,
+        "b786a486fb928498ff5845a237bfa33eabdf992e682859b95856b55138c1c1c6": 1,
+        "b94210c875cd21ec85bed2da6b5f9ac2c77c90ba57831d1c80db14b5bd71219f": 1,
+        "b995dd5c6056d983c7593634068e2989b9041a07b25464bb48a9fe5d6b3f11bb": 1,
+        "bae40f35544c7f25d1a838d47e759081442001f813ce5c8e79edeee36fea4d73": 1,
+        "bf603fa0898d9975520e9934dcce77aca2210892eef035ab199ca38452b2c93c": 1,
+        "c072028422f6d17eae48c07472234b943dda607de3e02b9b03524789602e40fb": 1,
+        "c5b219088098482827da83447cd6e54322001c658a66125b74a3d138170cd572": 1,
+        "c880ce624bd5ab580c6d9b086363a797904d90c14457dee672b0f860be0a88f8": 1,
+        "c9d4be2e7da9a00c7967eb9356572a5e06c3a19ae02f57ed4a0d30de3e22e181": 1,
+        "ca2e3e5f4cdcb527aa92ee85b74c70dca3765d565e0869f904fddd69f229d44b": 1,
+        "cbaa485fbd19080cba8265415d8defe2e09baa8baa184f61b1367d124249dc6b": 1,
+        "cdc50afdddad75e4a4bf746495cf19924faba6ccffa59fcdcd0a2c0f6bbf8268": 1,
+        "cead689f41adb1057a45c9116e18dc18301053b7b408d0b9bf92c5f11c1109f9": 1,
+        "d78cbf0e5c5af6874e5bd6917b711c45f267abbb5faf45db94233b98c6dcf04c": 1,
+        "df99f4a8e9305e56cc931c17c7b19556636e16f61c9cf2fc85b14653e8595a0d": 1,
+        "e04eb5197591930e958b9765f0241a9bffa5aaeb9b5df6aeab82299bd6b3765d": 1,
+        "e2fec5ca36258761ffc05a6fa8b4e33fb6231e078c2efcbeb97c3ca4bb702d37": 1,
+        "e3a8fe52f6841526dbae4d1c6f1126d543a2d2179633c89396b1dbf08ff4ce42": 1,
+        "e68cc8eac6f27bb6f613733315d24b92ba71974cd0b97cdccf32e7a7ac5d92b4": 1,
+        "e6c6b6821b00e80da11f765201b1c613daf79026bec95b196cea1249b256c64e": 1,
+        "e8f6654b03937bc6805cf5142a5b3fc3ed6215d227b3934116cbee6fff844a20": 1,
+        "efe74b6a8ee92cbaed86a666fdbbfd86514045523347ef2f2ac17f6cdcbff335": 1,
+        "f02fd04dcddb5f720e7585ee7672a99becf23d4bf8e04bfca8d85f723399feac": 1,
+        "f213e9a920d1a73d8938d0caceb2cfbd549fa96a8010ae0a820d907f41f4e9d3": 1,
+        "f6f0d234af2a3b47574a837d0c930a35e7635289bf3e8672987f84bdd4243881": 1,
+        "f6f88a75369ebc0338045fa25df096b920a3550a8e4e08c541becb1eecaf4dd3": 1,
+        "f9ed05653611cc03cdbde97214c2efcf6098ddaf93bfc159f3223c1ac4a383ae": 1,
+        "fb633a443c36ef0829a49f2368c0e43fcaa1758bdb77b738a6a1a828966b2fac": 1,
+        "fba6e507019826bef92233eecfd610ccf591a5e98ef5e6732c217465e5f2188a": 1,
+        "fd2dd67dc595214ef8e8a353773bb6d30be42df9ce36857b9fce4be0392e6d31": 1,
+        "ff8559736c9b10dc39a95c8df8a429804627890989d818abc5b70e4c28ee6a77": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3-vl-32b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3-vl-32b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3-vl:32b-instruct-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3-vl-32b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          1
+        ],
+        "modal_count": 99,
+        "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "modal_share": 0.99,
+        "n": 100,
+        "norm_distance_max": 0.15060240963855423,
+        "norm_distance_mean_all": 0.0015060240963855422,
+        "output_token_variance": 3.2076000000000007,
+        "pairwise_agreement": 0.98
+      },
+      "text_hash_counts": {
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 99,
+        "3b29def7cb759617ac20b929416e60824e5c4fec6dc0e239acfcbdc8f1038b57": 1
+      },
+      "wilson_ci": [
+        0.9455138038212946,
+        0.9982325679358593
+      ]
+    },
+    "metal::qwen3.5-122b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9510ad2936a4e9fd1043264ea4d989761b42d9569e02ee7976a55dcf5952045d": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          48,
+          48,
+          48,
+          48,
+          48,
+          48,
+          48
+        ],
+        "modal_count": 1,
+        "modal_sha256": "a5dcdcec969bf784ec11751a3a6dac3a6153759693ba6d99b8f04eb4bb6ca3c5",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.16623376623376623,
+        "norm_distance_mean_all": 0.15959291280815197,
+        "output_token_variance": 636.8564,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "0055aa4b5b022baea6276ee0109110a055b6d8d14951e81378ff9127883f6b8c": 1,
+        "006aaa4b072f951b4e562e6a911e55bed40e0d1d2be743a8e0c2cf8a7308547e": 1,
+        "010a33ef696e479bb13312e29f5076a3f5e467c6fe5609a1d8a0733b4500d60e": 1,
+        "015e653d47857a3d35462cbbc58d1ef5ee7319a1db5e1b43f49408337346f31d": 1,
+        "04fc810da12047ee852ee4946366e568a958b0ab427829cebeb5e644f304a59b": 1,
+        "0531803e551770eeaefbe805b0cda8f21556a6ac5771ea41a6181322b7ceaf4c": 1,
+        "091e44e3d449640e4ee65f70978d7b7ab12af1ce08472de4d8540a03305ae6d5": 1,
+        "0e4a301cb1591df747184d3b019548c5116b03343f92370375b547935358ad7b": 1,
+        "110a2a67963b0147215ea971589c2b57371f99bb78f673d4988ff6033744b084": 1,
+        "16366302b5f0f36036fb6b0d9f9106c350c0e58296caaa612733b89e3f877a61": 1,
+        "19e8c6c53178f751c3964f4c70558e267a3bf2f18745996761d7379e150f2b9e": 1,
+        "1a52d12dd792324f8eafbaaa1249c17cf65beff63eaa6f010c5d46203701ef97": 1,
+        "1d1e360e918e08a7995b95df4bc53d664fbb09d4a63bd0b1efae335256858ab4": 1,
+        "1d365b175db3b3dd8705a18ed5bcd8541571b5f21fb0840333115d8a96bc0b8f": 1,
+        "1e0b5fa4f085b41d0368639bd53e09968036d9bc276eb749064415bedc8fcf49": 1,
+        "202a2fe873842196a501e7ef6b0dc24019c73c493ecccef00ead46c434271ec1": 1,
+        "21bdc8104dcaba1add00e8687b0b256991ba17fa0b4c811270061d7ceae65557": 1,
+        "21f5edf1467779ef270a2a0e60234b3d620a6c6f2ab53ce59d9bb21ef68d9817": 1,
+        "228cc49fa0a2a4ce772ee53006f72b896147501980ae6773cdfd8e6181f19bae": 1,
+        "26ddaf333f328271b73109a4b5cc7ab4d5e653c8eb45b17e1e568e457d6e333b": 1,
+        "280b343f78d2db20d818c2d52dda09d207387fd5ad5be3f9984b4ad66ace5d7c": 1,
+        "28ca884db47f6e8d78f1aeae1223a04d846e27bdf01bbbcf897aa47e6924a477": 1,
+        "2bbb78f609b00fcaf02043d89509f0e7118e84e51d66f904cf9a4e981c48d7a9": 1,
+        "2c84d6c96b13810a68a38d69f0ebe4261d607e46819c93b9706e1297db2e805a": 1,
+        "2cdaea5086b0a62d1e8d76cde7bda78beeadfa3c8f3017904dc35088c391bfde": 1,
+        "309ab8f834ec82613aa37175ee32732bdbe06140e51ea70597566ffb50281a40": 1,
+        "33da9183dc5aad1af929f55e9a006390dc83cfa22eaf90572bc79911732b5d4a": 1,
+        "391be20986bb28093bba7d5db5b556ab693c346df8c638bdbe8a415ced6e91d1": 1,
+        "39ddece29e56371ec9563f46b5bbef1711beae12052137cea56ba74b2ce7a45b": 1,
+        "3e8b1b92ef6b78ae10e5828f8342f1ab6f9b49fd43b021a5496f4825d22e9499": 1,
+        "3ec2e84c0b072c7c50d41fc8429f5a981380d08ce5bedfb166eae05549868cc4": 1,
+        "4429796670d290dae8750c821f51fa1160a6fe4bff6b7c7aa8dbd732b590d5be": 1,
+        "447926b5616004133722597acb15a9a4001a2391aa529ba673517a6e1da82d66": 1,
+        "45927f4e430ce9ebb86cb5839b218488f5db799e2cdf3469f74706068b447a04": 1,
+        "49b7e0342bc6a0dee7d438dec6cf03632c5aad830d16a877c44bf0ea7be6bf97": 1,
+        "4a6e3a2c53522a48ccd703f5e1f96f6cab0146a49011bd3631b4c716905ba9ed": 1,
+        "51d9355f57b253d9e45ead913228cd3f62f73cb7fa3d0aed07b0fea67ecb1c36": 1,
+        "52f6486e24e88e4985823aaf883d9d77760e60bd378afcc3c85ea9aea6ab26bd": 1,
+        "53d603da6bf6a4b9c588ffa78985913f499799eded755cd614126a112f7006b1": 1,
+        "589d116a8641f7d1da2eb1c2674f7636e839b68d0abb9521f572185c9ebcc235": 1,
+        "5be66dba5961db0fcdd61fa14c3fda445d510a6713bfb41bb6d99e15d3e09e51": 1,
+        "5e4b5de60031283c567dadf2db2f12bc86a96fe47eac8bcee1606d44e7f22d46": 1,
+        "61b07f6c6ec28b862d6a0df43e71ad655888210a7cbb675704d0618e27570069": 1,
+        "62cb36ed92fe9ab52691c712bf2a26e808f3c3de8b12afb9d724a66d75a79b14": 1,
+        "669490d39a33ceb3c21cfb532dc7dcc21b674378b2c3935c357d80a11716b595": 1,
+        "6aad995d3b18b82a4a9960806507aa3ee2ae2a845df29f1de4451244ea41abb2": 1,
+        "6c97269a8667cf94f7cab7b0eb20f6d8b4a5969a97975f0893b27f2043a89ce8": 1,
+        "6dc59a00442343f42321361e20853208b4160eb81df245a08dac8c72fb976e45": 1,
+        "70ab46a37c03a74a8d9defccbf1c70b278281be86949147056ef98255900853b": 1,
+        "73253efb75d173f19cd3cc260de6a107f4b66232db9a850586723e14e61bd653": 1,
+        "7b97d1d5c763595c9ac2371cb1161a3b610aab244ecce84d70d4ea3f5c9e37c7": 1,
+        "7d13330d44a0b52c80e069f67b8fdc393f09de972e528ccf75168ca705c66a23": 1,
+        "7d5750fd4e7c92659ea01603ea6c0f3a6d62c2147b20631eec70295f4df9b9e1": 1,
+        "80681bd09616cc42f4bf16d9ab4f9164d70a3a5b6f6ccb8dada0ca27b6246855": 1,
+        "8377265d653572b2bc72de8496757d2019b4770e1ce9f57291fa257e72fb0f82": 1,
+        "841f8ab450625fd72a7587adf445c282e5154de2afacdb99e084a36e8671afc5": 1,
+        "84635ae9df180cd9186ba534df5a1366061125a5d3d782c7dfaefe21f872e985": 1,
+        "864f4c2fbcd01991a978abe9486e2f223326ed111a2524d1387ff381a0eaaf0f": 1,
+        "88c553e696a9e30689037adf1497ece54aa3f9461173154ca1b7549bf1c6cea1": 1,
+        "89fd42a45778dc862a3bedb4452fd63570c47310cd2ae3629912effc0ae6deae": 1,
+        "8e7988ad46f38397671dbc9cc51a71e69442e8cd081e0efd6533dbf77b5532c6": 1,
+        "922e01da8dcdbcea39648a68ee05a8ca711a9ed6c86b705076d0fc75dfb3f536": 1,
+        "96bbc58b17da37fd73c5eb56456a4678b962b4a1b1957a1bc179d03d036f5da0": 1,
+        "97db35f007c5673fee6d7d657774402dac6e7cd56d10ad7912e26b85967915bd": 1,
+        "9a80db7b6ef7faca776df9d0b89b45970ca5f7262ae736d7e9620571e0f56614": 1,
+        "9c21708b1dff48c731e37bff894f4024b76a3ef715e97d2cb94ec3fb4ddf328d": 1,
+        "9e648f72e4882b3a7d7f6069712341985d37db39e14de8e20359d7a060ed002a": 1,
+        "a5dcdcec969bf784ec11751a3a6dac3a6153759693ba6d99b8f04eb4bb6ca3c5": 1,
+        "a8bfa5d2af94bf0054198e5580fcaca32f65b4e4fa3c56c6d35e7c95599e8af0": 1,
+        "a957d33c4e25049610eb55648adddcabf9e9e4ea89bd2ad34f1671a45d65af5b": 1,
+        "acb5857031030b501675374ce502ebdb5a320d7b2b5df60bbea648ce8f790fb2": 1,
+        "ad0b8dfd7056116b5b2ee05531b26af334b3759f45481d425db29412e631dacf": 1,
+        "ad22462de7d87b0c0b26cee821a59ba7aa8c17cb6ea997a9611a0ce9360adc65": 1,
+        "af22f31a46e7f2ea7fa7e8ebfcd9b8bacbf821bf7cff369f77c5f8df8ee8ffb7": 1,
+        "afddb5a5a350213c6f6cdd684f841f9cbab74e6ae40c9588222e2085122ca56f": 1,
+        "b0aa4372b27b473d11432ee0aa3bebe2f707746cecdcfd0bec433dd6f995f3fb": 1,
+        "b59c341c68e1adbae1905b9c78e894b0d5673c46f01b028bda805370d4f9eaea": 1,
+        "b75e680e319027aa6ba97920d28a7b7a53d113a0cb0afbfe95f41229dc0f82ee": 1,
+        "b806824e186dd6115b5a3f5f9b504c7bab9e57e56adc6ea690b0e7ecbaea06c4": 1,
+        "c02c9d82621735db1de438327c742377f2c983468fc9c4e4ce5c42961a5671e1": 1,
+        "c12a913195adff1a831508a70b96a1ad9f0f03f83f610e4002652974dda30bc7": 1,
+        "c3edcfb26924f2dd08123dee9a85e6fa24510475223b0beec4ae14803b35ae26": 1,
+        "c68481942e3924c329284d4a48eb8862eb94d0a43b07d9aa19aa9ab7ef1b43e3": 1,
+        "c69b179a83e45a88e83b3a8960db6369c7bac3c926f21e43d88f5c2a79e03148": 1,
+        "cba8d0bbe3ccfead1792f8dae6aba6c88e03ce52581d253ea6e516dfffe3e644": 1,
+        "cdacad10eaafb512a92712745333281e75124f50c40a73e2f3098de695ae8ee9": 1,
+        "d1d2069919e852c052a192dec25350f23bf107b5864355c6114237435f9798f5": 1,
+        "d56ed18efe4fa29fd7993083f454d0a61f5d2cb1bcf9320ffc74150d4497fa73": 1,
+        "d62b4c70c9bad0a1f3c6df7685afa7a5164b93138d026ecd6d3ee9740cf4087c": 1,
+        "dd34d7c277d190efb1b3ff52219c4125ed6e19b296155ccd41cc4d4caf01720e": 1,
+        "df0c1d11585249218efd99685cdf5fe22621ccce7160d543e1926a449ba080fb": 1,
+        "e9efb2dae0057652acade533d1d0cd713efde9c5ca45dad48b68fc591e14a685": 1,
+        "eb8d3433d4c10fc261406c9ee2cb16c83c074887dd154448f2789a85f5af1ca6": 1,
+        "ec9bc56e74e11314ab157ba82f6424c9414f87f619733eb6c26edf69d2e035b0": 1,
+        "f2a094d8deeea8fae3f9917df1f8b0c82cbd7b2c68a7b49b8821db4bf46bf700": 1,
+        "f657416437f59209a64f4fd03a9fb686eab376caccfc421979e2fa485e67bc6d": 1,
+        "f700b69c009fcd6ac3eb0236b598ee281622371efa36d2ee9122fafcb27a2978": 1,
+        "f7f8c2643ffd71d3255136b38f62d9aa0d6de45e58a68cb6ab2066aca59a1118": 1,
+        "f8e6a253693cc417c5be2dd62c0bc21ae3ce5e3cf20f3b1a48bf6511e6a3ee24": 1,
+        "fc50b4e5a13c82dd9c70c37240b92ceb5863391aa547a2ddb811cc1b0258d625": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|greedy|think_on": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|greedy|think_on",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_on"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.5-122b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.5-122b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.5:122b-a10b"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.5-122b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 10,
+        "divergence_char_indices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109,
+          109
+        ],
+        "modal_count": 31,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 0.31,
+        "n": 100,
+        "norm_distance_max": 0.11627906976744186,
+        "norm_distance_mean_all": 0.04152211099494463,
+        "output_token_variance": 55.6396,
+        "pairwise_agreement": 0.20949494949494948
+      },
+      "text_hash_counts": {
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b": 12,
+        "08c61ac3c12432b05a1fa528a05b3b3ec33533a9215ab772a5b1d8b04d3e7b88": 1,
+        "185af64c4cf7842f92fb4508771305c42ba54cbfbac93957c9834d0e57b57053": 2,
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 30,
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 8,
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 31,
+        "8fa82eaaf63be8957cf060c68d7f772e312c008bc4dc20fb69ea3b4933e2e16c": 7,
+        "a2031a80ff2702bea54e848cb3b92ebf7e8435bd1078a4c19ee2164e808d4e13": 1,
+        "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996": 1,
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c": 7
+      },
+      "wilson_ci": [
+        0.22779697212376038,
+        0.40626055719489407
+      ]
+    },
+    "metal::qwen3.6-35b|classification|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|classification|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|classification|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|classification|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "classification",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 2,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "modal_count": 57,
+        "modal_sha256": "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0",
+        "modal_share": 0.57,
+        "n": 100,
+        "norm_distance_max": 0.8888888888888888,
+        "norm_distance_mean_all": 0.38222222222222224,
+        "output_token_variance": 0.9804,
+        "pairwise_agreement": 0.5048484848484849
+      },
+      "text_hash_counts": {
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb": 43,
+        "9ca25a572fd96dad5f2e6fcea8028815da3079a7e4656d39191c3536e3a01ea0": 57
+      },
+      "wilson_ci": [
+        0.47215389549212305,
+        0.6626670147588988
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|extraction|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|extraction|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "extraction",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "afd602e2e2d94f636b7a5c7589257620edc333017786aa450bd46fd6a6f21666": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|open_generation|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|open_generation|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "open_generation",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": true,
+        "distinct_count": 100,
+        "divergence_char_indices": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          24,
+          48
+        ],
+        "modal_count": 1,
+        "modal_sha256": "0f3e855bced34212802c1d655ba7609d74bd5622f8fdc6e4fa45cd839c7231a6",
+        "modal_share": 0.01,
+        "n": 100,
+        "norm_distance_max": 0.17759278529309747,
+        "norm_distance_mean_all": 0.15986772725913434,
+        "output_token_variance": 1155.8275,
+        "pairwise_agreement": 0.0
+      },
+      "text_hash_counts": {
+        "013e8925c9442d7c431b2e919397d528db6c2378d191beaf1bce0fdb9ed2a472": 1,
+        "0401f957ba548b10db53b6ecbabf86c4478bf7de9234ca2a1aaf176a3b5e6cae": 1,
+        "048d4541ad20350ecee830c6c3232ec12dce320d912b62fa7caa4bf09ec4d269": 1,
+        "0c80c70887c3534ddf7b4224db3a7413da865a4d2f52a8e82850dda55ee62798": 1,
+        "0f3e855bced34212802c1d655ba7609d74bd5622f8fdc6e4fa45cd839c7231a6": 1,
+        "0f804f14562d6e5fcb9361c8d4b4716d9a683f276fcfc91369932e1ddbafe8a5": 1,
+        "115a05ef8746e1632aa80457577931f0e268fd5c1f3b065f7ae6e44dbfa3d9a0": 1,
+        "12a7e869fde715519478d2d93b2de8ee775567538f104599d784e974ec2d4e33": 1,
+        "181396719877082485bb8cea752eb33dfeffe8d95119e3a22c20f96be99b2ce8": 1,
+        "1a702c9f9ad48e8ae434fc4ea363bfdee26467ef197e65404cb5d8540d7c7bf3": 1,
+        "1b0cdaf738ef73029cdca7733effc9a4f057eeaddcdbc48ad96ed525519d1db1": 1,
+        "1b8487d07d34ac63a5890bd02fad21d04bf9b02b0f89488fe1c95f67dc12aeb6": 1,
+        "1ee79b673a71198cf8cc824499c220468d156dde10d49f34dbd3bde875f2f8cd": 1,
+        "1fc3f755d80f007c2abdf3da9d6370a2048196c4a803ac636dcb0ee8f1e2a33a": 1,
+        "224d9d2d61cba62890760851c7940df1c37980bda70222a06252b0479107bb59": 1,
+        "23016f288c32e7edabfe51b83e0b1bce0658de803b1c67d9d6a0013ccdad39ef": 1,
+        "2624548617f1acfa62dd61d9522c6d0d9a326150811fe66c1205fec9e1edfdae": 1,
+        "266896d1900aa4281a95419f400cc6f45641fbee01b7a7b0e57b1b01304780a8": 1,
+        "2b02772b57f9dcc8181f0bb0a277986bf6ce5b420d1e7468e53bee21ae153844": 1,
+        "2fdd03a5c2ec31c1e6eb55fdb0edb2a4a8cb10d4630f66361a14c61d740f93a8": 1,
+        "319a2b8ef22831f0e9431afc7b4e4aa689aedf20e9ef45520ce986bc068d86db": 1,
+        "3549650a6ab8751ccfdf3974ee005fa60f8b5d52399b66101154813db7a29389": 1,
+        "3fd1bedd9a89e5bd861d571acf977c09b9804edccf642cae34f446273b4a9c8a": 1,
+        "41dd82b17eb1567c46ccf9e2f73d1b769b959327001ce4e6bceff1941c4a396f": 1,
+        "47cdb53a3b67521550ed8b1412a40e60f049dd551d0a47602e4a331136b131c0": 1,
+        "48a56668f153b5b438e6a3284fc998bbabbd3f619256a99b7be277e5ea49f61b": 1,
+        "4a77744daaccb82dfe791c3cf3d182c329f9c1b9f49b76c8719b2bd4ef2daef5": 1,
+        "4d26f94e4d0b21cb6e25671f64af846ab83ed39dcf2bf131e7492943588d8cc3": 1,
+        "4df73377b2b756f286d6947fa4e97d378339e46fcfc4cf48a28f9efda7b440f1": 1,
+        "56530d3c2a2b5f70a00b191a2ddeb560536ed835ee6010242e90d928f6c69a2e": 1,
+        "5d03af287d0f605fe6fb12508a8b212b733763723b2ccdda98e6c7e41bfa8305": 1,
+        "6580b8a1ab207b8b80e5cc3c7ef2785b0d0b11bee813fd0cbb4b7866ee0d52a0": 1,
+        "65c4c0dad82f83394c4843dd8f39594a71b8bf9e263f72289fbcc7ba6b221441": 1,
+        "6cc8f1a9aaa937ff623a9906558a5cfaaea1b48f26c2e03cb67da018293fc8ef": 1,
+        "6dbc4ae1b08f3d249210718ed3e6f68c094b0ab8c2b5ab84e1eea8b0c1b64b90": 1,
+        "6fcebd3232ce860cf9b39bded1829ae5941701cbfbb1f7360433bb8aa80a0294": 1,
+        "726897878639038d7521aafff9c9b81fc693ea994e33267fd746ebcb92aecc2a": 1,
+        "7319d10a394d3e5b2c55c218649e492183f4ebd2e1567552410ee60374792286": 1,
+        "7481a98bbde5a4477d86e8a0f3b85e28e496394490aaaaa665f233a8b3d3545a": 1,
+        "748fc3e303195bbe87c79f4cc619caa0cbf7e93719d81c1940559e5baede3e76": 1,
+        "786254d8267f4a2fb65cb1a8b48db404d68c058cd51eb84391eaa96530f556ca": 1,
+        "79f868b8983651f2dfd029d0d20af1437baf8a1962e9762cc50e482696a2bb09": 1,
+        "7d5d79e24a0f2b7bf9dedcbbef29db316eba0084a59c69d1be63702d77f20e39": 1,
+        "7f861d67a41801855dd9a98a15b6d408fcc437e77ba8c0cffc9967b9366dc0a9": 1,
+        "823314a339f7763e6500dc71acf70ed00be6678e3055a0b8eb891641df0d1e4c": 1,
+        "84395ec49e47089ecec03a7b291cf45e3b783eb54aef3143c418a45ac3228d6c": 1,
+        "86ef896e379683a370cc5dd88876de919c16393ead3db7ec592b6dcc7a202d89": 1,
+        "88c51777dcaa70273c483ef3a68ebdc1d53b157e482d648ab3650802665b4860": 1,
+        "8b1d7f76eb36d163a92edf58a82e07c39348fc60d50851d733fc32318d3586bd": 1,
+        "8c0cc1ff6f7874bbcf5e71de73ddde02f34d49d81d82b16b743f53dbec78a366": 1,
+        "8db2eb9c4a4109082f900ebe9ae4cb60428ca625136e44605077713eb51b599f": 1,
+        "8eb13dbbc52fe8a81a9d7a796e19c6eac624fb925dbe814ff4ede4dde0c28f99": 1,
+        "8f8b282587765f119bec278cc8323d57dac279e63840447feb69f54669be028b": 1,
+        "935ca3cd90109f98de9293518c345ec9b44c0b138b44ca8d33fb9c899c843db3": 1,
+        "95b4fe7bc37fe6a2deacb8fcaa4b078b108a6009079982a53da3590fd489c5ef": 1,
+        "96b6c7049a0adf7d06ce099c134af015aeb81079c1de4012fd6c6bd192b87a9d": 1,
+        "9a444af307b93cb16d33b2b86738b35e95ea39b559a812c3d491409bd565df0e": 1,
+        "9bc1a28c76e8420b0e6f45d68c194e170b9b10f2f854c28e6e46be284f4dcbf7": 1,
+        "9c1c78db2b9a7a99de8b73f316aef55b38d8cbc51c1ba51a43de45ae43fc568c": 1,
+        "9c717827085148104d7a7ed82b3410ef50754118d969a29b8df7b441c7b2d23d": 1,
+        "9d11075a223d3156689ce3e38dd44a465ce5f69afcfc088bf2788714561580c1": 1,
+        "9d72196bab079365605262e16cd9d39196bd3433eaf16b7f1cf0034d330fd81e": 1,
+        "9e93782b12d5a30866c5b07357c4c8d7f7c661792ae81b82082e77ea7f40cbc7": 1,
+        "a58fc378419f7a8aa3e0edec2ea38953d08ce5f5007ea9d377dee44a7855200a": 1,
+        "a740b0adfb1d0a320bdd3afa5b1bc91c251c7c1144a28ca4b22c8f52917cac71": 1,
+        "a7d0eaafbb04c4b99190ed8d81e551cb364d2dc4166a394e1c6d9d9db81891c0": 1,
+        "a8264f47ec0baef9c83269ec5f43aebd81ba76ab7452dd9f6cd64a9d95393e53": 1,
+        "acea8cc9dc114ad2a8c8bbd785d1df5fc11caa535986d3814b4138bd57e69afb": 1,
+        "af75ededf17da200c0268bf74c5097500950d951856e2d80691a0b808e76f234": 1,
+        "b52d4a04191a047033fa8fc550abd443693a4bb7b731065982e2f63ab6f5ac13": 1,
+        "b63efdfa2380f094192d1c8993f0402ea7a8b486d986de8e77bc6e4228575243": 1,
+        "b9b30633732a0d131552869e010ce7e625a0bbf3927897b1df0160c05f1e003a": 1,
+        "bf4364b2dc7512ab2bd12d89b36d604d4b48b323b1a9c4f4474ec35d8f10ca5e": 1,
+        "c625adc7d44fb2ec5b9063558b940d0eb716a582e9c9030e591fea1620ed2bd5": 1,
+        "c899e47347be9fd40eb151346069ee75d3ba156448be143e8e34fb83ceb753a5": 1,
+        "c91a7dae2816458b9a2bba6c51101b15bbab47d6812a2b708ac2998665489ad8": 1,
+        "ca5eda1c2b84b3be10f74b3d8c30159fbcb45c1fc60f33c08c5860dd5fcb9073": 1,
+        "cd8ee8e7035ecb8790c6bd6a132950625ef303b3bd554182699d32f8b271f301": 1,
+        "cf0a089eacda54c999143d7a8bd66310e5e513c45d53fd9da67b10a0751d1fb7": 1,
+        "d36afb14c3f9a1b811d5a49a1f0a6a79227c8975ddcee3b310a78b95a9d12972": 1,
+        "d428fdf1696bef6afba338dd9922bfda6e53e02ccaa963671aaf9d6cf6ad9c7e": 1,
+        "d74ef5079b14faf2ff0b90c855f9efaa1acc4f8ba11fde488ab5382b6f891cc2": 1,
+        "d7facc78613f4c9db644c1fbba295795feaeddb7c92cb7a908f15506f6f3cf65": 1,
+        "d81d7741c64aaa0a3af05f6070e5ea28ba1c7364fffa5f6030b5fb9b1a960a2c": 1,
+        "dc8d4dce267aa39770f84d5c205cc092528423a6098e279bfba67f701174af75": 1,
+        "dfa9e7f9b01ac82ae85e8541b6809e78b21a03faa2b117b32988eb14c0917c4f": 1,
+        "e33b7fe80bb54d58163810164343503854104e1e9cda50b2a2936c9f2c102de2": 1,
+        "e46931d4d1491406b96fd8654b1425513974faaa205a77895adf7c5674bd8ab3": 1,
+        "e4f87f0ce9cbfcfbef1302e5508c8b5841d85ef82b2f2ddfba0e5a5e388d9019": 1,
+        "e7e42273721e85647c33c1a52de5b4b4b1de6bb15db50904a203219180c2770e": 1,
+        "eb7cea6960e4b5ee5fe5232fbf10d9191fe0d4ffa1146a48ae2a7d230cb7a395": 1,
+        "ebce8a3f6beca260e0eca8f05278425f65eb74e66466b62c42894130a2463420": 1,
+        "ebeb63552918e3e3e5b07f3bc0f9d59c13893c890491d2b8aa755195165c0414": 1,
+        "ebf5456be14c0ec4be94e458509ee15911a482a1630c43429cbb86f94c8c0aba": 1,
+        "f09aee5a8925ff94612af2ea79c10e16413041d620eec24361902210a76b7df7": 1,
+        "f109373c9f544eb0224343101d23ec3bc342409d33e7eb759f291e488f2c2f1f": 1,
+        "f94c01cb1d779365f75c62e16bebba3324566158f096edbc8334d7bd1c2111bd": 1,
+        "f9e832683884c150017ae489edab021285c54ca104f92d2279e3b40e2135a7d5": 1,
+        "fbc618556fb76bcd435d9b22934fccca2d575f106dcea958c637daf544252bf6": 1,
+        "fc4dd7e9134ff12ba7487a420ac1b058bc778cab9ae9a96126f09ad0148d3a46": 1
+      },
+      "wilson_ci": [
+        0.0017674320641406505,
+        0.054486196178705315
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_off|c4": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_off|c4",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "concurrency": 4,
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|greedy|think_on": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|greedy|think_on",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "greedy",
+        "task": "structured_json",
+        "thinking": "think_on"
+      },
+      "metrics": {
+        "all_identical": true,
+        "any_distance_capped": false,
+        "distinct_count": 1,
+        "divergence_char_indices": [],
+        "modal_count": 100,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 1.0,
+        "n": 100,
+        "norm_distance_max": 0.0,
+        "norm_distance_mean_all": 0.0,
+        "output_token_variance": 0.0,
+        "pairwise_agreement": 1.0
+      },
+      "text_hash_counts": {
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 100
+      },
+      "wilson_ci": [
+        0.9630065017930143,
+        1.0
+      ]
+    },
+    "metal::qwen3.6-35b|structured_json|temp07|think_off": {
+      "box": "metal",
+      "cell": "qwen3.6-35b|structured_json|temp07|think_off",
+      "gate": {
+        "excluded": {
+          "error": 0,
+          "truncated_or_other_stop": 0
+        },
+        "flags": {
+          "model_drift": false,
+          "negative_control_failed": false,
+          "response_models": [
+            "qwen3.6:35b-a3b-q8_0"
+          ],
+          "wire_mismatch": false
+        },
+        "n_raw": 100
+      },
+      "meta": {
+        "hardware": "metal",
+        "model": "qwen3.6-35b",
+        "sampling": "temp07",
+        "task": "structured_json",
+        "thinking": "think_off"
+      },
+      "metrics": {
+        "all_identical": false,
+        "any_distance_capped": false,
+        "distinct_count": 8,
+        "divergence_char_indices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          109
+        ],
+        "modal_count": 41,
+        "modal_sha256": "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c",
+        "modal_share": 0.41,
+        "n": 100,
+        "norm_distance_max": 0.11627906976744186,
+        "norm_distance_mean_all": 0.041547077587100086,
+        "output_token_variance": 57.8084,
+        "pairwise_agreement": 0.2408080808080808
+      },
+      "text_hash_counts": {
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b": 1,
+        "08c61ac3c12432b05a1fa528a05b3b3ec33533a9215ab772a5b1d8b04d3e7b88": 4,
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607": 6,
+        "3b29def7cb759617ac20b929416e60824e5c4fec6dc0e239acfcbdc8f1038b57": 19,
+        "428b02065bf4818e416695175dc92df1f1d5f4b3d2e645d11ebfcaf073302e19": 7,
+        "624d39faa4dbfb562ee0962a96f3d083db342bb960c227f3aa6dcbeccbb57f4c": 41,
+        "8fa82eaaf63be8957cf060c68d7f772e312c008bc4dc20fb69ea3b4933e2e16c": 18,
+        "a2031a80ff2702bea54e848cb3b92ebf7e8435bd1078a4c19ee2164e808d4e13": 4
+      },
+      "wilson_ci": [
+        0.3186731302113651,
+        0.5079856994658921
+      ]
+    }
+  },
+  "q2_concurrency": {
+    "estimator": "equal-weight stratified diff over matched task strata (registered primary, prereg v3 Q2)",
+    "moe_minus_dense": {
+      "ci95": [
+        -0.02415343485901061,
+        0.03415343485901062
+      ],
+      "dense_strata": 4,
+      "diff": 0.0050000000000000044,
+      "moe_strata": 8,
+      "se": 0.014874474780643517
+    },
+    "per_model": [
+      {
+        "arch": "dense",
+        "ci95": [
+          -0.03415343485901062,
+          0.02415343485901061
+        ],
+        "diff": -0.0050000000000000044,
+        "model": "qwen3-vl-32b",
+        "n_strata": 4,
+        "se": 0.014874474780643517
+      },
+      {
+        "arch": "moe",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.5-122b",
+        "n_strata": 4,
+        "se": 0.0
+      },
+      {
+        "arch": "moe",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.6-35b",
+        "n_strata": 4,
+        "se": 0.0
+      }
+    ],
+    "skipped_strata": 0
+  },
+  "q3_thinking": {
+    "estimator": "ON-minus-OFF modal-share Wald difference on structured JSON, greedy (registered, prereg v3 Q3)",
+    "per_model": [
+      {
+        "box": "cuda",
+        "ci95": [
+          -0.009501395417987873,
+          0.02950139541798789
+        ],
+        "diff": 0.010000000000000009,
+        "model": "gpt-oss-20b",
+        "off_modal_share": 0.99,
+        "on_arm": "effort_high",
+        "on_modal_share": 1.0,
+        "se": 0.009949874371066205
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          -0.1713252654740242,
+          -0.04867473452597577
+        ],
+        "diff": -0.10999999999999999,
+        "model": "gpt-oss-120b",
+        "off_modal_share": 1.0,
+        "on_arm": "effort_high",
+        "on_modal_share": 0.89,
+        "se": 0.031288975694324025
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "gpt-oss-20b",
+        "off_modal_share": 1.0,
+        "on_arm": "effort_high",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.5-122b",
+        "off_modal_share": 1.0,
+        "on_arm": "think_on",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      },
+      {
+        "box": "metal",
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "diff": 0.0,
+        "model": "qwen3.6-35b",
+        "off_modal_share": 1.0,
+        "on_arm": "think_on",
+        "on_modal_share": 1.0,
+        "se": 0.0
+      }
+    ],
+    "skipped": 0
+  },
+  "q4_cross_box": {
+    "cells": [
+      {
+        "cell": "gpt-oss-20b|classification|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|classification|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|extraction|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|extraction|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "f164665e84dfd9122ead4b5c6e14cbf0c73d966bf4f75fb671ac68af0a9c69a6",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": false,
+        "overlap": {
+          "cuda_only_variants": 1,
+          "cuda_records_matched_in_metal": 0.0,
+          "metal_only_variants": 1,
+          "metal_records_matched_in_cuda": 0.0,
+          "shared_variants": 0
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|open_generation|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "d1b4636b81fb24f9e287577744675501b9a651b38fd3070c207143af5735c7b4",
+          "modal_share": 0.01,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "dfd5fe9c31fa0e2c94249132558757c7ebbe67bc2dcdbf4de05e2b9bdab21e78",
+          "modal_share": 0.01,
+          "n": 100
+        },
+        "modal_match": false,
+        "overlap": {
+          "cuda_only_variants": 100,
+          "cuda_records_matched_in_metal": 0.0,
+          "metal_only_variants": 100,
+          "metal_records_matched_in_cuda": 0.0,
+          "shared_variants": 0
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|greedy|effort_high",
+        "cuda": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|greedy|effort_low",
+        "cuda": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 0.99,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+          "modal_share": 1.0,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 1,
+          "cuda_records_matched_in_metal": 0.99,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 1
+        }
+      },
+      {
+        "cell": "gpt-oss-20b|structured_json|temp07|effort_low",
+        "cuda": {
+          "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+          "modal_share": 0.49,
+          "n": 100
+        },
+        "metal": {
+          "modal_sha256": "e0be60cbabca9f33092255b02315ac53c17df9638d8f707de8e3410bd5a44996",
+          "modal_share": 0.58,
+          "n": 100
+        },
+        "modal_match": true,
+        "overlap": {
+          "cuda_only_variants": 0,
+          "cuda_records_matched_in_metal": 1.0,
+          "metal_only_variants": 0,
+          "metal_records_matched_in_cuda": 1.0,
+          "shared_variants": 4
+        }
+      }
+    ],
+    "cells_compared": 9,
+    "modal_matches": 7
+  },
+  "q4_decode_rate_tokens_per_sec": {
+    "cuda|gpt-oss-20b": {
+      "n": 900,
+      "p25": 157.7,
+      "p50": 159.5,
+      "p75": 162.4
+    },
+    "metal|gpt-oss-120b": {
+      "n": 900,
+      "p25": 68.4,
+      "p50": 68.8,
+      "p75": 69.7
+    },
+    "metal|gpt-oss-20b": {
+      "n": 900,
+      "p25": 97.5,
+      "p50": 98.2,
+      "p75": 99.7
+    },
+    "metal|qwen3-vl-32b": {
+      "n": 1200,
+      "p25": 18.1,
+      "p50": 18.6,
+      "p75": 20.3
+    },
+    "metal|qwen3.5-122b": {
+      "n": 1300,
+      "p25": 46.1,
+      "p50": 46.6,
+      "p75": 50.1
+    },
+    "metal|qwen3.6-35b": {
+      "n": 1300,
+      "p25": 71.4,
+      "p50": 71.9,
+      "p75": 77.6
+    }
+  },
+  "registered": true,
+  "totals": {
+    "cells": 65,
+    "records_in": 6513,
+    "warmups_excluded": 13
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "box": "cuda",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T01:42:16.979194+00:00",
+    "resident_models": [
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-29T20:52:16.9093502-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12904531230,
+        "size_vram": 12904531230
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|structured_json|greedy|effort_high",
+    "warmup|gpt-oss-20b"
+  ],
+  "concurrency": 1,
+  "created_utc": "2026-07-30T01:42:16.914108+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "git_head": "3184ecfd843472836e939f1207fcb0e38e8f2d17",
+  "local_url": "http://127.0.0.1:11435",
+  "mode": "study3-q3-thinking",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 2,
+  "n_items": 101,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|structured_json|greedy|effort_high",
+      "86af0c70ffb13aea63b501204d993473a88cfdabd63bb64fb663f4556fb4dc0a"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ]
+  ],
+  "run_name": "local-study3-q3-thinking-20260730T014216Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "per-model",
+  "schedule_sha256": "84d416faaa7715195f4bd6d599dc9b5e27c0a40fe556d40704bb085ec3e77dbb",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

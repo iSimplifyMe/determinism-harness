@@ -1,0 +1,112 @@
+{
+  "box": "metal",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T08:48:58.423133+00:00",
+    "resident_models": [
+      {
+        "digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+        "expires_at": "2026-07-31T03:11:16.968158-05:00",
+        "name": "qwen3.6:35b-a3b-q8_0",
+        "size": 38145338898,
+        "size_vram": 38145338898
+      },
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-30T20:20:48.982723-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "2d0a26462393ce989905021dde175b6694fe5720303c52c43610e1ea3c61032b",
+        "expires_at": "2026-07-30T03:58:58.234958-05:00",
+        "name": "qwen3-vl:32b-instruct-q8_0",
+        "size": 39498400398,
+        "size_vram": 39498400398
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-120b|classification|greedy|effort_low",
+    "gpt-oss-120b|classification|temp07|effort_low",
+    "gpt-oss-120b|extraction|greedy|effort_low",
+    "gpt-oss-120b|extraction|temp07|effort_low",
+    "gpt-oss-120b|open_generation|greedy|effort_low",
+    "gpt-oss-120b|open_generation|temp07|effort_low",
+    "gpt-oss-120b|structured_json|greedy|effort_high",
+    "gpt-oss-120b|structured_json|greedy|effort_low",
+    "gpt-oss-120b|structured_json|temp07|effort_low",
+    "warmup|gpt-oss-120b"
+  ],
+  "concurrency": 1,
+  "created_utc": "2026-07-30T08:48:58.357261+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "git_head": "3184ecfd843472836e939f1207fcb0e38e8f2d17",
+  "local_url": "http://127.0.0.1:11436",
+  "mode": "study3-120b-window",
+  "model_digests": {
+    "gpt-oss:120b": "a951a23b46a1f6093dafee2ea481d634b4e31ac720a8a16f3f91e04f5a40ecd9"
+  },
+  "n_cells": 10,
+  "n_items": 901,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-120b|classification|greedy|effort_low",
+      "e014e40995094314d4c4c2d2716782c9c01b2bc0e0f534bb7cbc2c0ab3a12e3b"
+    ],
+    [
+      "gpt-oss-120b|classification|temp07|effort_low",
+      "73f88cadf8140debe32b8315456cedb69598a8ad8a28f3054e1c8acf10e8bb6e"
+    ],
+    [
+      "gpt-oss-120b|extraction|greedy|effort_low",
+      "160d7f958f758c81fc709ddb573c6711ccecd362a4522bab3f38c0066506c907"
+    ],
+    [
+      "gpt-oss-120b|extraction|temp07|effort_low",
+      "a51d5fbed6fae5c9e7a5f7ea5e28b6af283ba666d78ba451e32254fdd607f300"
+    ],
+    [
+      "gpt-oss-120b|open_generation|greedy|effort_low",
+      "8653901ec81f6be856a13625491e8eb61da71ec47c5d9397b78454a25a45749b"
+    ],
+    [
+      "gpt-oss-120b|open_generation|temp07|effort_low",
+      "fe342cfeb838015120fdf65e6289c0801faa0155e4aa12f7fc5e89a3d57ea736"
+    ],
+    [
+      "gpt-oss-120b|structured_json|greedy|effort_high",
+      "bd6c5ccd3d82900cc556159bc0e9ecb224b5baab246b1bdf94a7b4484b83aed1"
+    ],
+    [
+      "gpt-oss-120b|structured_json|greedy|effort_low",
+      "efad8648b81414f428d0131ed3b1ffda8c341c1ceda29fe695ad88ffdf64561e"
+    ],
+    [
+      "gpt-oss-120b|structured_json|temp07|effort_low",
+      "4b7ad06010ee323df7d94da24f06cfbf60762577775aa39167615ab793dd6eeb"
+    ],
+    [
+      "warmup|gpt-oss-120b",
+      "317e7c6b85b36889d94c8bc0fb914834324ec99094cb317fb5cb6f3f1f245050"
+    ]
+  ],
+  "run_name": "local-study3-120b-window-20260730T084858Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "per-model",
+  "schedule_sha256": "3866a5277e904f96eff4176d33b9156d5198b8d6abd11d559b00fdbc6a393e88",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}
