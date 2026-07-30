@@ -48,6 +48,16 @@ PYEOF
   esac
 }
 
+# The Messages planes need the anthropic SDK — that lives in the repo's
+# .venv (stdlib-only applies to analysis, not the API client layer). The
+# 2026-07-30 inaugural rehearsal crashed on system python3 here.
+PY="$REPO/.venv/bin/python3"
+if [ ! -x "$PY" ]; then
+  echo "[canary $STAMP] FATAL: $PY missing"
+  post_slack ":rotating_light:" "FATAL — repo venv python missing; canary did not run"
+  exit 3
+fi
+
 ANTHROPIC_API_KEY="$(security find-generic-password -a determinism -s anthropic-determinism-study -w 2>/dev/null)"
 export ANTHROPIC_API_KEY
 if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
@@ -61,17 +71,20 @@ if [ -z "${ANTHROPIC_AWS_WORKSPACE_ID:-}" ]; then
   exit 3
 fi
 
-python3 -m harness.runner --mode canary --window canary --out runs
+"$PY" -m harness.runner --mode canary --window canary --out runs
 RUN_RC=$?
 RUN=$(ls -t runs/canary-canary-*.jsonl 2>/dev/null | head -1)
-if [ "$RUN_RC" -ge 2 ] || [ -z "$RUN" ]; then
+# Fatal unless the runner completed (rc 0 = clean, 1 = per-call failures —
+# still evaluable) AND left a non-empty record file. An rc-1 crash before
+# any record is exactly what the rehearsal produced; require substance.
+if [ "$RUN_RC" -ge 2 ] || [ -z "$RUN" ] || [ ! -s "$RUN" ]; then
   echo "[canary $STAMP] FATAL: runner rc=$RUN_RC run=${RUN:-none}"
-  post_slack ":rotating_light:" "FATAL — runner rc=$RUN_RC; no evaluable run"
+  post_slack ":rotating_light:" "FATAL — runner rc=$RUN_RC produced no evaluable records"
   exit 2
 fi
 
 SUMMARY_FILE=$(mktemp)
-python3 -m analysis.analyze_canary "$RUN" \
+"$PY" -m analysis.analyze_canary "$RUN" \
   --baselines canary/baselines.json --out canary/log | tee "$SUMMARY_FILE"
 EVAL_RC=${PIPESTATUS[0]}
 SUMMARY=$(grep -m1 "^CANARY " "$SUMMARY_FILE" || echo "CANARY UNKNOWN")
