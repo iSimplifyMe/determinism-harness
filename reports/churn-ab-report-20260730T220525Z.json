@@ -1,0 +1,305 @@
+{
+  "boxes": {
+    "cuda": {
+      "arms": {
+        "blocked": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "load_duration_s": {
+            "max": 0.3921686,
+            "median": 0.37504125
+          },
+          "matches_confirmatory_modal": false,
+          "metrics": {
+            "all_identical": false,
+            "any_distance_capped": true,
+            "distinct_count": 2,
+            "divergence_char_indices": [
+              230,
+              230,
+              230,
+              230,
+              230,
+              230,
+              230,
+              230,
+              230,
+              230
+            ],
+            "modal_count": 90,
+            "modal_sha256": "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a",
+            "modal_share": 0.9,
+            "n": 100,
+            "norm_distance_max": 0.1424200278164117,
+            "norm_distance_mean_all": 0.01424200278164117,
+            "output_token_variance": 182.25,
+            "pairwise_agreement": 0.8181818181818182
+          },
+          "n_raw": 100
+        },
+        "churn": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "load_duration_s": {
+            "max": 5.5552526,
+            "median": 5.4083599499999995
+          },
+          "matches_confirmatory_modal": false,
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 100,
+            "modal_sha256": "45e27daf2ae249dec5aab86a52af873bd43638db96ac7712bc2f4fd838448af8",
+            "modal_share": 1.0,
+            "n": 100,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 100
+        }
+      },
+      "churn_minus_blocked": {
+        "ci95": [
+          0.04120108046379836,
+          0.1587989195362016
+        ],
+        "diff": 0.09999999999999998,
+        "se": 0.03
+      },
+      "gates": {
+        "cross_arm_negative_control": true,
+        "manipulation": {
+          "blocked_median_load_s": 0.37504125,
+          "blocked_warm": true,
+          "churn_all_cold": true,
+          "churn_all_confirmed": true,
+          "churn_median_load_s": 5.4083599499999995,
+          "cold_threshold_s": 1.12512375,
+          "pass": true
+        }
+      }
+    },
+    "metal": {
+      "arms": {
+        "blocked": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "load_duration_s": {
+            "max": 0.29812775,
+            "median": 0.2634847295
+          },
+          "matches_confirmatory_modal": false,
+          "metrics": {
+            "all_identical": false,
+            "any_distance_capped": true,
+            "distinct_count": 2,
+            "divergence_char_indices": [
+              46,
+              46,
+              46,
+              46,
+              46,
+              46,
+              46,
+              46,
+              46,
+              46
+            ],
+            "modal_count": 90,
+            "modal_sha256": "8dc3860289460ae9ae8f82c171cf954e8fd47ee70278722b599fe2275ec54f05",
+            "modal_share": 0.9,
+            "n": 100,
+            "norm_distance_max": 0.13811707580253574,
+            "norm_distance_mean_all": 0.013811707580253574,
+            "output_token_variance": 4.41,
+            "pairwise_agreement": 0.8181818181818182
+          },
+          "n_raw": 100
+        },
+        "churn": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "load_duration_s": {
+            "max": 12.121009792,
+            "median": 1.6313302505
+          },
+          "matches_confirmatory_modal": false,
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 100,
+            "modal_sha256": "4afe21a5d04a6c00741188cc2192d7db6cd12490f436a8b2842a0b2b4bf7b0b5",
+            "modal_share": 1.0,
+            "n": 100,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 100
+        }
+      },
+      "churn_minus_blocked": {
+        "ci95": [
+          0.04120108046379836,
+          0.1587989195362016
+        ],
+        "diff": 0.09999999999999998,
+        "se": 0.03
+      },
+      "gates": {
+        "cross_arm_negative_control": true,
+        "manipulation": {
+          "blocked_median_load_s": 0.2634847295,
+          "blocked_warm": true,
+          "churn_all_cold": true,
+          "churn_all_confirmed": true,
+          "churn_median_load_s": 1.6313302505,
+          "cold_threshold_s": 0.7904541885,
+          "pass": true
+        }
+      }
+    }
+  },
+  "cache_state_decomposition": {
+    "cuda": {
+      "block_head": {
+        "distinct": 1,
+        "load_s_median": 0.376018,
+        "modal_share": 1.0,
+        "n": 9,
+        "prefill_ms_median": 17.583,
+        "shas": [
+          "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+        ]
+      },
+      "block_rest": {
+        "distinct": 1,
+        "load_s_median": 0.3745927,
+        "modal_share": 1.0,
+        "n": 81,
+        "prefill_ms_median": 16.986,
+        "shas": [
+          "cf2c66c89f3c8f0bc07f707419e5b0823fdfa1cd45b6bd165c1f05081bb7679a"
+        ]
+      },
+      "churn": {
+        "distinct": 1,
+        "load_s_median": 5.4083599499999995,
+        "modal_share": 1.0,
+        "n": 100,
+        "prefill_ms_median": 198.84550000000002,
+        "shas": [
+          "45e27daf2ae249dec5aab86a52af873bd43638db96ac7712bc2f4fd838448af8"
+        ]
+      },
+      "first_blocked_block": {
+        "distinct": 1,
+        "load_s_median": 0.3756912,
+        "modal_share": 1.0,
+        "n": 10,
+        "prefill_ms_median": 36.677,
+        "shas": [
+          "20310cddf7fa12c5003d402fa35406f43067ba078e13a10cb8ce2aac8d79500e"
+        ]
+      }
+    },
+    "metal": {
+      "block_head": {
+        "distinct": 1,
+        "load_s_median": 0.262950875,
+        "modal_share": 1.0,
+        "n": 9,
+        "prefill_ms_median": 30.215,
+        "shas": [
+          "8dc3860289460ae9ae8f82c171cf954e8fd47ee70278722b599fe2275ec54f05"
+        ]
+      },
+      "block_rest": {
+        "distinct": 1,
+        "load_s_median": 0.264710583,
+        "modal_share": 1.0,
+        "n": 81,
+        "prefill_ms_median": 29.49,
+        "shas": [
+          "8dc3860289460ae9ae8f82c171cf954e8fd47ee70278722b599fe2275ec54f05"
+        ]
+      },
+      "churn": {
+        "distinct": 1,
+        "load_s_median": 1.6313302505,
+        "modal_share": 1.0,
+        "n": 100,
+        "prefill_ms_median": 117.6095,
+        "shas": [
+          "4afe21a5d04a6c00741188cc2192d7db6cd12490f436a8b2842a0b2b4bf7b0b5"
+        ]
+      },
+      "first_blocked_block": {
+        "distinct": 1,
+        "load_s_median": 0.2550504375,
+        "modal_share": 1.0,
+        "n": 10,
+        "prefill_ms_median": 105.897,
+        "shas": [
+          "4afe21a5d04a6c00741188cc2192d7db6cd12490f436a8b2842a0b2b4bf7b0b5"
+        ]
+      }
+    }
+  },
+  "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "estimator": "churn-minus-blocked modal-share Wald difference, computed only when the manipulation and cross-arm gates pass",
+  "exploratory": true,
+  "generated_utc": "2026-07-30T22:05:25.394900+00:00",
+  "totals": {
+    "records_in": 402,
+    "warmups_excluded": 2
+  }
+}

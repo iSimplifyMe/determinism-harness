@@ -1,0 +1,66 @@
+{
+  "box": "cuda",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T21:02:20.681093+00:00",
+    "resident_models": [
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-30T16:09:31.8961186-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12904531230,
+        "size_vram": 12904531230
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|open_generation|greedy|effort_low|arm=blocked",
+    "gpt-oss-20b|open_generation|greedy|effort_low|arm=churn",
+    "warmup|gpt-oss-20b"
+  ],
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "concurrency": 1,
+  "created_utc": "2026-07-30T21:02:20.617057+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "exploratory": true,
+  "git_head": "22b19d044c4f6c7c8943de5a2c3b0e56e34921fc",
+  "local_url": "http://127.0.0.1:11435",
+  "mode": "study3-churn-ab",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 3,
+  "n_items": 201,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|arm=blocked",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|arm=churn",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ]
+  ],
+  "run_name": "local-study3-churn-ab-20260730T210220Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "fixed",
+  "schedule_fixed": true,
+  "schedule_sha256": "7610a1006a43c3d7ed3fb4680a96587759bcdbb74e02f3b1fc8c7a8e5278583d",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

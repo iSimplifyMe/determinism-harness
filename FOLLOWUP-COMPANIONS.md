@@ -173,6 +173,41 @@ mechanism behind the coin-flip.
 
 ---
 
+## Results (post-data, 2026-07-30 — reports are authoritative)
+
+Executed same day: 402 A/B calls + 244 margins calls across both boxes,
+zero failures, zero retries, all four runs complete
+(`runs/local-study3-churn-ab-20260730T2102*`,
+`runs/local-study3-margins-20260730T21*`).
+
+- **Companion A registered primary: churn-minus-blocked +0.1000
+  [+0.0412, +0.1588] on BOTH boxes — the direction OPPOSITE the stated
+  hypothesis**, with the manipulation and cross-arm gates passing. The
+  churn (fresh-reload) arm was byte-perfect, 100/100, on each box.
+- The exploratory cache-state decomposition explains it with recorded
+  evidence: the schedule bundled three prompt-cache states, and each is
+  internally deterministic — fresh-load/no-cache (prefill ~199 ms CUDA /
+  ~118 ms Metal): one variant, 100/100; cached steady state (~17 / ~29
+  ms): one variant, 90/90; warmup-era first blocked block (~37 / ~106
+  ms): one variant, 10/10. Every point of sub-ceiling modal share in the
+  blocked arm is the state boundary, not noise. Read back, the section-6
+  tension resolves the same way: the shuffled pilot mixed cache/load
+  states (0.60, three variants, each plausibly a state), and the blocked
+  confirmatory run's interleaved tasks kept the prefix cache overwritten
+  — one state, 1.000. **Reload does not degrade determinism; state
+  mixture masquerades as nondeterminism.** The launch smokes' cross-
+  session drift reads the same way.
+- **Companion B margins:** the cells with observed instability are the
+  cells with razor margins — minimum top1-minus-top2 margin 0.0034
+  (120b structured-JSON effort_high; 2 variants at n=50) and 0.0014
+  (vl-32b open generation; 2 variants at n=20) versus ≥ 0.011 on every
+  stable cell, with the 120b matched pair at 0.0034 (high) vs 0.846
+  (low) — a ~250x gap between the unstable arm and its stable
+  comparator. Observed forks occur at margins 0.005–0.019.
+
+Full numbers: `reports/churn-ab-report-20260730T220525Z.*` and
+`reports/margins-report-20260730T220540Z.*`.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest

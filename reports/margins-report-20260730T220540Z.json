@@ -1,0 +1,163 @@
+{
+  "cells": {
+    "cuda::gpt-oss-20b|open_generation|greedy|effort_low|logprobs": {
+      "chosen_not_top1_total": 2000,
+      "defined_positions": 13340,
+      "fork": null,
+      "min_margin": {
+        "median": 0.011135101318359375,
+        "min": 0.011135101318359375
+      },
+      "n": 20,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.0,
+        "0.1": 0.037481259370314844
+      },
+      "records_with_margins": 20,
+      "variant_counts": [
+        20
+      ],
+      "variants": 1
+    },
+    "cuda::gpt-oss-20b|structured_json|greedy|effort_low|logprobs": {
+      "chosen_not_top1_total": 449,
+      "defined_positions": 6800,
+      "fork": null,
+      "min_margin": {
+        "median": 0.022491455078125,
+        "min": 0.018314361572265625
+      },
+      "n": 50,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.0,
+        "0.1": 0.014705882352941176
+      },
+      "records_with_margins": 50,
+      "variant_counts": [
+        50
+      ],
+      "variants": 1
+    },
+    "metal::gpt-oss-120b|structured_json|greedy|effort_high|logprobs": {
+      "chosen_not_top1_total": 1192,
+      "defined_positions": 19702,
+      "fork": {
+        "alternate": {
+          "chosen_logprob": -0.9969062805175781,
+          "margin": 0.01345813274383545,
+          "token": " JSON"
+        },
+        "modal": {
+          "chosen_logprob": -0.9972116351127625,
+          "margin": 0.019014418125152588,
+          "token": " output"
+        },
+        "token_index": 213
+      },
+      "min_margin": {
+        "median": 0.003421783447265625,
+        "min": 0.003421783447265625
+      },
+      "n": 50,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.004974114303116435,
+        "0.1": 0.030098467160694347
+      },
+      "records_with_margins": 50,
+      "variant_counts": [
+        49,
+        1
+      ],
+      "variants": 2
+    },
+    "metal::gpt-oss-120b|structured_json|greedy|effort_low|logprobs": {
+      "chosen_not_top1_total": 50,
+      "defined_positions": 6650,
+      "fork": null,
+      "min_margin": {
+        "median": 0.8723450899124146,
+        "min": 0.8461610078811646
+      },
+      "n": 50,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.0,
+        "0.1": 0.0
+      },
+      "records_with_margins": 50,
+      "variant_counts": [
+        50
+      ],
+      "variants": 1
+    },
+    "metal::gpt-oss-20b|structured_json|greedy|effort_low|logprobs": {
+      "chosen_not_top1_total": 300,
+      "defined_positions": 6600,
+      "fork": null,
+      "min_margin": {
+        "median": 0.0777435302734375,
+        "min": 0.0777435302734375
+      },
+      "n": 50,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.0,
+        "0.1": 0.007575757575757576
+      },
+      "records_with_margins": 50,
+      "variant_counts": [
+        50
+      ],
+      "variants": 1
+    },
+    "metal::qwen3-vl-32b|open_generation|greedy|think_off|logprobs": {
+      "chosen_not_top1_total": 1327,
+      "defined_positions": 10647,
+      "fork": {
+        "alternate": {
+          "chosen_logprob": -0.939775288105011,
+          "margin": 0.004640638828277588,
+          "token": " sum"
+        },
+        "modal": {
+          "chosen_logprob": -0.9346671104431152,
+          "margin": 0.012727677822113037,
+          "token": " adding"
+        },
+        "token_index": 199
+      },
+      "min_margin": {
+        "median": 0.0013885498046875,
+        "min": 0.0013885498046875
+      },
+      "n": 20,
+      "positions_below": {
+        "0.001": 0.0,
+        "0.01": 0.0018784634169249554,
+        "0.1": 0.032121724429416736
+      },
+      "records_with_margins": 20,
+      "variant_counts": [
+        19,
+        1
+      ],
+      "variants": 2
+    }
+  },
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "exploratory": true,
+  "generated_utc": "2026-07-30T22:05:40.405638+00:00",
+  "observer_caveat": "logprobs request fields are NOT byte-neutral at generation length (freeze-gate probe): open_generation margins describe logprobs-perturbed trajectories, not the frozen runs'.",
+  "totals": {
+    "excluded": {
+      "error": 0,
+      "no_margins": 0,
+      "truncated_or_other_stop": 0
+    },
+    "records_in": 244,
+    "warmups_excluded": 4
+  }
+}
