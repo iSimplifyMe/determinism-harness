@@ -38,6 +38,7 @@ import time
 from datetime import datetime, timezone
 
 from harness.config import (
+    CACHE_AB,
     CHURN_AB,
     EFFORT_SWEEP,
     GPT_OSS_120B,
@@ -96,7 +97,7 @@ STUDY2_MODES = (
 # plan-committed-pre-data. Their schedules are FIXED — the schedule IS the
 # manipulation (churn) or the eviction-ordering constraint (margins) — so
 # main() must not shuffle, re-block, or auto-prepend warmups.
-COMPANION_MODES = ("study3-churn-ab", "study3-margins")
+COMPANION_MODES = ("study3-churn-ab", "study3-margins", "study3-cache-ab")
 FIXED_SCHEDULE_MODES = COMPANION_MODES
 
 STUDY3_MODES = (
@@ -531,6 +532,59 @@ def build_schedule(mode, box=None, repeats=None):
                 if arm == "churn":
                     item["pre_unload"] = True
                 items.append(item)
+                counts[arm] += 1
+    elif mode == "study3-cache-ab":
+        if box not in CACHE_AB["boxes"]:
+            raise ValueError(
+                f'study3-cache-ab runs on {CACHE_AB["boxes"]} (got {box})'
+            )
+        n = repeats or CACHE_AB["n_per_arm"]
+        cfg = LOCAL_MODELS[CACHE_AB["model"]]
+        core = {
+            "model": CACHE_AB["model"],
+            "task": CACHE_AB["task"],
+            "sampling": CACHE_AB["sampling"],
+            "thinking": local_pinned_arm(cfg),
+            "hardware": box,
+        }
+        flusher_body = canonical_local_body(
+            cfg["tag"],
+            TASKS[CACHE_AB["flusher_task"]]["prompt"],
+            local_pinned_arm(cfg),
+            options={"temperature": 0, "seed": LOCAL_SEED, "num_predict": 16},
+            keep_alive=LOCAL_KEEP_ALIVE,
+        )
+        items.append(_companion_warmup(cfg["tag"], core["model"], box))
+        # Alternating C,W mini-blocks; cold measured calls each follow a
+        # flusher; a cold block's last call is a measured open-generation
+        # call, so every warm-block call follows an identical prompt.
+        block = CACHE_AB["mini_block"]
+        counts = {"cold": 0, "warm": 0}
+        position = 0
+        flusher_index = 0
+        while counts["cold"] < n or counts["warm"] < n:
+            arm = "cold" if position % 2 == 0 else "warm"
+            position += 1
+            take = min(block, n - counts[arm])
+            if take <= 0:
+                continue
+            for _ in range(take):
+                if arm == "cold":
+                    flusher_meta = {
+                        "model": core["model"],
+                        "control": "flusher",
+                        "hardware": box,
+                    }
+                    items.append(_item2(
+                        f'flusher|{core["model"]}', flusher_meta, "local",
+                        flusher_body, sha256_hex(flusher_body), cfg["tag"],
+                        flusher_index,
+                    ))
+                    flusher_index += 1
+                cell = dict(core, arm=arm)
+                items.append(_study3_item(
+                    cell, cell_key3(core) + f"|prefill={arm}", counts[arm]
+                ))
                 counts[arm] += 1
     elif mode == "study3-margins":
         if box not in MARGINS_BATTERY:

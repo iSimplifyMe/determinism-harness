@@ -351,6 +351,21 @@ CHURN_AB = {
     "mini_block": 10,
 }
 
+# Companion C: cache-state A/B (plan section added 2026-07-30 evening).
+# Residency constant, no unloads; the manipulation is prefill-cache state:
+# cold measured calls each follow a flusher carrying a DIFFERENT frozen
+# prompt (single-slot context cache ⇒ eviction), warm calls follow an
+# identical measured call.
+CACHE_AB = {
+    "model": "gpt-oss-20b",
+    "task": "open_generation",
+    "flusher_task": "classification",
+    "sampling": "greedy",
+    "boxes": ("metal", "cuda"),
+    "n_per_arm": 50,
+    "mini_block": 10,
+}
+
 # Companion B: logprob-margin battery. Listed in run order — per-model
 # blocks are emitted in this order, so the 120b eviction block is LAST on
 # Metal. `thinking` defaults to the model's pinned LOW/OFF arm.
