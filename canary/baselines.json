@@ -1,0 +1,296 @@
+{
+  "cells": {
+    "haiku-4-5|classification|anthropic_api|none": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 200
+      },
+      "latency_ms_p50": 725.0,
+      "n": 200,
+      "task": "classification"
+    },
+    "haiku-4-5|classification|bedrock|none": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 200
+      },
+      "latency_ms_p50": 936.0,
+      "n": 200,
+      "task": "classification"
+    },
+    "haiku-4-5|classification|p_aws|none": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 173
+      },
+      "latency_ms_p50": 1053.0,
+      "n": 173,
+      "task": "classification"
+    },
+    "haiku-4-5|extraction|anthropic_api|none": {
+      "latency_ms_p50": 839.5,
+      "n": 200,
+      "task": "extraction"
+    },
+    "haiku-4-5|extraction|bedrock|none": {
+      "latency_ms_p50": 984.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "haiku-4-5|extraction|p_aws|none": {
+      "latency_ms_p50": 1099.0,
+      "n": 178,
+      "task": "extraction"
+    },
+    "haiku-4-5|structured_json|anthropic_api|none": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "185af64c4cf7842f92fb4508771305c42ba54cbfbac93957c9834d0e57b57053",
+        "82c5447b4d60f53ce6154aea4d880a06318bb217aabe1cc6acfef13fe119557f"
+      ],
+      "fence_rate": 0.37,
+      "latency_ms_p50": 967.5,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}",
+        "{\"in_stock\":true,\"name\":\"Item Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "haiku-4-5|structured_json|bedrock|none": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "185af64c4cf7842f92fb4508771305c42ba54cbfbac93957c9834d0e57b57053"
+      ],
+      "fence_rate": 0.155,
+      "latency_ms_p50": 1192.5,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}",
+        "{\"in_stock\":true,\"name\":\"Item Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "haiku-4-5|structured_json|p_aws|none": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "185af64c4cf7842f92fb4508771305c42ba54cbfbac93957c9834d0e57b57053",
+        "82c5447b4d60f53ce6154aea4d880a06318bb217aabe1cc6acfef13fe119557f"
+      ],
+      "fence_rate": 0.3155080213903743,
+      "latency_ms_p50": 1234.0,
+      "n": 187,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}",
+        "{\"in_stock\":true,\"name\":\"Item Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "opus-5|classification|anthropic_api|adaptive": {
+      "flip_rate": 0.0050000000000000044,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 199,
+        "TECHNICAL": 1
+      },
+      "latency_ms_p50": 2444.0,
+      "n": 200,
+      "task": "classification"
+    },
+    "opus-5|classification|bedrock|adaptive": {
+      "flip_rate": 0.0050000000000000044,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 199,
+        "TECHNICAL": 1
+      },
+      "latency_ms_p50": 1457.5,
+      "n": 200,
+      "task": "classification"
+    },
+    "opus-5|classification|p_aws|adaptive": {
+      "flip_rate": 0.015000000000000013,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 197,
+        "TECHNICAL": 3
+      },
+      "latency_ms_p50": 2723.0,
+      "n": 200,
+      "task": "classification"
+    },
+    "opus-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 2586.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "opus-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 1930.5,
+      "n": 200,
+      "task": "extraction"
+    },
+    "opus-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 2616.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "opus-5|structured_json|anthropic_api|adaptive": {
+      "byte_sha_corpus": [
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c"
+      ],
+      "fence_rate": 0.0,
+      "latency_ms_p50": 3080.0,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "opus-5|structured_json|bedrock|adaptive": {
+      "byte_sha_corpus": [
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c"
+      ],
+      "fence_rate": 0.0,
+      "latency_ms_p50": 2673.5,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "opus-5|structured_json|p_aws|adaptive": {
+      "byte_sha_corpus": [
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c"
+      ],
+      "fence_rate": 0.0,
+      "latency_ms_p50": 4033.0,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "sonnet-5|classification|anthropic_api|adaptive": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 200
+      },
+      "latency_ms_p50": 2233.5,
+      "n": 200,
+      "task": "classification"
+    },
+    "sonnet-5|classification|bedrock|adaptive": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 200
+      },
+      "latency_ms_p50": 1516.0,
+      "n": 200,
+      "task": "classification"
+    },
+    "sonnet-5|classification|p_aws|adaptive": {
+      "flip_rate": 0.0,
+      "golden_label": "BILLING",
+      "label_counts": {
+        "BILLING": 200
+      },
+      "latency_ms_p50": 2489.5,
+      "n": 200,
+      "task": "classification"
+    },
+    "sonnet-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 1437.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "sonnet-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 1630.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "sonnet-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 2476.0,
+      "n": 200,
+      "task": "extraction"
+    },
+    "sonnet-5|structured_json|anthropic_api|adaptive": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "63e50a135624ee915eed2ac7426a4aecac1cd36cd3db2700a51894955d40fb47"
+      ],
+      "fence_rate": 0.13,
+      "latency_ms_p50": 1780.0,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "sonnet-5|structured_json|bedrock|adaptive": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "63e50a135624ee915eed2ac7426a4aecac1cd36cd3db2700a51894955d40fb47"
+      ],
+      "fence_rate": 0.86,
+      "latency_ms_p50": 2126.5,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    },
+    "sonnet-5|structured_json|p_aws|adaptive": {
+      "byte_sha_corpus": [
+        "018e341653a04543da636f462381f2db65122d25d9176714dac595ad7399f092",
+        "0702bc6f19610a19f94a8cf10afb0bf0a698270fe301c36ccfc20ea9b0fdf96b",
+        "63e50a135624ee915eed2ac7426a4aecac1cd36cd3db2700a51894955d40fb47"
+      ],
+      "fence_rate": 0.835,
+      "latency_ms_p50": 2936.5,
+      "n": 200,
+      "parse_fail_count": 0,
+      "sj_semantic_goldens": [
+        "{\"in_stock\":true,\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"reorder_threshold\":6,\"sku\":\"CS220-BDG-K\",\"unit_price_usd\":349.5}"
+      ],
+      "task": "structured_json"
+    }
+  },
+  "extraction_golden": "PO-83614-QN",
+  "generated_from": [
+    "runs/low-study2-full-20260729T070501Z.jsonl",
+    "runs/peak-study2-full-20260729T150537Z.jsonl"
+  ],
+  "generated_utc": "2026-07-30T22:57:41.969674+00:00",
+  "response_models": {
+    "haiku-4-5": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "opus-5": [
+      "claude-opus-5"
+    ],
+    "sonnet-5": [
+      "claude-sonnet-5"
+    ]
+  }
+}

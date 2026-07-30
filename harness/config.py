@@ -150,6 +150,22 @@ WINDOWS = {
     "pilot": "any single window, recorded in the manifest",
     "control": "any, recorded in the manifest",
     "local": "owner-approved window on the target box, recorded in the manifest",
+    "canary": (
+        "daily fixed-hour probe (scheduler is local-time; the actual UTC "
+        "window rides in each manifest)"
+    ),
+}
+
+# --- Reproducibility canary (design doc 2026-07-30, owner-approved) --------
+# Daily probe battery re-running a fixed slice of the frozen task ladder
+# against all three serving doors, compared against baselines computed from
+# the committed study-2 confirmatory records. Deterministic-config cells
+# only; no open generation (no golden exists); no sampling.
+CANARY = {
+    "models": ("opus-5", "sonnet-5", "haiku-4-5"),
+    "n_sj": 10,
+    "n_extraction": 3,
+    "n_classification": 3,
 }
 
 

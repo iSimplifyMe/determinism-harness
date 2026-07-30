@@ -39,6 +39,7 @@ from datetime import datetime, timezone
 
 from harness.config import (
     CACHE_AB,
+    CANARY,
     CHURN_AB,
     EFFORT_SWEEP,
     GPT_OSS_120B,
@@ -92,6 +93,10 @@ STUDY2_MODES = (
     "study2-positive-control",
     "study2-q3-streaming",
     "study2-q4-lengths",
+    # The daily reproducibility canary reuses the study-2 plane machinery
+    # verbatim (schema-2 records, credential fail-fast, per-plane payloads)
+    # and exact study-2 cell keys, so baselines look up directly.
+    "canary",
 )
 # Follow-up companion modes (FOLLOWUP-COMPANIONS.md): exploratory,
 # plan-committed-pre-data. Their schedules are FIXED — the schedule IS the
@@ -426,6 +431,34 @@ def build_schedule(mode, box=None, repeats=None):
                     for r in range(q4["repeats"]):
                         items.append(
                             _item2(cid, dict(meta), plane, payload, sha, model_id, r)
+                        )
+    elif mode == "canary":
+        for model_key in CANARY["models"]:
+            mcfg = MODELS[model_key]
+            arm = "adaptive" if mcfg["family"] == "claude-5" else "none"
+            for task_key, n in (
+                ("structured_json", CANARY["n_sj"]),
+                ("extraction", CANARY["n_extraction"]),
+                ("classification", CANARY["n_classification"]),
+            ):
+                for plane in PLANES:
+                    model_id = plane_model_id(plane, model_key)
+                    payload, sha = _study2_payload(
+                        mcfg, plane, model_id,
+                        TASKS[task_key]["prompt"], arm,
+                    )
+                    cell = {
+                        "model": model_key,
+                        "task": task_key,
+                        "plane": plane,
+                        "thinking": arm,
+                        "canary": True,
+                    }
+                    cid = cell_key2(cell)
+                    for r in range(n):
+                        items.append(
+                            _item2(cid, dict(cell), plane, payload, sha,
+                                   model_id, r)
                         )
     elif mode in ("study3-pilot", "study3-full"):
         if box is None:
