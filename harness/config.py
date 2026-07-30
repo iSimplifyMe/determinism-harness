@@ -355,6 +355,20 @@ def local_model_cfg(model_key):
 # top-level fields; the options spelling is accepted but inert.
 MARGINS_LOGPROB_FIELDS = {"logprobs": True, "top_logprobs": 5}
 
+# Companion E: timing-manipulated cache-state A/B. No flushers — the only
+# manipulated variable is the gap before each call (companion-D evidence:
+# back-to-back identical prompts reuse the full prompt KV ~16-18ms; calls
+# separated by the anti-burst jitter fall to the checkpoint state ~34-41ms).
+CACHE_TIMING = {
+    "model": "gpt-oss-20b",
+    "task": "open_generation",
+    "sampling": "greedy",
+    "boxes": ("metal", "cuda"),
+    "n_per_arm": 50,
+    "mini_block": 10,
+    "gap_ms": 600,
+}
+
 # Companion A: reload-churn A/B on the section-6 tension cell. The measured
 # bodies are byte-identical across arms; the churn manipulation is an
 # out-of-band unload side-call confirmed via /api/ps before every churn call.

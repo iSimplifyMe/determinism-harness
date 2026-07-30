@@ -423,6 +423,12 @@ differ from each other.
   Alternating mini-blocks of 10 (A,G,A,G,…), one warmup head, single
   flight, fixed schedule. No flushers — timing is the only manipulated
   variable.
+- **One burn-in call** (the measured body, meta `control=burnin`,
+  excluded from analysis like warmups) sits between the warmup and the
+  first adjacent block: the warmup's different prompt would otherwise
+  force the first adjacent call into the checkpoint state on a schedule
+  technicality rather than the manipulated variable. Every adjacent call
+  thereby follows a same-prompt call.
 - **Session qualification:** the companion-D prewarm gate runs first
   (cached state must exist this session); one server-restart retry.
 - **Box:** CUDA (non-production), same posture.

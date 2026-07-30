@@ -39,6 +39,7 @@ from datetime import datetime, timezone
 
 from harness.config import (
     CACHE_AB,
+    CACHE_TIMING,
     CANARY,
     CHURN_AB,
     EFFORT_SWEEP,
@@ -102,7 +103,12 @@ STUDY2_MODES = (
 # plan-committed-pre-data. Their schedules are FIXED — the schedule IS the
 # manipulation (churn) or the eviction-ordering constraint (margins) — so
 # main() must not shuffle, re-block, or auto-prepend warmups.
-COMPANION_MODES = ("study3-churn-ab", "study3-margins", "study3-cache-ab")
+COMPANION_MODES = (
+    "study3-churn-ab",
+    "study3-margins",
+    "study3-cache-ab",
+    "study3-cache-timing",
+)
 FIXED_SCHEDULE_MODES = COMPANION_MODES
 
 STUDY3_MODES = (
@@ -619,6 +625,52 @@ def build_schedule(mode, box=None, repeats=None):
                     cell, cell_key3(core) + f"|prefill={arm}", counts[arm]
                 ))
                 counts[arm] += 1
+    elif mode == "study3-cache-timing":
+        if box not in CACHE_TIMING["boxes"]:
+            raise ValueError(
+                f'study3-cache-timing runs on {CACHE_TIMING["boxes"]} '
+                f"(got {box})"
+            )
+        n = repeats or CACHE_TIMING["n_per_arm"]
+        cfg = LOCAL_MODELS[CACHE_TIMING["model"]]
+        core = {
+            "model": CACHE_TIMING["model"],
+            "task": CACHE_TIMING["task"],
+            "sampling": CACHE_TIMING["sampling"],
+            "thinking": local_pinned_arm(cfg),
+            "hardware": box,
+        }
+        items.append(_companion_warmup(cfg["tag"], core["model"], box))
+        # Burn-in: the warmup's different prompt would force the first
+        # adjacent call into the checkpoint state on a technicality, so
+        # one excluded measured-body call precedes the first block.
+        burnin = _study3_item(
+            dict(core, control="burnin"), cell_key3(core) + "|burnin", 0
+        )
+        burnin["pre_sleep_ms"] = 0
+        items.append(burnin)
+        # Alternating A,G mini-blocks; timing is the ONLY manipulation:
+        # adjacent calls sleep 0 (jitter suppressed), gapped calls sleep
+        # gap_ms before invoking. Bodies byte-identical across arms.
+        block = CACHE_TIMING["mini_block"]
+        counts = {"adjacent": 0, "gapped": 0}
+        position = 0
+        while counts["adjacent"] < n or counts["gapped"] < n:
+            arm = "adjacent" if position % 2 == 0 else "gapped"
+            position += 1
+            take = min(block, n - counts[arm])
+            if take <= 0:
+                continue
+            for _ in range(take):
+                cell = dict(core, arm=arm)
+                item = _study3_item(
+                    cell, cell_key3(core) + f"|timing={arm}", counts[arm]
+                )
+                item["pre_sleep_ms"] = (
+                    0 if arm == "adjacent" else CACHE_TIMING["gap_ms"]
+                )
+                items.append(item)
+                counts[arm] += 1
     elif mode == "study3-margins":
         if box not in MARGINS_BATTERY:
             raise ValueError(
@@ -709,6 +761,9 @@ class Engine:
         self.concurrency = concurrency
         self.seed = seed
         self.max_attempts = max_attempts
+        # Injectable for the timing-arm tests; per-item pre_sleep_ms
+        # overrides the anti-burst jitter (companion E manipulates timing).
+        self._sleep = time.sleep
         self.out = open(out_path, "a", encoding="utf-8")
 
         needed = {it.get("plane") for it in items}
@@ -934,7 +989,11 @@ class Engine:
                     time.sleep(0.05)
                     continue
                 item = self.items[idx]
-                time.sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
+                pre_sleep_ms = item.get("pre_sleep_ms")
+                if pre_sleep_ms is None:
+                    self._sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
+                elif pre_sleep_ms > 0:
+                    self._sleep(pre_sleep_ms / 1000.0)
                 if item.get("plane"):
                     record = self._execute_plane(item, rng, idx)
                 else:
