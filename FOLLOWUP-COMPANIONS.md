@@ -304,6 +304,56 @@ does not matter in a fresh session (weakens the attribution). Prediction
   behavior), and a pre-warm-until-cached design that would make the
   cross-arm endpoint testable.
 
+## Companion D — pre-warmed cache-state A/B (pre-data plan, 2026-07-30 night)
+
+**Status: exploratory-directional; this plan is committed BEFORE any
+companion-D data.** Companion C's manipulation gate voided honestly: the
+cached-prefill state never appeared in that fresh server session, so the
+warm/cold contrast had nothing to contrast. Companion D is the same A/B
+preceded by a **session-qualification gate** that proves the cached state
+exists before any arm runs.
+
+### Session-qualification prewarm (gate, not data)
+
+- Repeatedly issue the EXACT frozen measured body (byte-identical to the
+  A/B cell) and record `prompt_eval_duration_ns` per call.
+- **Qualified** when 3 consecutive calls land below 25 ms — the threshold
+  sits between the two observed prefill classes (~17 ms cached in
+  companion A's session vs ~34–41 ms full-prefill in companions A and C).
+- **Cap: 40 calls.** If the state has not engaged, the harness exits
+  distinct (4) and the orchestration performs ONE full server restart and
+  re-qualifies. If the second session also fails to qualify, NO A/B runs
+  — the run is recorded as a session-qualification failure, which is
+  itself a finding about state availability, not a silent skip.
+- Prewarm calls are evidence, never analysis data: their prefill
+  trajectory and output-sha sequence are written to
+  `evidence/prewarm-cache-*.json` (the sha sequence captures any
+  state-transition flip mid-prewarm — descriptive only).
+
+### The A/B itself
+
+Unchanged from companion C — same design, arms, byte-identical measured
+bodies, flusher mechanics, manipulation gate (cold > 3x warm median;
+warm median < cold median / 3), and registered endpoints (within-arm
+modal shares predicted 1.0; arms_differ predicted true). The analyzer is
+the committed `analysis/analyze_cache_ab.py`, untouched.
+
+### Interpretation (stated pre-data)
+
+- Qualification succeeds and both endpoints hold → the cache-state
+  attribution is confirmed as a manipulated result: prose-length greedy
+  output is deterministic conditional on prefill-cache state, which is
+  the load-bearing claim behind the state-pinning pattern for
+  reproducible long-form generation on owned hardware.
+- Qualification succeeds, endpoint 2 fails (arms identical) → cache
+  state does not change output in a qualified session; the companion-A
+  decomposition needs a different explanation and the state-pinning
+  claim is NOT supported at the prefill-cache layer.
+- Qualification fails in both sessions → the cached state's availability
+  is itself unstable; state pinning would have to pin the NO-cache
+  regime instead (always-flushed), which companion C already measured
+  internally deterministic at n=100.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
