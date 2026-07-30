@@ -354,6 +354,46 @@ the committed `analysis/analyze_cache_ab.py`, untouched.
   regime instead (always-flushed), which companion C already measured
   internally deterministic at n=100.
 
+### Companion D results (post-data, 2026-07-30 night)
+
+Session QUALIFIED on attempt 1 in 4 calls; A/B ran 151/151, zero
+failures (`runs/local-study3-cache-ab-20260730T231915Z.*`,
+`reports/cache-ab-report-20260730T232908Z.*`,
+`evidence/prewarm-cache-cuda-d1.json`).
+
+- **A fourth outcome occurred, outside the three stated above:** the
+  session qualified, but the A/B could not HOLD the cached state — the
+  manipulation gate voided again (warm 35.8 ms ≈ cold 36.3 ms), so the
+  registered cross-arm endpoint is untested for the second time. Both
+  arms: modal 1.0, one shared variant.
+- **The prewarm trajectory is the decisive artifact:** prefills
+  [216.0, 17.8, 16.3, 17.9] ms — call 0 (fresh load) produced
+  companion-A's fresh-load variant `45e27daf…`; calls 1–3 (cached)
+  produced companion-A's cached-steady variant `cf2c66c8…`. The state
+  transition and the byte flip occur at the same call, and both states
+  reproduce the prior session's bytes.
+- **The A/B's shared variant is the third state:** the serve logs
+  identify it exactly — a persistent ~39-token context checkpoint is
+  restored and 77 of 116 prompt tokens are evaluated (~36 ms) — and its
+  bytes are `20310cdd…`, the same partial-state variant as companion A's
+  B1, companion C, and the launch smoke: a third independent session.
+- **Why the manipulation failed: the flusher is not the operative
+  lever — inter-call timing is.** Back-to-back identical calls (the
+  prewarm loop, no delay) reuse the full prompt KV (~17 ms); calls
+  separated by the runner's anti-burst jitter (0.25–1.0 s) fall to the
+  checkpoint state (~36 ms) in every position of every block, warm and
+  cold alike.
+- **Standing evidence after A+C+D:** three prefill states, each
+  internally byte-deterministic at n=10–100, each observed in at least
+  two of three independent server sessions, each producing the same
+  bytes per state across sessions:
+  fresh-load ~200–216 ms → `45e27daf…` · full-KV-cached ~16–18 ms →
+  `cf2c66c8…` · checkpoint-partial ~34–41 ms → `20310cdd…`.
+  The cross-arm prediction is directly evidenced descriptively (the
+  three states' bytes differ) but remains unconfirmed under a
+  registered manipulation gate. The follow-up that manipulates the
+  discovered variable — inter-call timing — is companion E below.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
