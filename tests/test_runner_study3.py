@@ -43,8 +43,12 @@ class TestStudy3Schedule(unittest.TestCase):
             self.assertEqual(it["meta"]["hardware"], "cuda")
 
     def test_pilot_adds_q3_on_arm_cells(self):
+        # 32 core + 3 thinking-on sj cells: vl-32b is struck from Q3 at
+        # freeze (non-hybrid, prereg v3 s1) but keeps its 8 core cells
         metal = {it["cell"] for it in build_schedule("study3-pilot", box="metal")}
-        self.assertEqual(len(metal), 36)  # 32 core + 4 thinking-on sj cells
+        self.assertEqual(len(metal), 35)
+        self.assertFalse(any("qwen3-vl-32b" in c and "think_on" in c
+                             for c in metal))
         cuda = {it["cell"] for it in build_schedule("study3-pilot", box="cuda")}
         self.assertEqual(len(cuda), 9)  # 8 core + 1
         items = build_schedule("study3-pilot", box="cuda")
@@ -79,7 +83,7 @@ class TestStudy3Schedule(unittest.TestCase):
     def test_q3_thinking_mode_is_on_arm_sj_greedy_only(self):
         items = build_schedule("study3-q3-thinking", box="metal")
         cells = {it["cell"] for it in items}
-        self.assertEqual(len(cells), 4)
+        self.assertEqual(len(cells), 3)  # vl-32b struck at freeze
         for it in items:
             meta = it["meta"]
             self.assertEqual(meta["task"], "structured_json")

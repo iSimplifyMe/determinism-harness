@@ -194,6 +194,8 @@ def _study3_item(cell, cid, repeat, cfg=None):
 
 def _study3_q3_cells(box):
     for model_key, cfg in local_models_for_box(box).items():
+        if not cfg.get("q3_eligible", True):
+            continue  # struck at freeze (prereg v3 s1) — non-hybrid model
         yield {
             "model": model_key,
             "task": "structured_json",

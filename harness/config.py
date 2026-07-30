@@ -242,6 +242,10 @@ LOCAL_MODELS = {
         "arch": "dense",
         "thinking_arms": ("think_off", "think_on"),
         "boxes": ("metal",),
+        # STRUCK from Q3 at freeze (prereg v3 s1/s6): the pinned engine
+        # rejects think:true on this model (400, Metal pilot 10/10) while
+        # accepting think:false — core-grid + Q2 roles unaffected.
+        "q3_eligible": False,
     },
     "gpt-oss-20b": {
         "tag": "gpt-oss:20b",
