@@ -174,7 +174,79 @@ def build_churn_report(records, confirmatory=None):
             "warmups_excluded": warmups,
         },
         "boxes": boxes,
+        "cache_state_decomposition": cache_state_decomposition(records),
     }
+
+
+def cache_state_decomposition(records, mini_block=10):
+    """EXPLORATORY (not registered): per-box breakdown of the A/B by
+    schedule position class, with prefill medians — the discriminator the
+    interim data surfaced. Position classes:
+
+    - first_blocked_block  blocked repeats 0..mini_block-1 (runs on the
+                           pre-A/B instance, warmup-era cache state)
+    - block_head           first call of each later blocked mini-block
+                           (first blocked call after a churn block)
+    - block_rest           remaining blocked calls (steady cached state)
+    - churn                every churn call (fresh reload, no cache)
+
+    Each class reports n, distinct variants, modal share, its sha set, and
+    prefill/load medians. The registered estimator above is untouched;
+    this section exists because the arms turned out to bundle distinct
+    cache states, and the decomposition is how the report says so with
+    the recorded evidence rather than a narrative.
+    """
+    by_box = defaultdict(lambda: defaultdict(list))
+    for record in records:
+        if record.get("meta_control") == "warmup":
+            continue
+        arm = record.get("meta_arm")
+        if arm not in ARMS or not record.get("ok"):
+            continue
+        if record.get("stop_reason") != "stop":
+            continue
+        box = record.get("box") or record.get("meta_hardware")
+        repeat = record.get("repeat", 0)
+        if arm == "churn":
+            cls = "churn"
+        elif repeat < mini_block:
+            cls = "first_blocked_block"
+        elif repeat % mini_block == 0:
+            cls = "block_head"
+        else:
+            cls = "block_rest"
+        by_box[box][cls].append(record)
+
+    out = {}
+    for box in sorted(by_box):
+        classes = {}
+        for cls in ("first_blocked_block", "block_head", "block_rest",
+                    "churn"):
+            recs = by_box[box].get(cls, [])
+            if not recs:
+                continue
+            from collections import Counter
+
+            shas = Counter(r["text_sha256"] for r in recs)
+            prefill = [
+                ((r.get("usage") or {}).get("prompt_eval_duration_ns") or 0)
+                / 1e6
+                for r in recs
+            ]
+            loads = [
+                ((r.get("usage") or {}).get("load_duration_ns") or 0) / 1e9
+                for r in recs
+            ]
+            classes[cls] = {
+                "n": len(recs),
+                "distinct": len(shas),
+                "modal_share": max(shas.values()) / len(recs),
+                "shas": sorted(shas),
+                "prefill_ms_median": _median(prefill),
+                "load_s_median": _median(loads),
+            }
+        out[box] = classes
+    return out
 
 
 def _fmt_ci(ci):
@@ -234,6 +306,24 @@ def write_md(report, path):
                 f"Churn-minus-blocked modal-share diff: {diff['diff']:+.4f} "
                 f"(SE {diff['se']:.4f}, CI95 {_fmt_ci(diff['ci95'])})."
             )
+    decomposition = report.get("cache_state_decomposition") or {}
+    if decomposition:
+        lines.append("")
+        lines.append("## Cache-state decomposition (exploratory)")
+        lines.append("")
+        lines.append(
+            "| box | position class | n | distinct | modal | prefill ms "
+            "(med) | load s (med) |"
+        )
+        lines.append("|---|---|---|---|---|---|---|")
+        for box in sorted(decomposition):
+            for cls, entry in decomposition[box].items():
+                lines.append(
+                    f"| {box} | {cls} | {entry['n']} | {entry['distinct']} | "
+                    f"{entry['modal_share']:.3f} | "
+                    f"{entry['prefill_ms_median']:.0f} | "
+                    f"{entry['load_s_median']:.2f} |"
+                )
     lines.append("")
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines))

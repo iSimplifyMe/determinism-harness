@@ -185,6 +185,41 @@ class TestChurnReport(unittest.TestCase):
         self.assertEqual(report["totals"]["warmups_excluded"], 1)
 
 
+class TestCacheStateDecomposition(unittest.TestCase):
+    def test_positions_classified_and_summarized(self):
+        from analysis.analyze_churn_ab import cache_state_decomposition
+
+        records = []
+        # B1 (repeats 0-9) variant A; later blocked variant B; churn variant F
+        for r in range(20):
+            rec = _churn_record("metal", "blocked",
+                                "AAA" if r < 10 else "BBB", WARM, r)
+            rec["usage"]["prompt_eval_duration_ns"] = int(
+                (100 if r < 10 else 20) * 1e6
+            )
+            records.append(rec)
+        for r in range(20):
+            rec = _churn_record("metal", "churn", "FFF", COLD, r)
+            rec["usage"]["prompt_eval_duration_ns"] = int(200 * 1e6)
+            records.append(rec)
+        out = cache_state_decomposition(records, mini_block=10)
+        metal = out["metal"]
+        self.assertEqual(metal["first_blocked_block"]["n"], 10)
+        self.assertEqual(metal["first_blocked_block"]["distinct"], 1)
+        self.assertEqual(metal["block_head"]["n"], 1)  # repeat 10 only
+        self.assertEqual(metal["block_rest"]["n"], 9)
+        self.assertEqual(metal["churn"]["n"], 20)
+        self.assertEqual(metal["churn"]["distinct"], 1)
+        self.assertAlmostEqual(
+            metal["first_blocked_block"]["prefill_ms_median"], 100.0
+        )
+        self.assertAlmostEqual(metal["churn"]["prefill_ms_median"], 200.0)
+        # sha sets expose which states share a variant
+        self.assertNotEqual(
+            metal["first_blocked_block"]["shas"], metal["churn"]["shas"]
+        )
+
+
 def _margins_record(box, cell, text, rows, repeat):
     import hashlib
 
