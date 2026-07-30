@@ -277,6 +277,33 @@ inversion. Prediction 1 holding with prediction 2 failing = cache state
 does not matter in a fresh session (weakens the attribution). Prediction
 1 failing = the state story is incomplete; report as such.
 
+### Companion C results (post-data, 2026-07-30 late evening)
+
+151/151 calls, zero failures
+(`runs/local-study3-cache-ab-20260730T222842Z.*`,
+`reports/cache-ab-report-20260730T223839Z.*`).
+
+- **Manipulation gate FAILED — endpoint 2 honestly voided.** Warm-arm
+  prefill median 35.7 ms vs cold-arm 36.3 ms: the cache-hit (~17 ms)
+  prefill state never appeared in this fresh server session, so the
+  flusher had nothing to evict and both arms ran in the same state. The
+  registered cross-arm question (arms_differ) is therefore untested, per
+  the gate — not answered.
+- **Prediction 1 HELD at full n:** modal share 1.0 in both arms — all
+  100 measured calls produced ONE variant.
+- **Descriptive history match — the run's real contribution:** that
+  variant is `20310cdd…`, companion A's B1/warmup-era class (prefill
+  after a different-prompt call on a loaded model) — exactly the state
+  class every companion-C call was in — reproduced byte-identically from
+  a DIFFERENT server session. Combined with companion A, within-state
+  determinism now spans two independent server sessions in the matching
+  state class, which reframes the smoke-observed "cross-session drift"
+  as state MISMATCH rather than time drift.
+- Open (future window, not promised here): why the cache-hit state did
+  not engage in this session (warm-up, VRAM pressure, or cache-admission
+  behavior), and a pre-warm-until-cached design that would make the
+  cross-arm endpoint testable.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
