@@ -1,10 +1,11 @@
-# Pre-registration v3 (DRAFT): Local Open-Model Determinism Baseline — the Control Ceiling
+# Pre-registration v3.0 (FROZEN): Local Open-Model Determinism Baseline — the Control Ceiling
 
-**Status: DRAFT — NOT FROZEN.** Freeze = this file bumped to v3.0 and tag
-`prereg-v3` pushed before the first confirmatory call, same discipline as
-studies 1–2. Pilot runs are permitted before the freeze; pilot data forms no
-part of the confirmatory dataset and any pilot-informed design decision is
-recorded explicitly in this file at freeze time.
+**Status: FROZEN v3.0 — tag `prereg-v3`, pushed before the first
+confirmatory call, same discipline as studies 1–2.** Four pilots preceded
+this freeze (two CUDA, one Metal, one Q2 concurrency; n=10/cell; raw
+records committed at `aeff3d5` and `2bc0132`); they are exploratory, form
+no part of the confirmatory dataset, and every pilot-informed design
+decision is recorded in section 6 and reflected in the sections below.
 
 Lineage: study 1 (frozen `prereg-v1`, published) measured reproducibility on
 one serving plane with zero determinism knobs; study 2 (frozen `prereg-v2`,
@@ -47,17 +48,25 @@ findings; cross-study comparisons are conceptual replications only.**
   difference in structured-JSON modal share with 95% CI. Conceptual
   replication of the study-1/2 coin-flip mechanism under full control;
   either outcome is publishable and no direction is registered as expected.
+  Models: qwen3.5-122b and qwen3.6-35b (bool think), gpt-oss-20b and
+  gpt-oss-120b (effort). **qwen3-vl-32b is STRUCK from Q3** — pilot-verified
+  non-hybrid (rejects `think: true` with a 400 on the pinned engine); it
+  retains its core-grid and Q2 dense-comparator roles on `think: false`,
+  which it accepts (32/32 in the Metal pilot).
 - **Q4 (confirmatory — the one clean cross-comparison; arm CONFIRMED IN,
   owner decision 2026-07-29).** gpt-oss:20b, same engine and engine version,
   same weights digest, on two hardware stacks: Metal (Mac Pro M2 Ultra) vs
   CUDA (RTX 4090). (a) Within-box reproducibility per hardware; (b)
   **cross-box identity**: do the two boxes produce each other's modal bytes
-  at identical settings? **Registered expectation: within-box high,
-  cross-box NOT byte-identical** (kernel and accumulation-order
-  differences). Exploratory alongside: per-box per-token decode-rate from
-  recorded call latency — the known-ground-truth calibration for the
-  study-2 latency-fingerprint readout (same weights, same engine, different
-  silicon: what slope difference does a hardware swap actually produce?).
+  at identical settings? **Registered expectation (pilot-revised, recorded
+  in section 6): within-box high; cross-box BYTE-IDENTICAL on short
+  outputs, with divergence emerging as generation length grows** — the
+  pilots found every short-output greedy cell byte-identical across Metal
+  and CUDA while long generation diverged on Metal only. Exploratory
+  alongside: per-box per-token decode-rate from recorded call latency —
+  the known-ground-truth calibration for the study-2 latency-fingerprint
+  readout (pilot: CUDA 159.9 vs Metal 97.9 tok/s on identical weights and
+  engine).
 
 Analysis code for the Q1–Q4 estimators and validity gates above is
 implemented and committed BEFORE any confirmatory data
@@ -77,10 +86,22 @@ positive-control firing check.
 | Concurrency | 1 · 4 | Q2 cells only |
 | Hardware | Metal (M2 Ultra) · CUDA (4090) | gpt-oss:20b only (Q4) |
 
-- Wall-clock, not dollars, is the budget: **repeats target n=100/cell on the
-  small/fast models; n for qwen3.5:122b is set at freeze from pilot
-  tokens/sec.** The registered estimator (section 1) is the basis for any
-  n justification recorded at freeze.
+- Wall-clock, not dollars, is the budget: **n=100/cell CONFIRMED for every
+  model at freeze.** The 122b measured 46.6 tok/s in the Metal pilot, so
+  its 800 core calls are affordable; n=100 matches studies 1–2, and the
+  section-1 estimators at n=100 deliver the same per-cell Wilson precision
+  those studies published.
+- **Scheduling (pilot-informed, section 6): confirmatory runs execute in
+  per-model blocks** (`apply_model_blocks` — a stable sort of the shuffled
+  schedule, so the per-cell ordering control is unchanged; model was never
+  a within-cell factor). The Metal pilot's fully-shuffled schedule spent
+  most of its 92 minutes swapping models on an over-budget box.
+- **Windows (recorded at freeze):** one Metal full window + one CUDA full
+  window (core grid, n=100) · Q3 arm cells alongside the full windows ·
+  one Q2 concurrency window (Metal) · ONE dedicated gpt-oss:120b window
+  (Metal). Owner posture recorded 2026-07-29 ("low-use box; loading is
+  fine"); each window runs with owner awareness, box state snapshotted
+  before and after.
 - gpt-oss:120b (65 GB): **REGISTERED single-dedicated-window arm (owner
   decision 2026-07-29; criterion: active community use of the open-weights
   release — Apache-2.0 weights on Hugging Face, multiple commodity
@@ -113,12 +134,20 @@ constant within the confirmatory dataset — the control the API studies
 structurally could not have. Engine name and version are recorded per run
 and must be identical across both boxes for Q4.
 
-**New local-only endpoints (pilot-gated):** first-divergence token index and
-logprob margin at the divergence point, for cells with byte-divergent
-responses. ⚠️ These are registered ONLY IF the pilot verifies the runtime
-exposes per-token logprobs; the fallback (llama.cpp server) changes the
-engine and therefore the study — the engine decision is made once, before
-freeze, and engines are never mixed within the confirmatory dataset.
+**New local-only endpoints (pilot-resolved):** the engine decision is
+CLOSED — Ollama exposes per-token logprobs
+(`evidence/logprobs-probe-metal.json`); no llama.cpp fallback, one engine
+for the whole confirmatory dataset. **First-divergence token index:
+REGISTERED** — it is text-derived and needs no request-side capture.
+**Logprob margin: EXPLORATORY COMPANION ONLY.** The freeze probe found the
+logprobs request fields are NOT generation-neutral at length
+(`evidence/logprobs-bytes-probe-cuda-4090.json`: three calls with logprobs
+produced three distinct outputs on a cell that is 20/20 byte-identical
+without them, while all short-output cells stayed byte-neutral). Margin
+capture is therefore barred from the frozen confirmatory bodies; margins
+come from separate, clearly-labeled companion runs that form no part of
+the confirmatory dataset. The non-neutrality itself is disclosed as a
+standalone observation.
 
 **Box-state covariate:** resident models (`ollama ps`), engine version,
 parallelism setting, keep-alive state, and (4090) GPU driver version are
@@ -145,7 +174,7 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
   Anthropic-model finding; the thinking analog (Q3) is a conceptual
   replication, registered as such.
 
-## 5. Freeze checklist (OPEN — all must close before tag `prereg-v3`)
+## 5. Freeze checklist (CLOSED at freeze — every item verified)
 
 - [x] `LocalPlane` client + `canonical_local_body()` builder + invariant
       tests committed (`c25b3b5`), with a live instrument smoke 6/6 PASS on
@@ -175,41 +204,76 @@ exactly as in studies 1–2, feeding the Q4 exploratory calibration readout.
       logprob-margin endpoints are REGISTERED, reading the top-level
       fields.** Grid bodies remain logprob-free; logprob capture rides on
       the registered request shape only if added at freeze as an explicit
-      field of the frozen bytes
-- [ ] Pilot (small n, both boxes, all models) run clean; disclosed in
-      section 6 at freeze
-- [ ] n/cell for qwen3.5:122b set from pilot tokens/sec; power basis recorded
-      using the registered estimator
+      field of the frozen bytes — RESOLVED AT FREEZE: NOT added; the
+      byte-neutrality probe failed at generation length (section 3), so
+      margins run as an exploratory companion only
+- [x] Pilots run clean on both boxes, all models (CUDA ×2 91/91; Metal
+      364/364 with the 10 vl think-on rejections recorded; Q2 123/123) —
+      disclosed in section 6; raw data committed `aeff3d5` + `2bc0132`
+- [x] n=100/cell confirmed for every model (122b measured 46.6 tok/s in
+      the Metal pilot); the section-1 estimators at n=100 match the
+      per-cell precision studies 1–2 published at the same n
 - [x] gpt-oss:120b arm REGISTERED (owner decision 2026-07-29, criterion:
       active community use — verified same day); dedicated-window mode
       implemented (`study3-120b-window`, single-flight, Metal only)
-- [ ] Window schedule on the production box approved and recorded
-- [ ] This file bumped to v3.0, tagged `prereg-v3`, pushed before any
+- [x] Window schedule recorded (section 2) under the owner posture of
+      2026-07-29; per-model block scheduling adopted from the Metal
+      pilot's swap-thrash finding
+- [x] This file bumped to v3.0, tagged `prereg-v3`, pushed before any
       confirmatory call
 
-## 6. Pilot disclosure
+## 6. Pilot disclosure (exploratory, not evidence)
 
-To be completed at freeze following the study-2 template. Interim
-(pre-freeze) notes so far — exploratory, forming no part of the
-confirmatory dataset:
+Four pilots and two freeze probes preceded this freeze; all raw records,
+manifests, reports, and probe evidence are committed (`aeff3d5`,
+`2bc0132`, plus this freeze commit). n=10/cell throughout. Every
+pilot-informed design decision is listed here; hypotheses and endpoints
+changed only where explicitly recorded.
 
-- **CUDA pilot #1 (2026-07-29, 91/91 clean, n=10/cell):** the sampling arm
-  as originally drafted carried the fixed seed at temp 0.7, and the pinned
-  engine reproduced it byte-for-byte on open generation — a seeded local
-  sampler is NOT a divergence control. **Design change recorded here,
-  before any further runs: the temp-0.7 arm is UNSEEDED.** Hypotheses and
-  endpoints unchanged.
-- Same pilot, disclosed: 8/9 cells at modal share 1.0 under full control;
-  the sole below-ceiling cell was structured JSON under SEEDED temp 0.7
-  (0.70, two variants from byte-identical single-flight requests) —
-  consistent with sampling amplifying sub-argmax numeric jitter; the
-  registered logprob-margin endpoint exists to measure exactly this.
+- **CUDA pilot #1 (91/91 clean):** the sampling arm as first drafted
+  carried the fixed seed at temp 0.7 and the pinned engine reproduced it
+  byte-for-byte — a seeded local sampler is not a divergence control.
+  DESIGN CHANGE (recorded before any further runs): the temp-0.7
+  positive-control arm is UNSEEDED. Also disclosed: the seeded-sj cell
+  split 7/3 across byte-identical single-flight requests — sampling
+  amplifies sub-argmax numeric jitter.
+- **CUDA pilot #2 (91/91, all gates green):** positive control fires
+  (open-generation temp07 10/10 distinct); ALL greedy cells at modal
+  share 1.0.
+- **Metal pilot (364/364, 10 recorded failures):** all 10 failures are
+  the qwen3-vl think_on cell (400 "does not support thinking");
+  think:false accepted 32/32 → DESIGN CHANGE: vl-32b struck from Q3,
+  retained in the core grid and Q2 (section 1). Positive controls fired
+  on every model. The single greedy cell below ceiling anywhere in the
+  pilots: Metal gpt-oss open-generation (0.60, 3 variants) — the Q1
+  hypothesis's predicted concentration in open generation, observed at
+  pilot n. Wall clock was dominated by model swaps → DESIGN CHANGE:
+  per-model block scheduling (section 2).
+- **Q2 concurrency pilot (123/123 clean):** all 12 cells byte-identical
+  at concurrency 4, including the 122b MoE; the 35b decode-rate
+  bimodality confirms the load was genuinely parallel. No direction is
+  inferred at n=10.
+- **Cross-box (pilots #2 + Metal):** every short-output greedy cell
+  byte-identical across Metal and CUDA; divergence only in long
+  generation (Metal) and the by-construction-unseeded temp07 cells →
+  DESIGN CHANGE: Q4 registered expectation revised (section 1). Decode
+  calibration: CUDA 159.9 vs Metal 97.9 tok/s on identical weights,
+  engine, and digest.
+- **Logprobs byte-neutrality probe (freeze gate):** the logprobs request
+  fields are NOT generation-neutral at length — three calls with
+  logprobs yielded three distinct outputs on a cell that is 20/20
+  byte-identical without them, while every short-output cell stayed
+  byte-neutral (`evidence/logprobs-bytes-probe-cuda-4090.json`) →
+  DESIGN CHANGE: margin capture exiled to exploratory companion runs
+  (section 3). The non-neutrality is itself a disclosed observation.
 
-## 7. Confirmatory run plan (to finalize at freeze)
+## 7. Confirmatory run plan (frozen)
 
-Runs execute inside owner-approved windows on the Mac Pro (production box)
-and on the 4090 for Q4 cells; box state is snapshotted before/after each
-window. Analysis runs the existing pipeline over confirmatory files only
-(pilot excluded by filename convention), with per-question estimators as
-registered in section 1. Raw records, manifests, and reports are committed
+Runs execute inside owner-approved windows per the section-2 schedule —
+Metal full window, CUDA full window, Q2 concurrency window, one dedicated
+gpt-oss:120b window — in per-model blocks, single-flight except the Q2
+arm, box state snapshotted before and after every window. Analysis runs
+`analysis/analyze_study3.py` (committed pre-data, `a5443dc`) over
+confirmatory files only; the four pilots and all probes are excluded as
+disclosed in section 6. Raw records, manifests, and reports are committed
 to this public repository.
