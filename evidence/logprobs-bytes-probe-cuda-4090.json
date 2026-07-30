@@ -1,0 +1,91 @@
+{
+  "base_url": "http://127.0.0.1:11435",
+  "cells": [
+    {
+      "all_ok": true,
+      "byte_neutral_vs_pilot": true,
+      "cell": "cuda::gpt-oss-20b|classification|greedy|effort_low",
+      "logprobs_present_in_responses": [
+        true,
+        true,
+        true
+      ],
+      "pilot_modal_sha256": "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+      "pilot_modal_share": 1.0,
+      "probe_distinct": 1,
+      "probe_shas": [
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb",
+        "74f2dd29a30aaf12ae3e8d417de139e1458f1a21c0b6666aabe7b774242b09fb"
+      ]
+    },
+    {
+      "all_ok": true,
+      "byte_neutral_vs_pilot": true,
+      "cell": "cuda::gpt-oss-20b|extraction|greedy|effort_low",
+      "logprobs_present_in_responses": [
+        true,
+        true,
+        true
+      ],
+      "pilot_modal_sha256": "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+      "pilot_modal_share": 1.0,
+      "probe_distinct": 1,
+      "probe_shas": [
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55",
+        "aca29953a3b513704872297ad88a3327fd0274f339d144c60e516913f9f2cc55"
+      ]
+    },
+    {
+      "all_ok": true,
+      "byte_neutral_vs_pilot": true,
+      "cell": "cuda::gpt-oss-20b|structured_json|greedy|effort_low",
+      "logprobs_present_in_responses": [
+        true,
+        true,
+        true
+      ],
+      "pilot_modal_sha256": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+      "pilot_modal_share": 1.0,
+      "probe_distinct": 1,
+      "probe_shas": [
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+        "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607"
+      ]
+    },
+    {
+      "all_ok": true,
+      "byte_neutral_vs_pilot": false,
+      "cell": "cuda::gpt-oss-20b|open_generation|greedy|effort_low",
+      "logprobs_present_in_responses": [
+        true,
+        true,
+        true
+      ],
+      "pilot_modal_sha256": "13bae41c4c90fdc394fcd28058fa1c4f261f1c77aaaf6674a04faf145ff7f5d2",
+      "pilot_modal_share": 1.0,
+      "probe_distinct": 3,
+      "probe_shas": [
+        "a5b2d35c079b530c9ab815dd1c0935fd865eebe54a5b4af2ade7217da71f6841",
+        "7a22f6552191f514094efc710da76d45009afdbd5fd6737a8936707954b91828",
+        "0bed5a79b031b951f59a53df868bcf9f17ef55d05fe70155446e84bffda5bad4"
+      ]
+    }
+  ],
+  "engine_version": "0.30.5",
+  "generated_utc": "2026-07-30T00:56:40.268879+00:00",
+  "label": "cuda-4090",
+  "logprob_fields": {
+    "logprobs": true,
+    "top_logprobs": 5
+  },
+  "model": "gpt-oss:20b",
+  "model_digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+  "repeats": 3,
+  "report_compared": "reports/study3-report-20260730T004533Z.json",
+  "verdict": {
+    "byte_neutral_on_all_stable_cells": false
+  }
+}

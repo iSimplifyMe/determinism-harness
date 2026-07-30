@@ -203,6 +203,22 @@ def _study3_q3_cells(box):
         }
 
 
+def apply_model_blocks(schedule, seed):
+    """Sort a shuffled study-3 schedule into contiguous per-model blocks.
+
+    Swap thrash dominated the metal pilot (92 min for 364 calls on an
+    over-budget box), so confirmatory study-3 runs execute one model at a
+    time. The stable sort preserves the shuffled within-model order — the
+    per-cell ordering control is unchanged, since model was never a
+    within-cell factor — and floats each model's prepended warmup to its
+    block head. Block order is itself seed-derived."""
+    models = sorted({it["model_id"] for it in schedule})
+    rng = random.Random(worker_seed(seed, 999))
+    order = {m: i for i, m in enumerate(rng.sample(models, len(models)))}
+    schedule.sort(key=lambda it: order[it["model_id"]])
+    return schedule
+
+
 def build_warmup_items(items):
     """One tiny recorded call per distinct local model in the schedule,
     prepended (never shuffled) so every grid cell runs against a warm model
@@ -771,6 +787,7 @@ def main():
         args.concurrency = settings["concurrency"]
         warmups = build_warmup_items(schedule)
         schedule = warmups + schedule  # warm every model before its cells
+        schedule = apply_model_blocks(schedule, args.seed)
 
     cells = sorted({it["cell"] for it in schedule})
     stamp = utc_stamp()
@@ -807,6 +824,7 @@ def main():
         manifest["repeats_override"] = args.repeats
         manifest["warmup_items"] = len(warmups)
         manifest["run_settings"] = settings
+        manifest["schedule_blocking"] = "per-model"
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")

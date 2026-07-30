@@ -131,6 +131,44 @@ class TestStudy3Schedule(unittest.TestCase):
             self.assertTrue(it["cell"].startswith("warmup|"))
 
 
+class TestModelBlocks(unittest.TestCase):
+    def test_blocks_contiguous_warmup_first_order_preserved(self):
+        import random
+
+        from harness.runner import apply_model_blocks
+
+        schedule = build_schedule("study3-pilot", box="metal")
+        rng = random.Random(7)
+        rng.shuffle(schedule)
+        warmups = build_warmup_items(schedule)
+        blocked = apply_model_blocks(warmups + schedule, seed=7)
+
+        # contiguity: each model appears in exactly one run of positions
+        seen_models = []
+        for it in blocked:
+            if not seen_models or seen_models[-1] != it["model_id"]:
+                seen_models.append(it["model_id"])
+        self.assertEqual(len(seen_models), len(set(seen_models)))
+
+        # each block starts with its model's warmup
+        starts = [0] + [
+            i for i in range(1, len(blocked))
+            if blocked[i]["model_id"] != blocked[i - 1]["model_id"]
+        ]
+        for start in starts:
+            self.assertEqual(blocked[start]["meta"].get("control"), "warmup")
+
+        # within-block relative order of grid items preserved from the
+        # shuffled input (stable sort)
+        for model in {it["model_id"] for it in schedule}:
+            shuffled_order = [id(it) for it in schedule
+                              if it["model_id"] == model]
+            blocked_order = [id(it) for it in blocked
+                             if it["model_id"] == model
+                             and it["meta"].get("control") != "warmup"]
+            self.assertEqual(shuffled_order, blocked_order)
+
+
 class TestStudy3RunSettings(unittest.TestCase):
     def test_core_modes_enforce_single_flight(self):
         for mode in ("study3-pilot", "study3-full", "study3-q3-thinking"):
