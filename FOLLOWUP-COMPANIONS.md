@@ -394,6 +394,65 @@ failures (`runs/local-study3-cache-ab-20260730T231915Z.*`,
   registered manipulation gate. The follow-up that manipulates the
   discovered variable — inter-call timing — is companion E below.
 
+## Companion E — timing-manipulated cache-state A/B (pre-data plan, 2026-07-30 night)
+
+**Status: exploratory-directional; this plan is committed BEFORE any
+companion-E data.** Companions C and D failed their manipulation gates
+for the same instructive reason: the flusher was not the operative
+variable. D's evidence identified the real one — **inter-call timing on
+consecutive identical prompts**: back-to-back calls reuse the full
+prompt KV (~16–18 ms prefill), while calls separated by the runner's
+anti-burst jitter fall to a persistent-checkpoint partial state
+(~34–41 ms). Companion E manipulates timing directly.
+
+### Hypothesis (directional, stated pre-data)
+
+With the model loaded and no flushers anywhere, the gap before a call
+determines its prefill state and therefore its bytes: adjacent calls
+(no deliberate gap) land in the full-KV state and are byte-identical to
+each other; gapped calls (600 ms deliberate pause) land in the
+checkpoint state and are byte-identical to each other; the two groups
+differ from each other.
+
+### Design
+
+- **Cell:** the same frozen cell, byte-identical measured bodies in both
+  arms (`gpt-oss-20b|open_generation|greedy|effort_low`).
+- **Arms (n=50 each):** `adjacent` = pre-call sleep 0, anti-burst jitter
+  suppressed · `gapped` = pre-call sleep 600 ms, jitter suppressed.
+  Alternating mini-blocks of 10 (A,G,A,G,…), one warmup head, single
+  flight, fixed schedule. No flushers — timing is the only manipulated
+  variable.
+- **Session qualification:** the companion-D prewarm gate runs first
+  (cached state must exist this session); one server-restart retry.
+- **Box:** CUDA (non-production), same posture.
+
+### Manipulation gate (arm void if failed)
+
+Absolute thresholds from the three-session state classes: every
+adjacent-arm call's prefill must land below 25 ms AND every gapped-arm
+call's above 30 ms; cross-arm single request sha as always.
+
+### Endpoints (registered)
+
+1. Within-arm byte determinism: modal share per arm (prediction: 1.0 in
+   both arms).
+2. Cross-arm modal equality (prediction: the arms' modal outputs DIFFER).
+
+Descriptive (not registered, consistent with C/D): history matching —
+the standing three-session mapping expects adjacent → `cf2c66c8…` and
+gapped → `20310cdd…`; any match or miss is reported as observed.
+
+### Interpretation (stated pre-data)
+
+Both endpoints holding under a passing gate = the state→bytes claim is
+confirmed as a manipulated, registered result: prose-length greedy
+output is a deterministic function of prefill-cache state, switchable by
+call timing alone. Endpoint 2 failing under a passing gate = the states
+share bytes in this session and the standing mapping is session-scoped
+after all. Gate failing = timing does not control the state as D's
+evidence indicated; report and stop — no further same-night designs.
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
