@@ -1,0 +1,66 @@
+{
+  "box": "cuda",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T20:59:15.166180+00:00",
+    "resident_models": [
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-30T16:08:16.7734408-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12904531230,
+        "size_vram": 12904531230
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|open_generation|greedy|effort_low|logprobs",
+    "gpt-oss-20b|structured_json|greedy|effort_low|logprobs",
+    "warmup|gpt-oss-20b"
+  ],
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "concurrency": 1,
+  "created_utc": "2026-07-30T20:59:15.106349+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "exploratory": true,
+  "git_head": "dca01cf5f38ab48ce6a6031d31c01b7828ac36b2",
+  "local_url": "http://127.0.0.1:11435",
+  "mode": "study3-margins",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 3,
+  "n_items": 3,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": 1,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|logprobs",
+      "bae4cf6ef77b01fb14aca7546134d8163765f39813b596840ce0ee885bdd2ed8"
+    ],
+    [
+      "gpt-oss-20b|structured_json|greedy|effort_low|logprobs",
+      "30917e49814893bb6e7b628599b7458211ee6e05cc73f5aeacde284a395989b0"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ]
+  ],
+  "run_name": "local-study3-margins-20260730T205915Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "fixed",
+  "schedule_fixed": true,
+  "schedule_sha256": "0123764198a3552d5bc92b8255db5ebaf90747483d8ef4638ffda01beb4a72c5",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

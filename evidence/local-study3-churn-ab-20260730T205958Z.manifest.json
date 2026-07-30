@@ -1,0 +1,80 @@
+{
+  "box": "metal",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T20:59:59.030861+00:00",
+    "resident_models": [
+      {
+        "digest": "5ced39dfa4bac325dc183dd1e4febaa1c46b3ea28bce48896c8e69c1e79611cc",
+        "expires_at": "2026-07-31T15:54:27.3807-05:00",
+        "name": "qwen2.5vl:7b",
+        "size": 7902215535,
+        "size_vram": 7902215535
+      },
+      {
+        "digest": "0218f872e86baa9c7610509f27db36a7bc52eea7afee24688f81ca74ffcb6c77",
+        "expires_at": "2026-07-31T15:31:58.217074-05:00",
+        "name": "qwen3.6:35b-a3b-q8_0",
+        "size": 38145338898,
+        "size_vram": 38145338898
+      },
+      {
+        "digest": "8b9d11d807c57feb1e2ecb0d6cbf40334c37dcc3523bed5540af4f927f112a37",
+        "expires_at": "2026-07-31T07:04:29.320871-05:00",
+        "name": "qwen3.5:122b-a10b",
+        "size": 81178352678,
+        "size_vram": 81178352678
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|open_generation|greedy|effort_low|arm=blocked",
+    "gpt-oss-20b|open_generation|greedy|effort_low|arm=churn",
+    "warmup|gpt-oss-20b"
+  ],
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "concurrency": 1,
+  "created_utc": "2026-07-30T20:59:58.873848+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "exploratory": true,
+  "git_head": "dca01cf5f38ab48ce6a6031d31c01b7828ac36b2",
+  "local_url": "http://127.0.0.1:11436",
+  "mode": "study3-churn-ab",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 3,
+  "n_items": 3,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": 1,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|arm=blocked",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|arm=churn",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ]
+  ],
+  "run_name": "local-study3-churn-ab-20260730T205958Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "fixed",
+  "schedule_fixed": true,
+  "schedule_sha256": "0477ab8d6b68efcd4a418de3eebae25b374c45e20038bb7fd28cb6e1f3f96387",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

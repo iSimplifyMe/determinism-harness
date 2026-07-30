@@ -68,10 +68,29 @@ to keeping the model resident.
 
 - Every churn-arm record must carry `pre_unload_confirmed: true` (model
   observed absent from `/api/ps` after the unload side-call, before the
-  measured call) AND a cold load: `load_duration_ns` > 10x the blocked
-  arm's median.
+  measured call) AND a reload: `load_duration_ns` > 3x the blocked arm's
+  median.
 - Blocked-arm records (post-warmup) must show warm loads: median
   `load_duration_ns` within the confirmatory run's warm range (~0.26 s).
+
+**Pre-data amendment (2026-07-30, before any companion data):** the cold
+criterion was drafted as 10x the blocked median. The n=1 launch smokes
+(scratch, not analysis data) measured reload load_duration at 5.42 s vs
+0.39 s warm on CUDA (13.9x) but only 1.62 s vs 0.26 s warm on Metal
+(6.2x): macOS keeps the unloaded weights in the filesystem page cache, so
+a confirmed unload/reload is disk-warm and a 10x load-time bar would void
+a genuinely manipulated arm. The state the hypothesis targets — a fresh
+model instantiation and memory layout — is reset by the confirmed unload
+regardless of page-cache warmth, so the observed-absence check remains
+primary and the load criterion is corroboration. Amended to 3x before any
+confirmatory companion call; both smoke reloads clear it with margin.
+
+**Smoke context (disclosed, n=1, scratch):** on BOTH boxes the smoke's
+byte-identical frozen request produced different bytes than that box's
+100/100 confirmatory modal (new server session on CUDA; ~20 h later on
+Metal) — cross-session drift that `matches_confirmatory_modal` will
+document at n=100. The arms are interleaved within one session, so the
+A/B contrast is internally valid either way.
 
 ### Endpoints
 

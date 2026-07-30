@@ -34,7 +34,11 @@ from analysis.stats import wald_diff
 
 CHURN_CELL = "gpt-oss-20b|open_generation|greedy|effort_low"
 ARMS = ("blocked", "churn")
-COLD_FACTOR = 10.0
+# 3x, not 10x: a confirmed unload/reload is disk-warm on macOS (page
+# cache), so load time corroborates the manipulation rather than defining
+# it — see the pre-data amendment in FOLLOWUP-COMPANIONS.md. Smoke
+# reloads: 13.9x (CUDA), 6.2x (Metal).
+COLD_FACTOR = 3.0
 WARM_MAX_S = 1.0
 
 
