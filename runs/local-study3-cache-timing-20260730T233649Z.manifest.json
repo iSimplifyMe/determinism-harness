@@ -1,0 +1,71 @@
+{
+  "box": "cuda",
+  "box_state_start": {
+    "captured_utc": "2026-07-30T23:36:49.604675+00:00",
+    "resident_models": [
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-30T18:46:49.5780969-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12904531230,
+        "size_vram": 12904531230
+      }
+    ]
+  },
+  "cells": [
+    "gpt-oss-20b|open_generation|greedy|effort_low|burnin",
+    "gpt-oss-20b|open_generation|greedy|effort_low|timing=adjacent",
+    "gpt-oss-20b|open_generation|greedy|effort_low|timing=gapped",
+    "warmup|gpt-oss-20b"
+  ],
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "concurrency": 1,
+  "created_utc": "2026-07-30T23:36:49.556492+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "exploratory": true,
+  "git_head": "f11aca3769e239fe58d5992197f90255f2471365",
+  "local_url": "http://127.0.0.1:11435",
+  "mode": "study3-cache-timing",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 4,
+  "n_items": 102,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|burnin",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|timing=adjacent",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|timing=gapped",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "warmup|gpt-oss-20b",
+      "fad7cf0f1a261264082133abcac70999998bd67e692a8c6ebd255197d7247f01"
+    ]
+  ],
+  "run_name": "local-study3-cache-timing-20260730T233649Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "fixed",
+  "schedule_fixed": true,
+  "schedule_sha256": "57afd52d9caf557cc6b01d85ce562e298151cf35c95d660024261652940c4fc2",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 1,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}

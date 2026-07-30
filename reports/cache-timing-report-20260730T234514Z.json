@@ -1,0 +1,104 @@
+{
+  "boxes": {
+    "cuda": {
+      "arms": {
+        "adjacent": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "history_matches": [
+            "companionA_B1_warmup_era"
+          ],
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 50,
+            "modal_sha256": "20310cddf7fa12c5003d402fa35406f43067ba078e13a10cb8ce2aac8d79500e",
+            "modal_share": 1.0,
+            "n": 50,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 50,
+          "prefill_ms": {
+            "max": 38.161,
+            "median": 36.1425,
+            "min": 34.135
+          }
+        },
+        "gapped": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "history_matches": [
+            "companionA_B1_warmup_era"
+          ],
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 50,
+            "modal_sha256": "20310cddf7fa12c5003d402fa35406f43067ba078e13a10cb8ce2aac8d79500e",
+            "modal_share": 1.0,
+            "n": 50,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 50,
+          "prefill_ms": {
+            "max": 38.101,
+            "median": 36.314,
+            "min": 33.909
+          }
+        }
+      },
+      "arms_differ": null,
+      "gates": {
+        "cross_arm_negative_control": true,
+        "manipulation": {
+          "adjacent_all_below": false,
+          "adjacent_max_ms_threshold": 25.0,
+          "adjacent_median_ms": 36.1425,
+          "gapped_all_above": true,
+          "gapped_median_ms": 36.314,
+          "gapped_min_ms_threshold": 30.0,
+          "pass": false
+        }
+      }
+    }
+  },
+  "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+  "companion_plan": "FOLLOWUP-COMPANIONS.md (companion E)",
+  "endpoints": "1: within-arm modal shares (predicted 1.0 both); 2: arms_differ (predicted true); history matching descriptive",
+  "exploratory": true,
+  "generated_utc": "2026-07-30T23:45:14.207779+00:00",
+  "totals": {
+    "records_in": 102,
+    "warmups_excluded": 2
+  }
+}
