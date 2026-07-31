@@ -1,0 +1,47 @@
+# Ollama 0.30.5 serve-log excerpts — companion D and E chains, 2026-07-30 (CUDA/4090)
+# Provenance: stderr of the ssh-held 'ollama.exe serve' processes captured by the
+# D and E chain scripts (runs local-study3-cache-ab-20260730T231915Z and
+# local-study3-cache-timing-20260730T233649Z). Selected lines: slot cache/checkpoint
+# decisions and prompt-eval timings — the mechanism evidence behind the
+# instance-history hypothesis (FOLLOWUP-COMPANIONS.md, companion E results).
+#
+slot update_slots: id  0 | task 0 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 116
+slot update_slots: id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)
+slot update_slots: id  0 | task 0 | cached n_tokens = 112, memory_seq_rm [112, end)
+slot print_timing: id  0 | task 0 | prompt eval time =     216.00 ms /   116 tokens (    1.86 ms per token,   537.04 tokens per second)
+slot update_slots: id  0 | task 679 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 116
+slot update_slots: id  0 | task 679 | Checking checkpoint with [0, 111] against 0...
+slot update_slots: id  0 | task 679 | restored context checkpoint (pos_min = 0, pos_max = 111, n_tokens = 112, n_past = 111, size = 2.627 MiB)
+slot update_slots: id  0 | task 679 | cached n_tokens = 111, memory_seq_rm [111, end)
+slot update_slots: id  0 | task 679 | cached n_tokens = 112, memory_seq_rm [112, end)
+slot print_timing: id  0 | task 679 | prompt eval time =      17.83 ms /     5 tokens (    3.57 ms per token,   280.38 tokens per second)
+slot update_slots: id  0 | task 1304 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 116
+slot update_slots: id  0 | task 1304 | Checking checkpoint with [0, 111] against 0...
+slot update_slots: id  0 | task 1304 | restored context checkpoint (pos_min = 0, pos_max = 111, n_tokens = 112, n_past = 111, size = 2.627 MiB)
+slot update_slots: id  0 | task 1304 | cached n_tokens = 111, memory_seq_rm [111, end)
+slot update_slots: id  0 | task 1304 | cached n_tokens = 112, memory_seq_rm [112, end)
+slot print_timing: id  0 | task 1304 | prompt eval time =      16.30 ms /     5 tokens (    3.26 ms per token,   306.82 tokens per second)
+slot update_slots: id  0 | task 1929 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 116
+slot update_slots: id  0 | task 1929 | Checking checkpoint with [0, 111] against 0...
+slot update_slots: id  0 | task 1929 | restored context checkpoint (pos_min = 0, pos_max = 111, n_tokens = 112, n_past = 111, size = 2.627 MiB)
+slot update_slots: id  0 | task 1929 | cached n_tokens = 111, memory_seq_rm [111, end)
+slot update_slots: id  0 | task 1929 | cached n_tokens = 112, memory_seq_rm [112, end)
+slot print_timing: id  0 | task 1929 | prompt eval time =      17.88 ms /     5 tokens (    3.58 ms per token,   279.70 tokens per second)
+slot update_slots: id  0 | task 2554 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 69
+slot update_slots: id  0 | task 2554 | Checking checkpoint with [0, 111] against 0...
+slot update_slots: id  0 | task 2554 | restored context checkpoint (pos_min = 0, pos_max = 111, n_tokens = 112, n_past = 40, size = 2.627 MiB)
+slot update_slots: id  0 | task 2554 | cached n_tokens = 40, memory_seq_rm [40, end)
+slot update_slots: id  0 | task 2554 | cached n_tokens = 65, memory_seq_rm [65, end)
+slot print_timing: id  0 | task 2554 | prompt eval time =      32.46 ms /    29 tokens (    1.12 ms per token,   893.49 tokens per second)
+slot update_slots: id  0 | task 2564 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 157
+slot update_slots: id  0 | task 2564 | Checking checkpoint with [0, 39] against 0...
+slot update_slots: id  0 | task 2564 | restored context checkpoint (pos_min = 0, pos_max = 39, n_tokens = 40, n_past = 39, size = 0.938 MiB)
+slot update_slots: id  0 | task 2564 | cached n_tokens = 39, memory_seq_rm [39, end)
+slot update_slots: id  0 | task 2564 | cached n_tokens = 153, memory_seq_rm [153, end)
+slot print_timing: id  0 | task 2564 | prompt eval time =      56.40 ms /   118 tokens (    0.48 ms per token,  2092.31 tokens per second)
+slot update_slots: id  0 | task 2582 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 116
+slot update_slots: id  0 | task 2582 | Checking checkpoint with [0, 39] against 0...
+slot update_slots: id  0 | task 2582 | restored context checkpoint (pos_min = 0, pos_max = 39, n_tokens = 40, n_past = 39, size = 0.938 MiB)
+slot update_slots: id  0 | task 2582 | cached n_tokens = 39, memory_seq_rm [39, end)
+slot update_slots: id  0 | task 2582 | cached n_tokens = 112, memory_seq_rm [112, end)
+slot print_timing: id  0 | task 2582 | prompt eval time =      46.19 ms /    77 tokens (    0.60 ms per token,  1666.96 tokens per second)
