@@ -39,6 +39,7 @@ from datetime import datetime, timezone
 
 from harness.config import (
     CACHE_AB,
+    CACHE_INSTANCE,
     CACHE_TIMING,
     CANARY,
     CHURN_AB,
@@ -108,6 +109,7 @@ COMPANION_MODES = (
     "study3-margins",
     "study3-cache-ab",
     "study3-cache-timing",
+    "study3-cache-instance",
 )
 FIXED_SCHEDULE_MODES = COMPANION_MODES
 
@@ -671,6 +673,70 @@ def build_schedule(mode, box=None, repeats=None):
                 )
                 items.append(item)
                 counts[arm] += 1
+    elif mode == "study3-cache-instance":
+        if box not in CACHE_INSTANCE["boxes"]:
+            raise ValueError(
+                f'study3-cache-instance runs on {CACHE_INSTANCE["boxes"]} '
+                f"(got {box})"
+            )
+        cycles = CACHE_INSTANCE["n_cycles"]
+        n = repeats or CACHE_INSTANCE["n_per_arm_per_cycle"]
+        cfg = LOCAL_MODELS[CACHE_INSTANCE["model"]]
+        core = {
+            "model": CACHE_INSTANCE["model"],
+            "task": CACHE_INSTANCE["task"],
+            "sampling": CACHE_INSTANCE["sampling"],
+            "thinking": local_pinned_arm(cfg),
+            "hardware": box,
+        }
+        flusher_body = canonical_local_body(
+            cfg["tag"],
+            TASKS[CACHE_INSTANCE["flusher_task"]]["prompt"],
+            local_pinned_arm(cfg),
+            options={"temperature": 0, "seed": LOCAL_SEED, "num_predict": 16},
+            keep_alive=LOCAL_KEEP_ALIVE,
+        )
+        # NO warmup anywhere: a warmup's different prompt is itself the
+        # checkpoint trigger under test. Each cycle: unload-reset rides
+        # the burn-in item (measured body, fresh load, excluded) -> arm P
+        # -> ONE different-prompt flusher -> arm C. pre_sleep 0 throughout
+        # (companion E falsified timing; jitter stays suppressed so
+        # instance history is the only variable).
+        for cycle in range(cycles):
+            burnin = _study3_item(
+                dict(core, control="burnin", cycle=cycle),
+                cell_key3(core) + "|instance=burnin", cycle,
+            )
+            burnin["pre_unload"] = True
+            burnin["pre_sleep_ms"] = 0
+            items.append(burnin)
+            for r in range(n):
+                item = _study3_item(
+                    dict(core, arm="pure", cycle=cycle),
+                    cell_key3(core) + "|instance=pure", cycle * n + r,
+                )
+                item["pre_sleep_ms"] = 0
+                items.append(item)
+            flusher_meta = {
+                "model": core["model"],
+                "control": "flusher",
+                "hardware": box,
+                "cycle": cycle,
+            }
+            flusher = _item2(
+                f'flusher|{core["model"]}', flusher_meta, "local",
+                flusher_body, sha256_hex(flusher_body), cfg["tag"], cycle,
+            )
+            flusher["pre_sleep_ms"] = 0
+            items.append(flusher)
+            for r in range(n):
+                item = _study3_item(
+                    dict(core, arm="contaminated", cycle=cycle),
+                    cell_key3(core) + "|instance=contaminated",
+                    cycle * n + r,
+                )
+                item["pre_sleep_ms"] = 0
+                items.append(item)
     elif mode == "study3-margins":
         if box not in MARGINS_BATTERY:
             raise ValueError(

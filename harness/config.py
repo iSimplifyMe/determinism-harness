@@ -396,6 +396,24 @@ CACHE_AB = {
     "mini_block": 10,
 }
 
+# Companion F: fresh-instance manipulated confirmation (plan added
+# 2026-07-31, pre-data). E falsified timing; the manipulated variable is
+# instance history. Unit = instance cycle: unload-reset -> burn-in (the
+# measured body's fresh-load call, excluded) -> arm P ("pure") -> ONE
+# different-prompt flusher -> arm C ("contaminated"). No warmups anywhere
+# (a warmup's different prompt is the checkpoint trigger under test).
+# Registered CUDA-only: cycles unload/reload freely on the non-production
+# box.
+CACHE_INSTANCE = {
+    "model": "gpt-oss-20b",
+    "task": "open_generation",
+    "flusher_task": "classification",
+    "sampling": "greedy",
+    "boxes": ("cuda",),
+    "n_cycles": 5,
+    "n_per_arm_per_cycle": 10,
+}
+
 # Companion B: logprob-margin battery. Listed in run order — per-model
 # blocks are emitted in this order, so the 120b eviction block is LAST on
 # Metal. `thinking` defaults to the model's pinned LOW/OFF arm.
