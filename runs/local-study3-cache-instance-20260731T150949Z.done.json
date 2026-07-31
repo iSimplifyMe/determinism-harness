@@ -1,0 +1,22 @@
+{
+  "box_state_end": {
+    "captured_utc": "2026-07-31T15:19:13.339550+00:00",
+    "resident_models": [
+      {
+        "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+        "expires_at": "2026-07-31T10:29:13.4014434-05:00",
+        "name": "gpt-oss:20b",
+        "size": 12904531230,
+        "size_vram": 12904531230
+      }
+    ]
+  },
+  "complete": true,
+  "done": 110,
+  "expected": 110,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-07-31T15:19:13.339849+00:00",
+  "retries": 0,
+  "run_name": "local-study3-cache-instance-20260731T150949Z"
+}

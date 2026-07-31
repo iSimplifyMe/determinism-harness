@@ -575,6 +575,58 @@ Sha expectations remain descriptive, per the four-session mapping
 - Gate fails → stop and report; no same-day design iteration (the C/D/E
   lesson: three voids is the polite maximum).
 
+### Companion F results (post-data, 2026-07-31) — ALL THREE ENDPOINTS HOLD
+
+110/110 calls, zero failures, zero retries
+(`runs/local-study3-cache-instance-20260731T150949Z.*`,
+`reports/cache-instance-report-20260731T151927Z.json`).
+
+- **Manipulation gate PASS — the first companion to reach its registered
+  cross-arm endpoints.** Every pure call's prefill below threshold
+  (16.204–23.85 ms, median 17.29) and every contaminated call's above it
+  (31.519–35.765 ms, median 33.24) — zero overlap between the classes —
+  with all five cycle resets /api/ps-confirmed (burn-in fresh-load
+  prefills 188.8–280.5 ms) and one request sha across burn-ins and both
+  arms (`b4d9460e…`, byte-identical to companion E's frozen body — the
+  same frozen cell as C/D; engine 0.30.5 and weights digest
+  `17052f91a42e…` pinned equal to the prior runs).
+- **Endpoint 1 HELD:** within-arm modal share 1.0 in BOTH arms — all 50
+  pure calls one variant, all 50 contaminated calls one variant, pooled
+  across five independent instance cycles.
+- **Endpoint 2 HELD:** the arms' modal outputs differ.
+- **Endpoint 3 HELD — the flip sits AT the interposed call in every
+  cycle (5/5):** each cycle's pure block carries the pooled pure bytes
+  and its contaminated block the pooled contaminated bytes; nothing
+  flips early, nothing flips late. **Instance history is the manipulated
+  variable: state-pinning is now a registered, manipulated result.** One
+  different-prompt call is sufficient (and in this design necessary) to
+  move an instance from the full-KV state to the checkpoint state, and
+  the checkpoint state persists for the rest of the instance's life.
+- **Descriptive history matching — the expected shas did NOT appear, and
+  that is its own finding:** this session's three states produced three
+  NEW variants (burn-in/fresh-load `95c71b7e…` 5/5 · pure/full-KV
+  `e54dd954…` 50/50 · contaminated/checkpoint `a8e9b6e1…` 50/50), none
+  matching the four on-record variants from the prior four sessions
+  (fresh-load `45e27daf…` · full-KV `cf2c66c8…` · checkpoint
+  `20310cdd…` · confirmatory modal `13bae41c…`), despite byte-identical
+  request bytes and pinned engine+weights. Byte-stability per state,
+  which held ACROSS the prior four server sessions, is therefore
+  session-scoped, not universal: within this session each state's bytes
+  were perfectly stable across five unload/reload instance cycles, but
+  the server session itself is part of the history that selects the
+  bytes. The state STRUCTURE (three prefill classes, each internally
+  deterministic, switched by instance history) replicated exactly; the
+  state BYTES did not carry over.
+- Flushers: one variant 5/5 (`74f2dd29…`), excluded as registered.
+
+Interpretation per the pre-data branches: gates passed and all three
+endpoints held → the state-pinning claim is confirmed as a registered,
+manipulated result, with the session-scoping of per-state bytes
+disclosed alongside it. Paper #5's thesis sharpens accordingly: "every
+state is deterministic; history selects the bytes" — where history
+includes both the instance's prompt history (manipulated here) and the
+server session it lives in (descriptive, newly bounded).
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest

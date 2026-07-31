@@ -1,0 +1,161 @@
+{
+  "boxes": {
+    "cuda": {
+      "arms": {
+        "contaminated": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "history_matches": [],
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 50,
+            "modal_sha256": "a8e9b6e1d5971ee0d90a5a8df9c854463fc95804789b426a51be2af7dc3cf081",
+            "modal_share": 1.0,
+            "n": 50,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 50,
+          "prefill_ms": {
+            "max": 35.765,
+            "median": 33.2354995,
+            "min": 31.519
+          }
+        },
+        "pure": {
+          "excluded": {
+            "error": 0,
+            "truncated_or_other_stop": 0
+          },
+          "flags": {
+            "model_drift": false,
+            "negative_control_failed": false,
+            "response_models": [
+              "gpt-oss:20b"
+            ],
+            "wire_mismatch": false
+          },
+          "history_matches": [],
+          "metrics": {
+            "all_identical": true,
+            "any_distance_capped": false,
+            "distinct_count": 1,
+            "divergence_char_indices": [],
+            "modal_count": 50,
+            "modal_sha256": "e54dd9541b1124ec2ff92a35a235e6108802e77a0b8cd2a0f76f9849a4de78d8",
+            "modal_share": 1.0,
+            "n": 50,
+            "norm_distance_max": 0.0,
+            "norm_distance_mean_all": 0.0,
+            "output_token_variance": 0.0,
+            "pairwise_agreement": 1.0
+          },
+          "n_raw": 50,
+          "prefill_ms": {
+            "max": 23.85,
+            "median": 17.292499999999997,
+            "min": 16.204
+          }
+        }
+      },
+      "arms_differ": true,
+      "cycles": [
+        {
+          "burnin_prefill_ms": 280.513,
+          "burnin_reset_confirmed": true,
+          "contaminated_n": 10,
+          "contaminated_uniform": true,
+          "cycle": 0,
+          "flip_at_flusher": true,
+          "pure_n": 10,
+          "pure_uniform": true
+        },
+        {
+          "burnin_prefill_ms": 188.778,
+          "burnin_reset_confirmed": true,
+          "contaminated_n": 10,
+          "contaminated_uniform": true,
+          "cycle": 1,
+          "flip_at_flusher": true,
+          "pure_n": 10,
+          "pure_uniform": true
+        },
+        {
+          "burnin_prefill_ms": 195.68,
+          "burnin_reset_confirmed": true,
+          "contaminated_n": 10,
+          "contaminated_uniform": true,
+          "cycle": 2,
+          "flip_at_flusher": true,
+          "pure_n": 10,
+          "pure_uniform": true
+        },
+        {
+          "burnin_prefill_ms": 193.431,
+          "burnin_reset_confirmed": true,
+          "contaminated_n": 10,
+          "contaminated_uniform": true,
+          "cycle": 3,
+          "flip_at_flusher": true,
+          "pure_n": 10,
+          "pure_uniform": true
+        },
+        {
+          "burnin_prefill_ms": 206.288,
+          "burnin_reset_confirmed": true,
+          "contaminated_n": 10,
+          "contaminated_uniform": true,
+          "cycle": 4,
+          "flip_at_flusher": true,
+          "pure_n": 10,
+          "pure_uniform": true
+        }
+      ],
+      "endpoint3_flip_all_cycles": true,
+      "gates": {
+        "cross_arm_negative_control": true,
+        "manipulation": {
+          "contaminated_all_above": true,
+          "contaminated_median_ms": 33.2354995,
+          "contaminated_min_ms_threshold": 30.0,
+          "pass": true,
+          "pure_all_below": true,
+          "pure_max_ms_threshold": 25.0,
+          "pure_median_ms": 17.292499999999997,
+          "resets_by_cycle": {
+            "0": true,
+            "1": true,
+            "2": true,
+            "3": true,
+            "4": true
+          },
+          "resets_confirmed": true
+        }
+      }
+    }
+  },
+  "cell": "gpt-oss-20b|open_generation|greedy|effort_low",
+  "companion_plan": "FOLLOWUP-COMPANIONS.md (companion F)",
+  "endpoints": "1: within-arm modal shares pooled across cycles (predicted 1.0 both); 2: arms_differ (predicted true); 3: per-cycle flip at the interposed call (predicted true every cycle); history matching descriptive",
+  "exploratory": true,
+  "generated_utc": "2026-07-31T15:19:27.716855+00:00",
+  "totals": {
+    "controls_excluded": 10,
+    "records_in": 110
+  }
+}

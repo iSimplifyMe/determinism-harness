@@ -1,0 +1,63 @@
+{
+  "box": "cuda",
+  "box_state_start": {
+    "captured_utc": "2026-07-31T15:09:50.081573+00:00",
+    "resident_models": []
+  },
+  "cells": [
+    "flusher|gpt-oss-20b",
+    "gpt-oss-20b|open_generation|greedy|effort_low|instance=burnin",
+    "gpt-oss-20b|open_generation|greedy|effort_low|instance=contaminated",
+    "gpt-oss-20b|open_generation|greedy|effort_low|instance=pure"
+  ],
+  "companion_plan": "FOLLOWUP-COMPANIONS.md",
+  "concurrency": 1,
+  "created_utc": "2026-07-31T15:09:50.004215+00:00",
+  "dry_run": false,
+  "engine_version": "0.30.5",
+  "exploratory": true,
+  "git_head": "2431edca38e33ff770351aaa059976e9d91997f2",
+  "local_url": "http://127.0.0.1:11435",
+  "mode": "study3-cache-instance",
+  "model_digests": {
+    "gpt-oss:20b": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7"
+  },
+  "n_cells": 4,
+  "n_items": 110,
+  "planes": [
+    "local"
+  ],
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "flusher|gpt-oss-20b",
+      "dfff77d15273c1bb52f7ab25c435c6029d789b54af39411c880aac7eb6367bc0"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|instance=burnin",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|instance=contaminated",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ],
+    [
+      "gpt-oss-20b|open_generation|greedy|effort_low|instance=pure",
+      "b4d9460e2f6eb3fbefe97256242300014b30efe4c6becf029f40a7694dc81d47"
+    ]
+  ],
+  "run_name": "local-study3-cache-instance-20260731T150949Z",
+  "run_settings": {
+    "allow_same_cell_concurrency": false,
+    "concurrency": 1
+  },
+  "schedule_blocking": "fixed",
+  "schedule_fixed": true,
+  "schedule_sha256": "b0a5038508ad3f110d73fc5143fd5fa0e5e080cc270dc81335b1c4843cf9232f",
+  "schema": 3,
+  "seed": 20260727,
+  "warmup_items": 0,
+  "window": "local",
+  "window_definition": "owner-approved window on the target box, recorded in the manifest"
+}
