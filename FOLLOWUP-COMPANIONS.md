@@ -491,6 +491,90 @@ zero failures (`runs/local-study3-cache-timing-20260730T233649Z.*`,
   fresh-load → `45e27daf…` · full-KV → `cf2c66c8…` · checkpoint →
   `20310cdd…`. The registered manipulated confirmation remains open.
 
+## Companion F — fresh-instance manipulated confirmation (pre-data plan, 2026-07-31)
+
+**Status: exploratory-directional; this plan is committed BEFORE any
+companion-F data.** Companion E falsified inter-call timing; the standing
+hypothesis after A+C+D+E is **instance history**: the full-KV ~16–18 ms
+prefill state exists only on a model instance that has never served a
+different prompt, and the first different-prompt call forms the
+persistent template checkpoint the serve logs show being restored
+(`evidence/serve-log-checkpoint-excerpts-20260730.txt`), pinning
+~34–41 ms until reload. Companion F manipulates instance history
+directly — fresh instances, with the manipulation being a single
+interposed different-prompt call — the design companion E's results
+prescribed.
+
+### Hypothesis (directional, stated pre-data)
+
+On a freshly reset instance that has only ever served the measured
+prompt, same-prompt calls land in the full-KV state and are
+byte-identical to each other; after ONE interposed different-prompt
+call, subsequent same-prompt calls land in the checkpoint state and are
+byte-identical to each other; the two groups differ from each other —
+and the flip occurs exactly at the interposed call, in every cycle.
+
+### Design
+
+- **Unit = instance cycle; K = 5 cycles; CUDA (non-production box).**
+  Each cycle:
+  1. **Reset:** unload gpt-oss:20b (companion-A `pre_unload` machinery;
+     absence confirmed via `/api/ps` before the next call).
+  2. **Burn-in ×1:** the measured body itself — the fresh-load ~200 ms
+     call (meta `control=burnin`, excluded from endpoints like warmups).
+  3. **Arm P ("pure") ×10:** same-prompt measured calls, pre-sleep 0.
+     Prediction: full-KV state (prefill < 25 ms), `cf2c66c8…`-class
+     bytes.
+  4. **Manipulation ×1:** ONE different-prompt call — the frozen
+     classification flusher (meta `control=flusher`, excluded).
+  5. **Arm C ("contaminated") ×10:** same-prompt measured calls,
+     pre-sleep 0. Prediction: checkpoint state (prefill > 30 ms),
+     `20310cdd…`-class bytes.
+- **No warmup item anywhere** — a warmup's different prompt is itself
+  the checkpoint trigger under test; the burn-in (same prompt) replaces
+  it. All items carry pre-sleep 0 (timing was falsified in companion E;
+  jitter stays suppressed so history is the only variable).
+- **Cell:** the same frozen cell (`gpt-oss-20b|open_generation|greedy|
+  effort_low`); measured bodies byte-identical across arms AND burn-ins.
+- Totals: 50 measured calls/arm + 5 burn-ins + 5 flushers = 110 calls.
+- Fixed schedule, single-flight; mode `study3-cache-instance`; no
+  prewarm qualification — each cycle creates its own fresh instance.
+
+### Manipulation gate (void if failed)
+
+Every pure call's prefill below 25 ms AND every contaminated call's
+prefill above 30 ms AND every cycle's reset confirmed
+(`pre_unload_confirmed` on the burn-in record). Cross-arm negative
+control: one request sha across burn-ins and both arms (flushers differ
+by design and are excluded).
+
+### Endpoints (registered)
+
+1. Within-arm byte determinism pooled across cycles: modal share per arm
+   (prediction: 1.0 in both arms).
+2. Cross-arm modal equality (prediction: the arms' modal outputs
+   DIFFER).
+3. **Per-cycle flip at the interposed call** (prediction: in EVERY
+   cycle, all pure calls match the pooled pure modal and all
+   contaminated calls match the pooled contaminated modal — the state
+   flip sits exactly at the flusher). This is the endpoint companions
+   C, D, and E could not reach.
+
+Sha expectations remain descriptive, per the four-session mapping
+(fresh-load `45e27daf…` · full-KV `cf2c66c8…` · checkpoint
+`20310cdd…`); any match or miss is reported as observed.
+
+### Interpretation (stated pre-data)
+
+- Gates pass + all three endpoints hold → state-pinning is a registered,
+  manipulated result: instance history selects the prefill state, and
+  the state selects the bytes.
+- Gates pass, endpoint 3 fails → the hypothesis is wrong in an
+  interesting way; report as such; paper #5 proceeds descriptive-only
+  with the failure disclosed.
+- Gate fails → stop and report; no same-day design iteration (the C/D/E
+  lesson: three voids is the polite maximum).
+
 ## Execution + provenance
 
 - Modes: `study3-churn-ab`, `study3-margins` — schema-3 records, manifest
