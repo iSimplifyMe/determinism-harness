@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVJVXh1MThLUnA4WVltd2NKdFkyN21zdFlEQnZaTWczUUNCQ0tuTlMwK1J5QUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQloxZFNabmxZZGtaSWVFRnJPWEpaT1RGSVdYTkxkMk5UUVRGcVUwaHFaa2xzZUU5c1pqaFBXbVU1ZVRkYVZVOUZXbFZzUmxkeldFOXROakJsY0hReGFWRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmMxNkQ2RjY3ZEExNE5PdmRPckQ3cHduVEFwV3ViZitEcG5yeWpnN3lNUzlzVU9FejZtUWk3SDF4cDRPUERXYVZhQkRJV2xpb0NkR2pYWFNtc0RONm5VeDByRWp1cmR2dDlCa3gwWUl0bm9xQTh3em9uMWxaclljbFp3NklDQUFBUUFFZm5pOUR4RURVbDFFSWt0bE4wQzVOZUV5SjhmaENCR2FZc0psOE9CNFU4UDJxcVJOcXlRcjZQUGp6TnBMT0cxdi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkc5ZG9sd00vK3kxWW9WQ2l6cVI5bU1Yc2YyazErOVkrNGZHZVN4dzZ6OWtFWkh0ZXNaZ284SnRFRG1NTkhxMkZxeTJGanBrMVkxUWpFeCtJYTJmeVdVT0M2RWZIZ2t4Q3B1Q29CUmp2eFJzUnZCczh5Y3JPdk5MaTNkdUt6QnByVS9kR1pjWEloY2pFbUFHUWl3VVJzdENQWXVPM0JZWHI2blhOdnVjVWxUN1VnSHltSSttaG5pTGRub3BqQUwxK0duS0JyWmIzZGFXKys5aiszcWRzSzlBS2d6bWlWK0ZzMnIxK1VCSlVkREhmOHNYRXpySUtnMHUwSEo5b1FrRzlKM01wZXhLeVpWQjlUQmZWRisvQ3BHTHRUNTJicXczaWJEMGNSalYxR1lCOHRTK1BuaEpZdWN6b2NkV21ZZmgyczFJQVdoWWhibEl1QkZzWVFMNDFCaXp5ZXZ1RkRnUXVVWXdJb3d2UjZydFV2SDRNdGRzZGE0WjlTUnZjek5HeUdjNkRtR1BUa1AyZFZnL25BR2N3WlFJeEFMd2xrVno3NGJzd1ZlUjJkMU53MXlJcmorYWoyRGliNVRRdXI5V000Tk1YcWl6UmtUelFBNzB6MTZ3K29NMFRqZ0l3UjN2QTZZQVpEYllxcE1KNlAxbFVZQmdoVUJKOVE5MEtQUml1S1dFSEVQZHBwaU9EUE0rc1Z1bDlrandhS1A3Qg=="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of additions does not change the result: adding a, b, and c produces the same value whether a and b are added first or b and c are added first. Floating-point hardware, however, usually follows standards such as IEEE 754, which store only a limited number of significant bits. After most arithmetic operations, the exact result must be rounded to the nearest representable value. Because rounding occurs after each addition, changing the grouping can change which intermediate values are rounded and therefore change the final result.\n\nFor example, suppose a is very large while b and c are much smaller and have opposite signs. If a is added to b first, b may be too small to affect the representable value of a and may effectively disappear through rounding. Adding c afterward can then produce a result different from first combining b and c, where their sum may be representable before it is added to a. Neither ordering is necessarily erroneous; each is a valid floating-point approximation to the exact calculation.\n\nThis matters for matrix multiplication because every output element is computed as a dot product, which is a sum of many products. Large matrices may require thousands or millions of terms per output element. High-performance implementations divide this work among processor cores, vector units, or GPU threads. Partial sums are then combined through a reduction. A sequential reduction, a balanced reduction tree, and a parallel reduction with dynamically scheduled tasks can all combine the same terms in different orders. Since addition is not associative, these orders can produce slightly different rounded results.\n\nDifferent hardware and software configurations may also use different vector widths, tiling strategies, thread counts, fused multiply-add instructions, or compiler optimizations. Fused multiply-add performs a multiplication and addition with a single final rounding, whereas separate instructions generally round twice, creating another source of variation. On GPUs, the order of combining thread-local sums may depend on the kernel design or execution configuration.\n\nConsequently, repeated matrix multiplications can be mathematically equivalent yet fail to produce bit-for-bit identical outputs. Usually the discrepancies are near the scale of floating-point rounding error, but they can accumulate or be amplified in ill-conditioned problems and later computations. Reproducibility therefore requires controlling algorithms, reduction order, hardware behavior, compiler options, and library versions. Techniques such as fixed reduction trees, higher-precision accumulation, compensated summation, or reproducible numerical libraries can reduce or eliminate variation, usually at some performance or memory cost."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 574,
+        "totalTokens": 629,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9580
+    }
+}

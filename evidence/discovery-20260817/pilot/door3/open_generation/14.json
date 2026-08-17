@@ -1,0 +1,101 @@
+{
+  "id": "resp_079854de2af2638a006a8340286908819087e2ae4c6f529935",
+  "object": "response",
+  "created_at": 1786986536,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1786986547,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 16000,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-sol",
+  "moderation": null,
+  "output": [
+    {
+      "id": "rs_079854de2af2638a006a83402927e881908ab3e78be87fc9bf",
+      "type": "reasoning",
+      "content": [],
+      "encrypted_content": "gAAAAABqg0AzyXEIY-bQaU74nbG-vQPP5QE3Vwwdpgubg642H7a7MsB0qF-YTys1xRK3Y7IObuomoc6PsPLPguIc8v7RBhAjaazvfGXanTSsk-NkO4VXd_jrGg2h94qcbXrjM2n8G_ncpQFIZSeVgxWly-_-TR5PMBkZez7E4KgZg5iJMXVV4n1ljpYPlW4mD_zVpZPNxHMh5hFUH9zttyh5KkcrxWtpZ_D58OCPKxxVBjFj7_JcIep-dMYHp_zouCLgunlPPFQjk7XYTdEa1iCBG70zvMUXq5CWnmf9kqxc9kEOXxdYIWL35H1eeLl4M6k2KDIxeZr8Kri0Q3YPahmc2ulL9iUqyF_sl9G0xvc0daBYyAjAejGtibehrJdK2pv0NJWzG9BLGpy0XnCRRggyQW8DVvSjiRzDgGVjLJcv3U-g807UCjEh5CodwC2ruPF1DIRMxECSulm-ZYoHP8c67WqSnlX17q6eSRA4ImPESYhaXKop76kMUoORBEtdHZDUk7tFTFv_q8Vqih79opX818w7CvFqGkaVQR6GFJSLtJrItKy0G7taY8pbPmci98C_Y0A2kYT5MLhg8LQLdhMQUMiyyWi2L354BRdj_WdDMaMwD1BEB7WLB79NfaR4mhSmYlXqZzmEccha199-3FDl9oOZlMlQ5r50vvvYJgs0KFhax7ANWFrkFwBBGYcueTKihXnU8r2wpLCxRlfgT6iJUG_b2o7jUqdvO5cOukXFd0KI1-aduxfxKxQcdP3BURyhstU7AOwNbcE_YSxlw38TbQm4d6qrly_8qiM-wIaZ7sxN41JnGIo_x7LAdo6IFpbfeJWQ5AWW26cePVu0XYNcB4NLS-1FAWI9UMQgjD1CUv9Auh0rrUo-URFp6sQN3Md_EeZZBCZPmeq26jtwDTYmufrPunzRL72tDzT7JXDfDEMg94kmjtHXQppYqvifDKnVzuhgAVDcz6cVS0unPXH9xec164HpPZ8PCKXnEDMf5bI2n2WrupfH2QzMG3d49RqYYt4N5--BqcJEyaIhjkua5ESkWiGqblqZ3EV3h_cCtMhWDitLswjyC6lp-AlsHjJb7btT7VMwzfqNsgkIEx3G6PbNCTZCnwtmDBMhjfjmmWh6g2plo_rYvUq7Ai5ckbMNLm8mdgPTkLzNWE_05QnpqyAD81O3koPx6Eb0owFdJEHeXiPAzlaioIHZXiwIyYjf15yJF64BKkCjYsVllshMaxJ_4rr1X_kIHKszT3SphQ9FTy3h6lQJifs9GPTFBys9O15Nh0_f-INHeM5vxtUUKcExNkNuDUQ2hop_kMiqiz72HITPOnaoXWN6wjbz5qcQ14aVM6QWdCb-xOFypUEBuEBEkyhXxunfjMKYfgMPjNq6Xp7V46yIw1gKpd6r6idvO_kHTZkf9rgYBz1dZeKcSLYS1NOtwCkS10m_5P81c-Ye_R5dxMpQaO_OhKGxw8jmPTOt9ovJJSPdCj2C_4sbjJOPD3LP2JOWs3OfzR0Wdny22nYm4HJ0a-UznlDWNW4FgdU7rkYrJq1jkpX0zfgrmvG8ObrN_rHdadJ-Gkxk_huqraMchdY=",
+      "summary": []
+    },
+    {
+      "id": "msg_079854de2af2638a006a83402a68f48190a4139a453cbe45b7",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding the first two numbers and then the third is equivalent to adding the last two and then the first. Floating-point hardware, however, must round most results to the nearest representable value after each operation. Since each grouping creates different intermediate results, it can introduce rounding at different points and therefore produce a different final answer.\n\nThe effect is especially visible when numbers have very different magnitudes. Adding a very small number to a very large number may leave the large number unchanged because the small contribution falls below the available precision. If several small numbers are added together first, their combined value may become large enough to affect the later addition. Cancellation also matters: when nearly equal numbers with opposite signs are combined, significant digits can be lost, making subsequent rounding errors relatively important. IEEE 754 hardware specifies formats and rounding behavior, but it does not make addition associative.\n\nLarge matrix multiplications contain many dot products. Each output entry is a sum of products, often involving thousands or millions of terms. A sequential implementation might accumulate those products from left to right. A parallel CPU or GPU instead divides them among threads, computes partial sums, and combines those sums through a reduction tree. Different thread counts, block sizes, scheduling decisions, vector widths, or library algorithms can change the reduction tree. Because floating-point addition is non-associative, these mathematically equivalent orders can yield slightly different bit patterns.\n\nAdditional differences can arise from fused multiply-add instructions, which compute a product and addition with only one final rounding, and from accelerators that use reduced-precision inputs or accumulators. Hardware and libraries may choose different kernels depending on matrix dimensions or available resources. Even nondeterministic thread scheduling can alter the order in which partial results are combined.\n\nUsually these discrepancies are small, often only a few units in the last place, but they can grow with long sums, poorly scaled data, or severe cancellation. They can also propagate through later computations, causing tests based on exact equality to fail or iterative algorithms to follow different paths. Reproducibility therefore requires more than using the same input matrices. It may require deterministic reduction algorithms, fixed hardware and library settings, consistent precision and fused-operation behavior, or numerically stable techniques such as pairwise or compensated summation. Even then, reproducibility and accuracy are distinct: a fixed reduction order guarantees the same result, not necessarily the most accurate one."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "medium",
+    "mode": "standard",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 55,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 580,
+    "output_tokens_details": {
+      "reasoning_tokens": 68
+    },
+    "total_tokens": 635
+  },
+  "user": null,
+  "metadata": {}
+}

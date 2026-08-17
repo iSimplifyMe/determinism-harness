@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVCaVFkZ3QrRyt4RzZNYUY3cFlKQ0FXajZhVHdzZWJLWFAzTHFsUDNnMnliQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmEweHFRall4VjAweFMwWmhOR1poUTNsMWVtVkRRMjVwUlZGWE1XWmtPVVU0UTJwMlpYZ3hTMDFIYnl0MVZsVnZOMnRuZVVKbFR6SnBlRnBLVUdSbWVWRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmMwUFF6RGRFMFJLc0xEQ3diZFV5VnU4b1cvWWRNVkhlU0NYT2NqYnlNUzlzVU9FejZtUWk3SDF4cDRPT3pHekVqRXFlWlN6UGNCUjRXUXMvcDVvNzlLZzJia2F2bU9vZFhNa250YVA0K2lKdGloeHN0ZXB2anlXekcraUFDQUFBUUFJL0daVUVFVzdYM3h5RjlqODExVWxGOWhoNDIzZ0tSdHZmazc0RlRhVGhkN09TejgrQ1Y0OVNsRDMxQjAybElaZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkpla3lzYXNnbUZZNG1FSjVaVW9kUXJFbWdrb3BjYzBBVlJGVmdDRFFiL0ltUy9saUhIcU13ZWxHUE1MS3ZicE01cmIzdU9BSWc5cG1GSWU1Z0UvYkpmQlBRZ3EzM1RieklBb09EcEFObHRndDg1TFJXN0NnMlNEeXEyNU1rSUdLUmkzU0VGV0JiN08yRDlIbUxUS0FxcTNxZDRuZUM0clNPcmd1VWF0ZUlJdXdNN1VBRTNIbDkxUUxQRzdFcC9rbUE0eS9HN2pyWVZDcEJvd0RTb2p3N0hnNnM0NHFONnlSR29TL0FuYkwySjNob2h1QzVwVjlITHBkRnFVbzNyRC9MWWRBOUI1dENEVUF2ZXNsalIxRjdnYmVnZmRkVjJmcHZ1aDBOcHd1K3E1YUVFekhLOEdDVnhWODRpSlFFaGJhK0ZuS2hCelFhdkVsQ1FTd3NXNG1JcUtBNjFhOVpUQmdDcCtjT3J2dHdjMDl1djVhajFPbzNYNUUyUEpRVkRwWlZjcm9tZ3FFQU9wYU8zNFRoZ1RibGJLV1FvQ2RjUUJuTUdVQ01GaXcva2lFQ0Q2N3ZRdndjd0NPekM3Mmw3YXRwNkZ1NXVsMEJPSllmd3AyMklRR1BCZmZaNkRwNnJmUFNCRUNrUUl4QU1sQmlpWXNwVjNib2t2d0RqWWM2WUlraGpTQ2dacFpvUFFhYmF4RnYyK2p3enU4WXJsVmJ4SlFIWmhZL1h0dFV3PT0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, the expressions (a + b) + c and a + (b + c) always produce the same result. In floating-point arithmetic, however, each intermediate result usually must be rounded to the nearest representable value. Changing the grouping changes which intermediate values are formed and therefore where rounding occurs, so the final results can differ.\n\nFor example, suppose a is a very large positive number, b is the corresponding large negative number, and c is a comparatively small number. Evaluating a + b first may produce zero, after which adding c returns c. Evaluating b + c first may cause c to be lost because it is too small to affect b at the available precision. Adding a afterward may then produce zero. Neither outcome reflects a failure of the processor; both follow the specified floating-point rounding rules.\n\nThis behavior directly affects matrix multiplication. Each output element of a matrix product is a dot product, computed as a sum of many products. In a large calculation, these terms may be accumulated sequentially, combined in a tree-shaped reduction, divided among processor cores, or distributed across multiple GPUs or machines. Different algorithms and hardware schedules can therefore add the same terms in different orders. Because addition is not associative, those orders can produce slightly different rounded results.\n\nThe differences are usually small, often only a few units in the last place, but they can grow when a dot product contains many terms, when positive and negative contributions nearly cancel, or when the values span a wide range of magnitudes. Small discrepancies can also propagate through later computations, especially in iterative numerical methods or algorithms with sensitive branching decisions.\n\nModern accelerators introduce further variation through fused multiply-add instructions, which compute a product and addition with a single final rounding, while other execution paths may round the product before adding it. Libraries may also select different kernels according to matrix size, device type, thread count, or performance heuristics. Parallel scheduling can make the reduction order fixed, implementation-dependent, or occasionally nondeterministic.\n\nConsequently, mathematically equivalent matrix multiplications are not necessarily bit-for-bit reproducible across hardware, libraries, thread counts, or reduction strategies. Reproducibility requires controlling the algorithm and execution order, using deterministic kernels, and often disabling implementation choices that change accumulation. More accurate techniques, such as higher-precision accumulation or compensated summation, can reduce sensitivity, but they usually impose costs in speed, memory use, or hardware efficiency."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 574,
+        "totalTokens": 629,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 10881
+    }
+}

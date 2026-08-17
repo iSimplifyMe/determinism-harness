@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVNSFJrcGNqNEtFa29VcU5QUGxwdEFEMExaN1BUZkd4a1JxVmkybDF0WEFNQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQk5VMXBRM1kzT1UxMFFta3dVMk5rTVVKeUx6SnJiV1JOUkZNNFMzbE9RbGxNYUcxaU1qVkRXbGRrY1dkb1J6aDFiMjFVTHpacU56WnRNMGRJVms5SmVXYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmM3YVFLQS93cDR6cGcxQk9TVlBRdTZyWi9ZZlR2UlMwYkZkYVhtTHlNUzlzVU9FejZtUWk3SDF4cDRPTytuVktKVFloRDdNYys0QVZIbGFiN3hITDZ6amdsU0RkRUtGdnkvM1lmRXpaaXd4cWRYMlZ2ODhUVHg4N1praUVDQUFBUUFJTUdkRkJVdHhHeWg1Q2J3UkdVU2hzb0FLeXVibzRnTkMzRlhXWFpKaDNOYkNFSGdtQzM3ejJYaFphbjA0YkRsZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQnhrOTd5RnZxUTkvNjMzNEJ2N1VLdytRdFlVLzRWc3B2RGsxQTY3dXo0MnBObUx6N0U5cVdIaFZXb0tncVk2eHh6QzJMSS9hSDZlM0ZJWGE4Mk0wdFJIYWlSOFRpLzNyN25qd0pwQUN4TEllOU85cGJseVY1a2dScXZtQTZBcEV2cTNpU3RmV3FoOXFSaDF4M3ZTZVhKb3BXbmhpOUxra3U0RjdHYVJvenkwT1pGeXQ5aDNYRVo0TmVZLzhibDdFdEVDU0pUS1d1RkVKaXBqbVNDSFd0WWtsYjNTWkk4UjVTQ0MyazlmK09WNTkrVEFHMm5jR3lnRldvV2ZKWE5lell4eU9odkhIN3FxM2IySGwrbTFQSnYwYkdqTjFHVVYwclk3czZzaC9zMGVDZHZ6aU54cEVsQ0wwVVU5NmV1RTFYTklzWkw2RTBqczNKd28vSklrVW14TXNjc3BIaUVwNERnMXNmL2c1c0M0M2hUMDFLNmo0QTI0RktLMDBNYlFnNnlLWGg1cGcvdGtpbGVHcDdTQmI1alJjb2NMRGVrTVZ3YUgySWdGQ2ZaMGRXK1dDMVd4d082aVpxdWdsTVlyK0Q4d1ZleWowamIvUnhaWVM1L0hVVjVJa2hyUENxU3dkVEIrQ21EWEFQeEtKeUF6dytNS2pyWklEbUEzVWF5WUJONmdEc2NRcWY5cGlZeVJjYXgrL1hDMVJwaUJpSFd1dzFtUW1NUVU3S2dLZEltVEZNMTZ1WXEzcU41RFpUZ3lIMnlvTDhzUFNmQjVzTFdOOVRUbWpCUmNrKzFqbG9TWllWaXJOWFRVcFExZUZVMkphWThvaUZBR2N3WlFJd0duRng4WEZTc09oK1VrdjBrSStkODRNSlN5aE5SbWxhM0Z6UTI3cklWZjhMTnN0TllURzg4eXRGa3F6elNiMFVBakVBdGdSSzNuRjJIaVRwelRaRXE4d0FDZXNKTXNZS1JheGFOVTI4d3A4UzdzbWhUWjN3aElCTW1wTDRwMWx6UGVpVA=="
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 342,
+        "totalTokens": 370,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 4141
+    }
+}

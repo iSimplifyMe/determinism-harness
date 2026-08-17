@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a01094-3f29-7911-813f-23eb8d781952"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"}}
+{"type":"turn.completed","usage":{"input_tokens":13351,"cached_input_tokens":9984,"cache_write_input_tokens":0,"output_tokens":49,"reasoning_output_tokens":0}}

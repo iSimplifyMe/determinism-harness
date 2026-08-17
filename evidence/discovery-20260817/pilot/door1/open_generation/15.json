@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVMNUl6QisxM29FdXpsZ25MMGh1TmJlUVhRVVUyamRQZGZWUnJITm5XUnh6QUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmRtaFJhVGhLZW1OUFdVWkhOWFp1TVdONWJERjFSRk5xT0VkdFVIQmhhalZFVXpoS2NHVlhibkE1V0ZWeVRuaGtXRlpzU3pZME1URmxNMDk0T1RWRmFtYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNCMDFlK2s5eGJoZzh1K0J0ZEJtY016d3lQcFpMYjVYVVRxbFdVN3lNUzlzVU9FejZtUWk3SDF4cDRPUGg4em81NERXYkh5WHgvQ2MwSzRIaHBSRzlOZ05CM1RqOFBwOWZLT3d1aEgwY3kyUFFua3B1eExBQWpxdVB4bGNDQUFBUUFGcUN3eDhJSXlQazJ1SVJyN3owU1YrWmx4WGhnWWFnWGkydy9xUStMTWZWSEpscjFDZmk2Si9pUURFOE1VVkFqZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlJqL1BCUnp5NkczVGlGcWxaTnNLTW1HTGxYcTlEQzR4THVmb3k0aU9CclhDQ1p5ZzJReDM5alpCM1BEZXZESXJMOXhVRVBiY2ZrMUttS3NobUt1NnJXQ2pxWjZ6azlHendvcXoxbERHbjQxVitBeVllMkVsNkhwc0dJZUJzWGZiV2JqWWF1Y1diUko3TkU5OG83WVFxYzFoaUdOaXpVdSt0aWFtQWYzZzMrU3pqRHBIY0ZoaXlPaGVTSk9OWkx0ZmFiaFRaT3ZlSWgyc0wyM2xjeGFEV2M1TXRqNVlKZWcvdjZWeVdXUVhQYzU4enJYdk95ZlMzR0phcFlsOTdsQXlrWjFDNHlHYkovY0lFb3NBeWljSzJJL1o3OSswYWs4eEtSWjdQNndsTXhHYUllWkd6cGJnM1FSQ2ladUJiYitHRitMVnZxYllHQVpzaFB6ZU4vQjlwVVpna2VaVXR1Z0VwNEE3THY0RmdsZ3lPMnZqb2NMYzBxRzgrcSt1ckxQdnFzRkIyeXQ4V2tvaE1pMjBWUkZnTmJRMnQrOUczTVFmMzVQQnczVmVJaldMYVRqcmN4NExVdmVXMHpkR2NsalJjQ1dqMytiYytBQm5NR1VDTURDRWcvQmM3ZEdZQnF2aHVMZkNkdnlYY3Jaby8xOXZlbmFHZTh2ZDFnNVo5QVJjZlhNWWorc3ptanhkcTNhcDlRSXhBUERqSW8wY3pqUmdRd0JvUzZKUXpFdnpsRlhWMGo0WjBLcUZ5L1dIdTArME9QRW5kcGJqNzhEanNFaHFtM003b0E9PQ=="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because real numbers are represented with finite precision. In exact arithmetic, changing the grouping of three additions does not change the result: adding the first two values and then the third is equivalent to adding the last two and then the first. On modern hardware, however, most real values cannot be represented exactly. After an arithmetic operation, the exact result is rounded to the nearest representable floating-point value, according to the active rounding mode. Different groupings create different intermediate results, so rounding occurs at different points and can produce different final answers.\n\nThis is especially visible when numbers have very different magnitudes. If a very small value is added to a very large value, the small contribution may fall below the precision available at the large value’s scale and be rounded away. If many small values are added together first, their accumulated sum may become large enough to affect the larger value. Cancellation between positive and negative values can also amplify the effect, because rounding errors in intermediate terms may become significant after leading digits cancel.\n\nA matrix multiplication computes each output element as a dot product: a sequence of products followed by a reduction that sums those products. Large matrix multiplications contain millions or billions of such reductions. A sequential implementation may add terms from left to right, while a multithreaded CPU or GPU typically divides them among workers, forms partial sums, and combines those sums in a tree. Different thread counts, block sizes, scheduling decisions, vector widths, or library algorithms can therefore change the reduction order. Since floating-point addition is not associative, these mathematically equivalent orders may produce slightly different bit patterns.\n\nModern processors add further variation through fused multiply-add instructions, which compute a multiplication and addition with only one final rounding instead of rounding the product and sum separately. Different hardware, compiler settings, or numerical libraries may use fused operations differently. Some systems may also use distinct intermediate precision or optimized tensor instructions.\n\nConsequently, two large matrix multiplications with identical inputs can return results that are numerically close but not bit-for-bit identical. The discrepancy is usually small, but it can grow for poorly conditioned problems, long reductions, or severe cancellation, and it may influence later threshold decisions or iterative computations. Reproducibility requires fixing the algorithm and reduction order, controlling hardware and compiler behavior, or using reproducible summation techniques. These measures often reduce performance because they limit parallel scheduling freedom or require extra precision and bookkeeping."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 568,
+        "totalTokens": 623,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9195
+    }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "resp_01f1ab12682a2bd0006a833fbd7be08193a8534db9b8c28a49",
+  "object": "response",
+  "created_at": 1786986429,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1786986443,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 16000,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-sol",
+  "moderation": null,
+  "output": [
+    {
+      "id": "rs_01f1ab12682a2bd0006a833fbec2a881939f1e62aa3d81d5f0",
+      "type": "reasoning",
+      "content": [],
+      "encrypted_content": "gAAAAABqgz_Ll0t7wMYmgOgRkauumNSM1uO3JJr_pe8ZS6-zpbJPoQFkDlWlbTiqtgmuvS9Tolr4NVnvYZ-mMk6mY33D9hggypnb7zzpWUBfpMvo9GUSaS3RCT4T9sj2H59G1u3lyEPUQsPhO_L8XkKGgSRYFJRVk2FvnjP73bRTlepXV2Jqj79FtUDuA3RX9GzKNUVfliAMtjDIpARZ99LoPFGP54OEX9Qiie7EIA6mC442rJO6Lc96gciB-u-zxuqkKTlpYXMY4fS2p46B4kycewImCz8A5_gptVIX_a4of_mQ774xZ_bwQ7-VRyobf6lMc_AsjqkNbd5BCjZG4rj59HgZVJ4D4Xu8_PFaCmsfs8E2E68s5nssOSoDbqa-NEehau719JoMDV4qSD_AOwk49YOFxZzH9MEiSrzVVty6tar7gdzJFt1gA9NSBBWEDmRirmOVSNw4exb-Zu7I0qD9WIATFevZ_kzdTUrucO2sC9ca3d1M_8WlUDmC1PyC7sstn730DSwJk0Doy71htpx23HHJCd74nCt1f64Sk5KomKMoJgtJklVPKFegoX1OGkXzT9HVUZyPjyyPOTRn2AijjhGhycQ7yWTvIEaWIraUoSRCBzpoIkT8-4LfNiyyIxMDRua3orGsB31FqhLCvoBiBTR42toxzzpdvvb76zQ73owcBrjtHw0Vu7C1cikflGAAgWEVX2x8-eNUZiLiZmYKXymZFAzSq_IFHG2AQ5QWOm9m3-nYldpGVx4ytj6WC6eBMHOt4zUJkV5umuO9UIgCMR8P7kZ8b8lh9vXUzLnQWIOoVt7HfgZ8DbLyrZLd8tzh9Q4GJ_6mhZvwjPIIJFX4TpGs78CGNxaIdIwikPGDEn9yT3zPjgmes7SIvtDxmrDVa0YuwKZDVxE54u_TPBPp4SYV1HfMwml-eZi3A3bsgJxkXFQ1gMRtSzzhxF0iXCrU6vzORn0r4Byb6dLPCRgVdOC21nWpPfXaXR7V8UIxH1M-FoyJscQ8Q0esSwUYMDVnZs_9y_h8piKu3Ds5DZc_cPzqFc62KwzeozPuwXXfKqp--h_m9cpS1VE0piOkfg94o4xoAuSrjdnX0ZfhyWF8j3ZE0ujvqt8OAqwZYOzwIz4EMQw1lT-ZJtoKz80OkYX5fxiye2RvhrvS_nfZI7ArfNDHK_T0bosQi6xx1GFn9GHcFqQLbSIBVXQhhRWknfpPSiDLjZ672qr5JbQxpJI5bmjA9PXaCKa_vFIP_PGGP3gN0g0usfRsKY8VB3c8W7didV8TOgs0Lw5Y9CPotdt8QopI1oJ0eXIV2PzycMmVHnrhvaoIPpQSpHTyjYzWLnTxgNxOsO_DGIGRU-CQDSIaL2_R1h8rAqLaY8LT2cHD2QLcYtODXt39GlDO_764nlxvk-dn1p0MLZoX4tZ1zwEd9dJyzwfB2f3GUVWNMyFYfa4a7Uzp09yIpy1NYsW4hWr3golB3ti7Cumy954SKexhK3RivBRjnVKixDJ27-2GF_gQ5h2Xi_ZkqoB5DctwCue7_skyOW6u6pHGuhQkX0sMCyj4VeuICQwYckanKOY7iUU0GfuNv7aT1B8nwmevsSRqzAv5QCq1tAVd7-R6gePdzETR_JoFj4bhIc0iUY-KQRO6txzH0lPFhZbz4tB69GA-eKty5_XVZHI9mhh10DRW8zndTfp33UZ1tTJ192o15OchwNhNGAES4rYmOD1wSWDYKvgeKsDmL09xzXhMp5QV-J6cBFsXmDKZNxpS_bY2CLH-OZ38dNw7lRGVaE7Z1fs_RKG2vcVETg_lJETtC9CqYRQ4xzsVirmzLDYy-LS8zBTbSFFLPAPjXzmu5C_8onZgOOEiiC4IaLqMuqoMAyN8nHS73UwzBbaJeSPy5Pz8FEfD3kbs_WHptpJZd4Z_PllW4e863h6FoV5Gh-74_pkGHk2sL2p3_a2AVZq_ouw9PPn7Jnqzq0ri_mhaVIb_82VM8UjHi3cWxpNA1MEK1MPgCnaqmhBxiKpSJfh-6TrTlk-KjO4_rkziPW9UfaymQp_URuMn7g93XYj8pWls6BdoHRSNvrmE_XlYD_h8xqSomGClP8zsUkDm_fkGxv6ucgivO-AniH7tTgQ1UuxPguDWytjtnre-auelvZyrSTbMv0IhSpDKudpgbXREIBBgY1ae7zginR9j4WxOROaDgS9r7QrHSn8yNKPeWMHnoaiXGIDPDPdoWzJF4lXhm0W24UtRqJFM1nhQf9ai2MZuCFJVcANWvTQxG1_nK8dLPo5pxZQXFgxCROlL3yEkTjKu5b_aq9wPsbtqDwmNFuk6i5WYphRqp2rsU1QnYtWhhT7fT32baytFA00TiexST4CrcjdMM9WcOmwOQq1_sLSxeANCXb5ZRpQV2Q==",
+      "summary": []
+    },
+    {
+      "id": "msg_01f1ab12682a2bd0006a833fc1bb248193b70469449d8fdb66",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Floating-point addition is not associative because computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of additions does not change the result: adding a to b and then c is equivalent to adding a to the sum of b and c. On modern hardware, however, each floating-point operation usually rounds its exact mathematical result to the nearest representable value. Since rounding occurs after each addition, changing the grouping changes which intermediate values are rounded and can therefore change the final result.\n\nFor example, suppose a very large positive value is added to a much smaller value. The smaller value may lie below the precision available at the scale of the larger value, so it is effectively discarded during rounding. If several small values are added together first, their sum may become large enough to affect the larger value. Thus, adding the large value first can produce a different answer from adding the small values first. Cancellation between nearly equal positive and negative values can make such differences especially significant.\n\nLarge matrix multiplications expose this issue because every output element is computed as a dot product, consisting of many products that must be summed. High-performance implementations rarely accumulate these products strictly from left to right. They divide matrices into blocks, distribute work among processor cores or accelerators, use vector instructions, and combine partial sums through reduction trees. Different thread counts, block sizes, scheduling decisions, or hardware architectures may produce different reduction orders. Although every order is mathematically equivalent over real numbers, it can generate a different sequence of floating-point roundings.\n\nFused multiply-add instructions add another source of variation. Such an instruction computes a product and an addition with only one final rounding, whereas separate multiplication and addition normally round twice. Implementations that use fused operations can therefore differ from those that do not, even when they process terms in a similar order. Differences in supported precision, compiler optimization, and treatment of subnormal values may also matter.\n\nConsequently, two matrix multiplications with the same inputs can return results that are numerically close but not bit-for-bit identical. The discrepancy generally grows with the number of accumulated terms and with poor numerical conditioning. It can also propagate or become amplified in later calculations.\n\nBitwise reproducibility requires tighter control than ordinary numerical correctness. Implementations may enforce a fixed reduction tree, use higher-precision or compensated accumulation, or employ reproducible summation algorithms. These approaches usually impose costs in speed, memory use, or parallel flexibility. Without such controls, small differences caused by reduction order are an expected consequence of finite-precision arithmetic, not necessarily evidence of a hardware or software defect."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "medium",
+    "mode": "standard",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 55,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 696,
+    "output_tokens_details": {
+      "reasoning_tokens": 174
+    },
+    "total_tokens": 751
+  },
+  "user": null,
+  "metadata": {}
+}

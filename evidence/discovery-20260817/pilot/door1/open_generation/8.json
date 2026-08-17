@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVPYUxrY0hQSzhpanpBdjFYMmRMbmJ5ZC9oNFkyQ2ZwOFpaWm1XSWJwRlZZQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmVXOVpVSGRvT1hGRkswc3dkek5oVEdGNGJYTkJOVmt2YW1kSk1UaFNWVGt2V1dsVVVIbG1MMGszTDA1dlJEZFFjakpwUTIxV1pVd3dXVGhhYm14VFlsRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNsR29TeHdFdG0vU2h1M0tyMm15TWlhK29pQkpLTi9ObkJvVExWTHlNUzlzVU9FejZtUWk3SDF4cDRPUEpYNE9PWklMUU5YZXRzdmluUkduRW5iSnhVWkJ6bHY3QXpHd3pnTW15b3k1UnIwS0lNeXNxS2VDMnlvZFRaUXNDQUFBUUFEd1FkOHpabUFRWTVIeWp5ZEZrZ21xSmhFVmhiUk10bDV6MmtFRkhpSmpKSVhSeUNoL0pUS0R1NE9zRjdNUEptZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkprb0RmQmpFSnluclZaa3FiZXpCMmM5WGRtZ0Jycm5PQXBvWnhZOXBscEo2Q2M0cXB6aHpFSUU4UGtGL0lEKzhqOGVwb0dwUmt2alY4WGtqMk5ZbnB6WkpneVQ4bDZGSjFLRDB5N1JZZjc3THgyVThDYUNoQVJrSHZvZzB2Z200cUphVDF2RjZyWEJ0NHNTUXRzdGRYTDNYTCtxOHgxRFNYZmdrQnBBZzlVcWh0bkwxUVZpaE42TlY2a3dwVllBZFpTOWk1N2o1UUhFaHRSQWtvVXNNcTQ3c29GVzJJb01QMDU4MkpqTDVlNU5SSCtEL2VCbnFLcVlqQzllaENVQWxjNDBCeThtMTVmSS9SSG5DR241bzJZZFJ2dGJCdWd1YUxCYzlNMFVwQlVGbEdXVUZkNXhyS29DaU96cUpMc1Y4bzFTcFp3YXhvYW1SNWlObU5LVTRNUFNKVDFxMjJKUHVVTGxuc2NGZUdUSjl4clBnQW5XN1ByMGRFK3FJUHQ3amRrU3BLejIzMURwWWhScDdwcUdhdWRQd1dZNUd1TUVBWnpCbEFqQjBOamF0d2ZTcC9HclFRZlNvTituS2hkMGZEM1BxL1owSU82TE1wMVQ4VHJWUXZqeCtqa2l3QmV6bGFkbVQwZmtDTVFEUzF2V2c4TWxIT0E0UGpIN2xMN25SaUJoMTAvRjRKOGM4eENGYXozRXN0UEJ0UUZHQ0w2SnF0V1ZPbm5sUGkyYz0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of additions does not change the result: adding a to b and then c is equivalent to adding a to the sum of b and c. In floating-point arithmetic, however, most real numbers cannot be represented exactly. After an operation, the exact mathematical result is rounded to the nearest representable value, according to the active rounding mode. Because rounding occurs after each operation, changing the order changes the intermediate values that are rounded and can therefore change the final result.\n\nThe effect is especially visible when numbers have very different magnitudes. If a very small number is added to a very large one, the small contribution may lie below the precision available at the larger scale and disappear during rounding. If several small numbers are added together first, their accumulated value may become large enough to affect the later addition. Cancellation also matters: subtracting nearly equal values can remove leading significant digits, making earlier rounding errors relatively important. Overflow, underflow, subnormal values, and hardware choices such as fused multiply-add instructions can introduce further differences, although IEEE 754 defines much of the underlying behavior.\n\nA matrix multiplication computes each output element as a dot product, which is a sum of many products. Mathematically, those products may be summed in any order. On modern CPUs and GPUs, large multiplications are divided into blocks and distributed among vector lanes, cores, or accelerator units. Each worker forms partial sums, and those partial sums are combined through a reduction tree. Different thread counts, block sizes, scheduling decisions, libraries, processors, or optimization settings can produce different reduction orders. Since floating-point addition is not associative, those orders can yield slightly different output elements even when the input matrices are identical.\n\nFor large matrices, each dot product may contain thousands of terms, so small rounding differences can accumulate. Usually the discrepancies remain close to the expected numerical error, but ill-conditioned problems, severe cancellation, or later computations that amplify perturbations can make them significant. Results may therefore be numerically acceptable without being bit-for-bit identical. Reproducibility requires controlling the algorithm, reduction order, precision, compiler transformations, and hardware behavior. Deterministic reduction trees can provide repeatable results on a fixed platform, while compensated summation, pairwise summation, or higher-precision accumulation can reduce sensitivity. Exact reproducibility across different platforms may require specialized reproducible arithmetic libraries, often at a performance cost."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 569,
+        "totalTokens": 624,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 10088
+    }
+}

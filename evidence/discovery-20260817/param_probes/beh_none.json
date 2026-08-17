@@ -1,0 +1,22 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 5,
+        "totalTokens": 33,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 6589
+    }
+}

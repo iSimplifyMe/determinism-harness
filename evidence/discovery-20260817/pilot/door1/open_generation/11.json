@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVIMDZiV21GY0Rhd1BkVUNTeTdGWFVkbEVmdUJGT3kzZ0l4WjZDTjFKelloQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmJrTkxWa0ZaT1VkcE5rSkhWblJQWWxCVWJHbE1iMGRaVlhOVmFIUnljRGw1WkRocVVWWllkVlJaVlRGbU5rbEpMM2hMZDFCTlVYb3pXRVpPTUhKdlZVRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNNRTZlT2hwWlh0bXV2eTUvSFFMK2kzREl1bG1QbFVkY2xHRHpHcnlNUzlzVU9FejZtUWk3SDF4cDRPUGhlUFE2ZUlJeEphZlkxZ0xnRjVLZmYxSGZ3bjFSUUVHUjhFM3puRkNhd3J4WkdoczBadm1GM3l3NFpzUnhYc3dDQUFBUUFBTTNSYnJ3Q2ZUOGdRcEJYNXBreG54SjNSY3lHQWlKNy8xZldVdWNUWDRHdFVaQURhSit2cnQ5VFdzaXlRVTFxLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkRtUG1pWjNmZG8rZkhsV05ZcmdFSlZhZmpMTkZSdXdEUTQ5Qk1yY3B1aWtIR0lZbW4wNjZuRmxxZWM5Qm9sb2JUQ3BHcFQzcHBBZjV5SkFTMk43MHZxNEx0UGd3ZmNMVWs0K1VKaHozc3g4NnNkaGhHTXh2b1llK0NNcFQ1YldmT3NBTEtOYjVyaGFvWC9jcjZzS0dINXZWcGhZQXQzYUNyb3VBRVFIODJBaHhRYUpGRlBOdlJnZ1N5c1FrSWlHaWowRGM4Q3RZd082eGhaNGtxaHNTbExqTjI0SmFjTVRSR0dtaGIrak5KMytmNTFvb05YWEpNbkRqRHFOTk9VTlFSQVZaVDQ4M3VuOTNZZTd5aGllZS9udUkvSlNKcm9QSkRUWW9QNkdLRDFFaGZ3aVluYXQ2b2VobHlsTkprMkF4OUFzY2o2RTBhWEVybEJlWGFkVDlVaEp6Tjd4MlBMNlNWRWpGMmVIUjZKVzQzY1NNcW1sa1haRUNUVWx3QWs4QVp6QmxBakFoVi8vS0k2N3Uza2RBdCtZZ2hyMWtvS3U0bWtNaEhiZW9TQjFZM0gzSDlzNFNzdmU2dENPUjhROHZnMEt5SGJNQ01RQ3FpWkQ4SW9Zd0gyVFlQcWI4ZFVpR3AzVS9aUkpxckQrblY5L2pTWEJzZHk0VGFqbmFVbVd1MlZTMEY0SWVjR2M9"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern hardware represents real numbers with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding a and b first, then c, is equivalent to adding b and c first, then a. Floating-point hardware, however, must round most intermediate results to the nearest representable value. Since rounding occurs after each operation, changing the order changes which intermediate values are rounded and can therefore change the final result.\n\nThis is especially visible when numbers have very different magnitudes. If a very small number is added to a very large number, the small contribution may fall below the available precision and disappear entirely. If several small numbers are added together first, their combined value may become large enough to affect the larger number. Cancellation also matters. Adding nearly equal values with opposite signs can remove leading digits, magnifying the relative importance of errors introduced in earlier operations. Thus, although each individual rounding error is usually tiny, different groupings can produce different accumulated errors.\n\nA matrix multiplication computes each output element as a dot product, which is a sum of many products. Large matrix multiplications may contain thousands or millions of terms per output element. Implementations usually divide this work into blocks and distribute partial sums across vector lanes, processor cores, graphics-processing-unit threads, or multiple machines. The resulting partial sums are combined through a reduction tree. Different thread schedules, block sizes, hardware architectures, compiler optimizations, and library algorithms can create different reduction orders. Some systems also use fused multiply-add instructions, which compute a product and addition with only one rounding instead of two, producing another legitimate but potentially different result.\n\nConsequently, two executions of mathematically identical matrix multiplications can differ in their lowest-order bits. The differences are often numerically insignificant, but they can grow for poorly conditioned problems or propagate through later computations. They can also cause exact equality tests, checksums, or threshold-based decisions to disagree. Parallel execution may even produce run-to-run variation if the reduction order depends on nondeterministic scheduling.\n\nReproducibility therefore requires more than using the same input data. It may require a fixed reduction order, deterministic library settings, identical hardware and compiler behavior, or specialized summation methods such as compensated, pairwise, or higher-precision accumulation. These approaches can improve stability or guarantee consistent results, but they generally impose costs in performance, memory use, or portability."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 546,
+        "totalTokens": 601,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7253
+    }
+}

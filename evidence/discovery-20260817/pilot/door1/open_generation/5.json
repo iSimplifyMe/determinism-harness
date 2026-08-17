@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVBamNzRGVZbVNGeWdVcHVxalJranBUcHlMeXdVSVN0K3NueGd5Q29ZakxsQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQk5XOHpSMWt5ZUd0eVFWTXJUR2h1VlZWbVJXTTVZWE12Vm10dU1VcHNWa3hhUnpselJqQnRUbkY1TVhRMWNsQjBjWEE1VTJsdFJHMUVOamd3UXpaVWQwRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNObFdUclFlSy84N2RvMGp4SXZuOXhSTVk5NWtubytUeTRoZVlKTHlNUzlzVU9FejZtUWk3SDF4cDRPTVpaNGprYkZ3TUZuNWZVYy9QS0kyNStSZm9JWFI2T0VPeWlEeUZGR3ZwbVFnS00yNWNCUUl4dnFJcUhEK2ZacDRDQUFBUUFMRU4yWWQxdDFtZkVkeVZrY1lYNXBPZEdUcG5obW8vckpsSGtVT3RxR0RBZUpqMmlzQmhiZzdQNVNLc2xOcTVwZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlArbUJ1UldJQjUxeVpETkszTmZlQTBQbk1MZzVOVnovYlNYQ0FRa0tEbWdtYW4vU0VVTWFTOFJxNXJuNjRENjUvbjV5QTZvRHdJc0QrZVBxQzlBTk1HYTN5cFoyQVl2cUVoSFcvYUc1Q1lqUDlwNXgvRStSRFFMRmtYb0JlTGtmQmdmVURsWExKR0VSMWh2VHRWWnppTHhDTzdVVGxLSFdTcFpTQ0xtb0xBN05ubEFYbkwrMC9WeGpWUUhVME55MUhkSnBXRjZDUkpESFNjRDJiUjcwemgxeksydXJqcENQdFNoeXV1Q0JibUdYK01EZCs0QXZzMEdId2c0a3JCWWJDV1psWmF5VWM4M1AzaWxlMHNqMW1TQTNJRTFoZlRWUU9FRU0zOTUvUXJ6N09LZHJiR09BVFZCeHJmOWQzdEdXa0JPdjhJNlZzRHhZUys3WnhWZk9qSDBDb0VWVitldTh2a2RrWEVzYWJ1UU1WMncyTUFwMTRualVmc0hJWXJPS2YwZkRBc2dleXIremZDTlpXanFTMWxNRXpUK2lmOVl1cysrV0E5OXlNQWZVVzBGZllLN2JKV3V0ZmNyb1FqUDdBR2N3WlFJd0JaS042TFFVOC9jaGdwSEdFNkN2VTJTeWF5WXp3eSthMk1JSlAwclg4eWloV1JqSUtBTThDc3JwQlFQZCszbktBakVBekhVQWcvY1dSa29EWDZaT1dkT2ErRlFSYWs5Y21LOU95UW1oWGtQZmpiK0ZlMEp0T1JQdEZZejNXU2pvMUdFTw=="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern hardware represents real numbers with a finite number of bits. In exact arithmetic, changing the grouping of a sum does not change its value: adding a and b first, then c, is equivalent to adding a to the sum of b and c. Floating-point hardware, however, must round most intermediate results to the nearest representable number. Since different groupings produce different intermediate values, they can trigger different rounding errors and ultimately produce different final results.\n\nThe problem is especially visible when values have very different magnitudes. If a very small number is added to a very large number, the small contribution may fall below the available precision and disappear after rounding. If small values are added together first, their combined value may become large enough to affect the later addition. Cancellation between positive and negative values can amplify the difference further, because subtracting nearly equal quantities removes leading significant digits and exposes earlier rounding errors.\n\nMatrix multiplication relies heavily on such sums. Each output entry is a dot product: a sequence of products that must be accumulated. Mathematically, the order of accumulation is irrelevant, but implementations choose reduction orders for performance. A simple implementation might sum products from left to right. A vectorized CPU implementation may accumulate several partial sums in SIMD registers and combine them later. A multithreaded library may assign chunks to different cores. A GPU may use a tree-shaped parallel reduction, while another kernel may use different tiles, thread blocks, or tensor-processing units. These arrangements group additions differently and therefore round at different points.\n\nConsequently, two matrix multiplications using identical input data can produce slightly different output values when executed with different thread counts, hardware, compiler options, library versions, or kernel-selection decisions. Some parallel systems may even vary the reduction order between runs because task scheduling or atomic updates are nondeterministic. Fused multiply-add instructions add another source of variation: they compute a product and addition with a single final rounding, whereas separate multiplication and addition usually round twice.\n\nThe differences are commonly only a few units in the last place, but they can grow for long dot products, poorly scaled data, or severe cancellation. They may also affect later threshold comparisons, iterative convergence tests, or branching decisions. Reproducibility therefore often requires fixing the reduction order and algorithm, controlling hardware and compiler behavior, or using reproducible summation techniques such as higher-precision accumulation, compensated summation, or carefully specified reduction trees. These measures generally cost performance, so high-performance matrix libraries often guarantee numerical accuracy within a tolerance rather than bit-for-bit identical results."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 595,
+        "totalTokens": 650,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9846
+    }
+}

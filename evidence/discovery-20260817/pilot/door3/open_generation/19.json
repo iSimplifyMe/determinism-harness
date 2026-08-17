@@ -1,0 +1,101 @@
+{
+  "id": "resp_08734dd261b39ba4006a834066c2948194813ad3f2b40121ea",
+  "object": "response",
+  "created_at": 1786986598,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1786986610,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 16000,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-sol",
+  "moderation": null,
+  "output": [
+    {
+      "id": "rs_08734dd261b39ba4006a834067ba60819498ce0e61d63930b3",
+      "type": "reasoning",
+      "content": [],
+      "encrypted_content": "gAAAAABqg0BzN2rAuC5gt_7CvteAxOVL6aCsVkAfUMudneBWe2IgiDazv2j0l62QZ4NPeoIp8l6eRWOUCFrQwrmTFnFNwzF6KwzOBqhyFJz6V1bdqAr9o04TezJkSvohT8T4zoyHcHOHLi4zgSzH-dicIwmx7WMRgFyl8vjcyBGvzFrGZWZmTA9h9ZoGTRFtNzm0dNrutZ4e_fHzk6xQgUzOI577_qI36EygeQuH5qYnvJ-J0VUCrffczXnzTcysUwo2zj5PtdMLTqz5NCGtHXsZcM0hkfQmjA0tGG_T1VVl0Ai0G0QFhnrFLr-f93sIlY69Tt0Pdid8W0u4paZVtWQ0C5ywCG7xhcYLUNex1S9lpiJH_sRvTRUKAnK6h0E2fmyfP-ln7BRhmvz_mF_HcKXL82Qixz8YQGoatfmuy4-DZJLXHZmFtewsLM8b-PsK42mbG4ZR-kD3n-FoBBcU0w5GALgzVltSj6zwLrElU00OatAv7c5fGIdL5QNfvHBtpqvhhL28I-IMQ_kRSVeTGM4h-U3itTDH6CZfHKneqGgeyTZtkla8UIG8hq4NrH5I48QTPh_WaFUwYjR92AeCprzSCakomnRe7vpS55BcVdZrF8OnqCZ1Vf5teUtmSMFmDghDt6vG96WMHzDxug_hPW-cgKrMFEW4qYgHISCWtzSWsJSePWI3mXXxZXhTUDlgQjSBSLmyfWyNOmfAmL-81WW5VuGzT-EtNkm8piXvzNLlgv0XkuZtXiDQFCLC3xKptiGEBpuLvpcflf2d2jrjXIwKuucdsB0ukBqXbbazg5HzP9mczfKyO6TWIdzlN_TefTxnfEzSxM2WKwI6BvvyrtMRbU--X5v4hKWluhFqM1G3GVogXWteK4REFD2CSlP0TCfj5oN0n9tDBGkWXVEQKB4uClsSooEljudfroJcVRwedxZ9cRSyIlXXGaytj-r-siw745urqUOQKWzxiqS-76kk1zdQ4eIQnV8r0jXEmevYvvs8cwFYegStwuz1qBBSclkEu8abrDVJw83DNX4zzbJ2uotVY2ji3YiRqOacn_O4cQ1lKAQNUlbsXBC9irkNeZ3oRlr99n9s3vQzUr7X3Ft9q_aEfA8S85uLQnKq4v_rhzwIaLg_Gd7P3Uh-JunCIV2ulaNI9jfVycjXjgrZKEYw3UAu-AtdllDcKNQZUhKl-5KB6EryrDnbDLvaRdi3nkHhAHkt_cTfaO5M042jzpWCCoKDj_0JMp5CpeanwaDNdRCVNfFGJthIv9kDz66XHBOR2mGwDV6L6f-EKcGrWe5uT4iFJa9mjgb22QMNWAK-ycf4-fC7v7c_otl7Ww-yau8Wi_SNiiZ8hNovGaYUC9Uh1Go2ykDsEngAonIgTvUa34H6bLis9TcJhB3AQQ9ijo4N8P2RVfyGtvUwPQmeF5Ajhd7xgO8uurMOIHKhDOaiEZvycSD1hHMhk2wu3dW_zUrEJFteUxrw-Hbzj__rgBgbt62z6z8ebsJaOfF7QRrXnASGzGjWfCcjiB-hvtKK6wOueSv5ee7laXm9rArG3msZeokxfEgWkstaUyhzFTDzPzafmvbT9SQeVN9Dz_ysDE7FJKIfFuAGvpXOBInjcymkjCPee54b0MWtXv4L7toUHHdE98LKfMYUb0xl7-PLM-q18pa3UjvX6OV46Q_talMuwHD80JBM85YtwmnN6LXAdr2W9rfrc_NYpu5leg3kaMjcbxedPQI-R1xMe97SNLvFbC9sUysdrdrVKPLO0xMs-Fa64oTVH7m7E6HD_v8JT0kF8_E3sMxo",
+      "summary": []
+    },
+    {
+      "id": "msg_08734dd261b39ba4006a834068fa8c819493a0b9e72694e363",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of three values does not change their sum: adding the first two and then the third gives the same result as adding the last two and then the first. Floating-point hardware, however, typically follows the IEEE 754 standard, which stores only a fixed number of significant binary digits. After most arithmetic operations, the exact result must be rounded to the nearest representable value. Different groupings create different intermediate results, so rounding occurs at different points and may discard different low-order bits.\n\nThis is especially visible when numbers have very different magnitudes. Adding a tiny value to a large value may have no effect because the tiny contribution lies below the precision available at the large value\u2019s scale. If several tiny values are added together first, their combined value may become large enough to affect the result. Cancellation also matters: subtracting nearly equal values can remove leading significant digits, magnifying the influence of earlier rounding errors. Overflow, underflow, subnormal-number handling, and hardware choices such as fused multiply-add instructions can introduce further differences, although ordinary finite-precision rounding alone is sufficient to break associativity.\n\nA matrix multiplication computes each output element as a dot product, which is a sum of many products. Large implementations rarely accumulate those products in one fixed left-to-right sequence. To use multiple processor cores, vector units, or GPUs efficiently, they divide the work into blocks, compute partial sums independently, and combine those sums through a reduction tree. Different thread schedules, block sizes, processor counts, library algorithms, or hardware architectures can therefore produce different reduction orders. Since floating-point addition is not associative, these mathematically equivalent orders can yield slightly different rounded answers.\n\nThe differences are usually small relative to the scale of a well-conditioned calculation, but they can prevent bit-for-bit reproducibility. Repeated runs may differ if parallel scheduling is nondeterministic, and runs on different machines may differ because instruction sets, compiler transformations, or fused operations change where rounding occurs. In numerically sensitive algorithms, small discrepancies can also be amplified by later computations.\n\nReproducibility therefore requires more than using the same input matrices. It may require a deterministic reduction order, fixed algorithms and thread counts, consistent floating-point modes, or specialized reproducible summation methods. Higher precision, compensated summation, and pairwise reductions can reduce error, but they do not automatically guarantee identical results unless the operation order and arithmetic behavior are also controlled."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "medium",
+    "mode": "standard",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 55,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 607,
+    "output_tokens_details": {
+      "reasoning_tokens": 97
+    },
+    "total_tokens": 662
+  },
+  "user": null,
+  "metadata": {}
+}

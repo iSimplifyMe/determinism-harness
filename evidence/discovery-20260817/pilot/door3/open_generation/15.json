@@ -1,0 +1,101 @@
+{
+  "id": "resp_098e49ed2881003c006a83403444e4819692ff943ee93249bb",
+  "object": "response",
+  "created_at": 1786986548,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1786986562,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 16000,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-sol",
+  "moderation": null,
+  "output": [
+    {
+      "id": "rs_098e49ed2881003c006a834035395881969ec81ad0530ab5cf",
+      "type": "reasoning",
+      "content": [],
+      "encrypted_content": "gAAAAABqg0BCo8u7C3JzvRKG-eoHHrJbS1wSklTmjAC3iy1bqH80BrmKh9J2VRC17ktQwYsXjPReNq9q8e2OFYcYorBx8fYvXglZIxcJHuOnKOGAeBkFan5I3d2fYzPoeXKTiOiOeGAJP2t7BApFogyxxzLrZTR6ckntbpJP13NmwZkaCPmgraLvah_vNN2Epeu4OZIm5iSq9AtYdxLAjQO0kFeczgOep35-xrPxspBklO1_aQXDP54qgWOEbEAE0dbaWUYsL0NjTKbqLTH6DBxb7kjfgq9X-3_PaicMvQb06RFI9bJHrUfHFD7KsVMxLGKoeSZl-9GYq8et4fmCyWO2XivrnfBvvE2SJEvTkFOM0Cjrv7U_eZAFy_xyfRc68b2B1MP7EwpFBSfgPFhkaqGz9mML1vUxlS58WtemgqU1ibu_EFcgn0_T9lyggO9Edfc5XbZ2w7V6NgXx7_hwAOwdt_a1chPKureh4KIsIMPgnagxDsXI6DIL6sYC7f-XXnFYQiH-B8mffYSrNaV4oxyhyerPKOLtufKAspvuxgn-WoEeZLtOUAtwIP_WrD-7fUq_cb1DmUuZ8xaY25yBFjN5pu5Nqxkh8Hc1mbdMoKkytzk7Cmf7ZB248QRv0OK3i754yMfL1qF-w6pvi2nPLrQ1KwXQZbtkKRMGTwCN9IW4PPpsyzqh6A9UAN9rCMIeqcnzbnMq3X-2yRR8xrknvVJdXldp3qDB-z3X-omFoL8w7yajm1j9RMOH--HeE3twnVm4SvueBYszB6kKiZAFChFDiODplGDCi4WU1LoFB_hDUVtow0m6b5KYQsCgG_KFa670o7qZtIV00I4e1MNQhWdLRDuH1BrlhT9IcbVsfPJnoeI4jvc6fpAu-snvjanwMImzE7BkHcGMrwQwQ_NE_kceLEaKFBe-AdZko_mD5GxeJGOUan7JBfZXQB6b4qcao0M9JSQY8zrWdKap1K3n4ZQbWeLmXAPGJDgDffQBQxVbuViwOnWwd8KL3wvqd54tuc5ET34yXeb69dHSNrIzv1B1Tmy1d1h3fj0ZJWUNNtyZ59TY4SKHqqPzd2mh9Pv9IG5DUS6TVZeLT4IW2OYyvvkB1qd2Jpfk17gvgul5QdNm_InQzuRuzPyORia_bNV0kmaiNxIc7Xs02KHyl06l2yEte1c7FW9cugKY93ZUIl9VFY3sgPOw8zRjMZr04KsjNUkYJpelrgA4fkG3oob3qLuZVyOZXDt0dSA4vhroN986zzNW7gbLTgM7O380m9WP6VvSTrF_8JwPjg4_KMHlNBfK3JC_s4kKYEU8TgCClFvCJ1ApnaLQOcPHKKK_x92z0IMnaP9AYvHAiTv3rZ6_0DEVI6O36St9rL2XR8iiq7byQbuSEQ-BCPgy07ccq0UxQK6e8oqys0kimRhsSdgnK4Z6XDs7zxaPvI5hp3vAbSywNt8z2dVYAydzSnH9nIBpmtezfGoxmgun68nTYymrmv7f5JGPVAYw53tN0aZuuZY_OkV2002a5XGnDHE4t2bmOmh6sDY6oMfnhdqxOkSyRRJGmBV_y-IkVHGmgqsNhzyvMeS2y44sRO9vvPUiZ62URe45UC6fJhlNZQ6hAZYEEGNy3_KcMer-jTPDaA94XVZD3bFZasWZPSGEBtPmASV8GihUTNB8FW_h_FqhCMR6LvaoQXERDGZDqg==",
+      "summary": []
+    },
+    {
+      "id": "msg_098e49ed2881003c006a834036c36481969908e9006ce6318c",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of three additions does not change the result. In floating-point arithmetic, however, each intermediate result is usually rounded to the nearest representable value. If two numbers have very different magnitudes, adding the smaller one to the larger may have no visible effect because the smaller contribution lies below the available precision. If the smaller numbers are added together first, their combined value may become large enough to affect the final result. Thus, different groupings can produce different rounded answers even when every individual operation follows the IEEE 754 standard correctly.\n\nCancellation makes this effect more pronounced. When nearly equal values with opposite signs are added, their leading digits cancel, leaving a result whose significant digits may depend heavily on earlier rounding errors. Overflow, underflow, subnormal values, and hardware modes that flush very small values to zero can introduce further differences. Modern processors may also use fused multiply-add instructions, which compute a multiplication and addition with only one final rounding, while separate instructions round twice. Different compilers, optimization settings, processor architectures, and instruction sets can therefore produce slightly different results from mathematically equivalent expressions.\n\nLarge matrix multiplication repeatedly forms dot products. Each output element is a sum of many products, and that sum is a reduction. A sequential implementation might accumulate products from the first index to the last. A parallel implementation may split them among threads, sum each subset independently, and then combine the partial sums in a tree. GPUs, vector instructions, distributed systems, and optimized numerical libraries often choose reduction orders based on block sizes, scheduling, memory layout, and available hardware. Because floating-point addition is not associative, these different orders can produce different low-order bits in the resulting matrix.\n\nThe discrepancies are usually small relative to the magnitude of a well-conditioned calculation, but they can grow when dot products are long, values vary greatly in magnitude, or cancellation is severe. They may also propagate through later computations, causing iterative algorithms to take different paths or stopping after different numbers of iterations. Consequently, two matrix multiplications can both be numerically reasonable without being bit-for-bit identical.\n\nStrict reproducibility requires controlling the reduction order and the arithmetic environment. Deterministic reduction trees, higher-precision accumulators, compensated summation, or reproducible numerical libraries can reduce or eliminate variation, generally at some cost in speed, memory, or parallel flexibility. Tolerance-based comparisons are therefore often more appropriate than exact equality for results produced under different execution orders."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "medium",
+    "mode": "standard",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 55,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 598,
+    "output_tokens_details": {
+      "reasoning_tokens": 85
+    },
+    "total_tokens": 653
+  },
+  "user": null,
+  "metadata": {}
+}

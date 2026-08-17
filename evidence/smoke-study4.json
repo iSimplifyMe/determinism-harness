@@ -1,0 +1,218 @@
+{
+  "all_passed": true,
+  "captured_utc": "2026-08-17T17:48:46.360834+00:00",
+  "doors": {
+    "codex_sub": [
+      {
+        "probe": "receipt_effort_none",
+        "receipts": {
+          "approval": "never",
+          "exit_code": 0,
+          "model": "gpt-5.6-sol",
+          "provider": "openai",
+          "reasoning_effort": "none",
+          "sandbox": "read-only"
+        },
+        "required": "accept",
+        "verdict": "accept"
+      },
+      {
+        "probe": "receipt_effort_high",
+        "receipts": {
+          "approval": "never",
+          "exit_code": 0,
+          "model": "gpt-5.6-sol",
+          "provider": "openai",
+          "reasoning_effort": "high",
+          "sandbox": "read-only"
+        },
+        "required": "accept",
+        "verdict": "accept"
+      },
+      {
+        "banner_available_in_json_mode": false,
+        "latency_ms": 15998,
+        "probe": "base_effort_none",
+        "reasoning_output_tokens": 0,
+        "receipts": {},
+        "required": "accept",
+        "text": "OK",
+        "thread_id_present": true,
+        "usage_present": true,
+        "verdict": "accept"
+      },
+      {
+        "banner_available_in_json_mode": false,
+        "latency_ms": 4959,
+        "probe": "base_effort_high",
+        "reasoning_output_tokens": 0,
+        "receipts": {},
+        "required": "accept",
+        "text": "OK",
+        "thread_id_present": true,
+        "usage_present": true,
+        "verdict": "accept"
+      }
+    ],
+    "mantle": [
+      {
+        "extra_checks": {
+          "usage_details_present": true,
+          "wire_hash": true
+        },
+        "latency_ms": 2717,
+        "probe": "base_effort_none",
+        "required": "accept",
+        "response_model": "openai.gpt-5.6-sol",
+        "text": "OK",
+        "usage_reasoning_tokens": 0,
+        "verdict": "accept",
+        "wire_sha256_present": true
+      },
+      {
+        "error_code": "unsupported_parameter",
+        "error_message": "Unsupported parameter: 'temperature' is not supported with this model.",
+        "probe": "reject_temperature",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "unsupported_value",
+        "error_message": "Unsupported value: 'minimal' is not supported with the 'openai.gpt-5.6-sol' model. Supported values are: 'none', 'low', 'medium', 'high', 'xhigh', and 'max'.",
+        "probe": "reject_effort_minimal",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "unknown_parameter",
+        "error_message": "Unknown parameter: 'reasoning_effort'.",
+        "probe": "reject_flat_reasoning_effort",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      }
+    ],
+    "mantle_bare_alias": [
+      {
+        "error_code": "not_found_error",
+        "error_message": "The model 'gpt-5.6-sol' does not exist",
+        "probe": "mantle_bare_alias",
+        "required": "informational",
+        "status_code": 404,
+        "verdict": "reject"
+      }
+    ],
+    "openai_1p": [
+      {
+        "extra_checks": {
+          "usage_details_present": true,
+          "wire_hash": true
+        },
+        "latency_ms": 3008,
+        "probe": "base_effort_none",
+        "required": "accept",
+        "response_model": "gpt-5.6-sol",
+        "text": "OK",
+        "usage_reasoning_tokens": 0,
+        "verdict": "accept",
+        "wire_sha256_present": true
+      },
+      {
+        "error_code": "invalid_request_error",
+        "error_message": "Unsupported parameter: 'temperature' is not supported with this model.",
+        "probe": "reject_temperature",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "unsupported_value",
+        "error_message": "Unsupported value: 'minimal' is not supported with the 'gpt-5.6-sol' model. Supported values are: 'none', 'low', 'medium', 'high', 'xhigh', and 'max'.",
+        "probe": "reject_effort_minimal",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "unsupported_parameter",
+        "error_message": "Unsupported parameter: 'reasoning_effort'. In the Responses API, this parameter has moved to 'reasoning.effort'. Try again with the new parameter. See the API documentation for more information: https://platform.openai.com/docs/api-reference/responses/create.",
+        "probe": "reject_flat_reasoning_effort",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      }
+    ],
+    "runtime_global": [
+      {
+        "extra_checks": {
+          "wire_hash": true
+        },
+        "latency_ms": 3536,
+        "probe": "base_effort_none",
+        "required": "accept",
+        "text": "OK",
+        "usage": {
+          "cacheReadInputTokens": 0,
+          "inputTokens": 11,
+          "outputTokens": 5,
+          "totalTokens": 16
+        },
+        "verdict": "accept",
+        "wire_sha256_present": true
+      },
+      {
+        "error_code": "ValidationException",
+        "error_message": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"unsupported_parameter\",\"message\":\"Unsupported parameter: 'temperature' is not supported with this model.\",\"param\":\"temperature\",\"type\":\"invalid_request_error\"}}",
+        "probe": "reject_temperature",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "ValidationException",
+        "error_message": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"unsupported_value\",\"message\":\"Unsupported value: 'minimal' is not supported with the 'global.openai.gpt-5.6-sol' model. Supported values are: 'none', 'low', 'medium', 'high', 'xhigh', and 'max'.\",\"param\":\"reasoning.effort\",\"type\":\"invalid_request_error\"}}",
+        "probe": "reject_effort_minimal",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      }
+    ],
+    "runtime_us": [
+      {
+        "extra_checks": {
+          "wire_hash": true
+        },
+        "latency_ms": 4563,
+        "probe": "base_effort_none",
+        "required": "accept",
+        "text": "OK",
+        "usage": {
+          "cacheReadInputTokens": 0,
+          "inputTokens": 11,
+          "outputTokens": 5,
+          "totalTokens": 16
+        },
+        "verdict": "accept",
+        "wire_sha256_present": true
+      },
+      {
+        "error_code": "ValidationException",
+        "error_message": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"unsupported_parameter\",\"message\":\"Unsupported parameter: 'temperature' is not supported with this model.\",\"param\":\"temperature\",\"type\":\"invalid_request_error\"}}",
+        "probe": "reject_temperature",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      },
+      {
+        "error_code": "ValidationException",
+        "error_message": "An error occurred (ValidationException) when calling the Converse operation: The model returned the following errors: {\"error\":{\"code\":\"unsupported_value\",\"message\":\"Unsupported value: 'minimal' is not supported with the 'us.openai.gpt-5.6-sol' model. Supported values are: 'none', 'low', 'medium', 'high', 'xhigh', and 'max'.\",\"param\":\"reasoning.effort\",\"type\":\"invalid_request_error\"}}",
+        "probe": "reject_effort_minimal",
+        "required": "reject",
+        "status_code": 400,
+        "verdict": "reject"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "text": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 145,
+        "outputTokens": 49,
+        "totalTokens": 194,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 846
+    }
+}

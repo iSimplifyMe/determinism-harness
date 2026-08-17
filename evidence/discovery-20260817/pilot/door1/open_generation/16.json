@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVGZnZ6TlloQlUvZHZkT0xscFJpYTJwL3RMcjlGK2JyaTFQNUVaNEIxbGdYQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmVtWXdVVlpYYkRoUFdXVTJUek5IU3poMlpYZG9TVkJCYkhOaFoyNVlibHBFTDFRMU1FOHZLekpYYjFrMFJsVlVOV3BNTWtFd1dFVlFSa1l4UWtFemJsRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNFb0s1c25MSVIrQ0hxckN1ZWJ2NjFPQVVROUppci9kSlJDVzBtYnlNUzlzVU9FejZtUWk3SDF4cDRPTnl1TzIvdE1PdC9ONXZMNFliUWxWVDcvS1BoYTlhRUJ0Vm5rYUFFVVdMblZHUHprZEdBdHc4c0JFbFFYT0xTVjRDQUFBUUFKMUVycUZhZElDdWRibzExcjVHOFJsbjNuQThDLzNPeityS05DclUrZkN1WmZtbVpWUWZZeDFjTWhrSUNydDJ4Ly8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlpkUDl1djJqaUsyNWMwV0drNEgrSnUvUTFFRlZBZkp6MGxqdStJR2pmeG9kaC9Hb0xSeXZkYjl2L2w3VnNZMFovTXhWN1V3N2t6UTZBK2pMZFMwRFEwVGlhMUhuSUpaMWp1cDczS2gvcTAveDB0T1VjRC9oaGVSdktQcCt2MmlIMDMxajVNeFIvejV1SlRmZ1huOXJXVEMrL0IxSUFqNjJsei96TGRpZnk5UzhSYkZrYmk3Z0NYUVhKOCtRUDNBOVZGanpDRFhSTkp3NkQ0QzN2cEs2Y0NZbXhRd2lGUFpWcFNCWHVoL2J4NUgrcnNERlIvRzR0TGpIdStDUWZpa2x2UEdzRUsxdmFCTkNZU2xvUW04ejFKZWZ1Zmprb1I0cmdXUGNOcVppUTZSTG9lZUtjY1lyNFVhRTlJOXI2VWxrRHEvZ1RIZWVIb3JJRTVwUGxjeml2VmhWZGxsNE5WaW9HbDVDTjl2SGdaKzk2Nk4wQUVTVlNDNEZuMzZZSHk1eGVqU1UvTGZPSTJjaDRPRVpRL2dqL2ZtMzdRMXlIeUlxRVVnbldZU1BHNmQrYmhvalVMUVExTFphT3RwMUQ4cXJPdUhqWkwwWVI1M1ZiRU0wYjRMdHJwaU5CdVU4THZFaXJHc2JmdFZXTlZGMnlaUllLcm9BWnpCbEFqRUFtc1dQRmxwRnNUSjhsaWswRVRFOVdsRE16MFdiRTJFWVcrN2VqeXF6RC84bisyZVJudUplS0s5M2FTejVXYjVjQWpCUXdYSjN1OERRdGNmcllsMW4wT0NmanRSMWlyVW5qM3BuT041ZWlMaW5RNDRYMFIvWk5rOFRSUVM5aWR6Q1hLbz0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because computers represent real numbers with finite precision. In exact arithmetic, the expressions (a + b) + c and a + (b + c) always have the same value. On modern hardware, however, each floating-point operation usually produces an exact intermediate result and then rounds it to the nearest representable number in a format such as IEEE 754 binary32 or binary64. Because rounding occurs after each addition, changing the grouping changes which intermediate values are rounded, and therefore can change the final result.\n\nThis effect is especially visible when numbers have very different magnitudes. If a small number is added to a much larger number, the small contribution may fall below the available precision and disappear during rounding. If several small numbers are added together first, their combined value may be large enough to affect the larger number. Cancellation also matters: subtracting nearly equal values can remove leading significant digits, making earlier rounding errors relatively important. Special values, subnormal handling, rounding modes, and extended intermediate precision can introduce further hardware-dependent differences. Fused multiply-add instructions can also change results because they compute a multiplication and addition with a single final rounding rather than rounding the product separately.\n\nLarge matrix multiplications contain many dot products. Each output entry is a sum of products, and a long sum can be reduced in many mathematically equivalent orders. A sequential implementation may accumulate terms from left to right. A vectorized implementation may form several partial sums in SIMD lanes and combine them later. A multicore CPU or GPU may divide the work among threads, create partial sums, and reduce those partial sums using a tree. Different thread counts, block sizes, scheduling decisions, compiler optimizations, or hardware architectures can therefore produce different reduction orders.\n\nSince floating-point addition is not associative, these orders can yield slightly different matrix entries even when the inputs and mathematical algorithm are unchanged. The differences are often only a few units in the last place, but they can grow with long reductions, poorly scaled data, or severe cancellation. They may also propagate through later computations, especially iterative or numerically sensitive algorithms.\n\nConsequently, parallel matrix multiplication is not necessarily bitwise reproducible across runs, libraries, processor types, or concurrency settings. Reproducibility can be improved by fixing the reduction tree, disabling transformations that alter arithmetic order, using higher-precision accumulation, or applying compensated or reproducible summation methods. These measures usually impose costs in speed, memory, or parallel flexibility, so high-performance libraries often guarantee numerical accuracy within a tolerance rather than identical bit patterns."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 600,
+        "totalTokens": 655,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7878
+    }
+}

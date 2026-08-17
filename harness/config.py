@@ -430,3 +430,58 @@ MARGINS_BATTERY = {
         {"model": "gpt-oss-20b", "task": "open_generation", "n": 20},
     ),
 }
+
+
+# --- Study 4 (PREREGISTRATION-v4): one OpenAI model, five doors ------------
+# All quantities here are pre-registered once v4 freezes; the 2026-08-17
+# discovery session that informed them is exploratory (v4 section 6).
+
+# Per-door model identifiers for gpt-5.6-sol. The runtime doors accept only
+# cross-region inference profiles (no in-region on-demand — verified in
+# discovery); the Responses doors take the door-native alias. Whether mantle
+# also accepts the bare 1P alias is a smoke question (byte-parity of the
+# 1P/mantle bodies hinges on it) — smoke_study4 records the answer.
+STUDY4_DOORS = {
+    "openai_1p": {
+        "kind": "responses",
+        "base_url": "https://api.openai.com/v1",
+        "model_id": "gpt-5.6-sol",
+        "api_key_env": "OPENAI_API_KEY",
+    },
+    "mantle": {
+        "kind": "responses",
+        "base_url": "https://bedrock-mantle.us-east-1.api.aws/openai/v1",
+        "model_id": "openai.gpt-5.6-sol",
+        "api_key_env": "BEDROCK_API_KEY",
+    },
+    "runtime_us": {
+        "kind": "converse",
+        "model_id": "us.openai.gpt-5.6-sol",
+    },
+    "runtime_global": {  # Q4 routing sub-axis only
+        "kind": "converse",
+        "model_id": "global.openai.gpt-5.6-sol",
+    },
+    "codex_sub": {  # harness door: excluded from Q2 by registration
+        "kind": "codex",
+        "model_id": "gpt-5.6-sol",
+    },
+}
+
+# Confirmatory grid doors (v4 section 2); runtime_global rides only in Q4.
+STUDY4_GRID_DOORS = ("openai_1p", "mantle", "runtime_us", "codex_sub")
+
+# Effort is PINNED on every confirmatory call (v4 sections 1-2): the
+# adaptive default burns run-variable reasoning (discovery: 55-475 tokens
+# across byte-identical requests) and appears only in exploratory Q5.
+STUDY4_EFFORT_ARMS = ("none", "high")
+
+STUDY4_MAX_OUTPUT_TOKENS = 16000
+STUDY4_REPEATS_FULL = 100      # per cell per window (HTTP doors x2 windows)
+STUDY4_REPEATS_EXPLORATORY = 25  # Q4 routing + Q5 default-burn arms
+STUDY4_RETRY_MAX_ATTEMPTS = 3  # bounded backoff; exhausted = counted exclusion
+
+# codex-sub runs ONE window's worth, batched under the subscription's
+# rate windows (registered asymmetry, v4 section 2). Batch ceiling is
+# verified by the dry batch (freeze checklist).
+STUDY4_CODEX_BATCH_SIZE = 40

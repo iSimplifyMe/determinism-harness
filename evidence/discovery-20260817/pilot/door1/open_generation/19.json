@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVMRW9CalVwYTZ6NCtNVjk0eWQ5eEJtSG1DQjg5bUlLSkR1ckJxWlNoL1lTQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmNsVjVPSEJzWWpkaGNVeHRibkpSYVdWVWFrVmpaVEpWTUUxd1VGRkNla28yT0hOME1VRm1SVzlZWVRKUU0wWnhaM3BsU1ZsTE1tZ3hVMlJJSzFsSmJYYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNlN3FpZGZFWGozMXR6TE9UbExTOStkTGNFTTA3OUFOWDJNTWNITHlNUzlzVU9FejZtUWk3SDF4cDRPTVJsN3hKNldZMVRYSXMxdE91RDMrZEpESzJHQXZCVFZXRlhsZWlQYkg5dWhKNXh2TTd2ZHBIMDUwbHZReGUyTUFDQUFBUUFEeHp5S0EreTZaTTVBSmZoNldldWlhQXQ2TTJtdC9IcnozZnV2Y3VEczZSRmZhak8wZGlEeUJWNURMNXYwVWZydi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQk1BU3MxQlRZM2RzcXpEdldxTkhUamRreHZBUmI4NksyYit0T1JJYjQvcmlWMnlKU0tQYWZuYXFnZVhxTUFKckNBSnVkQW1uWmtNUXRvY0dGRTdrVXp1QVRoSHA2YWxiRC9oVnJBandlcjBCUlZMMTZidHBKT0puQzlpaUpsK3I5aW9QdHpnN2dvYXNwSkMvRkZOekhHd0J3WENXTHR5d2ltSEM5UytSK1Ywb2pVY3VtMENHL09lY3lGLzg0Z3dGcHhwL3pLRzNpbnFsYkVNdGRVcGduOVYvY216QmJRbDRJMGcyMDNTaG41eE5mbmRYelJNMzZycDFwRGFacysyQ0NpU2tLdTZGWWdacXFSWkpQb2poeUJCRmwrQzBzSmdjU3p5S1NjOUNkd0RGSXFLZHp4NTg0V0g1eS9neFcyTU9EaThTVVYreFJOQmpRR3hVeVlENk1CQkk3UFNCY2RONk0wWkZjaHRwM3RnMWRIVnp0L3BNZkNCSng1QWxya1NtNzQva0w4bEZHQThMSVhMSHVBVnpqWEpqaXNtWjRvbHhYc29CMFVpL1dGVmNKQUdjd1pRSXhBSm1nZFJhRWJQQ1ZqdFQ1S0kxR3hDTVpvSlM0Q1o3UXA2blRtemVsN1JRa3JkTFk5NTB4RlpYckdvUTFjb0twcmdJd1JaTTQ2dU1nWWVsY0sxV0IzYkowRUJrTzQwTUdTa1FLQnBIV1drcGo5bEtYQ2pnVENxdEhQaDVuMkdaRmx3WDU="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding a to b and then adding c is equivalent to adding a to the sum of b and c. In floating-point arithmetic, however, the result of most operations must be rounded to the nearest representable number. The rounding occurs after each operation, so changing the grouping changes which intermediate values are rounded and can therefore change the final result.\n\nFor example, if a very large number is added to a much smaller number, the smaller contribution may fall below the precision available at the larger number’s scale and be rounded away. If several small numbers are added together first, their accumulated value may become large enough to affect the later addition. Thus, the two groupings can produce different answers even though both follow the same floating-point standard. Cancellation between nearly equal positive and negative values can amplify these differences by removing leading significant digits and making earlier rounding errors relatively important.\n\nLarge matrix multiplications contain many such sums. Each output element is a dot product formed by multiplying corresponding entries and reducing the products into one total. Sequential software may accumulate those products from left to right, while parallel CPUs, GPUs, and distributed systems commonly use tree-shaped reductions. Different thread counts, vector widths, tiling strategies, scheduling decisions, or communication patterns can produce different reduction orders. Since floating-point addition is not associative, these mathematically equivalent orders need not yield bit-for-bit identical matrix entries.\n\nModern hardware can introduce further variation through fused multiply-add instructions, which compute a product and addition with a single final rounding rather than rounding the product and sum separately. Different processors, compiler options, or optimized libraries may choose different instruction sequences. Handling of subnormal numbers, intermediate precision, and aggressive compiler transformations can also affect results, although standards and hardware modes constrain these behaviors.\n\nThe resulting differences are usually small, often only a few units in the last place, but they can matter. They may cause exact reproducibility tests to fail, alter convergence paths in iterative algorithms, or become amplified in numerically unstable computations. Reproducibility therefore requires more than using the same input data. It may require a fixed reduction tree, deterministic scheduling, consistent hardware and compiler settings, controlled use of fused operations, or specialized reproducible summation methods. Even then, reproducibility should be distinguished from accuracy: a deterministic order always gives the same result, but not necessarily the result closest to exact arithmetic."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 571,
+        "totalTokens": 626,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9620
+    }
+}

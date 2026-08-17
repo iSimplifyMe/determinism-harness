@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVBTEZsdTkxTmI2blhkTWluR3NNSnk5Wi9YUXJReFZBQmNVN08vS3ZGREY3QUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQk1rMUNjREIyWlN0UlVYWjRja28wWVdacVJrbEJOV2ROYjNKbFEyTldSalJIT1hZeFNuUllVelpTWjJsdldrVlBNbEppYTBJNFUxRmlTM2xXUkZaMVdIYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNhUnlaT2FlRnhOcGhoN01SR2dXa0Y1R2tVUjZoVFc0Z1k4Ym5hN3lNUzlzVU9FejZtUWk3SDF4cDRPTU9zSW9TeW5vYkJYRmdMQ2FWcmd2Qk5nUHRaRUJkU3BqQksxSTBSeW5CdDB0RFpzTWo3a0lDU3hDWFVsUzFoVmtDQUFBUUFLOFcyQ2NTM0ZaNWJJZlFJbTZ4SUN6U0dOZWdoVEdnTko5MVZhYlAwQ2dEQUY3bHRtRkw2ekkrMmpaeFRKbGs2Ly8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlY2dFV4K2xCS1hhejJCaFNxalAranlWenZGRC9YbFdpcG44cU9PSFlHODViZ00xM0NFc1V6SllTQ1IrUEN2VFNidDJzMEo2d2U4V1V1ZGJVamNLb0l0amZZQ1JuejRTMnFrUGt4S2U0ZkJ2UlE3d0I0dSsxTm1LK2MyZUFRWjI2cGJyR3dmT1h3V0RHODJrVTE5Q0ZsVGU3ZW51bXh4Z2hCMHdNZ05GNkd0RzgwUThoQWRQR0VhYXFsNGZiNDFNVkRsNFBCQmhZNjhieGY5dm1IUmFPSlFkdDRuSzVYUFIwZUhzblc0Y09EamhyQW1GSkFWWnZvN0F4bEM5NnFxTHdZZEU1eEc3aXVWeHJ6d0g3RkxLVHVhYkoxdmFMOHIySFVXd1pqQ0RaUTAwQVRlY09sNUNpZVJmcGJrcStMcmNwRVJIMG5kdmFOWUZIR0paOGJmRHBMSzlyZHVZNU4wNENSN0NrOERucmlLTTFwNk1jRWw3Q2FjQ2x5L3J3V1VxUGVRaDczSndUNG5tRjhRalFhUm01NkJDT29kNml6QUdCdWxBRzBuQ1F0SmVEdVozbTdpYWc0OHRreUxJc1VKUWZja0p3YjhaVWViQzJXWDJGRGplRFExcCtSNEhCeGdvNEFHY3daUUl4QUsrMk42aGFFMS9uZ3BQR1RLYjMrVDZucEZLZkQwKzhoN2RNWE9SQUQzNUxiTStrb0U3a0M3M2M4RGFqcUJTK0hRSXdhRFRTS0RTcjd2TjhxZ04zR1hVa2ZMTlYreG5sT2tvMVY2Yk1TdllHNHdSYjhaY0VDR1FQakREeGtJaW50N1JM"
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 165,
+        "totalTokens": 193,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 2087
+    }
+}

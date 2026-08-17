@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a01097-5bcd-73c3-b144-056ba43ce8b8"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"MAROON-ANVIL-7741"}}
+{"type":"turn.completed","usage":{"input_tokens":127795,"cached_input_tokens":9984,"cache_write_input_tokens":0,"output_tokens":14,"reasoning_output_tokens":0}}

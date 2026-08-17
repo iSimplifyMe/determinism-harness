@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVPVk1HbG1xU29uaWJHTFZjaG0xVUl5dFRLMHhJbTlvdTRFT2RuRlpCRElDQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmMzRnBNa3BTTUdOVFNUbDNZbW8zY0dJM09FZzFja1l3WVRjNU1tZGtjV2RqV2xWSFZFbDFTbEZyUTFjek9EWndZM2c1VTBaWGNsTkdaVWxJYVcxV1psRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNWTU5iUlN1UENXODMrVmNsd2x3RlZ6cWdZTzFLWEdveDlWb1pvYnlNUzlzVU9FejZtUWk3SDF4cDRPTXUxeUVOQXhyc1RFNVpuQTZudUs0ME1DK1dZMEZzeitmQllpVDNRdHZzMlcwdk5uZEplVXNsSnYxK2tpV3liUlFDQUFBUUFCQjJ2VnZWTXBLQURNOVNXSERWRmVWRHRYcDVETFFOdzBPTFAvNTl2bHpVUTRMNjd4MStsZ0U0LzNxYXl0eVhiLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkU3ZE1pVzE2MWtrSVhrTDV5RHJRcG1jM3JnS1k1THNwYVFPdzNjUW5WdEF0VFJZU1BFRlp1S2dMVDFBNlQ5TlBqakVTdEQ5VThWS1VONmZWbmJXWVFEcDdaQjgzYWFUOGpiZVlYbXpkQng2Y2ZkcDNoSy9PTDZFWG1tTm9YUjRZb0Z1ektncUE1N1RWeGhGQnVtVW5EcHRmdXB4Q01PcFhxT3lQNGZJS0p4azV6SzZYMlVwMVlkNEJVK0s1Z0NyZSs5ZFZxQytzVW80QUx2bXJvb2N2ZGpHZ2JzMDNXN3JsbXVPUXA0OWlMM0ZRc0ROdVNXeENiUFNyS1dVZEpNMEFWVWM0Z09LOExBb3h6UWw1dUYrNkhMdzV6bm1CclZ0aUZSWVpKcW9yRWtWdGd5amp1c1JlK045Q0J5Nzg2REJsWllrS1Jkdk9VSVRWMm52SzRSL2c1enJNYkVWT1EweUMyTVdBWGtkWmZ5VENXaHIvTFcvWHpDaDgvSUJCTjl6bGhsTDN0QUJuTUdVQ01RQ2NGSFlHcGwvd3QyWlJSekFOVDRGdGVuaDBrMHZhUlhWenVWRnNYaUhjeWYzeC8ydmt6MnQrNWN4M1BoaXJKb2tDTUM2Tk9INmh0K0F1WEU0UU5DTXNZYk8wNEF1enBpYW5JcFJwVWlJc29LNXV5RG1qQXdUSDdSRGI4UXYyRkhQODBnPT0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because real numbers are represented with finite precision. In exact arithmetic, changing the grouping of additions does not change the result: adding a to b first and then c is equivalent to adding a to the sum of b and c. Modern processors, however, typically use IEEE 754 floating-point formats, which store only a limited number of significant bits. When an exact result cannot be represented, the hardware rounds it to a nearby representable value after each operation. Different groupings produce different intermediate values, so they can trigger different rounding errors.\n\nFor example, suppose a very large positive number is added to a much smaller number. The smaller value may lie below the precision available at the scale of the larger value and therefore disappear during rounding. If the smaller values are combined first, however, their sum may become large enough to affect the final result. Likewise, adding a large positive number and a nearly equal negative number can cause cancellation, leaving a result whose relative error is much greater than that of either input. Thus, although each individual operation normally obeys a specified rounding rule, a sequence of operations depends on its evaluation order.\n\nLarge matrix multiplications expose this issue because every output entry is a dot product containing many products that must be summed. Optimized implementations divide matrices into blocks, distribute work among processor cores or graphics-processing-unit threads, and combine partial sums through reduction trees. The chosen reduction order can vary with block size, thread scheduling, hardware architecture, library version, compiler optimization, or the number of workers. One execution might accumulate terms sequentially, while another forms several partial sums and combines them hierarchically. Both compute mathematically equivalent expressions, but their intermediate rounding differs.\n\nFused multiply-add instructions add another source of variation. They compute a product and an addition with a single final rounding, whereas separate multiplication and addition usually round twice. This often improves accuracy, but it can make results differ from hardware or software that does not use fusion.\n\nConsequently, two matrix multiplications using identical input data may produce slightly different low-order bits when executed with different reduction orders. These discrepancies are usually small, but they can grow for ill-conditioned problems or influence later threshold tests, branching decisions, and iterative algorithms. Bitwise reproducibility therefore requires controlling the arithmetic path, reduction tree, instruction choices, and sometimes thread configuration. More accurate summation methods, higher precision, or reproducible numerical libraries can reduce or standardize the differences, generally at some performance cost."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 565,
+        "totalTokens": 620,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9905
+    }
+}

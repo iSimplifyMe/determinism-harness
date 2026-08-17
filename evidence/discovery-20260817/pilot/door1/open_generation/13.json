@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVKckIxeUY1cTdzZWlCdHBnQ3oyL1cwOUI1WmJCUnVVMGJJeDJwZ3NRV3luQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmRWZGpZVVV2VTBwR0wwSlBUWE5FUVRWSE9Vd3phMkV6TXpOcVZ6aDBWaTlpWVdFM1JtSkVibXMzVHpWdEwyWlBlbk5pWkc1alZUbEZNVTVuY1daRUwxRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNrVTFIaWZZdXErSm1uakVndXc1TXpZdDNEVUxkdFpncWJ3U3hjTHlNUzlzVU9FejZtUWk3SDF4cDRPTk5HQk1OSmhiUGJzRGJMNnZXMGRlNDRuSWJzQWZKWDJnb2pSL21sZ3ZEUTdCbDY4Z0s2c0hSK0I4VnM3T3I1YjhDQUFBUUFENllKbWJSRGFRM1U4YWF2YUJPdlNKQW0vQVZualhyL1VhWFdENTBMNEJUbGMzTDd4dGVxQkV6cmdoVlhGMURPLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkN4VnJjakZGRXErTGs2RU9mekd0MEJhVnN4enZaVkhzVlhlNUozOVlkUjZnMmErM21DNVIyTjRxVXJueENwbXZIZSs4L1hXeFN4cGRLeFVDd20rd0cxUS9UNVhVNG1OUVVYaG9XZGxkSUg4U2xQVi9nMEJkUXJzc0pFTCsrblM2eW81N0NvMEVtQnIrVnMwc1U2OTlXbnFPeUV5YkFIUWUwL0tOZ1RINFJsSjBmMG1GRTdwMXpPNUpmaU5zdWZnL2piUFEwdmJYeUJFRWxxSFZ4ZTQ0Y0VHTWVwTUhRMnZldFpUMCtjQnI0TnJyRVhvSHhocDlqYjk1TDd0MDVnYzNReEdNVmw5Vk5OUEJzU25QUDFVaXRUd3Rac3Z4WG94ZkpNcnlWZmRubzN6eVQ3dFNrNnI2NGtLd2tOTEZCWVk1a0VOZjd6M1hWWEFtWGdrRDQzVlBHdTJwUWsyY0FRVWVxOGRCaGh1cy9McjAxbTB2b3ZyUGh1Wm51MXdBWnpCbEFqQW8rUGZXOEVXdDBhajBVenNLdkQzU1F1OHRVRWxJcGFUYytZVkxkS2pyWFN3Q0ptU3RBNDVGTjZqUVo2UVFQSllDTVFDTHpJMGFkVkhCUkh0Ly8vYXQvZXl1YWNrc0RTelQwUEJlOWV1QnlkSUNMRlFidFNtVmRQWHZhTzI0aUMvNDZVZz0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern hardware represents real numbers with finite precision. In exact arithmetic, the expressions (a + b) + c and a + (b + c) always produce the same result. In floating-point arithmetic, however, each intermediate result usually must be rounded to the nearest representable value. Changing the grouping changes which intermediate values are formed and rounded, so the final results can differ.\n\nFor example, suppose a is a very large positive number, b is its negative, and c is comparatively small. Computing a + b first may produce exactly zero, after which adding c returns c. Computing b + c first may cause c to be lost because it is too small to affect b at the available precision. Adding a afterward may then return zero. The discrepancy is not generally a hardware defect; it is an expected consequence of IEEE 754 arithmetic and the limited number of bits used for the significand.\n\nThis matters greatly in matrix multiplication. Each output element is a dot product, meaning that many products are added together. Although the mathematical sum has a unique value, software and hardware may reduce those products in many different orders. A sequential implementation may accumulate from left to right. A vectorized implementation may form several partial sums in SIMD lanes and combine them later. A multicore CPU or GPU may divide the work among threads, accumulate independent partial results, and merge them using a reduction tree. Different tile sizes, thread schedules, processor models, compiler optimizations, and math libraries can therefore produce different addition orders.\n\nEvery changed order creates a different pattern of rounding. For a long dot product, small differences may accumulate, especially when terms vary greatly in magnitude or when positive and negative terms nearly cancel. Consequently, two large matrix multiplications using the same inputs can produce results that differ in their least significant bits, even if both implementations are correct. Fused multiply-add instructions can introduce another difference because they compute a product and addition with a single final rounding, whereas separate multiplication and addition normally round twice.\n\nThese effects complicate reproducibility. Repeated runs may be stable when the reduction order is deterministic, but changing the number of threads, GPU kernel, library version, or hardware can alter the result. Applications that require bitwise reproducibility must enforce a fixed reduction order or use specialized reproducible summation methods, often at a performance cost. Otherwise, results should be compared with suitable numerical tolerances rather than exact equality, while also checking that observed differences are consistent with the problem’s conditioning and expected rounding error."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 569,
+        "totalTokens": 624,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7878
+    }
+}

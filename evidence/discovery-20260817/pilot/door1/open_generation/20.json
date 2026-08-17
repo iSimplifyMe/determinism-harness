@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVMck92K3I2Y1hGdEFuaERmTDl3VG0wMGUxNmFib2U0WHN6aFpWcEpCbzlMQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmR6ZzRXRWQ2TDBaQmRWWXlTVUZuYVdWMmRuWTFkblJuZDBoU1pGVlFkMWRTVmpaR1VuazNObWxsT0hSaE9HVXpXVEZ5UjB4S1ZYbFpVRU5TUjA1V1NsRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNXazQ0bVo3UVprQmhaVlJjZ0c1a2s1NDk0U3FzWkNJWTNaQ1VIcnlNUzlzVU9FejZtUWk3SDF4cDRPTmVCU0hhTXVVUnl1WG5zbkp2RHExdVZVT3dDenBTNkxRUlUwRlhGMGRoQnhlNnlJWis3VUN2UXBRVEJqWGw5ckVDQUFBUUFNbFJ0R21DMkZHVWhJNlNCZ3VVSzZIMDg3WmovaERURi9nb3Z2ZXl1RGk0RUoxeWhPN0dWTWxqV1lGNkYyVlkyUC8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQmFhektaOTgxWlVLQnovWktoenZwZVZmcU9jejFlVTdNVnpvRDRWU1k5ay83ZDc4M1pMZWRjTENjYS9QZTlBL0IvTU8vTVNGSmhwMTlmaUFBb0pLblFtUFZRNkpSa1dCdm5MNWpDUndkUXRQUXhubWdlWEg3NTFqV2V5UFBqU1JFODlPYVl4Q1dCblpvamI5MUp3aW5QMG5uTGhhN0djYU9NbXpZQkhpYVE1NmgrUUtJUjRVeEVnK1hGWUVBTjFrV3JSaEhPRm1hTXNnN2VYUzVPUWZ5WFVlTVhyVlJBQkRpV0tQaWFWWUN4cUpYSUJlZWtYVS9BWGZOYlNTejNPQ2kzbC9vWVJYd0o5RkFKZE5hRFpodlJLV2xQLy8veTYxZEhxTTRqb2F3b2lVWDNsWjJGL2hCSWpCRkFwMTFhc2VidHlPZTVWd0VJR2ViTEtKcElNUnpoOUtKclNnTk94VWFTMUhYYmx0N09aWkpJdXdPalRnQ3BldmxBQkZ3djNXd0hvQWo5T3A0WVhqdW5QWlVtWjVmNHdtNmwrMTNxdGpvV3poam82emk3WXljWnBBV29ZWTdadHFmeGVIRzNaQndHOFVUZzlIeXp0aDd4a2Ntam13dGttN0tBN3hqcXE4dmFsZ0xNQ3FRS1IzaW1IWWNJVVFNK1plY0FHY3daUUl3UCs3UkVwREdTYmRDWUllckNjaGhRdFFsMXBqTjcwV0tlL3ZIR3Z3bEVsUW5jVHpScndnbU41aHprakJaVHJiYUFqRUF5d0ZpS1FqVng2TVVkWkhPUWVYZ3VyaC9GUy9DR0tOQnpxQVZNZVN3VCtPWDRxbmZOcHV1WFhLYXBVcHl4RFFH"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, the expressions (a + b) + c and a + (b + c) always have the same value. In floating-point arithmetic, however, every intermediate result usually must be rounded to the nearest representable number. Since the two parenthesizations create different intermediate sums, they can incur different rounding errors and therefore produce different final results.\n\nFor example, suppose a is very large while b and c are much smaller. Adding b to a may have no effect because the spacing between representable numbers near a is larger than b. The rounded value of a + b is then simply a, so the contribution of b is lost. If b and c are added first, their combined value may be large enough to affect a. Cancellation can amplify this behavior: adding nearly equal numbers with opposite signs can discard significant digits, making later rounding errors relatively important.\n\nMost modern hardware follows IEEE 754 floating-point rules, but those rules do not restore associativity. They specify formats and rounding behavior for individual operations, not that every mathematically equivalent sequence of operations must produce the same result. Fused multiply-add instructions can compute a product and addition with a single rounding instead of two, which often improves accuracy but may produce a different result from separate multiplication and addition.\n\nThis matters for matrix multiplication because every output element is a dot product: a potentially long sum of products. Large implementations rarely accumulate those products in one fixed left-to-right order. They divide matrices into blocks, distribute work among processor cores or GPU threads, compute partial sums, and combine those sums through reduction trees. Different thread counts, block sizes, scheduling decisions, vector widths, libraries, or hardware architectures can change the reduction order. Because floating-point addition is not associative, these different but mathematically valid orders may produce slightly different output entries.\n\nThe differences are usually small and remain within expected numerical error bounds, but they can prevent bit-for-bit reproducibility. They may also become noticeable for long reductions, poorly scaled data, or ill-conditioned calculations, and later computations can amplify them. Repeated runs may differ if parallel scheduling or reduction algorithms are nondeterministic. Reproducibility therefore requires more than using the same input values: implementations may need a fixed reduction order, deterministic kernels, higher-precision accumulation, compensated summation, or specialized reproducible arithmetic. These measures often cost performance or memory, creating a tradeoff between maximum throughput and identical numerical results across executions and platforms."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 597,
+        "totalTokens": 652,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 8250
+    }
+}

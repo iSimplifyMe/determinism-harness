@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVOZTd4VnFTUHc2LzJGUlZOYVdiRUEvanNFOXBwZlo0YWZvRlRETzI4ZUlaQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmMzQllMMWhFTDNWVGJ6ZExiVmN2TlhabVFYRk9PR1IxWWpGUFNVUnpSME40ZVVwbksxTkRhSEppUmtWUlVYQXhNV2c1ZFdGS00xcGtWVk5WZVVkQk5sRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNraFp1d0JWZ214WFZMOFIrSjJjeGN2Yk1wa3M2ZndKZ09CVjZxN3lNUzlzVU9FejZtUWk3SDF4cDRPTWFVUG1pYjVNd3BEM2Z5Sko1U1dlTU1XR2lHM25va0RTb3JPV0Znc1BkL2Y5ZnpKRW1CbjQ4YUMrb203NHJuYW9DQUFBUUFMTXZINHJtZ2xkMjVJWkxVTkJ1aHdHbnR0RFdlUUd2S2hsdU9vUmc5ejVnUjdCY2tZS1JBT1dOTlZ5cHRRbWlTLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQmQ0aVl2RFp1cEtXSEJ1OVJ5eit2eTVRQnpLQTdyWkdxOVZzN3Z4a0tUK1JISjVsdWJEVm5mYnNuWncrSmJLaCtOckxET1h6Smt5cWZ1TG54Z0MxakZxcFIvRXVKT1Z6Ly9JWHd2Rnl1MTV3WWdtWUZ2MWpnRStGQ0E1N3pzMXEwMmVvZ2NmWlUxSXNQYTlZTU15OHVJeGl4cjlEZFJacXN3cld4LzFIcVIvZGwxVUtoNFZ0L1ptSURtU2s1SFV1MTZlS2NObXpZNkRja21DbitsTDVjVFpqZS9zd0FaSzZReElLSHcxREhWY1ZDK0xKeW1mZE1UN0Yvamk3T2xqczQza2FFbmR1R2duNmxqbkRkb2hKKzRIUjc2OGIzcS9kY0RieitaYkNVTHJjTG1XN1REU2d1Y01nNER1ZjRHYk13aHZLenlLancxUHZqdU1nUXE3TjZsVCtOc3BwdnlqY3NQTklrbEw3REZPRm5QUW5zR0xvek01QURaOGY3bWFBa0R2RnBFQXdKMk1GVVh4OFAzOTBzYXlUanJNTWVnK1Z2UkNoaG5ZdnhGUjdzL0hJbktKVVNqRmpaOHh0ZHhvOGdkbG1wak41ME8wazBHMmw4N0NnN2p4bzJNc3IxUEdzR0FuRnNPcmI0UkMxdHRKSG9vOHh4bm1MK21RWjBMUTcxVEQ3UmRyR1lITVlBWnpCbEFqQitjSXJ6SGRjb3Jpa0NWVlJRR1haZTZGcStKakRCSVl2ZmNTaCt4cEFaU0tFODRsUmJ2SG1WR3JCMmJla3VFc2dDTVFDczJubTU3STR1R2ZKeUxLK1lkeHNVdWhONlp1RVVYamlNeGkzb3FBN0FKTmNtOXpNdS8xVWowOWFHVTd4dTMzQT0="
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 181,
+        "totalTokens": 209,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 4848
+    }
+}

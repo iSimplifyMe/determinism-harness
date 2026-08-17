@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVGbWFZTnVmOWdXUjNadlhONGc4S0xHd3Z3TWQzWW5vR0VTTm5nckU0OHlwQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQk5tdDNhWGhLYkdWclMwOU9aaXRIYUZSM1NqbEhNQ3N4TkhnM1dWZDZiREEwYVU1SlZVRXZTRVpKVnk5SVIzTTFVbkZEVERGcE56bGtUbE0xTlhwcVkxRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmM5OHFtZHVCUTYrSFVNVm5uK2o0dHdHTjBiZ2xsbXlvT3luWVFUcnlNUzlzVU9FejZtUWk3SDF4cDRPTkttVUJ5ZC9QSFFaS052R24zRjZMRXB6K2RrNlFWMmRtY3hhUEhsT1piSkVJZ1VHQ2lkbFNGQllXRUhjZjdLSjBDQUFBUUFCVWNjbGxKcStEVm81eGc5bERRd2l3bHp6aWU2YnRvcFgzeVlOclU5cDAvOXZxY0ZYb1o2MFZ6N2F6SzVPbU1GUC8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQkhpRktzd0NoYThwVzNyN0tzeExqSjM1cGFDajJpVzFITXJoK2hRSTlvNU9yMkpQSXNWWWV5d1F6WDlzRi9NLzVHaFU0UkluemFOQUFrR0RDOXRlSXV4TzI3a1ZERFZyTWlFcFNUMEtjMFlOK24yVUxVMUpCL2dIS3B3YXVVczNRWitERzk4MEp3Rk5lcldibVU5OEVBVHl0WVJod0xhU2VwR2t6T0lMcEZkYnBkcUQ1c1N0YldERVAwYzgzWVMrcDNuZHFQMlNwRmpidlRkKzlDcE1TdUc1dDE0ajVEOWJOdG9tVmU3UmlieEYvQU85TVdmbHJZN01EUVBBYVQrTWVZNXNHM3VGa0FldytYWENWdDNRdU1jV2FPMWFCNnh5WlNqK1VkTDNqYzdPN0twN21waWRUN2swREpxS0FXaG5vU2E1b2NBdlhaVi83ZGtOVHVkbGhVNkpvbzdKTlNEZTUxKytjOUtJU1JjSitpcjVhamNKSVFCZjNwcU94eDVvYjkvMVVqSTlpMW1aQUVxNWI3ZmhBQUdjd1pRSXdJQzRtOGhJaGFadWpUcUIxSlpuL3VkTmhMTkpKdG5NMmtnMkpIZTVLWDRxdVVxMjdGRlF6NnZCYzcrRTFFRW1nQWpFQXJ6OGJWUGhoWTNueTYwUHIvWVdNUTlQckFaYVdSUUY1NVJRaEt5ZEd4dVJzdG02T0NiZVZ0enBCc0ZWRHdKNVk="
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 138,
+        "totalTokens": 166,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 3968
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVCMmlJL2NvYTJVZFg1a0ZMd2lVaU9mOXlxWmhWSGVOMWgyajBFUkRLV1NPQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmFqY3laVEo0Y21Fd01rOXZVVUZNV1hVeE1YUk1UaTlLYWpCWFJYaEtWVkphY25SNk1WZElNMmhrVkRZeFJISnNVbFZMWTFCcVMzTndUMjk0WjBwVGVGRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNCOWtvbDc3VGo1a3M4NW44UXBZVjNsZW1NWTJ2aGRLTEh3dDFqN3lNUzlzVU9FejZtUWk3SDF4cDRPT0lqOHZxVUZiVG1UZmo4MnFTeUdZYzVHaldsVDdNQWFRVy81REtTMHpTaHpidVpvWTZjUktaTHI5c3ZPaFBtcjhDQUFBUUFOODlZaUdMc0ZyM3RXY0lVYS8zaGNBT2tLdVhhQU5oTUJWTHlQeUZ2alBGam03Z3RMVzd6T3BaSkIxaStTTFgwZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQklBNUVVTWc1b0JqZ0F3UmNrWWh1MGJST2x3VFh1T2YrWnJxQ3d5R2V6TFJpZnBocnd5TzBodHExR1FtaTdjaUR1RE1DcFljb1hsT0srdHlIMWtPRlhpaE1ydklHUXZOb1lmYmRFeUNXS1ltQm1Dd2FOTk5FY0wzc21aTGV3ZU1sa2k5Y3VDMC9EcjlFVzRiKzZ5cnVNM1hqa0k3OUtIdzBEbkFjeWJJSklXOE5vR3JMbk9pdUxJRVlEZ2d4TktFV0ZSbWcrS2RhbUVqVUkvUStpSE43NEJpVm9rSDBhZk1VQXNGVzdOeFBRaTdzQUhBYVFRSW1wVjRQZ3lSK0o5TlphV3lENmxQR3YwOUpEWm5IdWRyeTNBODR2ZmlKblVPZXprRjZRL25ENXkrTTZ5TzU3cmpla01ueEdweFRRbGlNZVNBZW1KSG5SZ0hkM0xRRVpudENLQkJ6RHVVUVhMc2lhMHR4Y2JEQjdpZnYzZkpWd0hneFg1SFE3L0tNMzNRK2c3Vk4yYkxrL3cxUE9iZUxGUkRrK24wQVp6QmxBakFlZXNzeXlqRnFUQzI5cVAydVVnMnllK1Jja3M1MVdpL0RCcjZ4MjdMQVhhUnZuaTJpSVdmZEljVU5yYVB4aWMwQ01RQ0dBdHdYYlY1bE5EQkxKYW5ZcThsTEcvTXJPV3AyN0N0UzZ0VG5sMWZ0VXFNYXR3MkhjZVVBNEkrRDR3WmVKbzA9"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding the first two numbers and then the third is equivalent to adding the last two and then the first. In floating-point arithmetic, however, most real numbers cannot be represented exactly. After an addition, the exact mathematical result is rounded to the nearest representable value, typically according to the IEEE 754 standard. Since each grouping creates different intermediate results, rounding occurs at different points and can produce different final answers.\n\nThe effect is especially visible when numbers have very different magnitudes. If a very small number is added to a very large number, the small contribution may be below the precision available at the large number’s scale and disappear entirely. If small terms are added together first, they may accumulate into a value large enough to affect the result when combined with the large term. Cancellation between positive and negative values can amplify the issue because subtracting nearly equal quantities removes leading significant digits, making prior rounding errors relatively more important.\n\nLarge matrix multiplications contain many such operations. Each output entry is a dot product, formed by multiplying corresponding elements and reducing the resulting products into a sum. A sequential implementation might add products from left to right, while a parallel implementation divides them among threads, computes partial sums, and combines those sums in a tree. GPUs, vector units, distributed systems, and optimized numerical libraries may all choose different reduction trees. Tiling, thread scheduling, processor count, and workload partitioning can therefore change the order of additions without changing the intended mathematical computation.\n\nBecause floating-point addition is non-associative, these reduction orders can yield slightly different matrix entries. The differences are often only a few units in the last place, but they can grow when dot products are long, poorly conditioned, or dominated by cancellation. They may also propagate through later computations, particularly iterative algorithms, threshold comparisons, or chaotic models.\n\nConsequently, two matrix multiplications using identical inputs may not be bit-for-bit reproducible across hardware, library versions, thread counts, or execution strategies. Fused multiply-add instructions can introduce another difference by performing a multiplication and addition with a single rounding instead of two. Reproducibility can be improved by fixing reduction orders, using deterministic library modes, accumulating in higher precision, or applying compensated or reproducible summation methods, but these approaches generally incur costs in speed, memory use, or parallel scalability."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 560,
+        "totalTokens": 615,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 16413
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVLNER1RnllZXU3dUVrYllKWnFBNi90R2NjMWt2UmNvWmg4b29mQk51NUpBQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmJXaEZObXd2SzJwQllYRnJWR2xpWkZWb1MzWkdaMUZ3TVVWUlpXUk5jMHhIVFdKRk5uSnRiMWx4UjNCb1ZVbHhZWFkxUkRjME9XdGFNMUozUTJwdVdGRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmMvOVFiV3BIbTQyaXZtdk5PODdubTZHOC9JSFE0aGs5OHd0L0FiN3lNUzlzVU9FejZtUWk3SDF4cDRPTVc1SlJSQmhDUll6bWEwNnFtMjk4anE0cnQ3cHpNejVYYlZCTjM2MzVwclJSTEkzZVdXMEkvOGo1bllSOTkxZmtDQUFBUUFLSUw4Wis4K2x6SEtmeXNvbjYyVTFBWHJ0ZzM2bTdEK000RUhyZ1BUUXhSVzhVVUlrSm1FOXg3bmEydGRFd0xLUC8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQmI4OTN0bTNXbThhR0ozN3FmQ3J3TG9MVUFOb3Y1NzhiZjd4ZHZqbkgwcCtZYnJkTENtdjNEdE5ORWF5aGRKZXVPY29pSmRqNDBBWHNiVkpJdGwxaXJQaG5rVWxidGRndGkvMkJKZ2NSTVRMK2xIY0FQM1AyU05EQkFXODZGZEZ6dzVva3QyWnpZUW55SERNWVpiSTg2RzhGZFJkMi9jd3N2aFJmVWN0ZFIxVE9ydEc3Y3ZaUXZSQ1dKS1NiU2s5NFUySGhnakkwOHI2ZHYwWlRIUGduaUF2eVZxb3I1RXFLbHJ3UkdVRmplYXFBSmo4YXNVNVpTMXJpdkN4Qk40RTc2bURNaHozRUJ3UUp0dVRmMmwrWE83V3F0bGhUemNpSXlZZW5XelZXSjg5OG5YQ0VlNzJkc0FCZGlzVVZKczZneUl3RUV5ME40enhHTk5NTFFmdmFLdU53bUtLRGpmOEpQMGcvOFRQY1FnSG5tSW91OHJqdzIydWlYWHcwMWMxWlNYTmZDUUtLcjBBUkRCZGY4a3dhQjRIOUs1N2VucmdvQm55Y1owV0htaEUvcnE5Nk9rTUFWTEt1YlJ2V0ZZdFdFZTBVTzYxY2ppTEI4QVZtcGZaaUoxNUJwRkZvbmxjY3dRbXdsUDN5SVFLQ09mVmJGbHRRQ3VZZDhqaGRwVGpZQUdjd1pRSXdMOG5KMGx5d1BrMzZOMGhPYXV1aG9FQjFhSG04YW1RMmo3QXFNYzNIak5WL1NsTDlSUXV6OE5vZDYwZzltVTlVQWpFQXl1Ry9wSUR1czVGam0rWXhhZEIrVFBYa1hXYmVEck1rZlVLN2R6WnpMdzRNSTQzWURlN2M1Y3dWTkFkaTZYaGQ="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because real numbers are represented with finite precision. On modern hardware, most computations use IEEE 754 formats such as binary32 or binary64. Each format stores only a fixed number of significant binary digits, so the exact result of an addition often cannot be represented. The processor therefore rounds the result to a nearby representable value after each operation.\n\nThe order of additions determines where this rounding occurs. In the expression (a + b) + c, the sum of a and b is rounded before c is added. In a + (b + c), the sum of b and c is rounded first. Those intermediate rounded values may differ enough to produce different final answers. The effect is especially noticeable when adding quantities with very different magnitudes. To add a small number to a much larger one, the hardware aligns their exponents, which may shift the small number’s significant bits beyond the available precision. The small contribution can then be partly or completely lost. If many small numbers are combined first, however, their accumulated value may become large enough to affect the final sum.\n\nLarge matrix multiplications contain many such additions. Each output element is a dot product: products from a row and a column are accumulated into a sum. A sequential implementation might add these products from left to right, while a parallel implementation may divide them among processor cores, vector lanes, or GPU threads and then combine partial sums in a tree. Different thread counts, block sizes, scheduling decisions, vectorization strategies, and hardware libraries can therefore create different reduction orders.\n\nBecause every order introduces rounding at different points, two mathematically equivalent matrix multiplications can produce slightly different floating-point entries. Differences may also arise from fused multiply-add instructions, which compute a product and addition with only one final rounding, whereas separate multiplication and addition usually round twice. Hardware architectures and compiler settings may choose these operations differently.\n\nUsually, the resulting discrepancies are small relative to the scale of the calculation, but they can grow for long dot products or poorly conditioned problems. They can also affect later computations, especially algorithms with thresholds, branching, iteration stopping criteria, or chaotic behavior. Consequently, repeating a matrix multiplication with different parallel configurations may be numerically close without being bit-for-bit identical. Strict reproducibility requires controlling the reduction order and arithmetic behavior, or using specialized reproducible summation methods, often at a cost in performance."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 576,
+        "totalTokens": 631,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7751
+    }
+}

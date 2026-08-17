@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVPaUlHSHM5TlJVMW1aQlRqaHJQMVhIVHpkM2U3S2RBVTUxTXd4QmFmQjRVQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmFGUk5hSGhTY1Zrd1ozZFRVV0YzUlhWWE0zSnJibEV2TjBGQ1VteGtTQzl0WkdaWllTdEVaMU5yVjJWNEt6QldhVVIzZDFoRlMwaEdNbTV1YzFGRmRWRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNVQWJSVFc2M0hqbmNmaTNlREJ4VmsvbmpSNVVNWVRRUEZpcmhhcnlNUzlzVU9FejZtUWk3SDF4cDRPTUg4bDVnWTFPMFBWOUtBdVgwdUJ3Z2h2VG5qMzdKaGRleDNkTmF2d2Vyc09yTE4wdkhabFR5ZUkvL0ZuR2xwUk1DQUFBUUFESG5UYTN4KzBhdmZRa0FpS1NtdnkxSnBDVGVXcldsN3E5aWR6dTFlY0M3bjc2TCtIZVBqdUpqR1czMjlGak1DLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQTkxMGF2T0ZXVmxucXVPR2VMaW9IdnZ5QUJlSWk3TzA1c0tMRzBjOUFVbW42S2ZSaVBGNUI5UkJZMlRqTXRxRDNqN1RjNm9MN3A1NXE3R01SMC9FcFdrdE1lQThPbTYvUDMzcWFrWisvWjM0RDNSdnRxelQxWmF5dDd3T3pLbndHTmZXMkcyek1oNzJKS05zTC9JYnhGNEpwN1BnbUh6U1lvU2cwNFk1ZkgzQWl1U1krczFaMWkybG5pTmJYMVp2cmYrUlFsUW9BelFhcm5PZXBTb2szK3pDdGtSMCtJZFlHT0VkbXl2Ty9HYTNzQ2lkYW1tZ2ZMT3UwcUQzeXNQTFI1eUhVNkw2aTRnczA0N2h3U0ZFajIxRTFybnJBZnVCMlJmUDBjR1Q5SGllVWxvaTV0bmlIZlNDMUlSTmZwNFFFeC9HZGRlTzZsWTFIVUd1Wk9aNmd0bkJOeUFkY0hhVXRBR2N3WlFJd2FWNUFDNnZZOGI5QURqL041OGJqMDh0YVVjaStMeXVZYnVzVUhhWit4VmJrdGwzRG1MdjhmNFpSSHhSeGJqM25BakVBdVJlR2hVQi9VMWoyRGk2Yi8xeksrZ2ExRXUzSUpDd2MyaEVoVllmcTZhT3RFTlpxYjBUc2Nod1dneG51TGJseQ=="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of additions does not change the result: adding a and b first, then c, is equivalent to adding b and c first, then a. Floating-point hardware, however, must round most intermediate results to the nearest representable value. Since rounding occurs after each operation, changing which addition happens first can change what information is discarded and therefore change the final result.\n\nThe effect is especially visible when numbers have very different magnitudes or when positive and negative terms nearly cancel. If a very small number is added to a very large number, the small contribution may fall below the precision available at the large number’s scale and be rounded away. If several small numbers are added together first, their combined value may become large enough to affect the later addition. Both evaluation orders conform to floating-point rules, yet they can produce different answers. IEEE 754 standardizes formats and rounding behavior, but it does not make addition associative.\n\nLarge matrix multiplications contain many such additions. Each output element is a dot product, formed by multiplying corresponding entries and reducing the products to a sum. A sequential implementation may accumulate those products from left to right. A parallel CPU or GPU may split them among threads, compute partial sums, and combine those sums in a tree. Different thread counts, vector widths, tiling strategies, compiler optimizations, or hardware architectures can therefore produce different reduction orders. Libraries may also choose algorithms dynamically according to matrix size or available resources. Fused multiply-add instructions introduce another difference because they compute a product and addition with only one final rounding instead of rounding the product separately.\n\nConsequently, two mathematically equivalent matrix multiplications can differ in their low-order bits. Usually the discrepancy is tiny, but it can grow when dot products are long, inputs are poorly scaled, or cancellation makes the result ill-conditioned. These differences can propagate through later computations and may alter convergence tests, branching decisions, or training trajectories in numerical optimization and machine learning.\n\nBit-for-bit reproducibility therefore requires more than using the same input data. It may require a fixed reduction order, deterministic library settings, identical hardware and compiler behavior, or specialized reproducible summation methods. Higher-precision accumulation, pairwise summation, and compensated summation can reduce sensitivity, but they may cost performance and do not automatically guarantee identical results across all platforms. In many applications, reproducibility is instead assessed with numerical tolerances rather than exact equality."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 561,
+        "totalTokens": 616,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7477
+    }
+}

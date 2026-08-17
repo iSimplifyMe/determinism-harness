@@ -1,0 +1,1 @@
+{"error":{"code":"unsupported_value","message":"Unsupported value: 'minimal' is not supported with the 'openai.gpt-5.6-sol' model. Supported values are: 'none', 'low', 'medium', 'high', 'xhigh', and 'max'.","param":"reasoning.effort","type":"invalid_request_error"}}

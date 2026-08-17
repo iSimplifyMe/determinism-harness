@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVGd2MzNmxpbk5TU0ZEZU1qM3JuZlhIa0VvWHFxZWg3QlA4cy9URkNhUG9jQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQkwyeGlWMDFDUzNOVVZubDVPV1JhVG5wWmNWQlNjbmM1UWtWMGEyUkJNbkJrUzJGd2JUQTBSbFp6ZG1JMFMzbzVUa3BPVkhOaWVXaFhLMkp0Y1V0eFUxRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNpM0hnSEhsVFdlR2VJSVE4eERGcFhQUFp0S1VwTlJFSFN6VWpUcnlNUzlzVU9FejZtUWk3SDF4cDRPTVBWZ2xiZENBMDNEVm1MaUgwS2puSEFZcWxQdFdYQUpWcTQrSDVOMWpjSTF5dktSY1dzclQybEhVdW0wZ0hzR2NDQUFBUUFDZUJCQ2w5UVBsZ0c2T0JSK3dhYkJtSXRuN09xdStXMnh2TFNRdEhSSDExWjFCQTFHK3N6REdhVGtwbUJ4SVdjdi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlM5eUdQR2lDdDFNb0hNQ3lYMCtJTDlDUWZXSCs5dDZNSkxPNG1GVzUrTXJUT3NjbEZaVnZWUEkvczB1VWtEbTJZTXhaOXlxTXc2aXZtVU5RZys2TEpwUjdhcFoyWGpkbjc2cHJ2eHhac1hocWxKZU1TYy9pQ0xZY25IenpOd1o3dng5R010SHl1akpRRFYrOGRZN3FHZkdGaTRKOGhpT3plV20wVjl3YUFuOTNKNGNtSzZRNFo5d0tFU2hqYWNKZ0lsZHFsYmZESEJDMFF2YUZtT2pyQUI5bVlwd01jSDNoRzFab3NDanZpNWJuNUJ5M0NxNHFjOUlROEZLaDBTcHlmMFU1dmo1ei8xbW45M3QxUmY5Sm9yV3dMOG1JMFUzT3VibStTcDR2NjBvVmZTQXlMcTVpamtoUFpCUjliSUd6UWFTK25FOEQ1YjUvOTZ4Q0Q2R1NjMjVHZTBMN0tWa1k1MldDclVHcDI2N0J2UGQxQXlRcE9kTWp0dEpzamd4Q1krSTB6OGFESHd4aTluMi9QSnlvTTYreEFGdFU0U3dFbUVQbHJTcEdOZ251Q3VUQ1NPeEU5WVpmdm5KU0ZpTm5IK1FFanFvN1hXRTBSMkhmQUdjd1pRSXdEQmRrSS84MFdxMUg5WmpXUEI3eE9abGJSYW5kbEVYdFBQSHVvL0l2eEFPa0RUcmNjNEN4Zm94bmt1ZE5lQXN2QWpFQWtnVEJuNVVNd09zeWE2eTVaSVZKbWRJVU1YRGx3WUVQM2ZNdWFiUVBuMDdVTDZuRXpXMnVCMUtlSEFHSmRIVFc="
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 157,
+        "totalTokens": 185,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 2764
+    }
+}

@@ -133,3 +133,94 @@ def canonical_bytes(obj):
 
 def sha256_hex(data):
     return hashlib.sha256(data).hexdigest()
+
+
+# --- Study 4 (PREREGISTRATION-v4): door request builders -------------------
+# Effort arms: "none" / "high" are PINNED (encoded explicitly in the
+# request); "default" OMITS the reasoning field entirely and exists only for
+# the exploratory Q5 arm. The flat `reasoning_effort` spelling is rejected
+# on every door (discovery-receipted); only the nested Responses shape
+# travels.
+
+STUDY4_EFFORT_ARMS = ("none", "high", "default")
+
+
+def _check_effort_arm(effort_arm):
+    if effort_arm not in STUDY4_EFFORT_ARMS:
+        raise ValueError(f"unknown study-4 effort arm: {effort_arm}")
+
+
+def canonical_responses_body(model_id, prompt, effort_arm, max_output_tokens):
+    """Responses-API body (1P and mantle) as canonical bytes.
+
+    The harness owns these bytes end to end (stdlib HTTP, no SDK), so
+    hashed == sent by construction on BOTH Responses doors. No `store`
+    field is ever added: 1P's server-side persistence default is a
+    disclosed door property, not neutralized (v4 section 3) — a test
+    asserts the field's absence.
+    """
+    _check_effort_arm(effort_arm)
+    body = {
+        "model": model_id,
+        "input": prompt,
+        "max_output_tokens": max_output_tokens,
+    }
+    if effort_arm != "default":
+        body["reasoning"] = {"effort": effort_arm}
+    return canonical_bytes(body)
+
+
+def converse_request(model_id, prompt, effort_arm, max_tokens):
+    """Converse kwargs (runtime doors) — a params dict, not raw bytes:
+    boto3 owns the wire serialization, so the canonical hash of this dict
+    is the *planned-request* hash and the bytes actually sent are captured
+    by the door's before-send hook (harness.doors.ConverseDoor), exactly
+    the SDK-plane pattern of study 2. The effort pin rides in
+    additionalModelRequestFields as the nested Responses shape — the only
+    accepted spelling (discovery-receipted).
+    """
+    _check_effort_arm(effort_arm)
+    kwargs = {
+        "modelId": model_id,
+        "messages": [{"role": "user", "content": [{"text": prompt}]}],
+        "inferenceConfig": {"maxTokens": max_tokens},
+    }
+    if effort_arm != "default":
+        kwargs["additionalModelRequestFields"] = {
+            "reasoning": {"effort": effort_arm}
+        }
+    return kwargs
+
+
+def codex_argv(model_id, prompt, effort_arm, workdir, codex_bin="codex"):
+    """codex exec argv (harness door). Effort is pinned via config override
+    on every call — "default" is deliberately NOT legal here: the codex
+    door's default (`none`) is itself a registered finding, so the arm must
+    always be explicit. The prompt travels as the positional argument
+    (every study-4 task is far below ARG_MAX and the 1MB exec cap);
+    stdin is closed by the door so exec cannot block on a non-TTY read.
+    """
+    _check_effort_arm(effort_arm)
+    if effort_arm == "default":
+        raise ValueError("codex door registers no 'default' arm (v4 s2)")
+    return [
+        codex_bin, "exec", "--json", "--ephemeral",
+        "-m", model_id,
+        "-s", "read-only",
+        "-C", workdir,
+        "--skip-git-repo-check",
+        "-c", f"model_reasoning_effort={effort_arm}",
+        "--", prompt,
+    ]
+
+
+def codex_receipt_argv(model_id, prompt, effort_arm, workdir,
+                       codex_bin="codex"):
+    """Plain-mode codex argv for the per-batch RECEIPT probe. --json mode
+    emits no banner (smoke-verified), so effort-pin proof comes from a
+    plain-mode call whose stderr banner states `reasoning effort: <arm>`;
+    measured calls then run the identical argv plus --json. One receipt
+    probe per batch per arm (v4 section 3)."""
+    argv = codex_argv(model_id, prompt, effort_arm, workdir, codex_bin)
+    argv.remove("--json")
+    return argv

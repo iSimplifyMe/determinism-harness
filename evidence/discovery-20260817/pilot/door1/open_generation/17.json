@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVKTjFMRlkxeWVQTk9lcTcyVHNvSUxsbEZPWGdscXpVaWRaU3owUjB2TldtQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmJWZDNiRlZsVmtWME5XUm5VM05LTWtwWmFtbHFSVWhETjB0WkwzbE1SVFUyVFdzNGVpOXZOQzlrV2xCVVdqZG1lbmhOZUdKVkt5OW5jRUZpWlhsSk9IYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNDblhBZURjK2RlVnRpbVNhZnA3dy91MXFtQitiaVNCQXVvWSt5YnlNUzlzVU9FejZtUWk3SDF4cDRPUHV1bTcwTEIrRVRGNWJreUVjTUZzT05FVUJPaFFieS9BdkR3MUd3QVl3ODdLWURwZ2ZNaG10OFZqTWlQN1VKWllDQUFBUUFMSU5ueHhuOXkrMXIwVUFmOXp3VCtvWGF1QjJHVDJyWGJzdm5weXFBVS9RS0grMWo0eG9xbzdydGs0U0tDZjZLZi8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQ1pCNXRvSk9LMmRpaU8zRkt0TXBRbnNwaXUwMVFROU5GQUJXZ2cwdGs0QkZqUERvQXdUc0NkNkJ4TWRXS3RGR3k4d0QyMnYxZmZEc2JVbGRoT2s1eDFoR0d0QzVzaDk4Z3kzTCtwZHhoODZreFhqbnJta3dKL0UwZWFxZmRNa0hQcnZtdzE1eVptbjlLQittUkM5ZXJmV1Z4UWpkVjBLRW8zNm9odWFZRWZMNmQ1KytuckhyUjc2Yko1OTR2bjk2TkNXMG5RYlNEM2Q4TnI4Tjlsd2Z1K0M4VGVpQmJvUURJZ2FNRlIwVnJqODNUT0tMWUxZUHBBNnFCbFpnRjBCSHZ1cEhXMDRkTUxoNjNsTHkyR3d2Q3JIQ2cvODZMRmt2eVJpeUtCZVJPdmlqMGFvQkNKUHFQL2hjRHROenpGZzlEMzBubDROWTdWYWlhaWViMlB3Q3RSazF1bEZUUFRZVnVYaElkUlkzVXhzaHZsaTZhK2lCWE4vRit3cjRqY2pQV2xnaWd0U09KQitLQWg5TTlOUCsrdlFab25qbnVOWDVDRkRlOFNQNFA5WjVGSjBMbGhXUThkbVZnY200RU10TUtBVXJjc3VnMGtVUkNTOUJ6NXdJUG9tNnV4UlQrWUg4U2lTZjlvS3ZUL3hOSmlmQVg1VXhicXVWSXViVGgzbzJQRjVhcEp3bUpQMGU0Tnp1eitnSUwwd21MTVc0dXUwakN4ekFGdzl3UHdXYWV2eUhNN2pBU3JEcGlJWTYzUzlPRXFMY3VhTExDbWtrcjF5RUZKaE83YlJMTDU0TnB4NGEzZmtqbXZJSXBHaS85S21JWEdZbmhPMVBjWDRBNTVEVVp5czh5RHhrZm9vWnBWN25pWlQ2VG16d2grRHhsdG1vRmszNkdTK3JIeERWYW1TME9aS0JKaDRDZWlPSnB6ODBOU2l4dHUrMlBIR1gvaWxnNHBsdXI4YnFUYmEvS3U3VytpdWRJZ29iWlhIK1RLeXlIckRBVUorOFhkYkhQSEhTSk1BeGthSVErT0RqdGhMQzdvalVIUG9aVzdzRXQ4TVEwdk94UnI4THFyeXV3WHgzb0pLd3VSNlNoZnYvMkxzYnpndXlTeXV3QVp6QmxBakVBdjdoWHpVWE9EM3h1RmhSc3pCSC8wMnk3a2hmV3NEb0ozaHpsazRiRytUSFRkOVU4VnhPdXVPdDZCNVRDYVpjZkFqQWdIV2k2RUJlYlhwL3lUK1o0R2k3d3VLVDRFeTd6eUFkWlBldEJwUU9Fb09lREk3aTdHWUNUK1hSb1Q3aHZsVTQ9"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because computers represent real numbers with finite precision. In exact arithmetic, the expressions (a + b) + c and a + (b + c) are equal. On modern hardware, however, each addition generally produces a result that must be rounded to the nearest representable floating-point value. Changing the grouping changes which intermediate values are rounded, so it can change the final result.\n\nFor example, suppose a is a very large positive number, b is the corresponding large negative number, and c is a comparatively small number. Computing a + b first may produce exactly zero, after which adding c returns c. Computing b + c first may round away c because it is too small to affect b at the available precision. Adding a afterward can then produce zero. Both results follow the floating-point rules, even though they differ.\n\nThe effect appears in matrix multiplication because each output element is a dot product: a sum of many products. Large implementations do not usually add those products strictly from left to right. They divide matrices into tiles, distribute work across vector lanes, processor cores, GPU threads, or multiple devices, and combine partial sums using reduction trees. Different tile sizes, thread counts, scheduling decisions, library versions, compiler optimizations, or hardware architectures can therefore create different reduction orders. Fused multiply-add instructions, which compute a product and addition with a single rounding, can also make results differ from implementations that round the product and sum separately. GPUs and specialized tensor units may additionally use lower precision for products or intermediate accumulation.\n\nConsequently, two mathematically equivalent matrix multiplications can produce output matrices whose low-order bits differ. The differences are often close to normal rounding error, but they can become noticeable for long dot products, poorly conditioned problems, or sums involving strong cancellation. They may also propagate through later computations. In iterative algorithms, small initial differences can alter convergence tests, pivot choices, optimization paths, or other discrete decisions, eventually producing substantially different outputs.\n\nReproducibility therefore requires more than using the same input data. It may require a fixed reduction order, deterministic scheduling, consistent precision and instruction choices, and identical library settings. Higher-precision accumulation, compensated summation, or exact and reproducible reduction methods can reduce or eliminate order dependence, but they usually cost additional time, memory, or parallel efficiency. Thus, high-performance matrix multiplication often trades bitwise reproducibility for speed while still aiming to remain numerically accurate within a stated error tolerance."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 713,
+        "totalTokens": 768,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 9939
+    }
+}

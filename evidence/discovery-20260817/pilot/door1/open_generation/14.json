@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVGdks5TTVLTDNrcnhXRWJ1aVFwczdYWEI4T3NROFBDdklSZHJxTlRES2c0QUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmVXdE5Za2R0YUdsWlN6RmpXVzFaUlU1S04ybzJkM1p1UlRoSVEzUjNjVzVCZEdnckt5dFFLMHBVYTFaeVRYa3pNR0pvZUVRM1ZIRXJWRUZwWkhORWNtYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNSSkdmb0VvK2NkSjBQc1MzUzVEQk1yWFZmbmE0NlFPaEppZ3FKTHlNUzlzVU9FejZtUWk3SDF4cDRPTlJ6SndrRmRxZmFiME5rQkxPRmdrMjZ4U1lpd2xISlFKQko5SzlpYlhGMEF0emhNZUVYVlptMy9pQ0Y4b2lneUFDQUFBUUFESTNjbkdHV1luZmFybXhQb25CdVdTK1U3aHBCVnVCNDFQK3lCeTNFRHdXSkJRcUdWbXloNVk2YVZoaDFsYSt1UC8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQlNSallEaE9PSXhTbW0rWVp1aDYwRGo1YmZMMS9naGdqV0tpbStKUXo4cWNFS1o0UVZSdiszOXpzTFJ5dWdvd1I2L1JQd2toOXFlY3NtNG1OQUpwNDlYOG9iQzRqRXZhZm8yYzhjSWFNaWxMTEUyM0MzeXlTLzdoWUtsZTJxc1lveDJiODFXZjhFdlVydGZYWkVNODJ5UGREVWRUWVRieUtPVGxkenJJM2Z5QndKaWFTTmNrK1Y0WGhUL3VmQ3RyN29YUVgybEVicmY3WVhzY21xbjdtK3QrMzRRT09kR2NtTm12WlU3MkQxT0FNM2VIVS9rRGVXMWlVOWI5ODMraGQyK254cjE4L2prK1RUNkZTOGtrSEtXdXpYQUdjSFVoMEZLY1dJdTYrbkJxZ1c4SmQ0SitmcGZHS2I1R2tLd05nbDNTNzV6aEZEek0wdDcvV2V4MkpnejBSa3pGbjBqZUxzSUhHMEJOUzcvTmhuNGxXa3BDYlIxVGcwTzlFRXRKcnNBM1RyT1BVUjhRTEZpRHAzN3lDSDZEd0dJUmhBSkFpdGJxV3B1cUJ0YkI1cE5tdGtrUEd2NHRSQXB1VDFoU05mMnV1YTJyVVRVMjhtUUJuTUdVQ01RRGFrcmZvQ2E0S0hLTXdHU2liOVRLUFpVdDRyRnEwMXhFV05xTm80QWtVWEdZby9LckxlbDR3cnpXdTY0YmpYb0FDTURBWXc5WGFQZDhaVk1zRlhYa3ZWYXZaTTFZeklwcHZaRnFiUjlrU2xQUjRWRjdXK3E2Zjl4Yy96TUxhUitWNHdnPT0="
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because real numbers are represented with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding a to b and then adding c gives the same result as adding a to the sum of b and c. On modern hardware, however, each floating-point operation usually rounds its exact mathematical result to the nearest representable number in a format such as IEEE 754 binary32 or binary64. The rounding occurs after intermediate operations, so changing their order changes which intermediate values are rounded and can therefore change the final result.\n\nThis is especially visible when numbers have very different magnitudes. If a small number is added to a much larger number, it may be too small to affect the larger number’s stored representation and is effectively discarded. If several small numbers are added together first, their combined value may become large enough to affect the result when added to the large number. Cancellation between positive and negative values can amplify the difference further. Overflow, underflow, subnormal values, and special values can create additional order-dependent behavior.\n\nA matrix multiplication computes each output element as a dot product: a sequence of products followed by a reduction that sums those products. Mathematically, any reduction order is equivalent. Computationally, a sequential left-to-right sum, a balanced tree reduction, and a sum divided into blocks generally produce slightly different rounded results. Large matrix multiplications offer many opportunities for such differences because every output element may combine thousands or millions of terms.\n\nHigh-performance implementations deliberately rearrange these operations. They use cache tiling, SIMD instructions, multiple CPU threads, GPU thread blocks, and distributed processes. Partial sums may be formed independently and combined in an order determined by scheduling, hardware topology, or library algorithms. Fused multiply-add instructions can also change results because they compute a product and addition with a single final rounding rather than rounding the product separately. Different hardware, compiler settings, matrix dimensions, or thread counts may therefore produce different low-order bits even from identical inputs.\n\nThese differences are usually small in relative terms, but they can matter for ill-conditioned calculations, comparisons requiring bitwise equality, regression tests, or iterative algorithms whose later behavior depends on earlier rounding. Reproducibility requires controlling the arithmetic and reduction order, using deterministic library modes, or employing more accurate summation techniques. Such measures may reduce performance, since they restrict the parallel rearrangements that make large matrix multiplication fast. Consequently, numerical agreement within a justified tolerance is often more realistic than expecting identical bit patterns across executions or platforms."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 593,
+        "totalTokens": 648,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7924
+    }
+}

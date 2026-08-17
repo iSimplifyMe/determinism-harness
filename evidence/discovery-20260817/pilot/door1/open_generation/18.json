@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVNcVhaaHB3akE2bTdiclpKelZWb0lzQkYzZmpKR3VyR2hmbjQ3VEhEdk1nQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmFubFBRV3htYVdRNFlteGxSa053UVhCVU5qbFNjRk52ZERsWU9XZGhZMDVIVWtwWFp6UXdiRkp6YmpNeFZreE1kMFJTV2paSk1TdHJabXBQYTNOaVdtYzlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmMzUEliYmF6MTJJcWw5RFJEWDgwdzlSV3F5S210d0t0WlJLcUo5YnlNUzlzVU9FejZtUWk3SDF4cDRPT1FSL1BFdG01N3BLbnpsZXFwRCtBemt0N0UvdVN0SENUYkZ6MVZjMmV2d25SaEdMd3pqYTI1dlJScFVvUWV0RThDQUFBUUFPRStpdWRiRmJPeFNvWnhtTUdjcnlHdkJZQTdsa0ZENlh5QUljOUVJWFUyeGxIYjRZdWd5b0VjT1FsSWNyOXZILy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQm5xcmVhNGpMRGgzdVZPZGZvbDBXSS9lVEcveUxpdUpPVUZUbHZNMnVxRHNGYzhTa3BXa1R1bFNaT1EwcndLbFVGZjVzcyt0QkFTWWdoY3dnSUk4VjhqLzFMczRXQjg5RllLbStJcHNqSW51QmV6THdwcysrb3RTZTdJVEdpaS8yeGM3VnlzVU16UjJsTHI1L3I4MFRhRGQ4MDdIZVQwRlFNZGhETG42VzM4RzJKZ2NLNnRyK0cxa2d4M25ETHhNREluVjc1UnJ4ZkpzTDhpNU4yUkFuT2tTZ0laVzEzcFFLdDlPZTcvV0JiVkZ1akg1WlBBcVFhZHYva2ltdTdQT1lBclVHbDF5ZFNNZkxjbys2U3F0QmtQSDJ0d0kvWnFTKzZUWDFHWnF5T2xiZ0F6aG01MkNSaFZqNVNrSEpPWnQ5VytkMDZYNDl1WkhoZXN6WTZaOGx4SUhWSG9TcWdoODlxUE5mMGljaDZRTm45NTJMRkp0dWY5UzhGbTFHTGNlazYzQTRQVkJ5Z3VPN0tpaUJidGs3Mkp0dVVqNktFRzRvcnBWdUdjRmtrZkswalNGNHBuQmJNS1FoeklqbEpGYTAwdXpRUVdWWUIrUDdqTE9RdW9IRklRQTZNNktITHhFT3BtVVVvbWtCcWxiSGVJeDJ1Y1J4eVhzVktxREdoK1pxTjdyZDNlNnRrM0ltdExYb2RCOXhDOHpkaHhZWGlsL2l3RlZyQXdFcUZObE9TRlBqRUp5OXNaTm9WUytOTVdjQVp6QmxBakVBZ25UdzFLd0dxZHpRSk1wdnMxb2tKQURpbW5GNlF6ek9McnBycHRWUnJRaVNxYUx3S2hNcFZUSzNXUzJhZGZYaUFqQklxa2pSTVYxSjB4S2VJRFdHeFpaUEN5cXVacStkYXJ5WnVNQVJOVG1nQjNWalNTemhDRXdCdjd0QmFJT3k3bFU9"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. Most hardware follows the IEEE 754 standard, in which a floating-point value contains a sign, a limited-precision significand, and an exponent. When two values are added, the hardware aligns their exponents, performs the addition, and rounds the result to the nearest representable value. Information smaller than the available precision may therefore be discarded.\n\nThis rounding makes the grouping of additions significant. In exact arithmetic, the expressions (a + b) + c and a + (b + c) are equal. In floating-point arithmetic, the intermediate results can be rounded differently. For example, if a is a very large positive number, b is the corresponding large negative number, and c is a comparatively small number, adding a and b first may produce zero, after which c is preserved. Adding b and c first may cause c to be rounded away because it is too small relative to b; adding a afterward then produces zero. Neither result indicates faulty hardware. Both follow from applying the specified rounding rules at different stages.\n\nLarge matrix multiplications contain many dot products, each of which is a reduction: products from corresponding matrix elements are accumulated into a sum. High-performance implementations rarely add these products in a simple, fixed left-to-right sequence. They divide matrices into tiles, distribute work across processor cores or GPU threads, use vector instructions, and combine partial sums through reduction trees. Different tile sizes, thread schedules, hardware architectures, compiler optimizations, or library versions can change the order in which partial sums are combined. Fused multiply-add instructions can introduce another difference because they compute a multiplication and addition with a single rounding rather than rounding each operation separately.\n\nConsequently, two mathematically equivalent matrix multiplications may produce slightly different entries when executed with different reduction orders. The discrepancies are usually only a few units in the last place, but they can grow when dot products are long, values vary greatly in magnitude, or cancellation is severe. Later computations may amplify these small differences, especially in ill-conditioned algorithms or iterative procedures. Thus results may be numerically valid without being bit-for-bit reproducible.\n\nReproducibility requires controlling more than the input data. Implementations may enforce a deterministic reduction order, disable schedule-dependent algorithms, or use reproducible numerical libraries. Higher-precision accumulation, pairwise or compensated summation, and exact accumulator techniques can reduce order sensitivity, though they generally cost time, memory, or hardware efficiency. In practice, numerical results are often compared with tolerances rather than exact equality unless strict reproducibility is an explicit requirement."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 647,
+        "totalTokens": 702,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 13754
+    }
+}

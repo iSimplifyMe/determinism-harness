@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVKTmZFb0M3bkZUVjduN2VrOXZNb3FPci9WS0NsdUxJTnlVckwwejF0aVYxQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmExRldiRFpYVW5SdVNIRlhhR3hXU1c1U2J6a3ZTVGhCVnl0S1NsWnJNVlJZY0VGUlpsZEVRVlpFUjNwNWFuWndXRlZyU1VkUldEaDBVbnBEZFZoM0wxRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNYa1NzelR5VWFNSW9ubStZbG10eE14NFQzdVNUOEVVTWFyMFpOcnlNUzlzVU9FejZtUWk3SDF4cDRPTnZqUTlUSVhGTmtNd095OUtjT2NMN0pWR3pTeUZWRjBlMHozSGN2QkxiaE1SOG1kc3FmamFwSHR5VlZuTFVyZ3dDQUFBUUFKUzZxV3FTaEV0Q0xpT0FaUFp1VDNpRUprQ2l2eVloNXFBeXQwcXVFTTRqZ0JpRlljUFdGQVFsS0lKc3JTWWpQLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQk0xN3JWYzFCQVg2M3k4YnNkYkhRNm1SMkZKMFVCNEpCS3Frc0VJbndYY2o0dzZHdW1NNytMZzh1ZVlMTEZib1R0UUJFTVNvMmFVY09FSU9zRnFmbSs1T21oZXNKaUNCMEhCbWllLy9vN01kZ3RoTDlOWkR2VFBXUCtvYStFT2xxUWljVzI5ZnViYm0vNHVXVVQ0UzJsR0dOYjRPL3NrY2JwK0tydkYwcURuL3hXYURzTEZQd0pkdjIzdVlKU2JycE84S093K2dWMWdBNDNUK2VZYTA0Q0Y3UFl4YjhITk9iVWhGWTM4d29yc1QyU2t4dlhuZzRzSlVsNGlIZEVwbXNkN256SU5DYUNIaVE2SERWd2dnd3k0dHJDb256YnBrbks0Zm8wTFZkNE95cHRWNVpNS3pDTy9uZTJvM3NaOUs2anh6bmtLZkNEdEl3SnlHZWc0M1BZbVljRlVGUkF3ckJTZ3VnaVdiT2lQVjVOL05PZVhZTG5VRCtrYk9ocWVaeVBSOVRPUDZIajlJeW1CTGxaSXBQclFQczJXL0MvZ1RvSHdZSnBJVk0wWEMwV3UycEFHY3daUUl4QVBjTjRSVEZ2OTRvRDlBTkhrbEFRQ1VKUWY1Rm92Rm5qeEFYWmM0R0lZb0NHWkNjdE5Wd2JvU2lNSkp0ai8xWXVRSXdVMy9Cd3dtUkNzQUtXWGdLVzFMa3JwZ0U0THV2Uk5TTGg3dngwc2p3SGYzRVlSQUprazZkQXJPdUF4NDZ6VHFE"
+                    }
+                },
+                {
+                    "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing parentheses does not change a sum: adding a, b, and c in either order produces the same mathematical result. In floating-point arithmetic, however, the exact result of each addition is usually rounded to the nearest representable value. Because rounding occurs after every operation, the intermediate result depends on which pair of numbers is added first, and that difference can affect later operations.\n\nThe effect is especially visible when numbers have very different magnitudes. If a small number is added to a much larger one, the small contribution may fall below the precision available at the larger number’s scale and disappear entirely. If several small numbers are added together first, their combined value may become large enough to influence the final result. Cancellation between positive and negative values can further amplify the differences, since subtracting nearly equal quantities may leave a result with few reliable significant digits. IEEE 754 specifies floating-point formats and rounding behavior, but it does not make addition associative.\n\nLarge matrix multiplications contain many dot products. Each output entry is a sum of products, often involving hundreds or thousands of terms. A sequential implementation may accumulate those terms from left to right, while a parallel CPU or GPU may divide them among threads, compute partial sums, and combine those partial sums in a tree. Different thread counts, block sizes, scheduling decisions, vector widths, or distributed-machine layouts can therefore create different reduction orders. Each order introduces rounding at different points, so mathematically equivalent executions may produce slightly different output entries.\n\nHardware and compiler choices can add more variation. Some processors use fused multiply-add instructions, which compute a product and addition with a single final rounding, whereas separate multiplication and addition round twice. Accelerators may also use lower-precision inputs or accumulators. Optimizing compilers and numerical libraries may select different kernels depending on the machine and problem dimensions.\n\nUsually these discrepancies are small, but they can matter when results are compared bit for bit, when a computation is ill-conditioned, or when small differences propagate through many later operations. Consequently, repeated matrix multiplications may be numerically close without being exactly reproducible. Reproducibility can be improved by enforcing a fixed reduction tree, using deterministic library modes, accumulating in higher precision, or applying compensated or reproducible summation algorithms. These measures generally impose costs in speed, memory use, or parallel scalability, so high-performance systems often favor bounded numerical accuracy over bitwise-identical results."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 55,
+        "outputTokens": 573,
+        "totalTokens": 628,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 7398
+    }
+}

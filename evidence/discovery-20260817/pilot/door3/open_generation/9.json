@@ -1,0 +1,101 @@
+{
+  "id": "resp_030e1806608dc7f3006a833fe75dd881939acfd98e190e1bbc",
+  "object": "response",
+  "created_at": 1786986471,
+  "status": "completed",
+  "background": false,
+  "billing": {
+    "payer": "developer"
+  },
+  "completed_at": 1786986485,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 16000,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-sol",
+  "moderation": null,
+  "output": [
+    {
+      "id": "rs_030e1806608dc7f3006a833fe7ece4819394f887ea04a3cc89",
+      "type": "reasoning",
+      "content": [],
+      "encrypted_content": "gAAAAABqgz_1NobltFBaSfYSzroAGR9yaCQTqxgIcS111KPuh5rUCXIvDSSy7yArw6pI6q-9Ub_2elcgyLBCbXyHsdDhm3XD1AT_fuFc205qzSmnAg_q9v3Ri32z9ArTKFbInkCu5S01JGeWvrVeC7fbtn7q20vtW-fpMTTamuZyZl3FrW5aq6fR2QJPO10CBfqoUMs6A4CMMHm8eWEk9dZOxO-749bJ0WKHBp90YkbUZUEKPl7Zj2TxBiUXpEtf_M1ed8FG6v8zh3HZytAOvYqTCc1BVwGpxapOr4T4GAFuIvmh4vVbsNPF77IxphlxLSpd59uWW-T_LCrR8mCbew0GRKnrGW_qS3-9qKn0VjwQCEeA2FEl79cObHAiAjHBkYreMZUZkgVYACEq__TDiOsV9CNtz77E-zKtPPBQPuqNFDhDFL1Gm96zxoZ5UqpxJXBHRyFmARLM1jNjcoEn7beYZTjdXorJfb0k31_5zwh60Xq1Z2Oi8BnI9I9kKkcuTPeKBU5pJC7xn_lLB0JVRBBo980O4K2NzKaDtFJg-9Ue_z95mKUQwOmhfx7MOayZ5OgYqS2Zut0Tqmc4ia-HLF-d3MH2FwJlxjSthdXi8A9l0L-U-3PlnXyK0Jj0DLsZu9Fr4Ez-wPJaj2CN0AKOQqhjTzFzWG2mC5q7JMdo9As1t_WyDgtRL8RbowwTXwB-WTS9SCj0ki4zjaUMha2h6A5aC4OoWAJ12C16RZhU8HUbVHCUN4t68eHZLnyoIla3SSiDfQ3AhJZldpyw7K4hUsGG3cHBN718IfmjC2-UX8mpCvHMfdWqUAht2s7R25ivpzK-adIs4RBwFdJPX8Ek5CmCDfvGuVPdtghwwYl1rrz4s0v6oZxpBexWvvs5-obtadSqLgoDKyVtEG3krEfhzj0b71p58M66APzu0Y6DPvjmJmCtlutCHz84ngCX7_HnKbaZlxAfUX8M5PFAq0udEv8DNx6ANuUIS49uPoiJA_19_Foq-TeWJ3-ZBCRoQNYoBFk_BbpzlifhlpoGPuv70DOCUk0WwT2-LAjOYNVRRSR2gE4CMzHE28PLdD3-x93N65QSNamxiJUUqbQWE6TmRXbofOOGu8JJBEfPG9yP5gPQf6MW7g3ZgM7LDtB9M6fD5BNbSsp905Js6WgtloRM6OmUF1KrR0dPOkIpZKTuqHsDt0vctMSUp828czLp_ixzu38kWV231pWYxxzneymYZhhgSKPe6b_NryQRQeXpwQuVXEh2iZZLyHAhLrOyumCMM1NDv7Dlq8EPnziHGi9KzTQ8i2735NHy2hjsS39ylBqcK7slj5UuIBvXvwBHy9HbMRvCOpuh8HTgjI18TEHrFu1ZQq1vWCmPsusC6Zf0lyYQj0G9dwhN16smextFQxQOQcwyE3Qi9hHOOM34943QPcZs41oHbaxDKyQEE8xPhnIGiMlti3qal2dvne-cQ7nEYF-n4nk5kVKRXPyLs120jy7KsaHPSGKuYMUXwyzJpqw6FHOBBOTcQq1oqccOCzt3qgu-i1CzHEUvdDVRnugt_EmNYs5pxoAvQYHw9LXPgNv8SeOIBl0OYl_sfQyxIL3sF4BwNVIoqhBdv3V4Ijh2cNWyv2fFligJhDnAx93xuP4JtO21F_YU6YM=",
+      "summary": []
+    },
+    {
+      "id": "msg_030e1806608dc7f3006a833fe941008193b50f66683717475d",
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Floating-point addition is not associative because modern computers represent real numbers with finite precision. In exact arithmetic, changing the grouping of a sum does not change its value: adding a and b first, then c, gives the same result as adding b and c first, then a. Floating-point arithmetic, however, rounds most intermediate results to the nearest representable number. Because rounding occurs after each operation, changing the order of operations changes which intermediate values are rounded and therefore may change the final result.\n\nThe effect is especially visible when numbers have very different magnitudes. If a very small number is added to a very large number, the small contribution may fall below the precision available at the large number\u2019s scale and disappear entirely. If several small numbers are added together first, their combined value may become large enough to affect the later addition. Cancellation also matters: subtracting nearly equal values can remove leading significant digits, making earlier rounding errors relatively important. Thus, even when every operation follows the IEEE 754 standard correctly, different groupings can produce different valid floating-point answers.\n\nLarge matrix multiplications contain many such additions. Each output element is a dot product, formed by multiplying corresponding entries and summing the products. For large matrices, these sums may contain thousands or millions of terms. High-performance implementations do not usually accumulate them in one fixed left-to-right sequence. They divide matrices into blocks, distribute work among processor cores, vector units, GPUs, or multiple machines, and combine partial sums through reduction trees. The precise reduction order may depend on thread scheduling, block size, hardware architecture, compiler optimizations, or the number of workers.\n\nTwo executions can therefore evaluate the same mathematical matrix product using different parenthesizations of each dot product. Since floating-point addition is not associative, their output entries can differ slightly in their least significant bits. Fused multiply-add instructions can introduce further differences because they compute a product and addition with a single final rounding, whereas separate multiplication and addition round twice.\n\nThese discrepancies are usually small, but they can prevent bit-for-bit reproducibility. They may also become significant in ill-conditioned problems or later computations that amplify small perturbations. Reproducible implementations must impose a deterministic reduction order or use techniques such as compensated summation, higher-precision accumulation, or specially designed reproducible reductions. Such methods often reduce performance or require extra memory and synchronization, so numerical libraries commonly prioritize speed and bounded numerical error over identical results across execution orders and hardware."
+        }
+      ],
+      "phase": "final_answer",
+      "role": "assistant"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "medium",
+    "mode": "standard",
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "store": true,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 55,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 573,
+    "output_tokens_details": {
+      "reasoning_tokens": 75
+    },
+    "total_tokens": 628
+  },
+  "user": null,
+  "metadata": {}
+}

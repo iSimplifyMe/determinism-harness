@@ -1,0 +1,27 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "reasoningContent": {
+                        "redactedContent": "cnNuX3BVUGgxNnRvNFZLWURnSkFQeW1iRUFJRmVBMGhQSjZUd3MxUDk0dnVzeTRoYTU4emhmRWJ6UmhENGxObVp6UnBmNUlZQUY4QUFRQVZZWGR6TFdOeWVYQjBieTF3ZFdKc2FXTXRhMlY1QUVSQmQwSjRTa3h2WVhKRGMzZFJaalY0VmxST1VucGtkWFJhY2xkSVZEZ3dRbFpzVGpoa1oyNTZaSEZ0TW1ock4xRklPR1l5Y1hOWVRHTTFjMmhxUVZoWkwxRTlQUUFCQUJGaGQzTXRhMjF6TFdocFpYSmhjbU5vZVFBS1ltVnliUzF6ZEc5eVpRQmNGMk91Z1UyTDNXWk9DVkxsamZXLzZRdHd2Y0gxUFZJRERTbU1wYnlNUzlzVU9FejZtUWk3SDF4cDRPUGdpaE00bXNrQ01WNUlhT0Q4WTh3bC92cGhDMDlHVEJlSG5zT281eW5TR3dDRTN2aHpsTjUvTk5qTk9pbWF6OGNDQUFBUUFMTmt0OG0yT3NtVCtodFlITEcxVFZMRlYrOGRCYUl1dGlxa1RGYkIyTTVxQnZVVHVBVy9NZ2txUC9kcHJwcUdSLy8vLy84QUFBQUJBQUFBQUFBQUFBQUFBQUFCQUFBQmdMVzllT2pjRDVoYkZTR2wzNGVsMmM1UkhDb0tlaDNBSFB1Wjh1d09wOTZuMlc2WlI1ZlpKYWxRV1RzTXZEUlJMaDNoelQvR2IwLy9TcE4zODJwVFU4M3hYVnBsd3BhR0xSVHI0RmkyRE8zYy8xT2JQelVmeEQ5WllrSzNURXM4WXQwTVFZcHhVZWFSbkgvcEluV2tPcmpSTXJXNlJ5cFdzWm50bU8rcGJEY0tzemcveExIaUhpbDBMaFFwczdPbnhLa05UTzlWaktzbGFmNWZPaXNlSHZvb1NjU3ErR3FsVnVrZDhod2k5YjNJMG42VGxHdG4ybk5DK1M4MlpxbXlwOGg3UTd6ZmFyeG9DQTJKcnZvbDN4N1VHaFRGYVF2RTBhb2ZvRFZWZ3VQZG1MUk8wZUVNWUZUT2pmQ3ArM1VpT2NZNUczbWxIcVkxaE1wSWM1eUJhYng1RXlQRUhHRmczNWhNeCtic2FUNHgzV0lYdnh2ZjB1d2o3Sk9jdWJqSnNGVzRuaUtySlJud1pobldqSWRSOStsM0RHSEhuelJNaHJ1TWlLT3puK2JuczNDVE40bWt4ZE1GNHZDUGJ5KzhxalVoV2w0VGk2NGs1Ync5WXRJZit5WWt4NGhPR044TmtnS3MrRjFJVHZJUkgvUUc4WlQ2L01ZNmJLN3d0Um1kR0d5RTdaTWhlUHBFeVVBL0NwNlBZajRBWnpCbEFqQkhPYjRQTW1iZGt2dzRReGVTV1BtU1RCLzlWeW1uNVlIUG1iVFBBdmJQQ1loRmlwT2o3Q3lxQUc4S2xla1JHNGNDTVFDczdvRGtLVHlsTDMzSzVzbXNkb0x1MklCZThtdnNQWS9DWDFOUE1UTXZtMzNTdE5nY2JVRzBlU3pQVUs4YUQ1Zz0="
+                    }
+                },
+                {
+                    "text": "16"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 28,
+        "outputTokens": 236,
+        "totalTokens": 264,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 10705
+    }
+}

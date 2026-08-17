@@ -1,0 +1,22 @@
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "text": "PO-83614-QN"
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 220,
+        "outputTokens": 10,
+        "totalTokens": 230,
+        "cacheReadInputTokens": 0
+    },
+    "metrics": {
+        "latencyMs": 1506
+    }
+}
