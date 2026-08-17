@@ -1,11 +1,12 @@
-# Pre-registration v4.0 (DRAFT — NOT FROZEN): Door Attribution on OpenAI Weights
+# Pre-registration v4.0 (FROZEN): Door Attribution on OpenAI Weights
 
-**Status: DRAFT — freeze occurs only after the section-5 checklist closes,
-this file is bumped to v4.0, tagged `prereg-v4`, and pushed BEFORE the first
-confirmatory call.** The 2026-08-17 discovery session (n=20/cell, four doors,
-~250 calls) is **exploratory and forms no part of the confirmatory dataset**;
-it is disclosed in section 6 and its raw records are committed to this
-repository as a freeze-checklist item.
+**Status: FROZEN v4.0 — tag `prereg-v4`, pushed before the first
+confirmatory call, same discipline as studies 1–3. Frozen 2026-08-17;
+owner spend approval recorded the same day.** The 2026-08-17 discovery
+session (n=20/cell, four doors, ~250 calls) is **exploratory and forms
+no part of the confirmatory dataset**; it is disclosed in section 6 and
+its raw records are committed at `9770eb6`
+(`evidence/discovery-20260817/`).
 
 Lineage: study 1 (`prereg-v1`, published) measured reproducibility on one
 serving plane; study 2 (`prereg-v2`, published as *The Same Model, Three
@@ -197,8 +198,8 @@ spend is a recorded covariate on every call where the door exposes it.
       DoD, Q4 routing bound, Q5 dispersion + association) —
       `analysis/analyze_study4.py` + `tests/test_analyze_study4.py`,
       full suite green (335)
-- [ ] This file bumped to v4.0, tagged `prereg-v4`, pushed before any
-      confirmatory call
+- [x] This file bumped to v4.0, tagged `prereg-v4`, pushed before any
+      confirmatory call (frozen 2026-08-17)
 
 Pre-confirmatory machinery (may land after the tag; must be committed
 and dry-run verified before the first confirmatory call; touches no
