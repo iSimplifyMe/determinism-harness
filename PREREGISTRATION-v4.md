@@ -172,7 +172,8 @@ spend is a recorded covariate on every call where the door exposes it.
 
 ## 5. Freeze checklist (OPEN — every item must close before tag)
 
-- [ ] Owner spend approval (~$90–130 HTTP + $0 codex pre-Sep-17)
+- [x] Owner spend approval (~$90–130 HTTP + $0 codex pre-Sep-17) —
+      approved 2026-08-17
 - [x] Door request builders + invariant tests committed (Responses
       shared builder, byte-parity modulo model alias; Converse
       effort-pin encoding; codex measured/receipt argv pair; no-store
