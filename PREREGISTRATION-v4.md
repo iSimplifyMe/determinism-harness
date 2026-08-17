@@ -183,15 +183,24 @@ spend is a recorded covariate on every call where the door exposes it.
       firing on Converse, mantle bare-alias probe (REJECTED ⇒ one-field
       body difference), codex per-batch effort receipts both arms —
       `evidence/smoke-study4.json`, 19/19 PASS 2026-08-17
-- [ ] Discovery raw records (2026-08-17, ~250 calls, four doors)
+- [x] Discovery raw records (2026-08-17, ~250 calls, four doors)
       imported to evidence/discovery-20260817/ and committed
 - [ ] codex batch plan verified against live Plus rate windows (one
       dry batch of 40; observed ceiling recorded)
-- [ ] Analysis code for Q1–Q5 estimators committed BEFORE confirmatory
-      data (per-door variant shares, stratified TOST, effort DoD, Q5
-      dispersion + association readout)
+- [x] Analysis code for Q1–Q5 estimators committed BEFORE confirmatory
+      data (per-door variant shares + Fisher, stratified TOST, effort
+      DoD, Q4 routing bound, Q5 dispersion + association) —
+      `analysis/analyze_study4.py` + `tests/test_analyze_study4.py`,
+      full suite green (335)
 - [ ] This file bumped to v4.0, tagged `prereg-v4`, pushed before any
       confirmatory call
+
+Pre-confirmatory machinery (may land after the tag; must be committed
+and dry-run verified before the first confirmatory call; touches no
+registered quantity):
+
+- [ ] study-4 runner modes (schedule builder, door dispatch, manifests,
+      per-batch codex receipts) with a `--dry-run` schedule verified
 
 ## 6. Discovery disclosure (exploratory, not evidence — 2026-08-17)
 
