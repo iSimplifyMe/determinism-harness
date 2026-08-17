@@ -205,8 +205,16 @@ Pre-confirmatory machinery (may land after the tag; must be committed
 and dry-run verified before the first confirmatory call; touches no
 registered quantity):
 
-- [ ] study-4 runner modes (schedule builder, door dispatch, manifests,
-      per-batch codex receipts) with a `--dry-run` schedule verified
+- [x] study-4 runner modes (schedule builder, door dispatch, manifests,
+      per-batch codex receipts) with a `--dry-run` schedule verified —
+      completed 2026-08-17 post-tag as registered: modes
+      `study4-full` (2,400 calls/24 cells per window) · `study4-codex`
+      (800/8, driven in registered batches by
+      `scripts/run_codex_batches.py`, resume-aware, receipt-gated) ·
+      `study4-q4q5` (250/10, exploratory); dry-run manifests + a live
+      10-call q4q5 shakedown at `--repeats 1` (10/10 clean, wire hash on
+      every HTTP record, analyzer consumed the records end to end) in
+      `evidence/study4-runner-shakedown/`; suite green (349)
 
 ## 6. Discovery disclosure (exploratory, not evidence — 2026-08-17)
 

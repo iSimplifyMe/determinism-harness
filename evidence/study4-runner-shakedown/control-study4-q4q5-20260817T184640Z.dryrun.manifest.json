@@ -1,0 +1,80 @@
+{
+  "cells": [
+    "mantle|open_generation|default",
+    "mantle|structured_json|default",
+    "openai_1p|open_generation|default",
+    "openai_1p|structured_json|default",
+    "runtime_global|open_generation|none",
+    "runtime_global|structured_json|none",
+    "runtime_us|open_generation|default",
+    "runtime_us|open_generation|none",
+    "runtime_us|structured_json|default",
+    "runtime_us|structured_json|none"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-08-17T18:46:40.023197+00:00",
+  "doors": [
+    "mantle",
+    "openai_1p",
+    "runtime_global",
+    "runtime_us"
+  ],
+  "dry_run": true,
+  "exploratory": true,
+  "git_head": "9614c46fff042c79b846c6a2a0595951f6fbfef3",
+  "mode": "study4-q4q5",
+  "n_cells": 10,
+  "n_items": 250,
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "mantle|open_generation|default",
+      "372ecf701aaeaa313d9f9f754e8d9f11cb5027a4fb7771d88bdcd0059baf495a"
+    ],
+    [
+      "mantle|structured_json|default",
+      "08e678b3e3881721f21b86c75e22c56fddbff646850a464b324386bc1f5b333c"
+    ],
+    [
+      "openai_1p|open_generation|default",
+      "53483a3f39889e82f35e726a837cd725815b65d66d89084b4e70da8bffec86af"
+    ],
+    [
+      "openai_1p|structured_json|default",
+      "9eb335b7bfc6283ad311c29afd515c035d12af2c162b188a9ba17cdc12dce52d"
+    ],
+    [
+      "runtime_global|open_generation|none",
+      "afc97fdbc319e5a50a8f244435e80bd51deb8262f29dbaeb92a9615992e76a9e"
+    ],
+    [
+      "runtime_global|structured_json|none",
+      "b56873cc6b6a33e13dc3005e1e2bf212136f81ddb260c68317b99aac83df8eef"
+    ],
+    [
+      "runtime_us|open_generation|default",
+      "d5f6a9273a57e9af996eddd14732c8fb6f453896d14b0a697a96b7d0ac9839fc"
+    ],
+    [
+      "runtime_us|open_generation|none",
+      "5d2620db2127288a75cdea28df00374082a536310bff3da942e52e442c20c15e"
+    ],
+    [
+      "runtime_us|structured_json|default",
+      "eb27d422e5828625b4b1e8e509f9f123ab1fa2aff528523d40795716a413d25c"
+    ],
+    [
+      "runtime_us|structured_json|none",
+      "b34c62a939003915b6f21afc1c6e0afbb3f4dd7966ecdbc38928ae05f6175a01"
+    ]
+  ],
+  "retry_max_attempts": 3,
+  "run_name": "control-study4-q4q5-20260817T184640Z",
+  "run_settings": null,
+  "schedule_sha256": "c4b68e9394f3eb2a8b35985b792ed6d60c9b71f250250d08d56a8cf3a3556294",
+  "schema": 4,
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}

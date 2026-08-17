@@ -61,6 +61,12 @@ from harness.config import (
     REPEATS_FULL,
     REPEATS_PILOT,
     REPEATS_STUDY3_PILOT,
+    STUDY4_DOORS,
+    STUDY4_EFFORT_ARMS,
+    STUDY4_MAX_OUTPUT_TOKENS,
+    STUDY4_REPEATS_EXPLORATORY,
+    STUDY4_REPEATS_FULL,
+    STUDY4_RETRY_MAX_ATTEMPTS,
     WINDOWS,
     cell_key,
     cell_key2,
@@ -74,6 +80,7 @@ from harness.config import (
     local_pinned_arm,
     plane_model_id,
 )
+from harness.doors import make_door
 from harness.logprob_capture import compact_margins
 from harness.planes import BEDROCK_RETRYABLE_CODES, make_plane
 from harness.request_builder import (
@@ -81,6 +88,9 @@ from harness.request_builder import (
     canonical_bytes,
     canonical_local_body,
     canonical_messages_params,
+    canonical_responses_body,
+    codex_argv,
+    converse_request,
     sha256_hex,
 )
 from harness.tasks import TASKS, padded_prompt
@@ -120,10 +130,21 @@ STUDY3_MODES = (
     "study3-q2-concurrency",
     "study3-120b-window",
 ) + COMPANION_MODES
+# Study-4 modes (PREREGISTRATION-v4 sections 2 and 7): the HTTP grid runs
+# per window; the codex door runs its single window's worth in batches
+# (scripts/run_codex_batches.py drives study4-codex slices); Q4/Q5
+# exploratory arms share one control-window run.
+STUDY4_MODES = (
+    "study4-full",
+    "study4-codex",
+    "study4-q4q5",
+)
+STUDY4_HTTP_GRID_DOORS = ("openai_1p", "mantle", "runtime_us")
 MODES = (
     ("pilot", "full", "positive-control", "effort-sweep")
     + STUDY2_MODES
     + STUDY3_MODES
+    + STUDY4_MODES
 )
 
 
@@ -139,6 +160,19 @@ def study3_run_settings(mode):
             "allow_same_cell_concurrency": True,
         }
     return {"concurrency": 1, "allow_same_cell_concurrency": False}
+
+
+def study4_run_settings(mode):
+    """Execution constraints per study-4 mode. The codex door is one
+    subprocess per call against a subscription rate window — strictly
+    sequential; parallel exec bursts are exactly what the registered batch
+    plan avoids. HTTP modes keep the default concurrency (the same-cell
+    in-flight guard already serializes within a cell)."""
+    if mode not in STUDY4_MODES:
+        return None
+    if mode == "study4-codex":
+        return {"concurrency": 1, "allow_same_cell_concurrency": False}
+    return None
 
 
 def utc_now_iso():
@@ -774,9 +808,74 @@ def build_schedule(mode, box=None, repeats=None):
                               cfg["tag"], r)
                 item["capture_logprobs"] = True
                 items.append(item)
+    elif mode == "study4-full":
+        n = repeats or STUDY4_REPEATS_FULL
+        for door_key in STUDY4_HTTP_GRID_DOORS:
+            for task_key in TASKS:
+                for effort in STUDY4_EFFORT_ARMS:
+                    for r in range(n):
+                        items.append(_study4_item(door_key, task_key, effort, r))
+    elif mode == "study4-codex":
+        n = repeats or STUDY4_REPEATS_FULL
+        for task_key in TASKS:
+            for effort in STUDY4_EFFORT_ARMS:
+                for r in range(n):
+                    items.append(_study4_item("codex_sub", task_key, effort, r))
+    elif mode == "study4-q4q5":
+        n = repeats or STUDY4_REPEATS_EXPLORATORY
+        for door_key in ("runtime_us", "runtime_global"):
+            for task_key in ("structured_json", "open_generation"):
+                for r in range(n):
+                    items.append(_study4_item(
+                        door_key, task_key, "none", r, control="q4_routing"
+                    ))
+        for door_key in STUDY4_HTTP_GRID_DOORS:
+            for task_key in ("structured_json", "open_generation"):
+                for r in range(n):
+                    items.append(_study4_item(
+                        door_key, task_key, "default", r, control="q5_default"
+                    ))
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
+
+
+def _study4_item(door_key, task_key, effort, repeat, control=None):
+    """Door item (PREREGISTRATION-v4 section 3). Responses doors: canonical
+    bytes ARE the wire bytes (hashed == sent). Converse doors: the kwargs
+    dict; its canonical hash is the planned-request hash, wire captured by
+    the door's before-send hook. codex: the argv is the planned request; no
+    wire control exists on the harness door by registration."""
+    cfg = STUDY4_DOORS[door_key]
+    prompt = TASKS[task_key]["prompt"]
+    meta = {"door": door_key, "task": task_key, "effort": effort}
+    if control:
+        meta["control"] = control
+    if cfg["kind"] == "responses":
+        payload = canonical_responses_body(
+            cfg["model_id"], prompt, effort, STUDY4_MAX_OUTPUT_TOKENS
+        )
+        sha = sha256_hex(payload)
+    elif cfg["kind"] == "converse":
+        payload = converse_request(
+            cfg["model_id"], prompt, effort, STUDY4_MAX_OUTPUT_TOKENS
+        )
+        sha = sha256_hex(canonical_bytes(payload))
+    else:  # codex
+        payload = codex_argv(
+            cfg["model_id"], prompt, effort,
+            os.path.expanduser("~/.cache/gpts"),
+        )
+        sha = sha256_hex(canonical_bytes(payload))
+    return {
+        "cell": f"{door_key}|{task_key}|{effort}",
+        "meta": meta,
+        "door": door_key,
+        "payload": payload,
+        "sha": sha,
+        "model_id": cfg["model_id"],
+        "repeat": repeat,
+    }
 
 
 def git_head():
@@ -808,6 +907,7 @@ class Engine:
         run_info=None,
         max_attempts=6,
         plane_clients=None,
+        door_clients=None,
         allow_same_cell_concurrency=False,
     ):
         self.items = items
@@ -837,6 +937,14 @@ class Engine:
         for plane_name in sorted(p for p in needed if p):
             if plane_name not in self.planes:
                 self.planes[plane_name] = make_plane(plane_name)
+
+        # Study-4 door clients: constructed up front so a missing credential
+        # fails the run before the first call, never mid-schedule.
+        self.doors = dict(door_clients or {})
+        needed_doors = {it.get("door") for it in items}
+        for door_key in sorted(d for d in needed_doors if d):
+            if door_key not in self.doors:
+                self.doors[door_key] = make_door(door_key)
 
         self.client = None
         if None in needed:  # study-1 items use the legacy inline Bedrock path
@@ -1044,6 +1152,53 @@ class Engine:
             record["unload_wait_ms"] = unload_info["wait_ms"]
         return record
 
+    def _execute_door(self, item, rng, schedule_index):
+        """Study-4 execution: dispatch through harness.doors; retry on the
+        record's own retryable classification with the registered bound
+        (max_attempts is set to STUDY4_RETRY_MAX_ATTEMPTS by main for
+        study-4 modes; an exhausted item is a counted exclusion)."""
+        door = self.doors[item["door"]]
+        base = {
+            "schema": 4,
+            **self.run_info,
+            "schedule_index": schedule_index,
+            "cell": item["cell"],
+            "repeat": item["repeat"],
+            "door": item["door"],
+            "model_id_sent": item["model_id"],
+            "request_sha256": item["sha"],
+            **{f"meta_{k}": v for k, v in item["meta"].items()},
+        }
+        attempts = 0
+        result = {
+            "ok": False, "error_code": "unknown",
+            "error_message": "no attempt made", "retryable": False,
+        }
+        while attempts < self.max_attempts:
+            attempts += 1
+            sent_at = utc_now_iso()
+            result = door.invoke(item["payload"])
+            if result["ok"]:
+                return {
+                    **base,
+                    **result,
+                    "attempts": attempts,
+                    "sent_at_utc": sent_at,
+                    "received_at_utc": utc_now_iso(),
+                }
+            if result.get("retryable") and attempts < self.max_attempts:
+                with self.lock:
+                    self.retries += 1
+                time.sleep(min(60.0, 2.0 ** attempts) + rng.uniform(0, 1))
+                continue
+            break
+        return {
+            **base,
+            **result,
+            "attempts": attempts,
+            "sent_at_utc": utc_now_iso(),
+        }
+
     def _worker(self, worker_index):
         try:
             rng = random.Random(worker_seed(self.seed, worker_index))
@@ -1060,7 +1215,9 @@ class Engine:
                     self._sleep(rng.uniform(0.25, 1.0))  # anti-burst jitter
                 elif pre_sleep_ms > 0:
                     self._sleep(pre_sleep_ms / 1000.0)
-                if item.get("plane"):
+                if item.get("door"):
+                    record = self._execute_door(item, rng, idx)
+                elif item.get("plane"):
                     record = self._execute_plane(item, rng, idx)
                 else:
                     record = self._execute(item, rng, idx)
@@ -1113,6 +1270,14 @@ def main():
     rng = random.Random(args.seed)
     if not fixed:
         rng.shuffle(schedule)
+
+    settings4 = study4_run_settings(args.mode)
+    if settings4 and args.concurrency != settings4["concurrency"]:
+        print(
+            f'{args.mode} enforces concurrency='
+            f'{settings4["concurrency"]} (--concurrency ignored)'
+        )
+        args.concurrency = settings4["concurrency"]
 
     settings = study3_run_settings(args.mode)
     warmups = []
@@ -1175,6 +1340,14 @@ def main():
         if args.mode in COMPANION_MODES:
             manifest["exploratory"] = True
             manifest["companion_plan"] = "FOLLOWUP-COMPANIONS.md"
+    elif args.mode in STUDY4_MODES:
+        manifest["schema"] = 4
+        manifest["doors"] = sorted({it["door"] for it in schedule})
+        manifest["repeats_override"] = args.repeats
+        manifest["run_settings"] = settings4
+        manifest["retry_max_attempts"] = STUDY4_RETRY_MAX_ATTEMPTS
+        if args.mode == "study4-q4q5":
+            manifest["exploratory"] = True
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")
@@ -1196,6 +1369,18 @@ def main():
             "ANTHROPIC_API_KEY"
         ):
             missing.append("ANTHROPIC_API_KEY (first-party plane, run-scoped)")
+        if missing:
+            for name in missing:
+                print(f"MISSING CREDENTIAL: {name}", flush=True)
+            return 3
+
+    if args.mode in STUDY4_MODES:
+        doors_present = {it["door"] for it in schedule}
+        missing = []
+        for door_key in sorted(doors_present):
+            env_name = STUDY4_DOORS[door_key].get("api_key_env")
+            if env_name and not os.environ.get(env_name):
+                missing.append(f"{env_name} ({door_key}, run-scoped)")
         if missing:
             for name in missing:
                 print(f"MISSING CREDENTIAL: {name}", flush=True)
@@ -1245,6 +1430,10 @@ def main():
             "plane_clients": {"local": local_plane},
             "allow_same_cell_concurrency": settings["allow_same_cell_concurrency"],
         }
+    elif args.mode in STUDY4_MODES:
+        # The registered retry bound (v4 section 3): 3 bounded-backoff
+        # attempts, then the item is a counted exclusion.
+        engine_kwargs = {"max_attempts": STUDY4_RETRY_MAX_ATTEMPTS}
     engine = Engine(
         schedule,
         out_path,
