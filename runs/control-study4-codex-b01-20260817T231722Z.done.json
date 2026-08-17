@@ -1,0 +1,11 @@
+{
+  "attempted_after_batch": 40,
+  "done": 40,
+  "expected": 40,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-08-17T23:21:50.541987+00:00",
+  "retries": 0,
+  "run_name": "control-study4-codex-b01-20260817T231722Z",
+  "schedule_total": 800
+}
