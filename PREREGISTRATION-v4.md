@@ -185,8 +185,12 @@ spend is a recorded covariate on every call where the door exposes it.
       `evidence/smoke-study4.json`, 19/19 PASS 2026-08-17
 - [x] Discovery raw records (2026-08-17, ~250 calls, four doors)
       imported to evidence/discovery-20260817/ and committed
-- [ ] codex batch plan verified against live Plus rate windows (one
-      dry batch of 40; observed ceiling recorded)
+- [x] codex batch plan verified against live Plus rate windows —
+      dry batch 40/40 clean at 5.2 s/call (207 s wall), receipts both
+      arms, zero rate-limit events across ~106 door calls same evening;
+      the trailing-zero variant pair reproduced through the production
+      door client (2 distinct texts at pinned `none`) —
+      `evidence/codex-dry-batch-20260817.*`, `scripts/codex_dry_batch.py`
 - [x] Analysis code for Q1–Q5 estimators committed BEFORE confirmatory
       data (per-door variant shares + Fisher, stratified TOST, effort
       DoD, Q4 routing bound, Q5 dispersion + association) —
