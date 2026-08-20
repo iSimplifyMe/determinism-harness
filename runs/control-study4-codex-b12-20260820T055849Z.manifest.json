@@ -1,0 +1,85 @@
+{
+  "batch_index": 12,
+  "batch_size": 40,
+  "cells": [
+    "codex_sub|classification|high",
+    "codex_sub|classification|none",
+    "codex_sub|extraction|high",
+    "codex_sub|extraction|none",
+    "codex_sub|open_generation|high",
+    "codex_sub|open_generation|none",
+    "codex_sub|structured_json|high",
+    "codex_sub|structured_json|none"
+  ],
+  "concurrency": 1,
+  "created_utc": "2026-08-20T05:58:49.673370+00:00",
+  "doors": [
+    "codex_sub"
+  ],
+  "effort_receipts": {
+    "high": {
+      "approval": "never",
+      "exit_code": 0,
+      "model": "gpt-5.6-sol",
+      "provider": "openai",
+      "reasoning_effort": "high",
+      "sandbox": "read-only"
+    },
+    "none": {
+      "approval": "never",
+      "exit_code": 0,
+      "model": "gpt-5.6-sol",
+      "provider": "openai",
+      "reasoning_effort": "none",
+      "sandbox": "read-only"
+    }
+  },
+  "git_head": "324e4636a7b1eb4362f703f12a24a39a1148e976",
+  "mode": "study4-codex",
+  "n_cells": 8,
+  "n_items": 40,
+  "prior_attempted": 440,
+  "request_sha_by_cell": [
+    [
+      "codex_sub|classification|high",
+      "c4fecc9da4f0e1afed90f350a524b6beff0d074d97691a6f14086d31b8d42774"
+    ],
+    [
+      "codex_sub|classification|none",
+      "0618810125d52440aaa9179d0a01716fb74e5fa7651d6b6eb02ab27995f98e8e"
+    ],
+    [
+      "codex_sub|extraction|high",
+      "73296a69f9d434aed248ceef820b851ca646f62dc1eb1ce80902d5df24a10861"
+    ],
+    [
+      "codex_sub|extraction|none",
+      "b21098ec6b087484f11fc51622866d345812b78e7acab7d2d973348fa2956d28"
+    ],
+    [
+      "codex_sub|open_generation|high",
+      "64e041ecfe0967b8329c8343f330bf0a4fe6ec8b0b96eb3cb94d7ddd90bb4fe6"
+    ],
+    [
+      "codex_sub|open_generation|none",
+      "f7de7054f97384531a5d7900b17a9d28e5c7e01cb1939250f3ba2e4e54bbbc12"
+    ],
+    [
+      "codex_sub|structured_json|high",
+      "5741a4a370175d81f197298b139408cccb12e8a8c7b23afbf4e5e465992b135c"
+    ],
+    [
+      "codex_sub|structured_json|none",
+      "64b008d6bf0d97d39c9e272e929ca32eb096af2cd01d0efd036c90442830e0c4"
+    ]
+  ],
+  "retry_max_attempts": 3,
+  "run_name": "control-study4-codex-b12-20260820T055849Z",
+  "schedule_sha256_batch": "0dba8b7bbdda61b1f35c1371d7b65aa345a719d8cf9add5f5eed4847c344f5df",
+  "schedule_sha256_full": "1f3b38e10adaa13f5284a31acf9e88241ae70dec1edee8d231935af1ee7477a2",
+  "schedule_total": 800,
+  "schema": 4,
+  "seed": 20260727,
+  "window": "control",
+  "window_definition": "any, recorded in the manifest"
+}
