@@ -120,6 +120,26 @@ fi
 PRIOR=$(ls runs/"$WINDOW"-study4-full-*.jsonl 2>/dev/null | grep -v dryrun || true)
 [ -z "$PRIOR" ] || abort "window already has record file(s): $PRIOR"
 
+# --- preflight 6: registered ORDER (prereg-v4 s7: low THEN peak) ---
+# peak runs only once the low window is COMPLETE (all calls attempted,
+# done.json complete=true, record count = schedule). Exclusions/failures
+# inside a complete low window do not block peak — they are counted, not
+# retried. A missing/partial low window => abort, owner decides.
+if [ "$WINDOW" = "peak" ]; then
+  LOW_DONE=$(ls runs/low-study4-full-*.done.json 2>/dev/null | grep -v dryrun | tail -1 || true)
+  [ -n "$LOW_DONE" ] || abort "no complete low window on disk (runs/low-study4-full-*.done.json) — registered order is low THEN peak"
+  LOW_OK=$("$PY" - "$LOW_DONE" "$EXPECT_CALLS" <<'PYEOF'
+import json, os, sys
+d = json.load(open(sys.argv[1]))
+jsonl = sys.argv[1].replace(".done.json", ".jsonl")
+n = sum(1 for _ in open(jsonl)) if os.path.exists(jsonl) else 0
+ok = bool(d.get("complete")) and n == int(sys.argv[2])
+print("ok" if ok else f"complete={d.get('complete')} records={n}")
+PYEOF
+)
+  [ "$LOW_OK" = "ok" ] || abort "low window not complete ($LOW_DONE: $LOW_OK)"
+fi
+
 post_slack ":rocket:" "STARTED $STAMP — $EXPECT_CALLS calls / $EXPECT_CELLS cells, one compressed run (prereg-v4 s7)."
 log "preflight OK — starting live run"
 
