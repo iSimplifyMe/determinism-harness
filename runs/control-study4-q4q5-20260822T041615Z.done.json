@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 250,
+  "expected": 250,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-08-22T04:22:46.753774+00:00",
+  "retries": 0,
+  "run_name": "control-study4-q4q5-20260822T041615Z"
+}
