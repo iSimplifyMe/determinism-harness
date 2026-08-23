@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 2400,
+  "expected": 2400,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-08-23T07:43:34.819792+00:00",
+  "retries": 0,
+  "run_name": "low-study4-full-20260823T070203Z"
+}
