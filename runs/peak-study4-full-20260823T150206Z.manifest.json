@@ -1,0 +1,150 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "mantle|classification|high",
+    "mantle|classification|none",
+    "mantle|extraction|high",
+    "mantle|extraction|none",
+    "mantle|open_generation|high",
+    "mantle|open_generation|none",
+    "mantle|structured_json|high",
+    "mantle|structured_json|none",
+    "openai_1p|classification|high",
+    "openai_1p|classification|none",
+    "openai_1p|extraction|high",
+    "openai_1p|extraction|none",
+    "openai_1p|open_generation|high",
+    "openai_1p|open_generation|none",
+    "openai_1p|structured_json|high",
+    "openai_1p|structured_json|none",
+    "runtime_us|classification|high",
+    "runtime_us|classification|none",
+    "runtime_us|extraction|high",
+    "runtime_us|extraction|none",
+    "runtime_us|open_generation|high",
+    "runtime_us|open_generation|none",
+    "runtime_us|structured_json|high",
+    "runtime_us|structured_json|none"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-08-23T15:02:06.211248+00:00",
+  "doors": [
+    "mantle",
+    "openai_1p",
+    "runtime_us"
+  ],
+  "dry_run": false,
+  "git_head": "dfd5d2fae50e518abd7b2117bc5f3c214ee4b9bb",
+  "mode": "study4-full",
+  "n_cells": 24,
+  "n_items": 2400,
+  "region": "us-east-1",
+  "repeats_override": null,
+  "request_sha_by_cell": [
+    [
+      "mantle|classification|high",
+      "002ff642726b4edb9cc4325a584bac54201f477b5f04ac9fcabb0aeb82488581"
+    ],
+    [
+      "mantle|classification|none",
+      "04e53916295586861e86c6492efebc0ad37beba9fbbc08bd82171fcf49e2597f"
+    ],
+    [
+      "mantle|extraction|high",
+      "8e096f7f92f50e96d82dd789b63c572b823fded5a6c2aa0d6132440838efc200"
+    ],
+    [
+      "mantle|extraction|none",
+      "a26ece5bd38c0b34f1c9b5a66645ba3b0d30c8d06061174e3c1364f7e31fe870"
+    ],
+    [
+      "mantle|open_generation|high",
+      "89b81a11f1293aa920a675dd85a781f92dd029dc830c3a1542f3a3dd4bcce187"
+    ],
+    [
+      "mantle|open_generation|none",
+      "3268a5213a3c2611462ccd2418354b67277e102ac5b083542620caef0a4e657d"
+    ],
+    [
+      "mantle|structured_json|high",
+      "dfa02a20e4c02fd06a0c7bda0cb1b108e77dbdb764d2867dc2b7691a59e051eb"
+    ],
+    [
+      "mantle|structured_json|none",
+      "47060d8b89585bb6c749222bbab77095e2143421cfce56b4b7b3ed43e148bf84"
+    ],
+    [
+      "openai_1p|classification|high",
+      "d8a773b81f7897197cd0841cd3de879e0c833b0740af261de73bf605294daaf0"
+    ],
+    [
+      "openai_1p|classification|none",
+      "b726ec86730c25794f82192967e903e528c93eca77ea7501eba708dbe33722e8"
+    ],
+    [
+      "openai_1p|extraction|high",
+      "8844ca1994a0a80abab74621cd7788f097060ec539844377265e897d9de64715"
+    ],
+    [
+      "openai_1p|extraction|none",
+      "afa8f453bcc0da00511b78a7c6473fd987e8417fc13d937fa315282ed397fd91"
+    ],
+    [
+      "openai_1p|open_generation|high",
+      "c2511986fe4e57bd9a2224e75232c20a10094a7e96f0708833df6f1094ac0292"
+    ],
+    [
+      "openai_1p|open_generation|none",
+      "434789fe144b42a9920b2b02e28825a2e7fa1ab6e513d5c6e179cf88580ded73"
+    ],
+    [
+      "openai_1p|structured_json|high",
+      "5c20df3bac069d9cc07c2886ea904b56eae9a9ec9f23324320ba09ada66bd292"
+    ],
+    [
+      "openai_1p|structured_json|none",
+      "c1bc6d2636e548dc9b3c2c95e00270a913de2d25af1f00d7596d4e2a753db4d0"
+    ],
+    [
+      "runtime_us|classification|high",
+      "291038c559c3a0ddd510e51487efc832595363dc3da27498d572c5978ab7a1f2"
+    ],
+    [
+      "runtime_us|classification|none",
+      "52048eeee21c9dd96ae67c9f833d0f1ead51df5cb05402897c241f73a4793a58"
+    ],
+    [
+      "runtime_us|extraction|high",
+      "f3f3bd13b45d2f7a3de0d8567e7e911cd8c1a4d26eb68ec2e1593270086a4936"
+    ],
+    [
+      "runtime_us|extraction|none",
+      "89e22322cf88dda98ab451dc373f8c02ff0b84d495418c0743c7db98d9202dcb"
+    ],
+    [
+      "runtime_us|open_generation|high",
+      "f17ec0a755b23972eac9291601349cf2596bb0c5248b04d5d3e31337659f56fc"
+    ],
+    [
+      "runtime_us|open_generation|none",
+      "5d2620db2127288a75cdea28df00374082a536310bff3da942e52e442c20c15e"
+    ],
+    [
+      "runtime_us|structured_json|high",
+      "fd1af33bfd0bcb1fe3616cf5da479c1d3b8071ac0458e4501a66e02c822a8732"
+    ],
+    [
+      "runtime_us|structured_json|none",
+      "b34c62a939003915b6f21afc1c6e0afbb3f4dd7966ecdbc38928ae05f6175a01"
+    ]
+  ],
+  "retry_max_attempts": 3,
+  "run_name": "peak-study4-full-20260823T150206Z",
+  "run_settings": null,
+  "schedule_sha256": "4709b5f823bf065b89750d5704b3ffd13e3c408908bcdb5a3332eca0dae117b0",
+  "schema": 4,
+  "seed": 20260727,
+  "window": "peak",
+  "window_definition": "15:00-19:00 UTC (US business morning/midday)"
+}
