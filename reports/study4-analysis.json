@@ -1,0 +1,440 @@
+{
+  "exclusion_codes": {},
+  "inputs": [
+    "runs/low-study4-full-20260823T070203Z.jsonl",
+    "runs/peak-study4-full-20260823T150206Z.jsonl",
+    "runs/control-study4-codex-b01-20260817T231722Z.jsonl",
+    "runs/control-study4-codex-b02-20260818T022723Z.jsonl",
+    "runs/control-study4-codex-b03-20260818T080802Z.jsonl",
+    "runs/control-study4-codex-b04-20260818T131255Z.jsonl",
+    "runs/control-study4-codex-b05-20260818T181924Z.jsonl",
+    "runs/control-study4-codex-b06-20260818T232528Z.jsonl",
+    "runs/control-study4-codex-b07-20260819T043033Z.jsonl",
+    "runs/control-study4-codex-b08-20260819T093602Z.jsonl",
+    "runs/control-study4-codex-b09-20260819T144259Z.jsonl",
+    "runs/control-study4-codex-b10-20260819T194859Z.jsonl",
+    "runs/control-study4-codex-b11-20260820T005343Z.jsonl",
+    "runs/control-study4-codex-b12-20260820T055849Z.jsonl",
+    "runs/control-study4-codex-b13-20260820T110553Z.jsonl",
+    "runs/control-study4-codex-b14-20260820T161131Z.jsonl",
+    "runs/control-study4-codex-b15-20260820T211813Z.jsonl",
+    "runs/control-study4-codex-b16-20260821T022709Z.jsonl",
+    "runs/control-study4-codex-b17-20260821T073400Z.jsonl",
+    "runs/control-study4-codex-b18-20260821T123954Z.jsonl",
+    "runs/control-study4-codex-b19-20260821T174617Z.jsonl",
+    "runs/control-study4-codex-b20-20260821T225300Z.jsonl",
+    "runs/control-study4-q4q5-20260822T041615Z.jsonl"
+  ],
+  "n_exclusions": 0,
+  "n_records": 5850,
+  "q1_door_attribution": {
+    "doors": {
+      "codex_sub": {
+        "modal_variant_share": 0.88,
+        "n": 100,
+        "variants": [
+          {
+            "count": 88,
+            "sha": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"
+          },
+          {
+            "count": 12,
+            "sha": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.50,\"reorder_threshold\":6,\"in_stock\":true}"
+          }
+        ],
+        "wilson95": [
+          0.8018790057328857,
+          0.9300059356298052
+        ]
+      },
+      "mantle": {
+        "modal_variant_share": 0.62,
+        "n": 200,
+        "variants": [
+          {
+            "count": 124,
+            "sha": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"
+          },
+          {
+            "count": 76,
+            "sha": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.50,\"reorder_threshold\":6,\"in_stock\":true}"
+          }
+        ],
+        "wilson95": [
+          0.5510671801561923,
+          0.6844099415132637
+        ]
+      },
+      "openai_1p": {
+        "modal_variant_share": 0.63,
+        "n": 200,
+        "variants": [
+          {
+            "count": 126,
+            "sha": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"
+          },
+          {
+            "count": 74,
+            "sha": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.50,\"reorder_threshold\":6,\"in_stock\":true}"
+          }
+        ],
+        "wilson95": [
+          0.5612262992405018,
+          0.6938739159014088
+        ]
+      },
+      "runtime_us": {
+        "modal_variant_share": 0.6088888888888889,
+        "n": 225,
+        "variants": [
+          {
+            "count": 137,
+            "sha": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.5,\"reorder_threshold\":6,\"in_stock\":true}"
+          },
+          {
+            "count": 88,
+            "sha": "fef2d716c31f43a570b2d422b8398d07f5c4523ed130fdb150fb0a36a431197c",
+            "snippet": "{\"sku\":\"CS220-BDG-K\",\"name\":\"Corvid CS-220 badge printer\",\"quantity_on_hand\":17,\"unit_price_usd\":349.50,\"reorder_threshold\":6,\"in_stock\":true}"
+          }
+        ],
+        "wilson95": [
+          0.543808002335227,
+          0.6703140376679937
+        ]
+      }
+    },
+    "modal_variant_sha": "2d42b09032ccd0b5710a58810d9c58a6c0dd49a10cd7e091b343073b82f6d607",
+    "pairwise": {
+      "mantle_vs_codex_sub": {
+        "diff": {
+          "ci95": [
+            -0.35263810773882787,
+            -0.16736189226117215
+          ],
+          "diff": -0.26,
+          "se": 0.047265209192385894
+        },
+        "fisher_p": 1.7990355380667913e-06,
+        "registered_direction": false
+      },
+      "mantle_vs_runtime_us": {
+        "diff": {
+          "ci95": [
+            -0.08157703974597019,
+            0.10379926196819234
+          ],
+          "diff": 0.011111111111111072,
+          "se": 0.04729074186474526
+        },
+        "fisher_p": 0.8421415955842974,
+        "registered_direction": false
+      },
+      "openai_1p_vs_codex_sub": {
+        "diff": {
+          "ci95": [
+            -0.34237857311179903,
+            -0.15762142688820097
+          ],
+          "diff": -0.25,
+          "se": 0.047132791133137876
+        },
+        "fisher_p": 3.3028586237229343e-06,
+        "registered_direction": true
+      },
+      "openai_1p_vs_mantle": {
+        "diff": {
+          "ci95": [
+            -0.08488128765092029,
+            0.10488128765092031
+          ],
+          "diff": 0.010000000000000009,
+          "se": 0.04840970976983853
+        },
+        "fisher_p": 0.9177629079636369,
+        "registered_direction": false
+      },
+      "openai_1p_vs_runtime_us": {
+        "diff": {
+          "ci95": [
+            -0.07131764563724284,
+            0.113539867859465
+          ],
+          "diff": 0.02111111111111108,
+          "se": 0.04715839549982559
+        },
+        "fisher_p": 0.6895080302517225,
+        "registered_direction": false
+      },
+      "runtime_us_vs_codex_sub": {
+        "diff": {
+          "ci95": [
+            -0.361235665663022,
+            -0.18098655655920015
+          ],
+          "diff": -0.2711111111111111,
+          "se": 0.045982760531725037
+        },
+        "fisher_p": 5.012334100008013e-07,
+        "registered_direction": false
+      }
+    },
+    "primary_cell": "structured_json|effort=none"
+  },
+  "q2_equivalence": {
+    "mantle_vs_runtime_us": {
+      "alpha": 0.05,
+      "ci90": [
+        -0.003987458585199794,
+        0.022737458585199797
+      ],
+      "delta": 0.02,
+      "diff": 0.009375000000000001,
+      "equivalent": false,
+      "n_strata": 16,
+      "p": 0.0954560239251015,
+      "p_lower": 0.00014964165756126135,
+      "p_upper": 0.0954560239251015,
+      "se": 0.008123797988010288
+    },
+    "openai_1p_vs_mantle": {
+      "alpha": 0.05,
+      "ci90": [
+        -0.03811954284348478,
+        -0.010630457156515219
+      ],
+      "delta": 0.02,
+      "diff": -0.024375,
+      "equivalent": false,
+      "n_strata": 16,
+      "p": 0.6997112833720232,
+      "p_lower": 0.6997112833720232,
+      "p_upper": 5.4662771198366045e-08,
+      "se": 0.008356088723200587
+    },
+    "openai_1p_vs_runtime_us": {
+      "alpha": 0.05,
+      "ci90": [
+        -0.02900240522870899,
+        -0.0009975947712910077
+      ],
+      "delta": 0.02,
+      "diff": -0.015,
+      "equivalent": false,
+      "n_strata": 16,
+      "p": 0.2784854023037816,
+      "p_lower": 0.2784854023037816,
+      "p_upper": 1.9660999310722183e-05,
+      "se": 0.00851285792199071
+    }
+  },
+  "q3_effort_analog": {
+    "cross_door_dod": {
+      "mantle_vs_codex_sub": {
+        "ci95": [
+          0.16979266903998597,
+          0.4402073309600139
+        ],
+        "dod": 0.30499999999999994,
+        "se": 0.06898459973066452
+      },
+      "mantle_vs_runtime_us": {
+        "ci95": [
+          -0.07854674122844618,
+          0.16632451900622391
+        ],
+        "dod": 0.043888888888888866,
+        "se": 0.06246830609291379
+      },
+      "openai_1p_vs_codex_sub": {
+        "ci95": [
+          -0.051090182538817946,
+          0.23109018253881788
+        ],
+        "dod": 0.08999999999999997,
+        "se": 0.07198610977126074
+      },
+      "openai_1p_vs_mantle": {
+        "ci95": [
+          -0.34332713579739527,
+          -0.0866728642026047
+        ],
+        "dod": -0.21499999999999997,
+        "se": 0.06547423157242856
+      },
+      "openai_1p_vs_runtime_us": {
+        "ci95": [
+          -0.3000137906245141,
+          -0.042208431597708096
+        ],
+        "dod": -0.1711111111111111,
+        "se": 0.06576788172138412
+      },
+      "runtime_us_vs_codex_sub": {
+        "ci95": [
+          0.1253574026936144,
+          0.39686481952860775
+        ],
+        "dod": 0.26111111111111107,
+        "se": 0.06926336886203248
+      }
+    },
+    "per_door_high_minus_none": {
+      "codex_sub": {
+        "ci95": [
+          -0.2142103837729345,
+          -0.005789616227065489
+        ],
+        "diff": -0.10999999999999999,
+        "se": 0.053169540152233775
+      },
+      "mantle": {
+        "ci95": [
+          0.10885350698241703,
+          0.2811464930175829
+        ],
+        "diff": 0.19499999999999995,
+        "se": 0.04395310000443655
+      },
+      "openai_1p": {
+        "ci95": [
+          -0.11511380300847333,
+          0.0751138030084733
+        ],
+        "diff": -0.020000000000000018,
+        "se": 0.04852834223420372
+      },
+      "runtime_us": {
+        "ci95": [
+          0.06410958662446535,
+          0.2381126355977568
+        ],
+        "diff": 0.15111111111111108,
+        "se": 0.04438934856604645
+      }
+    }
+  },
+  "q4_routing": {
+    "per_task": {
+      "open_generation": {
+        "ci95": [
+          -0.11286030424045626,
+          0.04174919312934514
+        ],
+        "diff": -0.035555555555555556,
+        "se": 0.039441923063214784
+      },
+      "structured_json": {
+        "ci95": [
+          -0.11706979552217817,
+          0.294847573299956
+        ],
+        "diff": 0.0888888888888889,
+        "se": 0.10508289235702437
+      }
+    },
+    "stratified": {
+      "diff": 0.026666666666666675,
+      "n_strata": 2,
+      "se": 0.05612058348111352
+    }
+  },
+  "q5_default_burn": {
+    "mantle|open_generation": {
+      "association": {
+        "divergent_median": 78.5,
+        "divergent_n": 24,
+        "modal_median": 58.0,
+        "modal_n": 1
+      },
+      "n": 25,
+      "reasoning_tokens": {
+        "max": 149,
+        "median": 75.0,
+        "min": 44,
+        "n": 25,
+        "q1": 64.0,
+        "q3": 96.0
+      }
+    },
+    "mantle|structured_json": {
+      "association": {
+        "divergent_median": 0.0,
+        "divergent_n": 10,
+        "modal_median": 0.0,
+        "modal_n": 15
+      },
+      "n": 25,
+      "reasoning_tokens": {
+        "max": 0,
+        "median": 0.0,
+        "min": 0,
+        "n": 25,
+        "q1": 0.0,
+        "q3": 0.0
+      }
+    },
+    "openai_1p|open_generation": {
+      "association": {
+        "divergent_median": 72.5,
+        "divergent_n": 24,
+        "modal_median": 77.0,
+        "modal_n": 1
+      },
+      "n": 25,
+      "reasoning_tokens": {
+        "max": 287,
+        "median": 73.0,
+        "min": 43,
+        "n": 25,
+        "q1": 65.0,
+        "q3": 82.0
+      }
+    },
+    "openai_1p|structured_json": {
+      "association": {
+        "divergent_median": 0.0,
+        "divergent_n": 9,
+        "modal_median": 0.0,
+        "modal_n": 16
+      },
+      "n": 25,
+      "reasoning_tokens": {
+        "max": 0,
+        "median": 0.0,
+        "min": 0,
+        "n": 25,
+        "q1": 0.0,
+        "q3": 0.0
+      }
+    },
+    "runtime_us|open_generation": {
+      "n": 25,
+      "output_tokens_total_only": {
+        "max": 622,
+        "median": 586.0,
+        "min": 554,
+        "n": 25,
+        "q1": 572.0,
+        "q3": 602.0
+      }
+    },
+    "runtime_us|structured_json": {
+      "n": 25,
+      "output_tokens_total_only": {
+        "max": 49,
+        "median": 49.0,
+        "min": 49,
+        "n": 25,
+        "q1": 49.0,
+        "q3": 49.0
+      }
+    }
+  }
+}
