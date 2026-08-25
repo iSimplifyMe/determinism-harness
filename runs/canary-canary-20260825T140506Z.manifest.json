@@ -1,0 +1,162 @@
+{
+  "aws_account": "024033896674",
+  "caller_arn": "arn:aws:iam::024033896674:user/joe@isimplifyme.com",
+  "cells": [
+    "haiku-4-5|classification|anthropic_api|none",
+    "haiku-4-5|classification|bedrock|none",
+    "haiku-4-5|classification|p_aws|none",
+    "haiku-4-5|extraction|anthropic_api|none",
+    "haiku-4-5|extraction|bedrock|none",
+    "haiku-4-5|extraction|p_aws|none",
+    "haiku-4-5|structured_json|anthropic_api|none",
+    "haiku-4-5|structured_json|bedrock|none",
+    "haiku-4-5|structured_json|p_aws|none",
+    "opus-5|classification|anthropic_api|adaptive",
+    "opus-5|classification|bedrock|adaptive",
+    "opus-5|classification|p_aws|adaptive",
+    "opus-5|extraction|anthropic_api|adaptive",
+    "opus-5|extraction|bedrock|adaptive",
+    "opus-5|extraction|p_aws|adaptive",
+    "opus-5|structured_json|anthropic_api|adaptive",
+    "opus-5|structured_json|bedrock|adaptive",
+    "opus-5|structured_json|p_aws|adaptive",
+    "sonnet-5|classification|anthropic_api|adaptive",
+    "sonnet-5|classification|bedrock|adaptive",
+    "sonnet-5|classification|p_aws|adaptive",
+    "sonnet-5|extraction|anthropic_api|adaptive",
+    "sonnet-5|extraction|bedrock|adaptive",
+    "sonnet-5|extraction|p_aws|adaptive",
+    "sonnet-5|structured_json|anthropic_api|adaptive",
+    "sonnet-5|structured_json|bedrock|adaptive",
+    "sonnet-5|structured_json|p_aws|adaptive"
+  ],
+  "concurrency": 4,
+  "created_utc": "2026-08-25T14:05:06.135085+00:00",
+  "dry_run": false,
+  "git_head": "e8b30395a64e89081b16ee18f31358c12216bf59",
+  "mode": "canary",
+  "n_cells": 27,
+  "n_items": 144,
+  "planes": [
+    "anthropic_api",
+    "bedrock",
+    "p_aws"
+  ],
+  "region": "us-east-1",
+  "request_sha_by_cell": [
+    [
+      "haiku-4-5|classification|anthropic_api|none",
+      "d7388337edbb4c092900ab5d1edb45c720384abd714f4e72e095bb9e6042c4c5"
+    ],
+    [
+      "haiku-4-5|classification|bedrock|none",
+      "0efb57bdaf4e0fe1928c6a7704590be2598adb600ada6842185de3bc72e4d40a"
+    ],
+    [
+      "haiku-4-5|classification|p_aws|none",
+      "d7388337edbb4c092900ab5d1edb45c720384abd714f4e72e095bb9e6042c4c5"
+    ],
+    [
+      "haiku-4-5|extraction|anthropic_api|none",
+      "18b170425fe727a5805e18f33d4425d941505fadde534e14234f3843039275ca"
+    ],
+    [
+      "haiku-4-5|extraction|bedrock|none",
+      "c679e4fe8d811e04d5ede9e0431cb004dd40af0bd6123a08ead466145ef897cb"
+    ],
+    [
+      "haiku-4-5|extraction|p_aws|none",
+      "18b170425fe727a5805e18f33d4425d941505fadde534e14234f3843039275ca"
+    ],
+    [
+      "haiku-4-5|structured_json|anthropic_api|none",
+      "855acb7e8a57ea8a395e46355e173eed0c961591c91ab8d89ab9a9deb60ef713"
+    ],
+    [
+      "haiku-4-5|structured_json|bedrock|none",
+      "0e7de3f8596c633421b85098c9e21bf3468a1053a84bad4d350c24bd39a8e4ec"
+    ],
+    [
+      "haiku-4-5|structured_json|p_aws|none",
+      "855acb7e8a57ea8a395e46355e173eed0c961591c91ab8d89ab9a9deb60ef713"
+    ],
+    [
+      "opus-5|classification|anthropic_api|adaptive",
+      "b986955def57817d86d46978db4ddc76e9ddf6422c42b5a93f037477f4f2d37d"
+    ],
+    [
+      "opus-5|classification|bedrock|adaptive",
+      "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01"
+    ],
+    [
+      "opus-5|classification|p_aws|adaptive",
+      "b986955def57817d86d46978db4ddc76e9ddf6422c42b5a93f037477f4f2d37d"
+    ],
+    [
+      "opus-5|extraction|anthropic_api|adaptive",
+      "4187fc487d12d1e5b860961143f97c21d1ceb8ff9ea8e857f51f1b84ca6d41ca"
+    ],
+    [
+      "opus-5|extraction|bedrock|adaptive",
+      "262e24ef61057aac43c98b25d774183976ed1bde4e1b31f2496c11f2a7e6e064"
+    ],
+    [
+      "opus-5|extraction|p_aws|adaptive",
+      "4187fc487d12d1e5b860961143f97c21d1ceb8ff9ea8e857f51f1b84ca6d41ca"
+    ],
+    [
+      "opus-5|structured_json|anthropic_api|adaptive",
+      "734ed2dff1756ba239144c61fa6fe2f260ce653c987d29e18faa5441a25d321d"
+    ],
+    [
+      "opus-5|structured_json|bedrock|adaptive",
+      "e3432c2841e9a98c62006d6b338693bae3d9a9bff06a55c36116b9d1cac17ac8"
+    ],
+    [
+      "opus-5|structured_json|p_aws|adaptive",
+      "734ed2dff1756ba239144c61fa6fe2f260ce653c987d29e18faa5441a25d321d"
+    ],
+    [
+      "sonnet-5|classification|anthropic_api|adaptive",
+      "d56a111f3ed6d99dead1f6efec64b104a2c2b8d00ed5b7a523434bd87fd63004"
+    ],
+    [
+      "sonnet-5|classification|bedrock|adaptive",
+      "596726a1eedbd98e5ac232bbb5ef9fa9ccea8035c8c5cf1963b03f932a329f01"
+    ],
+    [
+      "sonnet-5|classification|p_aws|adaptive",
+      "d56a111f3ed6d99dead1f6efec64b104a2c2b8d00ed5b7a523434bd87fd63004"
+    ],
+    [
+      "sonnet-5|extraction|anthropic_api|adaptive",
+      "76478a24ddf47b80613f03a11b6ef0404dd19d298181896d7438e8ba31f59fc7"
+    ],
+    [
+      "sonnet-5|extraction|bedrock|adaptive",
+      "262e24ef61057aac43c98b25d774183976ed1bde4e1b31f2496c11f2a7e6e064"
+    ],
+    [
+      "sonnet-5|extraction|p_aws|adaptive",
+      "76478a24ddf47b80613f03a11b6ef0404dd19d298181896d7438e8ba31f59fc7"
+    ],
+    [
+      "sonnet-5|structured_json|anthropic_api|adaptive",
+      "77fb7b1ff6f224ed612539691751cab2b96e1ad1baf648095be22d58a00276b4"
+    ],
+    [
+      "sonnet-5|structured_json|bedrock|adaptive",
+      "e3432c2841e9a98c62006d6b338693bae3d9a9bff06a55c36116b9d1cac17ac8"
+    ],
+    [
+      "sonnet-5|structured_json|p_aws|adaptive",
+      "77fb7b1ff6f224ed612539691751cab2b96e1ad1baf648095be22d58a00276b4"
+    ]
+  ],
+  "run_name": "canary-canary-20260825T140506Z",
+  "schedule_sha256": "37006eaeda3c213508a611c20af9e20bbe29946db9a600087e4370fc4ba15fa5",
+  "schema": 2,
+  "seed": 20260727,
+  "window": "canary",
+  "window_definition": "daily fixed-hour probe (scheduler is local-time; the actual UTC window rides in each manifest)"
+}
