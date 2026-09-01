@@ -1,0 +1,291 @@
+{
+  "meta": {
+    "study": "study5-confidence-signal",
+    "planned_n": 150,
+    "batch_authored": 30,
+    "frozen": false,
+    "authoring": {
+      "method": "single-author v0, session 2026-08-31; ground truth and gradient class assigned at authoring, blind to any model output",
+      "note": "independent labeling pending the collaborator decision - see PROTOCOL.md section 4"
+    },
+    "instruction_templates": {
+      "t1": "Read the product listing below and answer with a JSON object containing item_name, unit_price, and quantity_in_stock. Where the listing does not state a value, use null.",
+      "t2": "Below is an inventory record. Produce JSON with exactly these keys: item_name, unit_price, quantity_in_stock. Any value the record leaves unstated must be null.",
+      "t3": "For the catalog entry that follows, fill in and reply with this JSON template: {\"item_name\": null, \"unit_price\": null, \"quantity_in_stock\": null} - replacing null with a value wherever the entry states one.",
+      "t4": "What are the item_name, the unit_price, and the quantity_in_stock in the listing below? Reply as a single JSON object with those three keys, using null for anything the listing does not say.",
+      "t5": "You are cataloging stock. From the record below, report item_name, unit_price, and quantity_in_stock as one JSON object; any information the record is missing is null."
+    }
+  },
+  "items": [
+    {
+      "id": "s5-001",
+      "gradient": "clean",
+      "target_field": "item_name",
+      "document": "Wren Desk Organizer, bamboo, 5 compartments. Price per unit: $14.50. Units in stock: 40.",
+      "ground_truth": {"item_name": "Wren Desk Organizer", "unit_price": 14.5, "quantity_in_stock": 40},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-002",
+      "gradient": "clean",
+      "target_field": "unit_price",
+      "document": "Puffin Ceramic Mug, 12 oz, glazed navy. $9.25 each. Stock on hand: 250.",
+      "ground_truth": {"item_name": "Puffin Ceramic Mug", "unit_price": 9.25, "quantity_in_stock": 250},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-003",
+      "gradient": "clean",
+      "target_field": "quantity_in_stock",
+      "document": "Inventory card: Egret Floor Lamp, matte black, 62 in. Unit price $89.00. Quantity available: 12.",
+      "ground_truth": {"item_name": "Egret Floor Lamp", "unit_price": 89.0, "quantity_in_stock": 12},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-004",
+      "gradient": "clean",
+      "target_field": "item_name",
+      "document": "Tern Notebook, A5 dotted, 160 pages. Sells at $6.40 per unit. Shelf count: 512.",
+      "ground_truth": {"item_name": "Tern Notebook", "unit_price": 6.4, "quantity_in_stock": 512},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-005",
+      "gradient": "clean",
+      "target_field": "unit_price",
+      "document": "Grebe Wireless Keyboard, low profile, USB-C. Each: $47.99. On hand: 33.",
+      "ground_truth": {"item_name": "Grebe Wireless Keyboard", "unit_price": 47.99, "quantity_in_stock": 33},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-006",
+      "gradient": "clean",
+      "target_field": "quantity_in_stock",
+      "document": "Stock memo - Lark Picture Frame, 8x10, oak. Priced at $11.75 apiece. 78 units on the shelf.",
+      "ground_truth": {"item_name": "Lark Picture Frame", "unit_price": 11.75, "quantity_in_stock": 78},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-007",
+      "gradient": "clean",
+      "target_field": "item_name",
+      "document": "Avocet Water Bottle, 750 ml, stainless steel. Unit price: $21.00. Inventory count: 96.",
+      "ground_truth": {"item_name": "Avocet Water Bottle", "unit_price": 21.0, "quantity_in_stock": 96},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-008",
+      "gradient": "clean",
+      "target_field": "unit_price",
+      "document": "Siskin Phone Stand, aluminum, silver. $12.30 per piece. Available: 154.",
+      "ground_truth": {"item_name": "Siskin Phone Stand", "unit_price": 12.3, "quantity_in_stock": 154},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-009",
+      "gradient": "clean",
+      "target_field": "quantity_in_stock",
+      "document": "Bittern Yoga Mat, 6 mm, teal. Listed at $28.50 each. Warehouse count: 61.",
+      "ground_truth": {"item_name": "Bittern Yoga Mat", "unit_price": 28.5, "quantity_in_stock": 61},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-010",
+      "gradient": "clean",
+      "target_field": "item_name",
+      "document": "Order sheet row: Petrel Desk Fan, 3-speed, white. Price $24.99 apiece. In stock: 87.",
+      "ground_truth": {"item_name": "Petrel Desk Fan", "unit_price": 24.99, "quantity_in_stock": 87},
+      "acceptable_alternatives": [],
+      "rationale": ""
+    },
+    {
+      "id": "s5-011",
+      "gradient": "near_tie",
+      "target_field": "item_name",
+      "document": "Item Corvid 3000 Optical Mouse, wireless, black. $18.99 per piece. Stock: 44.",
+      "ground_truth": {"item_name": "Corvid 3000 Optical Mouse", "unit_price": 18.99, "quantity_in_stock": 44},
+      "acceptable_alternatives": [],
+      "rationale": "'Item' is the row's listing prefix, not part of the product name - the same boundary token that forked Haiku, GPT-5.6-class defaults, and a local 20B in studies 1 and 3."
+    },
+    {
+      "id": "s5-012",
+      "gradient": "near_tie",
+      "target_field": "item_name",
+      "document": "Falcon Desk Lamp - Brass Edition. Each $54.00. On hand: 19.",
+      "ground_truth": {"item_name": "Falcon Desk Lamp - Brass Edition", "unit_price": 54.0, "quantity_in_stock": 19},
+      "acceptable_alternatives": [],
+      "rationale": "The listing sells the brass variant; truncating to 'Falcon Desk Lamp' drops the qualifier that identifies which product this row is."
+    },
+    {
+      "id": "s5-013",
+      "gradient": "near_tie",
+      "target_field": "unit_price",
+      "document": "Heron HX-220 HDMI Cable, 2 m, braided. $7.50 each; case of 20 at $135.00. Units in stock: 240.",
+      "ground_truth": {"item_name": "Heron HX-220 HDMI Cable", "unit_price": 7.5, "quantity_in_stock": 240},
+      "acceptable_alternatives": [],
+      "rationale": "The per-unit price is stated outright ($7.50 each); $135.00 prices a case of 20 and is the distractor."
+    },
+    {
+      "id": "s5-014",
+      "gradient": "near_tie",
+      "target_field": "unit_price",
+      "document": "Kestrel Travel Adapter, EU/UK/US. Was $31.00, now $23.80. Quantity: 58.",
+      "ground_truth": {"item_name": "Kestrel Travel Adapter", "unit_price": 23.8, "quantity_in_stock": 58},
+      "acceptable_alternatives": [],
+      "rationale": "'Now' states the price in force; 'was' is historical. One correct reading, with the stale figure adjacent."
+    },
+    {
+      "id": "s5-015",
+      "gradient": "near_tie",
+      "target_field": "quantity_in_stock",
+      "document": "Plover Copy Paper, A4 80gsm, priced per ream at $4.20. Stock: 15 cases (150 reams total).",
+      "ground_truth": {"item_name": "Plover Copy Paper", "unit_price": 4.2, "quantity_in_stock": 150},
+      "acceptable_alternatives": [],
+      "rationale": "The priced unit is the ream and the ream count is stated explicitly; 15 counts cases, a different unit than the price."
+    },
+    {
+      "id": "s5-016",
+      "gradient": "near_tie",
+      "target_field": "item_name",
+      "document": "Ibis Monitor Riser (model IR-11), walnut finish. $32.75 each. Shelf count: 27.",
+      "ground_truth": {"item_name": "Ibis Monitor Riser", "unit_price": 32.75, "quantity_in_stock": 27},
+      "acceptable_alternatives": [],
+      "rationale": "The parenthetical is a model designation qualifying the name, not part of it; appending '(model IR-11)' is the boundary error."
+    },
+    {
+      "id": "s5-017",
+      "gradient": "near_tie",
+      "target_field": "quantity_in_stock",
+      "document": "Swift USB Hub, 4-port. $16.60 per piece. Stock 90, of which 12 reserved for web orders.",
+      "ground_truth": {"item_name": "Swift USB Hub", "unit_price": 16.6, "quantity_in_stock": 90},
+      "acceptable_alternatives": [],
+      "rationale": "Stated stock is 90; the reservation is an allocation inside it, so subtracting to 78 misreads the sentence."
+    },
+    {
+      "id": "s5-018",
+      "gradient": "near_tie",
+      "target_field": "quantity_in_stock",
+      "document": "Sandpiper 2-Pack Gel Pens, black ink. $3.10 per pack. Packs available: 310.",
+      "ground_truth": {"item_name": "Sandpiper 2-Pack Gel Pens", "unit_price": 3.1, "quantity_in_stock": 310},
+      "acceptable_alternatives": [],
+      "rationale": "The priced and counted unit is the pack; the '2-Pack' token in the name tempts doubling to 620 pens."
+    },
+    {
+      "id": "s5-019",
+      "gradient": "near_tie",
+      "target_field": "unit_price",
+      "document": "Osprey Cable Ties, bag of 100. $5.90 per bag ($0.059 per tie). Bags in stock: 402.",
+      "ground_truth": {"item_name": "Osprey Cable Ties", "unit_price": 5.9, "quantity_in_stock": 402},
+      "acceptable_alternatives": [],
+      "rationale": "The sold unit is the bag and every count in the row is in bags; the per-tie figure is derived information."
+    },
+    {
+      "id": "s5-020",
+      "gradient": "near_tie",
+      "target_field": "quantity_in_stock",
+      "document": "Puffin Jr. Ceramic Mug, 8 oz. $7.95 each. Out of stock.",
+      "ground_truth": {"item_name": "Puffin Jr. Ceramic Mug", "unit_price": 7.95, "quantity_in_stock": 0},
+      "acceptable_alternatives": [],
+      "rationale": "'Out of stock' states a zero count; null would claim the record is silent on quantity, and it is not."
+    },
+    {
+      "id": "s5-021",
+      "gradient": "ambiguous",
+      "target_field": "unit_price",
+      "document": "Corvid 3000 Optical Mouse, wireless, black. List $21.00. Promo $17.50.",
+      "ground_truth": {"item_name": "Corvid 3000 Optical Mouse", "unit_price": 17.5, "quantity_in_stock": null},
+      "acceptable_alternatives": [{"unit_price": 21.0}],
+      "rationale": "Undated promo: the price a buyer pays while the promo runs (17.50) and the standing list price (21.00) are both defensible readings of 'the price'."
+    },
+    {
+      "id": "s5-022",
+      "gradient": "ambiguous",
+      "target_field": "quantity_in_stock",
+      "document": "Ibis Standing Desk, electric, 55 in. $310.00 per unit. Warehouse A: 12 units; storefront: 5.",
+      "ground_truth": {"item_name": "Ibis Standing Desk", "unit_price": 310.0, "quantity_in_stock": 17},
+      "acceptable_alternatives": [{"quantity_in_stock": 12}],
+      "rationale": "Everything sellable (17) versus warehouse inventory proper (12): the record splits the count across locations without saying which one 'stock' means."
+    },
+    {
+      "id": "s5-023",
+      "gradient": "ambiguous",
+      "target_field": "item_name",
+      "document": "Clearance row 7: Osprey Case, brown leather (appears in the catalog as 'Osprey Carry Case II'). $25.00.",
+      "ground_truth": {"item_name": "Osprey Carry Case II", "unit_price": 25.0, "quantity_in_stock": null},
+      "acceptable_alternatives": [{"item_name": "Osprey Case"}],
+      "rationale": "Shelf label versus catalog name: the catalog form is arguably canonical, but the row itself leads with the shelf form. Experts could defend either."
+    },
+    {
+      "id": "s5-024",
+      "gradient": "ambiguous",
+      "target_field": "unit_price",
+      "document": "Grebe Label Printer, thermal. $89.00 plus mandatory $12.00 activation at the register. Stock: 31.",
+      "ground_truth": {"item_name": "Grebe Label Printer", "unit_price": 89.0, "quantity_in_stock": 31},
+      "acceptable_alternatives": [{"unit_price": 101.0}],
+      "rationale": "Sticker price of the device (89.00) versus the unavoidable amount paid (101.00): the mandatory fee makes both readings of 'price' defensible."
+    },
+    {
+      "id": "s5-025",
+      "gradient": "ambiguous",
+      "target_field": "quantity_in_stock",
+      "document": "Kestrel Bookend, walnut, sold per pair at $18.00. In stock: 90.",
+      "ground_truth": {"item_name": "Kestrel Bookend", "unit_price": 18.0, "quantity_in_stock": 90},
+      "acceptable_alternatives": [{"quantity_in_stock": 45}],
+      "rationale": "90 in the sold unit (pairs) or 90 pieces making 45 sellable pairs - the record never says which unit its count uses."
+    },
+    {
+      "id": "s5-026",
+      "gradient": "ambiguous",
+      "target_field": "unit_price",
+      "document": "Tern Notebook Stand, aluminum. New $26.00; open-box $19.50. In stock: 40 (8 of them open-box).",
+      "ground_truth": {"item_name": "Tern Notebook Stand", "unit_price": 26.0, "quantity_in_stock": 40},
+      "acceptable_alternatives": [{"unit_price": 19.5}],
+      "rationale": "Two live prices on one row: new is the standard offer, but open-box units are genuinely on sale at 19.50. Either is a defensible 'the price'."
+    },
+    {
+      "id": "s5-027",
+      "gradient": "ambiguous",
+      "target_field": "unit_price",
+      "document": "Avocet Storage Bin - small $7.00, large $11.00. Combined stock: 120.",
+      "ground_truth": {"item_name": "Avocet Storage Bin", "unit_price": null, "quantity_in_stock": 120},
+      "acceptable_alternatives": [{"unit_price": 7.0}, {"unit_price": 11.0}],
+      "rationale": "No single price exists for the row (two sizes, two prices), so null is the careful answer - yet filling in either stated price is defensible."
+    },
+    {
+      "id": "s5-028",
+      "gradient": "ambiguous",
+      "target_field": "quantity_in_stock",
+      "document": "Plover Desk Pad, felt, gray. $13.25 each. Shelf shows 0; 60 units in receiving, not yet shelved.",
+      "ground_truth": {"item_name": "Plover Desk Pad", "unit_price": 13.25, "quantity_in_stock": 0},
+      "acceptable_alternatives": [{"quantity_in_stock": 60}],
+      "rationale": "Nothing shelved and sellable now (0) versus units physically on premises (60): 'in stock' can carry either scope."
+    },
+    {
+      "id": "s5-029",
+      "gradient": "ambiguous",
+      "target_field": "item_name",
+      "document": "Egret Task Chair, mesh back - packaging may say 'Egret Chair Pro' (same product, relabeled this year). $129.00. Stock: 22.",
+      "ground_truth": {"item_name": "Egret Task Chair", "unit_price": 129.0, "quantity_in_stock": 22},
+      "acceptable_alternatives": [{"item_name": "Egret Chair Pro"}],
+      "rationale": "Two live names for one product: the row leads with one, the packaging carries the other, and the record calls them the same product."
+    },
+    {
+      "id": "s5-030",
+      "gradient": "ambiguous",
+      "target_field": "quantity_in_stock",
+      "document": "Bittern Floor Mat, ribbed rubber. $33.00 each. Stock ledger: 14; physical count last Friday: 17.",
+      "ground_truth": {"item_name": "Bittern Floor Mat", "unit_price": 33.0, "quantity_in_stock": 14},
+      "acceptable_alternatives": [{"quantity_in_stock": 17}],
+      "rationale": "System of record (14) versus observed count (17): the record reports both and does not adjudicate."
+    }
+  ]
+}
