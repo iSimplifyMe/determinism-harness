@@ -56,15 +56,18 @@ STUDY5_SUBSTRATES = {
         "kind": "messages",
         "plane": "anthropic_api",
         "model_id": "claude-sonnet-5",
-        "model_cfg": {"max_tokens": MESSAGES_MAX_TOKENS, "effort": None},
+        "model_cfg": {"max_tokens": MESSAGES_MAX_TOKENS, "effort": "medium"},
         "thinking": "disabled",
         "arms": ("paraphrase",),
     },
     "sonnet_bedrock": {
         "kind": "bedrock",
         "plane": "bedrock",
-        "model_id": "us.anthropic.claude-sonnet-5-v1:0",
-        "model_cfg": {"max_tokens": MESSAGES_MAX_TOKENS, "effort": None},
+        # The us. inference profile — same id studies 1-2 invoked (config
+        # MODELS["sonnet-5"]["profiles"]["us"]); Bedrock has no bare-model
+        # on-demand for the 5-family.
+        "model_id": "us.anthropic.claude-sonnet-5",
+        "model_cfg": {"max_tokens": MESSAGES_MAX_TOKENS, "effort": "medium"},
         "thinking": "disabled",
         "arms": ("paraphrase",),
     },
@@ -97,7 +100,33 @@ SUBSTRATE_ORDER = (
     "local_qwen_metal",
 )
 
+# Runner mode groupings: one run targets one credential family, like
+# study 3's one-box-per-run.
+STUDY5_API_SUBSTRATES = ("haiku_1p", "sonnet_1p", "sonnet_bedrock")
+STUDY5_LOCAL_SUBSTRATES_BY_BOX = {
+    "cuda": ("local_20b_cuda",),
+    "metal": ("local_qwen_metal",),
+}
+
+# Pilot: stratified item subset — first PILOT_PER_CLASS ids per gradient
+# class, so every gradient is represented (the first 20 corpus ids alone
+# would carry zero ambiguous items).
+PILOT_PER_CLASS = 7
+
 WARMUP_PROMPT = "Reply with exactly: STUDY5-WARMUP-OK"
+
+
+def pilot_corpus(corpus, per_class=PILOT_PER_CLASS):
+    """Deterministic stratified pilot subset: first per_class items of
+    each gradient class in id order, corpus meta carried through."""
+    chosen = []
+    taken = {}
+    for item in sorted(corpus["items"], key=lambda i: i["id"]):
+        gradient = item["gradient"]
+        if taken.get(gradient, 0) < per_class:
+            taken[gradient] = taken.get(gradient, 0) + 1
+            chosen.append(item)
+    return {"meta": corpus["meta"], "items": chosen}
 
 
 def build_prompt(template_text, document):

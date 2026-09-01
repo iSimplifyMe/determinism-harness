@@ -30,14 +30,19 @@ def item(item_id, target="item_name", gradient="near_tie", alts=None,
     }
 
 
-def record(substrate, item_id, template_id, text, control=None):
-    meta = {
-        "substrate": substrate, "arm": "paraphrase",
-        "item_id": item_id, "template_id": template_id,
+def record(substrate, item_id, template_id, text, control=None, ok=True):
+    """Runner-shaped record: flattened meta_* keys + text (Engine base)."""
+    rec = {
+        "ok": ok,
+        "meta_substrate": substrate,
+        "meta_arm": "paraphrase",
+        "meta_item_id": item_id,
+        "meta_template_id": template_id,
+        "text": text,
     }
     if control:
-        meta["control"] = control
-    return {"meta": meta, "response_text": text}
+        rec["meta_control"] = control
+    return rec
 
 
 def answer(name="Corvid 3000 Optical Mouse", price=18.99, qty=44):
@@ -143,14 +148,29 @@ class TestIndexRecords(unittest.TestCase):
             record("haiku_1p", "s5-001", "t2", "garbage"),
             record("haiku_1p", "s5-001", "t3",
                    "```json\n" + answer() + "\n```"),
+            record("haiku_1p", "s5-001", "t4", answer(), ok=False),
         ]
         parsed, counts = index_records(records)
         self.assertEqual(counts["excluded_control"], 1)
+        self.assertEqual(counts["not_ok"], 1)
         self.assertEqual(counts["in"], 3)
         self.assertEqual(counts["parse_fail"], 1)
         self.assertEqual(counts["fenced"], 1)
         self.assertEqual(len(parsed[("haiku_1p", "s5-001", "t1")]), 1)
         self.assertNotIn(("haiku_1p", "s5-001", "t2"), parsed)
+        self.assertNotIn(("haiku_1p", "s5-001", "t4"), parsed)
+
+    def test_dict_meta_records_also_accepted(self):
+        rec = {
+            "meta": {
+                "substrate": "haiku_1p", "arm": "paraphrase",
+                "item_id": "s5-001", "template_id": "t1",
+            },
+            "response_text": answer(),
+        }
+        parsed, counts = index_records([rec])
+        self.assertEqual(counts["in"], 1)
+        self.assertEqual(len(parsed[("haiku_1p", "s5-001", "t1")]), 1)
 
 
 class TestKsetAnalysis(unittest.TestCase):
@@ -235,7 +255,7 @@ class TestCrossAndResample(unittest.TestCase):
             record("haiku_1p", "s5-001", "t1", answer(name="Corvid 3000"))
         )
         for r in base:
-            r["meta"]["arm"] = "resample"
+            r["meta_arm"] = "resample"
         parsed, _ = index_records(base)
         out = resample_analysis(
             parsed, [item("s5-001")], "haiku_1p", "t1"
@@ -245,7 +265,7 @@ class TestCrossAndResample(unittest.TestCase):
 
     def test_resample_needs_two(self):
         records = [record("haiku_1p", "s5-001", "t1", answer())]
-        records[0]["meta"]["arm"] = "resample"
+        records[0]["meta_arm"] = "resample"
         parsed, _ = index_records(records)
         out = resample_analysis(parsed, [item("s5-001")], "haiku_1p", "t1")
         self.assertEqual(out["excluded_missing"], 1)

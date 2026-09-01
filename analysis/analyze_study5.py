@@ -122,18 +122,35 @@ def fields_disagree(obj_a, obj_b, field):
     )
 
 
+def record_meta(record):
+    """Runner records flatten item meta to meta_* keys (Engine base
+    record); synthetic test records may carry a meta dict. Accept both."""
+    if "meta" in record:
+        return record["meta"]
+    return {k[5:]: v for k, v in record.items() if k.startswith("meta_")}
+
+
 def index_records(records):
-    """(substrate, item_id, template_id) -> [parsed dicts]; plus parse
-    accounting. Warmup/control records are excluded here."""
+    """(substrate, item_id, template_id) -> [parsed dicts]; plus
+    validation accounting. Order of exclusion: control rows (warmups),
+    transport failures (ok != True where ok is present), then parse
+    failures. Only parsed schema objects enter any comparison."""
     parsed = defaultdict(list)
-    counts = {"in": 0, "excluded_control": 0, "parse_fail": 0, "fenced": 0}
+    counts = {
+        "in": 0, "excluded_control": 0, "not_ok": 0,
+        "parse_fail": 0, "fenced": 0,
+    }
     for record in records:
-        meta = record.get("meta", {})
+        meta = record_meta(record)
         if meta.get("control"):
             counts["excluded_control"] += 1
             continue
+        if "ok" in record and not record["ok"]:
+            counts["not_ok"] += 1
+            continue
         counts["in"] += 1
-        mode, obj = parse_response(record.get("response_text"))
+        text = record.get("text", record.get("response_text"))
+        mode, obj = parse_response(text)
         if mode == "fail":
             counts["parse_fail"] += 1
             continue

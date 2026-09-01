@@ -140,12 +140,33 @@ STUDY4_MODES = (
     "study4-q4q5",
 )
 STUDY4_HTTP_GRID_DOORS = ("openai_1p", "mantle", "runtime_us")
+STUDY5_MODES = (
+    "study5-pilot-api",
+    "study5-full-api",
+    "study5-pilot-local",
+    "study5-full-local",
+)
+STUDY5_LOCAL_MODES = ("study5-pilot-local", "study5-full-local")
 MODES = (
     ("pilot", "full", "positive-control", "effort-sweep")
     + STUDY2_MODES
     + STUDY3_MODES
     + STUDY4_MODES
+    + STUDY5_MODES
 )
+
+
+def study5_run_settings(mode):
+    """Study-5 execution constraints. Local runs are single-flight (the
+    study-3 registered condition; also avoids swap thrash) — API runs keep
+    the CLI concurrency: every paraphrase cell is unique, so the engine's
+    no-two-same-cell rule already serializes the only repeated cells (the
+    resample arm). None for non-study5 modes."""
+    if mode not in STUDY5_MODES:
+        return None
+    if mode in STUDY5_LOCAL_MODES:
+        return {"concurrency": 1}
+    return {}
 
 
 def study3_run_settings(mode):
@@ -835,6 +856,28 @@ def build_schedule(mode, box=None, repeats=None):
                     items.append(_study4_item(
                         door_key, task_key, "default", r, control="q5_default"
                     ))
+    elif mode in STUDY5_MODES:
+        from harness.study5_fixtures import load_corpus as load_s5_corpus
+        from harness.study5_schedule import (
+            STUDY5_API_SUBSTRATES,
+            STUDY5_LOCAL_SUBSTRATES_BY_BOX,
+            build_study5_items,
+            pilot_corpus,
+        )
+
+        if mode in STUDY5_LOCAL_MODES:
+            if box not in STUDY5_LOCAL_SUBSTRATES_BY_BOX:
+                raise ValueError(
+                    f"{mode} requires --box "
+                    f"{sorted(STUDY5_LOCAL_SUBSTRATES_BY_BOX)} (got {box})"
+                )
+            substrates = STUDY5_LOCAL_SUBSTRATES_BY_BOX[box]
+        else:
+            substrates = STUDY5_API_SUBSTRATES
+        corpus = load_s5_corpus()
+        if mode.startswith("study5-pilot"):
+            corpus = pilot_corpus(corpus)
+        items = build_study5_items(corpus, substrates=substrates)
     else:
         raise ValueError(f"unknown mode: {mode}")
     return items
@@ -1266,10 +1309,21 @@ def main():
     args = parser.parse_args()
 
     schedule = build_schedule(args.mode, box=args.box, repeats=args.repeats)
-    fixed = args.mode in FIXED_SCHEDULE_MODES
+    # Study-5 schedules ship their own per-substrate blocks + warmup heads
+    # — fixed order, like the companion schedules.
+    fixed = args.mode in FIXED_SCHEDULE_MODES or args.mode in STUDY5_MODES
     rng = random.Random(args.seed)
     if not fixed:
         rng.shuffle(schedule)
+
+    settings5 = study5_run_settings(args.mode)
+    if settings5 and settings5.get("concurrency") \
+            and args.concurrency != settings5["concurrency"]:
+        print(
+            f'{args.mode} enforces concurrency='
+            f'{settings5["concurrency"]} (--concurrency ignored)'
+        )
+        args.concurrency = settings5["concurrency"]
 
     settings4 = study4_run_settings(args.mode)
     if settings4 and args.concurrency != settings4["concurrency"]:
@@ -1348,6 +1402,43 @@ def main():
         manifest["retry_max_attempts"] = STUDY4_RETRY_MAX_ATTEMPTS
         if args.mode == "study4-q4q5":
             manifest["exploratory"] = True
+    elif args.mode in STUDY5_MODES:
+        from harness.study5_fixtures import CORPUS_PATH as S5_CORPUS_PATH
+        from harness.study5_fixtures import load_corpus as load_s5_corpus
+        from harness.study5_schedule import (
+            RESAMPLE_N,
+            RESAMPLE_TEMPERATURE,
+            RESAMPLE_TEMPLATE,
+        )
+
+        s5_corpus = load_s5_corpus()
+        with open(S5_CORPUS_PATH, "rb") as fh:
+            corpus_sha = sha256_hex(fh.read())
+        manifest["schema"] = 5
+        manifest["planes"] = sorted({it["plane"] for it in schedule})
+        manifest["substrates"] = sorted(
+            {it["meta"]["substrate"] for it in schedule}
+        )
+        manifest["pilot"] = args.mode.startswith("study5-pilot")
+        manifest["corpus_sha256"] = corpus_sha
+        manifest["corpus_frozen"] = s5_corpus["meta"]["frozen"]
+        manifest["corpus_n_total"] = len(s5_corpus["items"])
+        manifest["items_in_run"] = len(
+            {it["meta"]["item_id"] for it in schedule
+             if not it["meta"].get("control")}
+        )
+        manifest["resample"] = {
+            "template": RESAMPLE_TEMPLATE,
+            "n": RESAMPLE_N,
+            "temperature": RESAMPLE_TEMPERATURE,
+        }
+        manifest["run_settings"] = settings5
+        manifest["warmup_items"] = sum(
+            1 for it in schedule if it["meta"].get("control") == "warmup"
+        )
+        if args.mode in STUDY5_LOCAL_MODES:
+            manifest["box"] = args.box
+            manifest["local_url"] = args.local_url
 
     if args.dry_run:
         manifest_path = os.path.join(args.out, f"{run_name}.dryrun.manifest.json")
@@ -1358,7 +1449,9 @@ def main():
         print(f"manifest written: {manifest_path}")
         return 0
 
-    if args.mode in STUDY2_MODES:
+    if args.mode in STUDY2_MODES or (
+        args.mode in STUDY5_MODES and args.mode not in STUDY5_LOCAL_MODES
+    ):
         planes_present = {it["plane"] for it in schedule}
         missing = []
         if "p_aws" in planes_present and not os.environ.get(
@@ -1387,7 +1480,7 @@ def main():
             return 3
 
     local_plane = None
-    if args.mode in STUDY3_MODES:
+    if args.mode in STUDY3_MODES or args.mode in STUDY5_LOCAL_MODES:
         # Reachability + drift-control capture, fail-fast like credentials:
         # engine version and per-model weights digests go in the manifest.
         local_plane = make_plane(
@@ -1430,6 +1523,15 @@ def main():
             "plane_clients": {"local": local_plane},
             "allow_same_cell_concurrency": settings["allow_same_cell_concurrency"],
         }
+    elif args.mode in STUDY5_MODES:
+        run_info["schema"] = 5
+        if args.mode in STUDY5_LOCAL_MODES:
+            run_info["box"] = args.box
+            # Study-5 local items carry the box-named plane
+            # (local_cuda/local_metal) so records name their hardware.
+            engine_kwargs = {
+                "plane_clients": {f"local_{args.box}": local_plane},
+            }
     elif args.mode in STUDY4_MODES:
         # The registered retry bound (v4 section 3): 3 bounded-backoff
         # attempts, then the item is a counted exclusion.
