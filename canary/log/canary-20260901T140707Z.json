@@ -1,0 +1,229 @@
+{
+  "baselines_generated_utc": "2026-07-30T22:57:41.969674+00:00",
+  "cells": {
+    "haiku-4-5|classification|anthropic_api|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 510.0,
+      "n": 3
+    },
+    "haiku-4-5|classification|bedrock|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1355.0,
+      "n": 3
+    },
+    "haiku-4-5|classification|p_aws|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 678.0,
+      "n": 3
+    },
+    "haiku-4-5|extraction|anthropic_api|none": {
+      "latency_ms_p50": 521.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|extraction|bedrock|none": {
+      "latency_ms_p50": 1176.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|extraction|p_aws|none": {
+      "latency_ms_p50": 709.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|structured_json|anthropic_api|none": {
+      "fence_band": [
+        1,
+        7
+      ],
+      "fenced": 3,
+      "latency_ms_p50": 792.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "haiku-4-5|structured_json|bedrock|none": {
+      "fence_band": [
+        0,
+        4
+      ],
+      "fenced": 3,
+      "latency_ms_p50": 1339.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "haiku-4-5|structured_json|p_aws|none": {
+      "fence_band": [
+        1,
+        6
+      ],
+      "fenced": 2,
+      "latency_ms_p50": 1017.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|classification|anthropic_api|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1797.0,
+      "n": 3
+    },
+    "opus-5|classification|bedrock|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1318.0,
+      "n": 3
+    },
+    "opus-5|classification|p_aws|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 2020.0,
+      "n": 3
+    },
+    "opus-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 2255.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 1602.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 2581.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|structured_json|anthropic_api|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 3683.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|structured_json|bedrock|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 2080.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|structured_json|p_aws|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 3496.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|classification|anthropic_api|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1907.0,
+      "n": 3
+    },
+    "sonnet-5|classification|bedrock|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1619.0,
+      "n": 3
+    },
+    "sonnet-5|classification|p_aws|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 2053.0,
+      "n": 3
+    },
+    "sonnet-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 2165.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 1698.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 2129.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|structured_json|anthropic_api|adaptive": {
+      "fence_band": [
+        0,
+        4
+      ],
+      "fenced": 5,
+      "latency_ms_p50": 1547.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|structured_json|bedrock|adaptive": {
+      "fence_band": [
+        6,
+        10
+      ],
+      "fenced": 9,
+      "latency_ms_p50": 2194.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|structured_json|p_aws|adaptive": {
+      "fence_band": [
+        6,
+        10
+      ],
+      "fenced": 9,
+      "latency_ms_p50": 2518.5,
+      "n": 10,
+      "parsed": 10
+    }
+  },
+  "generated_utc": "2026-09-01T14:07:07.506051+00:00",
+  "inputs": [
+    "runs/canary-canary-20260901T140506Z.jsonl"
+  ],
+  "red": [],
+  "status": "YELLOW",
+  "totals": {
+    "cells_probed": 27,
+    "records_in": 144,
+    "transport_failures": 0
+  },
+  "yellow": [
+    {
+      "check": "fence_rate:sonnet-5|structured_json|anthropic_api|adaptive",
+      "detail": "fenced 5/10 outside baseline band [0, 4] (p=0.130)"
+    }
+  ]
+}
