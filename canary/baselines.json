@@ -282,8 +282,12 @@
     "runs/peak-study2-full-20260729T150537Z.jsonl"
   ],
   "generated_utc": "2026-07-30T22:57:41.969674+00:00",
+  "notes": {
+    "response_models_haiku_bedrock_20260831": "Bedrock switched its response model-id serialization from the bare dated id to 'anthropic.claude-haiku-4-5-20251001-v1:0' on ~2026-08-29 (canary RED 8/29-8/31, door-localized: 1P and P-AWS still return the bare form; all behavior cells clean). Both forms allowed; the dated version token is the anchor - a new snapshot date still trips RED."
+  },
   "response_models": {
     "haiku-4-5": [
+      "anthropic.claude-haiku-4-5-20251001-v1:0",
       "claude-haiku-4-5-20251001"
     ],
     "opus-5": [
