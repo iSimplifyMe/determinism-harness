@@ -274,3 +274,49 @@ class TestCrossAndResample(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReportEntrypoint(unittest.TestCase):
+    def test_main_builds_report_from_jsonl(self):
+        import json as _json
+        import os
+        import tempfile
+        from analysis.analyze_study5 import main
+
+        records = [
+            record("haiku_1p", "s5-001", t, answer())
+            for t in ("t1", "t2", "t3", "t4", "t5")
+        ]
+        records += [
+            record("haiku_1p", "s5-002", t,
+                   answer(name="Item Corvid 3000 Optical Mouse")
+                   if t == "t2" else answer())
+            for t in ("t1", "t2", "t3", "t4", "t5")
+        ]
+        corpus = {
+            "meta": {"study": "study5-confidence-signal", "frozen": False,
+                     "planned_n": 2, "instruction_templates": {}},
+            "items": [item("s5-001"), item("s5-002")],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            run_path = os.path.join(tmp, "run.jsonl")
+            with open(run_path, "w") as fh:
+                for r in records:
+                    fh.write(_json.dumps(r) + "\n")
+            corpus_path = os.path.join(tmp, "corpus.json")
+            with open(corpus_path, "w") as fh:
+                _json.dump(corpus, fh)
+            rc = main([run_path, "--corpus", corpus_path, "--out", tmp])
+            self.assertEqual(rc, 0)
+            reports = [f for f in os.listdir(tmp)
+                       if f.startswith("study5-report-")]
+            self.assertEqual(len(reports), 1)
+            with open(os.path.join(tmp, reports[0])) as fh:
+                report = _json.load(fh)
+            k2 = report["paraphrase"]["haiku_1p"]["k2_strict"]
+            self.assertEqual(k2["n_items"], 2)
+            self.assertEqual(k2["n_disagree"], 1)
+            self.assertEqual(k2["catch_rate"], None)
+            k5 = report["paraphrase"]["haiku_1p"]["k5_strict"]
+            self.assertEqual(k5["n_disagree"], 1)
+            self.assertEqual(report["counts"]["in"], 10)

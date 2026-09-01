@@ -19,13 +19,28 @@ Point estimates and raw counts only: interval estimators are registered
 at prereg v5 with the power calc (study-1 lesson — never bolt an
 estimator on after the fact). Stdlib only.
 """
+import argparse
 import json
+import os
 import re
 from collections import defaultdict
+from datetime import datetime, timezone
 
 FENCE_RE = re.compile(r"\A\s*```(?:json)?\s*\n(.*?)\n?```\s*\Z", re.DOTALL)
 
 SCHEMA_KEYS = ("item_name", "unit_price", "quantity_in_stock")
+
+# Registered k-sets (prereg v5 section 5): the pair is primary, the
+# curve is the cost line.
+REGISTERED_KSETS = (
+    ("t1", "t2"),
+    ("t1", "t2", "t3"),
+    ("t1", "t2", "t3", "t4", "t5"),
+)
+CROSS_DOOR = ("sonnet_1p", "sonnet_bedrock")
+CROSS_MODEL = ("haiku_1p", "sonnet_1p")
+RESAMPLE_SUBSTRATES = ("haiku_1p", "local_20b_cuda")
+RESAMPLE_TEMPLATE = "t1"
 
 
 def parse_response(text):
@@ -283,3 +298,127 @@ def resample_analysis(parsed_resample, corpus_items, substrate,
     out["template"] = template_id
     out["excluded_missing"] = excluded
     return out
+
+
+def load_records(paths):
+    records = []
+    for path in paths:
+        with open(path, encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if line:
+                    records.append(json.loads(line))
+    return records
+
+
+def build_report(records, corpus):
+    """Every registered contrast that the supplied records can support —
+    substrates absent from the records are simply absent from the report
+    (an api-only or local-only run analyzes clean)."""
+    items = corpus["items"]
+    parsed_all, counts = index_records(records)
+    # Split paraphrase vs resample answers: the resample arm repeats the
+    # same (substrate, item, template) key, so it must not pollute the
+    # paraphrase first-answer lookups.
+    parsed = defaultdict(list)
+    parsed_resample = defaultdict(list)
+    for record in records:
+        meta = record_meta(record)
+        if meta.get("control") or ("ok" in record and not record["ok"]):
+            continue
+        mode, obj = parse_response(
+            record.get("text", record.get("response_text"))
+        )
+        if mode == "fail":
+            continue
+        key = (meta["substrate"], meta["item_id"], meta["template_id"])
+        if meta.get("arm") == "resample":
+            parsed_resample[key].append(obj)
+        else:
+            parsed[key].append(obj)
+    substrates = sorted({k[0] for k in parsed})
+    report = {
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "counts": counts,
+        "substrates_present": substrates,
+        "corpus_n": len(items),
+        "paraphrase": {},
+        "resample": {},
+        "cross_door": {},
+        "cross_model_exploratory": {},
+    }
+    for substrate in substrates:
+        block = {}
+        for kset in REGISTERED_KSETS:
+            for label, lenient in (("strict", False), ("lenient", True)):
+                key = f"k{len(kset)}_{label}"
+                block[key] = kset_analysis(
+                    parsed, items, substrate, kset, lenient=lenient
+                )
+        report["paraphrase"][substrate] = block
+    for substrate in RESAMPLE_SUBSTRATES:
+        if any(k[0] == substrate for k in parsed_resample):
+            report["resample"][substrate] = {
+                label: resample_analysis(
+                    parsed_resample, items, substrate, RESAMPLE_TEMPLATE,
+                    lenient=lenient,
+                )
+                for label, lenient in (("strict", False), ("lenient", True))
+            }
+    if all(s in substrates for s in CROSS_DOOR):
+        report["cross_door"] = {
+            template: cross_pair_analysis(
+                parsed, items, CROSS_DOOR[0], CROSS_DOOR[1], template
+            )
+            for template in ("t1", "t2", "t3", "t4", "t5")
+        }
+    if all(s in substrates for s in CROSS_MODEL):
+        report["cross_model_exploratory"] = {
+            template: cross_pair_analysis(
+                parsed, items, CROSS_MODEL[0], CROSS_MODEL[1], template
+            )
+            for template in ("t1", "t2", "t3", "t4", "t5")
+        }
+    return report
+
+
+def _fmt(value):
+    return "n/a" if value is None else f"{value:.3f}"
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Study-5 confidence-signal analyzer"
+    )
+    parser.add_argument("records", nargs="+", help="run .jsonl file(s)")
+    parser.add_argument("--corpus", default=None,
+                        help="fixture corpus path (default: repo corpus)")
+    parser.add_argument("--out", default="reports")
+    args = parser.parse_args(argv)
+
+    from harness.study5_fixtures import load_corpus
+
+    corpus = load_corpus(args.corpus)
+    records = load_records(args.records)
+    report = build_report(records, corpus)
+    os.makedirs(args.out, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    out_path = os.path.join(args.out, f"study5-report-{stamp}.json")
+    with open(out_path, "w", encoding="utf-8") as handle:
+        json.dump(report, handle, indent=2, sort_keys=True)
+    print(f"records={len(records)} counts={report['counts']}")
+    for substrate, block in sorted(report["paraphrase"].items()):
+        pair = block["k2_strict"]
+        print(
+            f"{substrate} k2 strict: n={pair['n_items']} "
+            f"wrong={pair['n_wrong']} disagree={pair['n_disagree']} "
+            f"catch={_fmt(pair['catch_rate'])} "
+            f"fa={_fmt(pair['false_alarm_rate'])} "
+            f"RR={_fmt(pair['relative_risk'])}"
+        )
+    print(f"report -> {out_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
