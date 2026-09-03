@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 144,
+  "expected": 144,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-09-03T14:07:02.344983+00:00",
+  "retries": 3,
+  "run_name": "canary-canary-20260903T140504Z"
+}
