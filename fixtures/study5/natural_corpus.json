@@ -280,6 +280,75 @@
       "note": "category=LEDs"
      }
     ]
+   },
+   "adjudication": {
+    "date": "2026-09-10",
+    "adjudicator": "owner (second labeler) with the first labeler; decisions recorded verbatim",
+    "decisions": [
+     {
+      "id": "A",
+      "scope": "Montgomery item_name, 25 items",
+      "first_labeler": "Description verbatim (primary), stripped readings as alternatives",
+      "second_labeler": "null on 10/10 seen",
+      "owner_answer": "I didnt define item description, code, or category by item_name. I wouldnt consider them an item_name, but I was also biased on the earlier records where the field was there",
+      "outcome": "Description stays primary; null added as an accepted alternative on all 25 items (lenient scoring accepts either); class ambiguous (both labelers)."
+     },
+     {
+      "id": "B",
+      "scope": "Austin dual-name records, 7 items",
+      "first_labeler": "Financial Name primary (first-listed, system-of-record rule)",
+      "second_labeler": "Common Name on 3/3 plain cases; Financial Name on the quoted-sentence case (s5n-005); class near_tie on the three plain cases",
+      "owner_answer": "I mean, that is fine if we want to define it that way which makes it ambig, which would mean 1. is correct",
+      "outcome": "Common Name primary on the 6 plain cases with Financial Name the alternative; s5n-005 keeps Financial Name primary; class stays ambiguous on all 7."
+     },
+     {
+      "id": "C",
+      "scope": "Austin unit costs stated to 3-6 decimals, 15 items",
+      "first_labeler": "near_tie (rounding = invited deviation)",
+      "second_labeler": "clean on 4/4 seen",
+      "owner_answer": "Reclass as clean (Recommended)",
+      "outcome": "unit_price classed clean; ground truth stays the exact figure; rounding noted as a transcription risk, not a class. Gradient/target re-derived by the rotation rule on 11 items."
+     }
+    ],
+    "raw_agreement_file": "natural/agreement-raw-2026-09-10.json",
+    "post_adjudication_agreement_file": "natural/agreement-post-adjudication-2026-09-10.json",
+    "post_adjudication_summary": {
+     "item_name": {
+      "strict": "10/20",
+      "within_recorded": "20/20"
+     },
+     "unit_price": {
+      "strict": "20/20"
+     },
+     "quantity_in_stock": {
+      "strict": "18/18",
+      "unlabeled": 2
+     },
+     "class": {
+      "agree": "17/20",
+      "kappa_3class": 0.714,
+      "kappa_clean_vs_not": 1.0,
+      "remaining": "s5n-001..003: second labeler near_tie vs ambiguous (owner: keep ambiguous)"
+     }
+    },
+    "realized_distribution_after": {
+     "ambiguous": 32,
+     "near_tie": 0,
+     "clean": 18,
+     "targets": {
+      "item_name": 38,
+      "quantity_in_stock": 7,
+      "unit_price": 5
+     },
+     "austin": {
+      "ambiguous": 7,
+      "clean": 18
+     },
+     "montgomery": {
+      "ambiguous": 25
+     }
+    },
+    "excluded_items": []
    }
   }
  },
@@ -290,22 +359,22 @@
    "target_field": "item_name",
    "field_classes": {
     "item_name": "ambiguous",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: POLES, TRAFFIC SIGNAL, STEEL TYPE 2W\nCommon Name: Pole, Signal, Galvanized, Type 2W\nTracking Type: FINANCIAL\nStock Number: 55085590003\nCategory: Poles\nObject: 7148 |  Poles - towers - steel\nUnit Cost: 6719.5152\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 2\nTotal On Hand: 9\nTotal Value: 60475.6368\nRe-Order Turnaround Time: 8\nRe-Order Status: Not Needed",
    "ground_truth": {
-    "item_name": "POLES, TRAFFIC SIGNAL, STEEL TYPE 2W",
+    "item_name": "Pole, Signal, Galvanized, Type 2W",
     "unit_price": 6719.5152,
     "quantity_in_stock": 9
    },
    "acceptable_alternatives": [
     {
-     "item_name": "Pole, Signal, Galvanized, Type 2W"
+     "item_name": "POLES, TRAFFIC SIGNAL, STEEL TYPE 2W"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'POLES, TRAFFIC SIGNAL, STEEL TYPE 2W' (primary: the first-listed, system-of-record name) and Common Name 'Pole, Signal, Galvanized, Type 2W' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (6719.5152); rounding to cents (6719.52) is the invited deviation - the record states the exact figure; Total Value 60475.6368 is the extended value, not the unit price.",
+   "rationale": "item_name: the record carries two names - Financial Name 'POLES, TRAFFIC SIGNAL, STEEL TYPE 2W' (primary: the first-listed, system-of-record name) and Common Name 'Pole, Signal, Galvanized, Type 2W' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (6719.5152); rounding to cents (6719.52) is the invited deviation - the record states the exact figure; Total Value 60475.6368 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'Pole, Signal, Galvanized, Type 2W' is primary, Financial Name 'POLES, TRAFFIC SIGNAL, STEEL TYPE 2W' the alternative; class stays ambiguous. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -337,22 +406,22 @@
    "target_field": "item_name",
    "field_classes": {
     "item_name": "ambiguous",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: 100 Amp Breaker Panel\nCommon Name: Breaker Panel, 100 AMP\nTracking Type: FINANCIAL\nStock Number: 55089570002\nCategory: Misc. Items\nObject: 7127 |  Electrical/lighting\nUnit Cost: 123.2989\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 8\nTotal Value: 986.3912\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
    "ground_truth": {
-    "item_name": "100 Amp Breaker Panel",
+    "item_name": "Breaker Panel, 100 AMP",
     "unit_price": 123.2989,
     "quantity_in_stock": 8
    },
    "acceptable_alternatives": [
     {
-     "item_name": "Breaker Panel, 100 AMP"
+     "item_name": "100 Amp Breaker Panel"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name '100 Amp Breaker Panel' (primary: the first-listed, system-of-record name) and Common Name 'Breaker Panel, 100 AMP' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (123.2989); rounding to cents (123.3) is the invited deviation - the record states the exact figure; Total Value 986.3912 is the extended value, not the unit price.",
+   "rationale": "item_name: the record carries two names - Financial Name '100 Amp Breaker Panel' (primary: the first-listed, system-of-record name) and Common Name 'Breaker Panel, 100 AMP' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (123.2989); rounding to cents (123.3) is the invited deviation - the record states the exact figure; Total Value 986.3912 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'Breaker Panel, 100 AMP' is primary, Financial Name '100 Amp Breaker Panel' the alternative; class stays ambiguous. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -389,17 +458,17 @@
    },
    "document": "Financial Name: School Beacon Cabinet Time Clock/Switch & Sensor\nCommon Name: School Beacon Cabinet Time Clock/Switch\nTracking Type: FINANCIAL\nStock Number: 55088770015\nCategory: Flashers\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 799\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 10\nTotal On Hand: 14\nTotal Value: 11186\nRe-Order Turnaround Time: 4\nRe-Order Status: Not Needed",
    "ground_truth": {
-    "item_name": "School Beacon Cabinet Time Clock/Switch & Sensor",
+    "item_name": "School Beacon Cabinet Time Clock/Switch",
     "unit_price": 799.0,
     "quantity_in_stock": 14
    },
    "acceptable_alternatives": [
     {
-     "item_name": "School Beacon Cabinet Time Clock/Switch"
+     "item_name": "School Beacon Cabinet Time Clock/Switch & Sensor"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'School Beacon Cabinet Time Clock/Switch & Sensor' (primary: the first-listed, system-of-record name) and Common Name 'School Beacon Cabinet Time Clock/Switch' (defensible alternative).",
+   "rationale": "item_name: the record carries two names - Financial Name 'School Beacon Cabinet Time Clock/Switch & Sensor' (primary: the first-listed, system-of-record name) and Common Name 'School Beacon Cabinet Time Clock/Switch' (defensible alternative). Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'School Beacon Cabinet Time Clock/Switch' is primary, Financial Name 'School Beacon Cabinet Time Clock/Switch & Sensor' the alternative; class stays ambiguous.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -427,11 +496,11 @@
   },
   {
    "id": "s5n-004",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "item_name",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable\nCommon Name: CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable\nTracking Type: FINANCIAL\nStock Number: 84084280048\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 250.7273\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 7\nTotal Value: 1755.0911\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -442,7 +511,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (250.7273); rounding to cents (250.73) is the invited deviation - the record states the exact figure; Total Value 1755.0911 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (250.7273); rounding to cents (250.73) is the invited deviation - the record states the exact figure; Total Value 1755.0911 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> item_name by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -474,7 +543,7 @@
    "target_field": "item_name",
    "field_classes": {
     "item_name": "ambiguous",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "near_tie"
    },
    "document": "Financial Name: CLIPS BANDING SS 3/4 IN\nCommon Name: \"Stainless Steel Wing Clips - 100 per box. (Width 3/4'')\"\nTracking Type: FINANCIAL\nStock Number: 32075371001\nCategory: Banding Equipment\nObject: 7127 |  Electrical/lighting\nUnit Cost: 82.9499\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 10\nTotal On Hand: 15\nTotal Value: 1244.2485\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
@@ -492,7 +561,7 @@
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'CLIPS BANDING SS 3/4 IN' (primary: the first-listed, system-of-record name) and Common Name '\"Stainless Steel Wing Clips - 100 per box. (Width 3/4\\'\\')\"' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (82.9499); rounding to cents (82.95) is the invited deviation - the record states the exact figure; Total Value 1244.2485 is the extended value, not the unit price. quantity_in_stock: Common Name says '100 per box' while Unit of Measure is EA and Total On Hand is 15: the stock count is 15 (boxes) as stated; 1500 (clips) is the invited pack-count misread.",
+   "rationale": "item_name: the record carries two names - Financial Name 'CLIPS BANDING SS 3/4 IN' (primary: the first-listed, system-of-record name) and Common Name '\"Stainless Steel Wing Clips - 100 per box. (Width 3/4\\'\\')\"' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (82.9499); rounding to cents (82.95) is the invited deviation - the record states the exact figure; Total Value 1244.2485 is the extended value, not the unit price. quantity_in_stock: Common Name says '100 per box' while Unit of Measure is EA and Total On Hand is 15: the stock count is 15 (boxes) as stated; 1500 (clips) is the invited pack-count misread. Adjudicated 2026-09-10: Financial Name stays primary here because the Common Name is a quoted sentence (the second labeler also chose Financial on this item); both readings recorded. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -562,11 +631,11 @@
   },
   {
    "id": "s5n-007",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "item_name",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Pedestrian Button Base, Polara Bulldog\nCommon Name: Pedestrian Button Base, Polara Bulldog\nTracking Type: FINANCIAL\nStock Number: 55089620007\nCategory: Pedestrian Buttons and Beepers\nObject: 7127 |  Electrical/lighting\nUnit Cost: 16.969\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 50\nTotal On Hand: 23\nTotal Value: 390.287\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
@@ -577,7 +646,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 3 decimals (16.969); rounding to cents (16.97) is the invited deviation - the record states the exact figure; Total Value 390.287 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 3 decimals (16.969); rounding to cents (16.97) is the invited deviation - the record states the exact figure; Total Value 390.287 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> item_name by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -648,11 +717,11 @@
   },
   {
    "id": "s5n-009",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Tomar Dual Channel Preemption Card\nCommon Name: Tomar Dual Channel Preemption Card\nTracking Type: FINANCIAL\nStock Number: 55081270011\nCategory: Preemption\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 1526.179998\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 0\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Status: Not Needed",
@@ -663,7 +732,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 6 decimals (1526.179998); rounding to cents (1526.18) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "rationale": "unit_price: Unit Cost is stated to 6 decimals (1526.179998); rounding to cents (1526.18) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> quantity_in_stock by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -690,11 +759,11 @@
   },
   {
    "id": "s5n-010",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "item_name",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: LED Red Arrow with Molex connectors\nCommon Name: LED Red Arrow with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440004\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 36.1891\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 40\nTotal On Hand: 483\nTotal Value: 17479.3353\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -705,7 +774,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (36.1891); rounding to cents (36.19) is the invited deviation - the record states the exact figure; Total Value 17479.3353 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (36.1891); rounding to cents (36.19) is the invited deviation - the record states the exact figure; Total Value 17479.3353 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> item_name by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -776,11 +845,11 @@
   },
   {
    "id": "s5n-012",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: ATC Conflict Monitor -  CMU, 2212 ATC\nCommon Name: ATC Conflict Monitor -  CMU, 2212 ATC\nTracking Type: FINANCIAL\nStock Number: 55081510008\nCategory: Signal Controllers and Cabinets\nObject: 7127 |  Electrical/lighting\nUnit Cost: 924.381\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 15\nTotal Value: 13865.715\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -791,7 +860,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 3 decimals (924.381); rounding to cents (924.38) is the invited deviation - the record states the exact figure; Total Value 13865.715 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 3 decimals (924.381); rounding to cents (924.38) is the invited deviation - the record states the exact figure; Total Value 13865.715 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> quantity_in_stock by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -823,22 +892,22 @@
    "target_field": "item_name",
    "field_classes": {
     "item_name": "ambiguous",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Mallory Beeper SC110DPR\nCommon Name: Beeper, Mallory, SC110DPR (Blue Tape)\nTracking Type: FINANCIAL\nStock Number: 55088760012\nCategory: Pedestrian Buttons and Beepers\nObject: 7127 |  Electrical/lighting\nUnit Cost: 61.1279\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 20\nTotal On Hand: 34\nTotal Value: 2078.3486\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
    "ground_truth": {
-    "item_name": "Mallory Beeper SC110DPR",
+    "item_name": "Beeper, Mallory, SC110DPR (Blue Tape)",
     "unit_price": 61.1279,
     "quantity_in_stock": 34
    },
    "acceptable_alternatives": [
     {
-     "item_name": "Beeper, Mallory, SC110DPR (Blue Tape)"
+     "item_name": "Mallory Beeper SC110DPR"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'Mallory Beeper SC110DPR' (primary: the first-listed, system-of-record name) and Common Name 'Beeper, Mallory, SC110DPR (Blue Tape)' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (61.1279); rounding to cents (61.13) is the invited deviation - the record states the exact figure; Total Value 2078.3486 is the extended value, not the unit price.",
+   "rationale": "item_name: the record carries two names - Financial Name 'Mallory Beeper SC110DPR' (primary: the first-listed, system-of-record name) and Common Name 'Beeper, Mallory, SC110DPR (Blue Tape)' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (61.1279); rounding to cents (61.13) is the invited deviation - the record states the exact figure; Total Value 2078.3486 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'Beeper, Mallory, SC110DPR (Blue Tape)' is primary, Financial Name 'Mallory Beeper SC110DPR' the alternative; class stays ambiguous. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -875,17 +944,17 @@
    },
    "document": "Financial Name: CABLE, CAT 6, Out Door Rated, UV Protected\nCommon Name: CABLE, CAT 6, Regular (No Gel)\nTracking Type: FINANCIAL\nStock Number: 72523300006\nCategory: Cables\nObject: 7145 |  Elctrcal conductors-wire&cable\nUnit Cost: 0.44\nUnit of Measure: FT\nStatus: ACTIVE\nRe-Order Threshold: 5000\nTotal On Hand: 10000\nTotal Value: 4400\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
    "ground_truth": {
-    "item_name": "CABLE, CAT 6, Out Door Rated, UV Protected",
+    "item_name": "CABLE, CAT 6, Regular (No Gel)",
     "unit_price": 0.44,
     "quantity_in_stock": 10000
    },
    "acceptable_alternatives": [
     {
-     "item_name": "CABLE, CAT 6, Regular (No Gel)"
+     "item_name": "CABLE, CAT 6, Out Door Rated, UV Protected"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'CABLE, CAT 6, Out Door Rated, UV Protected' (primary: the first-listed, system-of-record name) and Common Name 'CABLE, CAT 6, Regular (No Gel)' (defensible alternative). quantity_in_stock: Unit of Measure FT: Total On Hand 10000 is a length count; the stated figure is the quantity.",
+   "rationale": "item_name: the record carries two names - Financial Name 'CABLE, CAT 6, Out Door Rated, UV Protected' (primary: the first-listed, system-of-record name) and Common Name 'CABLE, CAT 6, Regular (No Gel)' (defensible alternative). quantity_in_stock: Unit of Measure FT: Total On Hand 10000 is a length count; the stated figure is the quantity. Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'CABLE, CAT 6, Regular (No Gel)' is primary, Financial Name 'CABLE, CAT 6, Out Door Rated, UV Protected' the alternative; class stays ambiguous.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -913,11 +982,11 @@
   },
   {
    "id": "s5n-015",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Slip Fitter, 4-way for 4\" pole\nCommon Name: Slip Fitter, 4-way for 4\" pole\nTracking Type: FINANCIAL\nStock Number: 55088760004\nCategory: Pedestrian Signals\nObject: 7127 |  Electrical/lighting\nUnit Cost: 47.511713\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 25\nTotal On Hand: 34\nTotal Value: 1615.398242\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -928,7 +997,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 6 decimals (47.511713); rounding to cents (47.51) is the invited deviation - the record states the exact figure; Total Value 1615.398242 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 6 decimals (47.511713); rounding to cents (47.51) is the invited deviation - the record states the exact figure; Total Value 1615.398242 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> quantity_in_stock by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -965,17 +1034,17 @@
    },
    "document": "Financial Name: CCTV Camera, high rise\nCommon Name: CCTV Camera, Hanwha high rise\nTracking Type: FINANCIAL\nStock Number: 84084280021\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 2204.48\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 2\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
    "ground_truth": {
-    "item_name": "CCTV Camera, high rise",
+    "item_name": "CCTV Camera, Hanwha high rise",
     "unit_price": 2204.48,
     "quantity_in_stock": 0
    },
    "acceptable_alternatives": [
     {
-     "item_name": "CCTV Camera, Hanwha high rise"
+     "item_name": "CCTV Camera, high rise"
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: the record carries two names - Financial Name 'CCTV Camera, high rise' (primary: the first-listed, system-of-record name) and Common Name 'CCTV Camera, Hanwha high rise' (defensible alternative). quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "rationale": "item_name: the record carries two names - Financial Name 'CCTV Camera, high rise' (primary: the first-listed, system-of-record name) and Common Name 'CCTV Camera, Hanwha high rise' (defensible alternative). quantity_in_stock: Total On Hand is 0 - stated, not silent. Adjudicated 2026-09-10 (second labeler chose Common Name 3/3 on plain cases): Common Name 'CCTV Camera, Hanwha high rise' is primary, Financial Name 'CCTV Camera, high rise' the alternative; class stays ambiguous.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1045,11 +1114,11 @@
   },
   {
    "id": "s5n-018",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: EN-EH-500-SBX, HARMONY\nCommon Name: EN-EH-500-SBX, HARMONY\nTracking Type: FINANCIAL\nStock Number: 55088770010\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 2370.3333\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 1\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
@@ -1060,7 +1129,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (2370.3333); rounding to cents (2370.33) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (2370.3333); rounding to cents (2370.33) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> quantity_in_stock by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1131,11 +1200,11 @@
   },
   {
    "id": "s5n-020",
-   "gradient": "near_tie",
+   "gradient": "clean",
    "target_field": "unit_price",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Louver, 12\", GPL w/ Slotted Full Circle Visor\nCommon Name: Louver, 12\", GPL w/ Slotted Full Circle Visor\nTracking Type: FINANCIAL\nStock Number: 55088800008\nCategory: Signal Heads\nObject: 7127 |  Electrical/lighting\nUnit Cost: 152.5336\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 20\nTotal On Hand: 94\nTotal Value: 14338.1584\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -1146,7 +1215,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (152.5336); rounding to cents (152.53) is the invited deviation - the record states the exact figure; Total Value 14338.1584 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (152.5336); rounding to cents (152.53) is the invited deviation - the record states the exact figure; Total Value 14338.1584 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> unit_price by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1174,11 +1243,11 @@
   },
   {
    "id": "s5n-021",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: Acorn Pole Top for 4\" pole\nCommon Name: Acorn Pole Top for 4\" pole\nTracking Type: FINANCIAL\nStock Number: 55088760011\nCategory: Misc. Items\nObject: 7127 |  Electrical/lighting\nUnit Cost: 21.3328\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 50\nTotal On Hand: 41\nTotal Value: 874.6448\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
@@ -1189,7 +1258,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (21.3328); rounding to cents (21.33) is the invited deviation - the record states the exact figure; Total Value 874.6448 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (21.3328); rounding to cents (21.33) is the invited deviation - the record states the exact figure; Total Value 874.6448 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> quantity_in_stock by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1260,11 +1329,11 @@
   },
   {
    "id": "s5n-023",
-   "gradient": "near_tie",
+   "gradient": "clean",
    "target_field": "unit_price",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: LED Amber Ball with Molex connectors\nCommon Name: LED Amber Ball with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440002\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 32.4408\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 130\nTotal On Hand: 287\nTotal Value: 9310.5096\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -1275,7 +1344,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (32.4408); rounding to cents (32.44) is the invited deviation - the record states the exact figure; Total Value 9310.5096 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (32.4408); rounding to cents (32.44) is the invited deviation - the record states the exact figure; Total Value 9310.5096 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> unit_price by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1346,11 +1415,11 @@
   },
   {
    "id": "s5n-025",
-   "gradient": "near_tie",
-   "target_field": "unit_price",
+   "gradient": "clean",
+   "target_field": "item_name",
    "field_classes": {
     "item_name": "clean",
-    "unit_price": "near_tie",
+    "unit_price": "clean",
     "quantity_in_stock": "clean"
    },
    "document": "Financial Name: LED Amber Arrow with Molex connectors\nCommon Name: LED Amber Arrow with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440005\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 40.6399\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 85\nTotal On Hand: 382\nTotal Value: 15524.4418\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
@@ -1361,7 +1430,7 @@
    },
    "acceptable_alternatives": [],
    "other_field_alternatives": {},
-   "rationale": "unit_price: Unit Cost is stated to 4 decimals (40.6399); rounding to cents (40.64) is the invited deviation - the record states the exact figure; Total Value 15524.4418 is the extended value, not the unit price.",
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (40.6399); rounding to cents (40.64) is the invited deviation - the record states the exact figure; Total Value 15524.4418 is the extended value, not the unit price. Adjudicated 2026-09-10 (second labeler: clean on 4/4 seen): a cost stated to more than two decimals is clean - rounding is a transcription risk, not a boundary-token misread; ground truth remains the exact figure. Target field re-derived unit_price -> item_name by the rotation rule after adjudication.",
    "source": {
     "dataset": "data.austintexas.gov/hcaw-evi2",
     "row_key": "stock_number",
@@ -1405,10 +1474,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "MENAGE A TROIS LIGHT PINOT GRIGIO"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'MENAGE A TROIS LIGHT PINOT GRIGIO 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['MENAGE A TROIS LIGHT PINOT GRIGIO'] are defensible.",
+   "rationale": "item_name: Description 'MENAGE A TROIS LIGHT PINOT GRIGIO 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['MENAGE A TROIS LIGHT PINOT GRIGIO'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1441,10 +1513,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "ST FRANCIS SONOMA CAB VV"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'ST FRANCIS SONOMA CAB VV 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ST FRANCIS SONOMA CAB VV'] are defensible.",
+   "rationale": "item_name: Description 'ST FRANCIS SONOMA CAB VV 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ST FRANCIS SONOMA CAB VV'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1477,10 +1552,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "ACROBAT P/NOIR"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'ACROBAT P/NOIR - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ACROBAT P/NOIR'] are defensible.",
+   "rationale": "item_name: Description 'ACROBAT P/NOIR - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ACROBAT P/NOIR'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1516,6 +1594,9 @@
     },
     {
      "item_name": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {
@@ -1524,7 +1605,7 @@
      1668
     ]
    },
-   "rationale": "item_name: Description 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SURFSIDE LEMONADE VARIETY PACK', 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN'] are defensible. quantity_in_stock: Total Inventory 40032 = 3336 twelve-packs = 1668 cases of 2/12PK; the record states 40032 (primary, as stated); the per-12-pack (3336) and per-case (1668) readings are defensible.",
+   "rationale": "item_name: Description 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SURFSIDE LEMONADE VARIETY PACK', 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN'] are defensible. quantity_in_stock: Total Inventory 40032 = 3336 twelve-packs = 1668 cases of 2/12PK; the record states 40032 (primary, as stated); the per-12-pack (3336) and per-case (1668) readings are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1557,10 +1638,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "DAVINCI CHIANTI DOCG"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'DAVINCI CHIANTI DOCG - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DAVINCI CHIANTI DOCG'] are defensible.",
+   "rationale": "item_name: Description 'DAVINCI CHIANTI DOCG - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DAVINCI CHIANTI DOCG'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1593,10 +1677,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "CHANDON GARDEN SPRITZER"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'CHANDON GARDEN SPRITZER - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CHANDON GARDEN SPRITZER'] are defensible.",
+   "rationale": "item_name: Description 'CHANDON GARDEN SPRITZER - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CHANDON GARDEN SPRITZER'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1632,10 +1719,13 @@
     },
     {
      "item_name": "DARK HORSE ROSE BUBBLES - CAN"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'DARK HORSE ROSE BUBBLES - CAN - 375ML' embeds the packaging/size token(s) that the Size field (375ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DARK HORSE ROSE BUBBLES', 'DARK HORSE ROSE BUBBLES - CAN'] are defensible.",
+   "rationale": "item_name: Description 'DARK HORSE ROSE BUBBLES - CAN - 375ML' embeds the packaging/size token(s) that the Size field (375ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DARK HORSE ROSE BUBBLES', 'DARK HORSE ROSE BUBBLES - CAN'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1668,10 +1758,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "ANDRE WHITE CHAMPAGNE"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'ANDRE WHITE CHAMPAGNE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ANDRE WHITE CHAMPAGNE'] are defensible.",
+   "rationale": "item_name: Description 'ANDRE WHITE CHAMPAGNE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ANDRE WHITE CHAMPAGNE'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1704,10 +1797,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "STELLA ROSA WATERMELON"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'STELLA ROSA WATERMELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA WATERMELON'] are defensible.",
+   "rationale": "item_name: Description 'STELLA ROSA WATERMELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA WATERMELON'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1740,10 +1836,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "SUNTORY MIDORI MELON"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'SUNTORY MIDORI MELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SUNTORY MIDORI MELON'] are defensible.",
+   "rationale": "item_name: Description 'SUNTORY MIDORI MELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SUNTORY MIDORI MELON'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1776,10 +1875,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "FREI BROTHERS CHARD"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'FREI BROTHERS CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FREI BROTHERS CHARD'] are defensible.",
+   "rationale": "item_name: Description 'FREI BROTHERS CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FREI BROTHERS CHARD'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1815,6 +1917,9 @@
     },
     {
      "item_name": "CORONA EXTRA 2/12 CAN"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {
@@ -1822,7 +1927,7 @@
      3123
     ]
    },
-   "rationale": "item_name: Description 'CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CORONA EXTRA', 'CORONA EXTRA 2/12 CAN'] are defensible. quantity_in_stock: Total Inventory 37476 = 3123 twelve-packs (2/12 CAN); the record states 37476 (primary, as stated); the per-12-pack reading (3123) is defensible (37476/24 is not integral).",
+   "rationale": "item_name: Description 'CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CORONA EXTRA', 'CORONA EXTRA 2/12 CAN'] are defensible. quantity_in_stock: Total Inventory 37476 = 3123 twelve-packs (2/12 CAN); the record states 37476 (primary, as stated); the per-12-pack reading (3123) is defensible (37476/24 is not integral). Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1855,10 +1960,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "DON JULIO TEQUILA - REPOSADO"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'DON JULIO TEQUILA - REPOSADO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DON JULIO TEQUILA - REPOSADO'] are defensible.",
+   "rationale": "item_name: Description 'DON JULIO TEQUILA - REPOSADO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DON JULIO TEQUILA - REPOSADO'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1894,10 +2002,13 @@
     },
     {
      "item_name": "UNDERWOOD P/GRIS"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'UNDERWOOD P/GRIS CAN 355ML' embeds the packaging/size token(s) that the Size field (355ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['UNDERWOOD P/GRIS CAN', 'UNDERWOOD P/GRIS'] are defensible.",
+   "rationale": "item_name: Description 'UNDERWOOD P/GRIS CAN 355ML' embeds the packaging/size token(s) that the Size field (355ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['UNDERWOOD P/GRIS CAN', 'UNDERWOOD P/GRIS'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1930,10 +2041,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "TORTOISE CREEK P/NOIR MISSION GROVE"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'TORTOISE CREEK P/NOIR MISSION GROVE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['TORTOISE CREEK P/NOIR MISSION GROVE'] are defensible.",
+   "rationale": "item_name: Description 'TORTOISE CREEK P/NOIR MISSION GROVE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['TORTOISE CREEK P/NOIR MISSION GROVE'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -1966,10 +2080,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "YELLOW TAIL MERLOT"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'YELLOW TAIL MERLOT - 1.5L' embeds the packaging/size token(s) that the Size field (1.5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['YELLOW TAIL MERLOT'] are defensible.",
+   "rationale": "item_name: Description 'YELLOW TAIL MERLOT - 1.5L' embeds the packaging/size token(s) that the Size field (1.5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['YELLOW TAIL MERLOT'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2002,10 +2119,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "FOUR ROSES YELLOW LABEL"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'FOUR ROSES YELLOW LABEL - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FOUR ROSES YELLOW LABEL'] are defensible.",
+   "rationale": "item_name: Description 'FOUR ROSES YELLOW LABEL - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FOUR ROSES YELLOW LABEL'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2038,10 +2158,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "BAREFOOT BUTTERY CHARD"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'BAREFOOT BUTTERY CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['BAREFOOT BUTTERY CHARD'] are defensible.",
+   "rationale": "item_name: Description 'BAREFOOT BUTTERY CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['BAREFOOT BUTTERY CHARD'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2074,10 +2197,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "99 SCHNAPPS APPLE"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description '99 SCHNAPPS APPLE - 50ML' embeds the packaging/size token(s) that the Size field (50ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['99 SCHNAPPS APPLE'] are defensible.",
+   "rationale": "item_name: Description '99 SCHNAPPS APPLE - 50ML' embeds the packaging/size token(s) that the Size field (50ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['99 SCHNAPPS APPLE'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2110,10 +2236,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "STELLA ROSA BERRY"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'STELLA ROSA BERRY - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA BERRY'] are defensible.",
+   "rationale": "item_name: Description 'STELLA ROSA BERRY - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA BERRY'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2146,10 +2275,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "SEAGRAM'S 7 CROWN"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description \"SEAGRAM'S 7 CROWN - 1.75L\" embeds the packaging/size token(s) that the Size field (1.75L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) [\"SEAGRAM'S 7 CROWN\"] are defensible.",
+   "rationale": "item_name: Description \"SEAGRAM'S 7 CROWN - 1.75L\" embeds the packaging/size token(s) that the Size field (1.75L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) [\"SEAGRAM'S 7 CROWN\"] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2182,10 +2314,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "FRANZIA SUMMIT CHILL RED BIB"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'FRANZIA SUMMIT CHILL RED BIB - 5L' embeds the packaging/size token(s) that the Size field (5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FRANZIA SUMMIT CHILL RED BIB'] are defensible.",
+   "rationale": "item_name: Description 'FRANZIA SUMMIT CHILL RED BIB - 5L' embeds the packaging/size token(s) that the Size field (5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FRANZIA SUMMIT CHILL RED BIB'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2218,10 +2353,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "FONSECA BIN 27 PORTO"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'FONSECA BIN 27 PORTO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FONSECA BIN 27 PORTO'] are defensible.",
+   "rationale": "item_name: Description 'FONSECA BIN 27 PORTO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FONSECA BIN 27 PORTO'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2254,10 +2392,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "GEORGES BLOODY MARY MILD"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'GEORGES BLOODY MARY MILD - 32.0Z' embeds the packaging/size token(s) that the Size field (32.0Z) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['GEORGES BLOODY MARY MILD'] are defensible.",
+   "rationale": "item_name: Description 'GEORGES BLOODY MARY MILD - 32.0Z' embeds the packaging/size token(s) that the Size field (32.0Z) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['GEORGES BLOODY MARY MILD'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",
@@ -2290,10 +2431,13 @@
    "acceptable_alternatives": [
     {
      "item_name": "CASA NOBLE REPOSADO TEQ"
+    },
+    {
+     "item_name": null
     }
    ],
    "other_field_alternatives": {},
-   "rationale": "item_name: Description 'CASA NOBLE REPOSADO TEQ - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CASA NOBLE REPOSADO TEQ'] are defensible.",
+   "rationale": "item_name: Description 'CASA NOBLE REPOSADO TEQ - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CASA NOBLE REPOSADO TEQ'] are defensible. Adjudicated 2026-09-10: null recorded as an accepted alternative - the second labeler read the record as stating no item_name field (Description/Code/Category only) on all 10 items seen, while noting anchoring from the Austin records' explicit name fields; Description verbatim stays primary (both labelers: ambiguous).",
    "source": {
     "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
     "row_key": "code",

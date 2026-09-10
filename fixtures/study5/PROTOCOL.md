@@ -147,23 +147,30 @@ committed so the draw is re-derivable by anyone; the feeds themselves update dai
   the labeler chooses classes with rationales, never the target). `acceptable_alternatives`
   carries the target field's alternatives (§2 rule); alternatives on other fields are recorded
   in `other_field_alternatives` for disclosure and the second-labeler comparison.
-- **Austin.** `item_name`: Financial Name is primary (first-listed, system-of-record); when
-  Common Name differs → `ambiguous`, Common Name recorded (a quoted Common Name also recorded
-  unquoted). `unit_price`: Unit Cost, exact figure; stated to more than two decimals →
-  `near_tie` (rounding to cents is the invited deviation; Total Value is the extended-value
-  distractor). `quantity_in_stock`: Total On Hand as stated → `clean` (zero is stated, not
-  silent); a pack-count token in a name against `EA` (e.g., "100 per box", 15 on hand) →
-  `near_tie`, the multiplied count being the invited misread.
+- **Austin.** `item_name`: when Financial Name and Common Name differ → `ambiguous`, both
+  recorded; **Common Name is primary** (adjudicated 2026-09-10, §7.4) unless the Common Name is
+  a quoted sentence rather than a name (s5n-005), where Financial Name stays primary.
+  `unit_price`: Unit Cost, exact figure, `clean` regardless of decimal places (adjudicated
+  2026-09-10: rounding is a transcription risk, not a boundary-token misread; the rationale
+  keeps the note; Total Value is the extended-value distractor). `quantity_in_stock`: Total On
+  Hand as stated → `clean` (zero is stated, not silent); a pack-count token in a name against
+  `EA` (e.g., "100 per box", 15 on hand) → `near_tie`, the multiplied count being the invited
+  misread.
 - **Montgomery.** `item_name`: Description verbatim is primary; size/pack tokens duplicated by
-  the Size field → `ambiguous`, stripped reading(s) recorded. `unit_price`: Price → `clean`;
-  Sale Price present → `ambiguous` (Price primary). `quantity_in_stock`: Total Inventory as
-  stated → `clean`; pack SKUs whose inventory is a multiple of the pack count → `ambiguous`
-  (per-pack and per-case readings recorded).
-- **Realized distribution (recorded, never re-balanced by selection):** ambiguous 32 /
-  near_tie 11 / clean 7; target fields item_name 34 / unit_price 14 / quantity_in_stock 2;
-  per source Austin 7 ambiguous / 11 near_tie / 7 clean, Montgomery 25 ambiguous. Reported per
-  stratum and per source (analyzer `by_source`). The Montgomery item_name mechanic is one
-  mechanic on 25 items — a known concentration, disclosed, not a finding.
+  the Size field → `ambiguous`, stripped reading(s) recorded, **and `null` recorded as an
+  accepted alternative** (adjudicated 2026-09-10: the second labeler read these records as
+  stating no item_name field — Description/Code/Category only). `unit_price`: Price →
+  `clean`; Sale Price present → `ambiguous` (Price primary). `quantity_in_stock`: Total
+  Inventory as stated → `clean`; pack SKUs whose inventory is a multiple of the pack count →
+  `ambiguous` (per-pack and per-case readings recorded).
+- **Realized distribution after adjudication (recorded, never re-balanced by selection):**
+  ambiguous 32 / near_tie 0 / clean 18; target fields item_name 38 / quantity_in_stock 7 /
+  unit_price 5; per source Austin 7 ambiguous / 18 clean, Montgomery 25 ambiguous. (Before
+  adjudication: 32 / 11 / 7 — the 11 near_tie items were the decimal-cost convention, decision
+  C.) The natural arm therefore has NO near_tie stratum; H4's near_tie contrast is a primary-
+  corpus result only. Reported per stratum and per source (analyzer `by_source`). The
+  Montgomery item_name mechanic is one mechanic on 25 items — a known concentration,
+  disclosed, not a finding.
 
 ### 7.4 Second labeler (partial independence check)
 
@@ -174,6 +181,20 @@ match per field after the registered canonicalization, plus class agreement — 
 label cannot be adjudicated is EXCLUDED by id in a dated note (the draw is never redrawn).
 This is a partial check only: the first labeler is the same session labeler as batches 1–4, and
 that is disclosed.
+
+**Outcome (2026-09-10, raw → adjudicated; files `natural/agreement-raw-2026-09-10.json` and
+`natural/agreement-post-adjudication-2026-09-10.json`; decisions verbatim in
+`natural_corpus.json` `meta.labeling.adjudication`):** unit_price 20/20 strict; quantity_in_stock
+18/18 strict (2 left blank); item_name 7/20 strict and 10/20 within the recorded readings before
+adjudication → 10/20 strict and 20/20 within after; class 13/20 (κ 0.37) before → 17/20 (κ 0.71
+three-class, 1.00 clean-vs-not) after. The disagreements were three systematic conventions, not
+noise: (A) Montgomery item_name — the second labeler read `null` (no field named "name"), the
+first read Description verbatim; both classed ambiguous ⇒ Description stays primary, `null` is
+an accepted alternative on all 25. (B) Austin dual names — the second labeler chose Common Name
+on every plain case ⇒ Common Name primary on 6 items, Financial Name on the quoted-sentence
+case, class ambiguous on all 7. (C) decimal costs — the second labeler classed them clean ⇒
+reclassed clean on 15 items (gradient/target re-derived on 11). Remaining: s5n-001..003 classed
+near_tie by the second labeler vs ambiguous (owner kept ambiguous). No item excluded.
 
 ### 7.5 Role in the design
 

@@ -74,10 +74,15 @@ mechanically validated (25 tests).
   ABS store inventory), drawn by a snapshot-hash-seeded rule from
   committed snapshots, rendered verbatim, labeled under declared
   per-source conventions with per-field classes, asked the SAME five
-  templates (byte-identical, validator-enforced). Realized gradient 32
-  ambiguous / 11 near_tie / 7 clean, recorded not balanced. A second
-  labeler (owner) labels 20 items blind; agreement is recorded at
-  freeze. It freezes in the same commit as the primary corpus.
+  templates (byte-identical, validator-enforced). Realized gradient
+  after second-labeler adjudication (2026-09-10, PROTOCOL 7.4): 32
+  ambiguous / 0 near_tie / 18 clean, recorded not balanced — the natural
+  arm carries no near_tie stratum, so H4's near_tie contrast is a
+  primary-corpus result. Second labeler (owner), 20 items blind: prices
+  20/20, quantities 18/18, names 10/20 strict and 20/20 within the
+  recorded readings after adjudication, class κ 0.71; raw and adjudicated
+  files and the decisions are in the corpus meta. It freezes in the same
+  commit as the primary corpus.
 
 ## 3. Substrates
 
