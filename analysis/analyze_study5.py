@@ -365,6 +365,29 @@ def build_report(records, corpus):
                 )
                 for label, lenient in (("strict", False), ("lenient", True))
             }
+    # Natural arm (PROTOCOL section 7): items carry a source dataset;
+    # the registered pair is reported per source so a one-feed artifact
+    # cannot hide inside the pooled number.
+    datasets = sorted({
+        it["source"]["dataset"] for it in items if it.get("source")
+    })
+    report["corpus_arm"] = corpus.get("meta", {}).get("arm", "primary")
+    report["by_source"] = {}
+    for dataset in datasets:
+        subset = [
+            it for it in items
+            if it.get("source", {}).get("dataset") == dataset
+        ]
+        report["by_source"][dataset] = {
+            substrate: {
+                label: kset_analysis(
+                    parsed, subset, substrate, REGISTERED_KSETS[0],
+                    lenient=lenient,
+                )
+                for label, lenient in (("strict", False), ("lenient", True))
+            }
+            for substrate in substrates
+        }
     if all(s in substrates for s in CROSS_DOOR):
         report["cross_door"] = {
             template: cross_pair_analysis(
@@ -416,6 +439,15 @@ def main(argv=None):
             f"fa={_fmt(pair['false_alarm_rate'])} "
             f"RR={_fmt(pair['relative_risk'])}"
         )
+    for dataset, per_substrate in sorted(report["by_source"].items()):
+        for substrate, block in sorted(per_substrate.items()):
+            pair = block["strict"]
+            print(
+                f"  [{dataset}] {substrate} k2 strict: n={pair['n_items']} "
+                f"wrong={pair['n_wrong']} disagree={pair['n_disagree']} "
+                f"catch={_fmt(pair['catch_rate'])} "
+                f"fa={_fmt(pair['false_alarm_rate'])}"
+            )
     print(f"report -> {out_path}")
     return 0
 

@@ -21,6 +21,18 @@ GRADIENTS = ("clean", "near_tie", "ambiguous")
 TEMPLATE_IDS = ("t1", "t2", "t3", "t4", "t5")
 
 CORPUS_PATH = Path(__file__).resolve().parent.parent / "fixtures/study5/corpus.json"
+# Held-out natural arm (PROTOCOL section 7): same schema, same templates,
+# documents nobody on the study authored. Own file so the primary corpus
+# bytes (and every manifest's corpus_sha256) stay untouched.
+NATURAL_CORPUS_PATH = (
+    Path(__file__).resolve().parent.parent / "fixtures/study5/natural_corpus.json"
+)
+NATURAL_ID_PREFIX = "s5n-"
+_SOURCE_FIELDS = ("dataset", "row_key", "key", "raw")
+_SOURCE_META_FIELDS = (
+    "key", "dataset", "snapshot", "snapshot_sha256", "eligibility_rule",
+    "draw", "render",
+)
 
 _ITEM_FIELDS = (
     "id",
@@ -167,4 +179,57 @@ def validate_corpus(corpus):
 
         if item["gradient"] != "clean" and not str(item["rationale"]).strip():
             errors.append(f"{item_id}: rationale required off clean")
+    return errors
+
+
+def validate_natural_corpus(corpus, primary=None):
+    """Natural-arm corpus (PROTOCOL section 7): everything
+    `validate_corpus` enforces, plus the arm's own rules — templates
+    byte-identical to the primary corpus (same five asks, different
+    documents), declared sources with snapshot hashes, per-item
+    provenance, and per-field classes that determine gradient and
+    target_field mechanically (highest class wins; ties rotate through
+    the schema keys by item order). Reproducibility of the draw itself
+    is checked by harness.study5_natural.check_corpus."""
+    errors = validate_corpus(corpus)
+    meta = corpus.get("meta", {})
+    if meta.get("arm") != "natural":
+        errors.append("meta.arm must be 'natural'")
+    primary = primary or load_corpus()
+    if meta.get("instruction_templates") != primary["meta"].get(
+        "instruction_templates"
+    ):
+        errors.append("instruction_templates differ from the primary corpus")
+    sources = meta.get("sources")
+    if not isinstance(sources, list) or not sources:
+        errors.append("meta.sources missing")
+        sources = []
+    for source in sources:
+        for key in _SOURCE_META_FIELDS:
+            if not source.get(key):
+                errors.append(f"source {source.get('key')}: missing {key}")
+    datasets = {source.get("dataset") for source in sources}
+    for index, item in enumerate(corpus.get("items", []), 1):
+        item_id = item.get("id", "<no id>")
+        if not str(item_id).startswith(NATURAL_ID_PREFIX):
+            errors.append(f"{item_id}: id must start with {NATURAL_ID_PREFIX}")
+        src = item.get("source")
+        if not isinstance(src, dict) or any(k not in src for k in _SOURCE_FIELDS):
+            errors.append(f"{item_id}: source provenance incomplete")
+        elif src["dataset"] not in datasets:
+            errors.append(f"{item_id}: source dataset not in meta.sources")
+        classes = item.get("field_classes")
+        if (
+            not isinstance(classes, dict)
+            or set(classes) != set(SCHEMA_KEYS)
+            or any(c not in GRADIENTS for c in classes.values())
+        ):
+            errors.append(f"{item_id}: field_classes must class every schema key")
+            continue
+        top = max(classes.values(), key=GRADIENTS.index)
+        if item.get("gradient") != top:
+            errors.append(f"{item_id}: gradient != highest field class")
+        tied = [f for f in SCHEMA_KEYS if classes[f] == top]
+        if item.get("target_field") != tied[(index - 1) % len(tied)]:
+            errors.append(f"{item_id}: target_field violates the rotation rule")
     return errors

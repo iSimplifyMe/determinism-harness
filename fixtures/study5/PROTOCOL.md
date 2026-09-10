@@ -3,7 +3,8 @@
 **Status: DRAFT — nothing frozen.** `corpus.json` `meta.frozen` is `false` and flips only in the
 gate-2 freeze commit, after the collaborator decision resolves (see §4). Everything here is
 revisable until PREREG v5 freeze; after that, the corpus and this protocol are immutable and the
-freeze commit hash is the reference.
+freeze commit hash is the reference. **2026-09-09:** mitigation 2 (§4) is now built — a held-out
+natural arm, §7, with its own file `natural_corpus.json` that freezes in the same commit.
 
 Study context: does disagreement between semantically identical, independently worded asks
 predict which answers are actually wrong? The corpus is the answer key that makes "wrong"
@@ -64,6 +65,8 @@ at least one required before freeze:
 2. **Held-out naturally-occurring documents** — if the collaborator path fails, this question
    RE-OPENS before freeze (recorded owner: Joe). Frozen gradient assignment alone is the
    weakest acceptable position and must not be the study's only mitigation by silent default.
+   **Resolved 2026-09-09 (owner decision, collaborator unresolved at day 9): built as §7,
+   collaborator-independent — if the collaborator engages, their labels layer on top.**
 3. **Gradient frozen pre-data** — always on: `meta.frozen` flips in a dedicated commit, tagged,
    before any pilot call; the freeze commit precedes the first model output on these items,
    third-party-checkable in the public history.
@@ -92,4 +95,91 @@ and it is why mitigation 1 or 2 is required rather than optional.
 - [ ] Full n authored, gradient balance recorded
 - [ ] Independent labels merged + adjudication log committed (if path 1)
 - [ ] Validator green on the full corpus
-- [ ] `meta.frozen: true` in a dedicated commit, tagged, pushed BEFORE any pilot call
+- [ ] Natural arm (§7): second-labeler agreement recorded in `natural_corpus.json`
+      `meta.labeling.agreement`, adjudication noted, any excluded ids listed by date
+- [ ] Natural arm (§7): `python3 -m harness.study5_natural check` CLEAN and
+      `validate_natural_corpus` clean at the freeze commit
+- [ ] `meta.frozen: true` in BOTH `corpus.json` and `natural_corpus.json`, one dedicated
+      commit, tagged, pushed BEFORE any pilot call
+
+## 7. Held-out natural arm (mitigation 2 — added 2026-09-09)
+
+**Why:** §4 requires a mitigation beyond gradient-frozen-pre-data. With the collaborator path
+unresolved nine days after outreach, the owner chose to build mitigation 2 now rather than freeze
+solo without it. The arm is collaborator-independent: if the collaborator engages, their
+independent labels apply to both corpora.
+
+**What it is:** 50 inventory records nobody on the study wrote, drawn by a fixed procedure from
+two public-domain government feeds, rendered verbatim, labeled under the conventions below, and
+asked the SAME five instruction templates as the authored corpus (byte-identical, validator-
+enforced). File: `natural_corpus.json`; code: `harness/study5_natural.py`; provenance and
+licenses: `natural/SOURCES.md`; snapshots: `natural/snapshots/` (sha256 in the corpus meta).
+
+### 7.1 Sources and snapshots
+
+| Source | Feed | Snapshot | Rows | Eligible | Drawn |
+|---|---|---|---|---|---|
+| City of Austin, TX — Arterial Management Materials Warehouse Inventory | `data.austintexas.gov/hcaw-evi2` | latest `published_date` 2026-09-08T23:13:18 | 381 | 226 | 25 |
+| Montgomery County, MD — ABS Store Inventory and Sale Items | `data.montgomerycountymd.gov/ib5t-5ncy` | live view, fetched 2026-09-09 | 7,037 | 2,768 | 25 |
+
+Both feeds are public domain (quotes and URLs in `natural/SOURCES.md`). The snapshots are
+committed so the draw is re-derivable by anyone; the feeds themselves update daily.
+
+### 7.2 Procedure (fixed in code BEFORE the draw; nothing hand-picked)
+
+- **Eligibility** (mechanical): Austin — `financial_name` non-empty, `unit_cost` present and
+  > 0, `total_on_hand` present, integer, ≥ 0. Montgomery — `description` non-empty,
+  `price` > 0, `totalinventory` present, integer, > 0 (currently stocked items).
+- **Draw:** `random.Random(int(sha256(snapshot)[:16], 16)).sample(eligible sorted by row key,
+  25)` per source — the seed is the snapshot's own hash, so there is no seed to choose.
+  Items are numbered `s5n-001…050` in draw order, Austin first.
+- **Rendering:** the feed's own column display names, `Label: value`, one field per line, in
+  the feed's column order; values verbatim (outer whitespace trimmed); record-keeping columns
+  excluded (Austin: `id`, `published_date`, `modified_date`). No rewording, nothing added.
+- **Reproducibility:** `python3 -m harness.study5_natural check` re-derives the draw and every
+  document from the committed snapshots and reports any divergence; the test suite runs it.
+
+### 7.3 Labeling conventions (declared; applied to the rendered documents; zero model calls)
+
+- Same schema and gradient definitions as §1–§2. Every item records a class **per field** in
+  `field_classes`; the item's `gradient` is the highest class present; `target_field` is the
+  highest-class field, ties rotated through schema order by item number (validator-enforced —
+  the labeler chooses classes with rationales, never the target). `acceptable_alternatives`
+  carries the target field's alternatives (§2 rule); alternatives on other fields are recorded
+  in `other_field_alternatives` for disclosure and the second-labeler comparison.
+- **Austin.** `item_name`: Financial Name is primary (first-listed, system-of-record); when
+  Common Name differs → `ambiguous`, Common Name recorded (a quoted Common Name also recorded
+  unquoted). `unit_price`: Unit Cost, exact figure; stated to more than two decimals →
+  `near_tie` (rounding to cents is the invited deviation; Total Value is the extended-value
+  distractor). `quantity_in_stock`: Total On Hand as stated → `clean` (zero is stated, not
+  silent); a pack-count token in a name against `EA` (e.g., "100 per box", 15 on hand) →
+  `near_tie`, the multiplied count being the invited misread.
+- **Montgomery.** `item_name`: Description verbatim is primary; size/pack tokens duplicated by
+  the Size field → `ambiguous`, stripped reading(s) recorded. `unit_price`: Price → `clean`;
+  Sale Price present → `ambiguous` (Price primary). `quantity_in_stock`: Total Inventory as
+  stated → `clean`; pack SKUs whose inventory is a multiple of the pack count → `ambiguous`
+  (per-pack and per-case readings recorded).
+- **Realized distribution (recorded, never re-balanced by selection):** ambiguous 32 /
+  near_tie 11 / clean 7; target fields item_name 34 / unit_price 14 / quantity_in_stock 2;
+  per source Austin 7 ambiguous / 11 near_tie / 7 clean, Montgomery 25 ambiguous. Reported per
+  stratum and per source (analyzer `by_source`). The Montgomery item_name mechanic is one
+  mechanic on 25 items — a known concentration, disclosed, not a finding.
+
+### 7.4 Second labeler (partial independence check)
+
+The owner labels 20 items (the first 10 per source in draw order) from
+`natural/SECOND-LABELER-SHEET.md` before reading §7.3 or the corpus file. Agreement — exact
+match per field after the registered canonicalization, plus class agreement — is recorded in
+`meta.labeling.agreement` at freeze; disagreements are adjudicated and disclosed. An item whose
+label cannot be adjudicated is EXCLUDED by id in a dated note (the draw is never redrawn).
+This is a partial check only: the first labeler is the same session labeler as batches 1–4, and
+that is disclosed.
+
+### 7.5 Role in the design
+
+A registered replication arm (PREREGISTRATION-v5 §5, H5), not the powered primary. Substrates:
+`haiku_1p`, `sonnet_1p` (paraphrase; haiku resample), `local_20b_cuda`, `local_qwen_metal`.
+Calls: 750 API + 501 cuda + 251 metal. Confirmatory only — no pilot, no item reused anywhere —
+run after the `prereg-v5` tag via `scripts/study5_api_run.sh natural` and
+`scripts/study5_cuda_window.sh natural` (both refuse on an unfrozen natural corpus and without
+the tag). `natural_corpus.json` `meta.frozen` flips in the same freeze commit as `corpus.json`.

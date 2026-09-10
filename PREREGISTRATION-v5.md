@@ -67,6 +67,17 @@ mechanically validated (25 tests).
   freeze; gradient-frozen-pre-data always holds. Authored-to-fork items
   forking is not evidence; the registered claims live in the
   ERROR-PREDICTION contrasts, not in whether forks occur.
+- **Held-out natural arm (added to the draft 2026-09-09, PROTOCOL
+  section 7):** `fixtures/study5/natural_corpus.json`, n=50 inventory
+  records nobody on the study authored — 25 each from two public-domain
+  government feeds (Austin TX materials warehouse; Montgomery County MD
+  ABS store inventory), drawn by a snapshot-hash-seeded rule from
+  committed snapshots, rendered verbatim, labeled under declared
+  per-source conventions with per-field classes, asked the SAME five
+  templates (byte-identical, validator-enforced). Realized gradient 32
+  ambiguous / 11 near_tie / 7 clean, recorded not balanced. A second
+  labeler (owner) labels 20 items blind; agreement is recorded at
+  freeze. It freezes in the same commit as the primary corpus.
 
 ## 3. Substrates
 
@@ -127,6 +138,14 @@ Unit of analysis: corpus item (one row per item per contrast).
 - **H4 (secondary).** The paraphrase-pair signal concentrates in
   `near_tie` and `ambiguous` strata; `clean` items contribute ~no
   disagreement (per-gradient strata reported for every contrast).
+- **H5 (registered replication, secondary).** On the held-out natural
+  corpus, the H1 contrast — same estimator, same primary substrate,
+  same pair (t1, t2), strict and lenient — is direction-consistent with
+  H1 (risk difference > 0). Reported with 95% intervals, per-gradient
+  strata, and per-source strata (`by_source`); n=50 is fixed by the
+  draw, so no power claim is made for H5, and H5 can neither rescue a
+  null H1 nor be hidden if it is null. Baseline and cross-model
+  contrasts on the natural corpus are reported as exploratory.
 - **Baseline comparison (secondary).** On haiku_1p, paraphrase-pair
   catch/false-alarm vs sampled-resample catch/false-alarm on the same
   items (the prior-art baseline vs the enterprise-deployable
@@ -178,11 +197,16 @@ Unit of analysis: corpus item (one row per item per contrast).
 ## 8. Schedule and scale
 
 Runner modes (all dry-run verified): `study5-pilot-api` 420 calls /
-`study5-full-api` 3,000 / `study5-full-local` cuda 1,501, metal 751.
-Pilot = stratified 21 items (7 per gradient). Confirmatory total 5,252
-calls ≈ 3,000 API + 2,252 local ($0). Spend: envelope ≤$100 list-price
-(owner-approved 2026-08-31); pilot actuals and the projected
-confirmatory number are recorded at freeze.
+`study5-full-api` 3,000 / `study5-full-local` cuda 1,501, metal 751 /
+`study5-natural-api` 750 / `study5-natural-local` cuda 501, metal 251.
+Pilot = stratified 21 items (7 per gradient), primary corpus only.
+Confirmatory total 6,754 calls ≈ 3,750 API + 3,004 local ($0): primary
+5,252 + natural 1,502. Natural-arm API substrates are `haiku_1p` and
+`sonnet_1p` only (Bedrock's cross-door contrast is registered on the
+primary corpus). Spend: envelope ≤$100 list-price (owner-approved
+2026-08-31; natural arm ≈ +25% API calls, owner-approved 2026-09-09);
+pilot actuals and the projected confirmatory number are recorded at
+freeze.
 
 ## 9. Reporting
 
@@ -199,8 +223,11 @@ public repo as in studies 1–4.
 - [ ] Collaborator decision resolved; corpus labeling path recorded
       (independent labels merged + adjudication log, or the solo
       mitigation resolved by owner decision)
-- [ ] Corpus frozen: `meta.frozen: true`, dedicated commit, tagged,
-      pushed — BEFORE any pilot call
+- [ ] Corpus frozen: `meta.frozen: true` in BOTH `corpus.json` and
+      `natural_corpus.json`, dedicated commit, tagged, pushed — BEFORE
+      any pilot call
+- [ ] Natural arm: second-labeler agreement recorded, adjudication
+      noted, `harness.study5_natural check` CLEAN at the freeze commit
 - [ ] Pilot run (both credential families), records committed,
       labeled exploratory
 - [ ] Power calculation for the section-6 estimator from pilot
@@ -210,6 +237,7 @@ public repo as in studies 1–4.
 - [ ] Any pilot-informed design change written into sections 1–8 with
       a dated note in the deviations ledger below
 - [ ] Tag `prereg-v5` pushed; zero confirmatory calls precede it
+      (the natural-arm chains refuse without it, like `full`)
 
 ## 11. Deviations ledger
 

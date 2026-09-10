@@ -1,6 +1,6 @@
 #!/bin/bash
 # Study-5 CUDA window chain (attended; PREREGISTRATION-v5 sections 7-8).
-# Usage: study5_cuda_window.sh pilot|full
+# Usage: study5_cuda_window.sh pilot|full|natural
 #
 # Owns the whole 4090 lifecycle, embodying every study-3 chain lesson:
 #   - tunnel targets 127.0.0.1 explicitly (Windows resolves localhost
@@ -16,10 +16,13 @@
 # Ordering gates identical to the API chain: no run on an unfrozen
 # corpus; full refuses without the prereg-v5 tag.
 set -u
-MODE_ARG="${1:?usage: study5_cuda_window.sh pilot|full}"
+MODE_ARG="${1:?usage: study5_cuda_window.sh pilot|full|natural}"
+CORPUS="fixtures/study5/corpus.json"
 case "$MODE_ARG" in
-  pilot) MODE="study5-pilot-local"; EXPECT_CALLS=211 ;;
-  full)  MODE="study5-full-local";  EXPECT_CALLS=1501 ;;
+  pilot)   MODE="study5-pilot-local";   EXPECT_CALLS=211 ;;
+  full)    MODE="study5-full-local";    EXPECT_CALLS=1501 ;;
+  natural) MODE="study5-natural-local"; EXPECT_CALLS=501
+           CORPUS="fixtures/study5/natural_corpus.json" ;;
   *) echo "unknown mode: $MODE_ARG"; exit 2 ;;
 esac
 WINDOW="local"
@@ -31,12 +34,13 @@ cd "$REPO" || exit 9
 log() { echo "[study5-cuda-$MODE_ARG $(date -u +%H:%M:%SZ)] $*"; }
 
 FROZEN=$(python3 -c "
-import json; print(json.load(open('fixtures/study5/corpus.json'))['meta']['frozen'])")
+import json; print(json.load(open('$CORPUS'))['meta']['frozen'])")
 if [ "$FROZEN" != "True" ]; then
-  log "REFUSED: corpus meta.frozen is $FROZEN - freeze first."
+  log "REFUSED: $CORPUS meta.frozen is $FROZEN - freeze first."
   exit 3
 fi
-if [ "$MODE_ARG" = "full" ] && [ -z "$(git tag -l prereg-v5)" ]; then
+if { [ "$MODE_ARG" = "full" ] || [ "$MODE_ARG" = "natural" ]; } \
+   && [ -z "$(git tag -l prereg-v5)" ]; then
   log "REFUSED: no prereg-v5 tag - confirmatory cannot precede the freeze."
   exit 3
 fi

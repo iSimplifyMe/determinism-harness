@@ -1,0 +1,2078 @@
+{
+ "meta": {
+  "study": "study5-confidence-signal",
+  "arm": "natural",
+  "planned_n": 50,
+  "frozen": false,
+  "sources": [
+   {
+    "key": "austin",
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "name": "Arterial Management Materials Warehouse Inventory",
+    "publisher": "City of Austin, Texas",
+    "snapshot": "natural/snapshots/austin-hcaw-evi2.json",
+    "snapshot_sha256": "01220c3ac0393124979ebeee657f53485b57f0a20a1f976d2aed43e4e32d7aad",
+    "snapshot_fetched_utc": "2026-09-10T03:33:10Z",
+    "snapshot_rows": 381,
+    "eligible_rows": 226,
+    "eligibility_rule": "latest published_date snapshot; financial_name non-empty; unit_cost present and > 0; total_on_hand present, integer, >= 0",
+    "draw": "random.Random(int(sha256[:16], 16)).sample(eligible sorted by stock_number, 25)",
+    "render": "column display names, 'Label: value' per line, column order, values verbatim (outer whitespace trimmed), excluded: id, published_date, modified_date",
+    "sampled": 25
+   },
+   {
+    "key": "montgomery",
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "name": "ABS Store Inventory and Sale Items",
+    "publisher": "Montgomery County, MD",
+    "snapshot": "natural/snapshots/montgomery-ib5t-5ncy.json",
+    "snapshot_sha256": "a632cd5b0b0f83c125e6858b5198c406357ae6e5d084defe87bc992a3daef55b",
+    "snapshot_fetched_utc": "2026-09-10T03:33:10Z",
+    "snapshot_rows": 7037,
+    "eligible_rows": 2768,
+    "eligibility_rule": "description non-empty; price > 0; totalinventory present, integer, > 0 (currently stocked items)",
+    "draw": "random.Random(int(sha256[:16], 16)).sample(eligible sorted by code, 25)",
+    "render": "column display names, 'Label: value' per line, column order, values verbatim (outer whitespace trimmed), excluded: none",
+    "sampled": 25
+   }
+  ],
+  "instruction_templates": {
+   "t1": "Read the product listing below and answer with a JSON object containing item_name, unit_price, and quantity_in_stock. Where the listing does not state a value, use null.",
+   "t2": "Below is an inventory record. Produce JSON with exactly these keys: item_name, unit_price, quantity_in_stock. Any value the record leaves unstated must be null.",
+   "t3": "For the catalog entry that follows, fill in and reply with this JSON template: {\"item_name\": null, \"unit_price\": null, \"quantity_in_stock\": null} - replacing null with a value wherever the entry states one.",
+   "t4": "What are the item_name, the unit_price, and the quantity_in_stock in the listing below? Reply as a single JSON object with those three keys, using null for anything the listing does not say.",
+   "t5": "You are cataloging stock. From the record below, report item_name, unit_price, and quantity_in_stock as one JSON object; any information the record is missing is null."
+  },
+  "labeling": {
+   "primary_labeler": "session labeler (Claude, 2026-09-09): every label assigned from the rendered documents under PROTOCOL section 7 conventions, blind to any model output (zero model calls against any item)",
+   "second_labeler": "owner: 20-item sample (first 10 items per source in draw order), labeled from natural/SECOND-LABELER-SHEET.md before reading PROTOCOL section 7 or this file; agreement computed at freeze",
+   "agreement": null
+  }
+ },
+ "items": [
+  {
+   "id": "s5n-001",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: POLES, TRAFFIC SIGNAL, STEEL TYPE 2W\nCommon Name: Pole, Signal, Galvanized, Type 2W\nTracking Type: FINANCIAL\nStock Number: 55085590003\nCategory: Poles\nObject: 7148 |  Poles - towers - steel\nUnit Cost: 6719.5152\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 2\nTotal On Hand: 9\nTotal Value: 60475.6368\nRe-Order Turnaround Time: 8\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "POLES, TRAFFIC SIGNAL, STEEL TYPE 2W",
+    "unit_price": 6719.5152,
+    "quantity_in_stock": 9
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "Pole, Signal, Galvanized, Type 2W"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'POLES, TRAFFIC SIGNAL, STEEL TYPE 2W' (primary: the first-listed, system-of-record name) and Common Name 'Pole, Signal, Galvanized, Type 2W' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (6719.5152); rounding to cents (6719.52) is the invited deviation - the record states the exact figure; Total Value 60475.6368 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55085590003",
+    "raw": {
+     "category": "Poles",
+     "common_name": "Pole, Signal, Galvanized, Type 2W",
+     "financial_name": "POLES, TRAFFIC SIGNAL, STEEL TYPE 2W",
+     "id": "5dfa6ad12057600ac95e7a7b",
+     "modified_date": "2023-08-31T13:46:00-05:00",
+     "object": "7148 |  Poles - towers - steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "2",
+     "re_order_turnaround_time": "8",
+     "status": "ACTIVE",
+     "stock_number": "55085590003",
+     "total_on_hand": "9",
+     "total_value": "60475.6368",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "6719.5152",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-002",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: 100 Amp Breaker Panel\nCommon Name: Breaker Panel, 100 AMP\nTracking Type: FINANCIAL\nStock Number: 55089570002\nCategory: Misc. Items\nObject: 7127 |  Electrical/lighting\nUnit Cost: 123.2989\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 8\nTotal Value: 986.3912\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "100 Amp Breaker Panel",
+    "unit_price": 123.2989,
+    "quantity_in_stock": 8
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "Breaker Panel, 100 AMP"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name '100 Amp Breaker Panel' (primary: the first-listed, system-of-record name) and Common Name 'Breaker Panel, 100 AMP' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (123.2989); rounding to cents (123.3) is the invited deviation - the record states the exact figure; Total Value 986.3912 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55089570002",
+    "raw": {
+     "category": "Misc. Items",
+     "common_name": "Breaker Panel, 100 AMP",
+     "financial_name": "100 Amp Breaker Panel",
+     "id": "5dfa6ac42057600ac95e792e",
+     "modified_date": "2023-09-01T09:11:00-05:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "2",
+     "status": "ACTIVE",
+     "stock_number": "55089570002",
+     "total_on_hand": "8",
+     "total_value": "986.3912",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "123.2989",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-003",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: School Beacon Cabinet Time Clock/Switch & Sensor\nCommon Name: School Beacon Cabinet Time Clock/Switch\nTracking Type: FINANCIAL\nStock Number: 55088770015\nCategory: Flashers\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 799\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 10\nTotal On Hand: 14\nTotal Value: 11186\nRe-Order Turnaround Time: 4\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "School Beacon Cabinet Time Clock/Switch & Sensor",
+    "unit_price": 799.0,
+    "quantity_in_stock": 14
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "School Beacon Cabinet Time Clock/Switch"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'School Beacon Cabinet Time Clock/Switch & Sensor' (primary: the first-listed, system-of-record name) and Common Name 'School Beacon Cabinet Time Clock/Switch' (defensible alternative).",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088770015",
+    "raw": {
+     "category": "Flashers",
+     "common_name": "School Beacon Cabinet Time Clock/Switch",
+     "financial_name": "School Beacon Cabinet Time Clock/Switch & Sensor",
+     "id": "654b3efb91742f002621c4a9",
+     "modified_date": "2023-12-21T09:34:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "10",
+     "re_order_turnaround_time": "4",
+     "status": "ACTIVE",
+     "stock_number": "55088770015",
+     "total_on_hand": "14",
+     "total_value": "11186",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "799",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-004",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable\nCommon Name: CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable\nTracking Type: FINANCIAL\nStock Number: 84084280048\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 250.7273\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 7\nTotal Value: 1755.0911\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable",
+    "unit_price": 250.7273,
+    "quantity_in_stock": 7
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (250.7273); rounding to cents (250.73) is the invited deviation - the record states the exact figure; Total Value 1755.0911 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "84084280048",
+    "raw": {
+     "category": "Communications & Monitoring",
+     "common_name": "CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable",
+     "financial_name": "CCTV Camera Pendant Mount 1.5 NPT, 120\" Galvanized Cable",
+     "id": "67f619e6761dde02be26c258",
+     "modified_date": "2025-04-08T09:42:00-05:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "84084280048",
+     "total_on_hand": "7",
+     "total_value": "1755.0911",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "250.7273",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-005",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "near_tie"
+   },
+   "document": "Financial Name: CLIPS BANDING SS 3/4 IN\nCommon Name: \"Stainless Steel Wing Clips - 100 per box. (Width 3/4'')\"\nTracking Type: FINANCIAL\nStock Number: 32075371001\nCategory: Banding Equipment\nObject: 7127 |  Electrical/lighting\nUnit Cost: 82.9499\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 10\nTotal On Hand: 15\nTotal Value: 1244.2485\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "CLIPS BANDING SS 3/4 IN",
+    "unit_price": 82.9499,
+    "quantity_in_stock": 15
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "\"Stainless Steel Wing Clips - 100 per box. (Width 3/4'')\""
+    },
+    {
+     "item_name": "Stainless Steel Wing Clips - 100 per box. (Width 3/4'')"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'CLIPS BANDING SS 3/4 IN' (primary: the first-listed, system-of-record name) and Common Name '\"Stainless Steel Wing Clips - 100 per box. (Width 3/4\\'\\')\"' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (82.9499); rounding to cents (82.95) is the invited deviation - the record states the exact figure; Total Value 1244.2485 is the extended value, not the unit price. quantity_in_stock: Common Name says '100 per box' while Unit of Measure is EA and Total On Hand is 15: the stock count is 15 (boxes) as stated; 1500 (clips) is the invited pack-count misread.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "32075371001",
+    "raw": {
+     "category": "Banding Equipment",
+     "common_name": "\"Stainless Steel Wing Clips - 100 per box. (Width 3/4'')\"",
+     "financial_name": "CLIPS BANDING SS 3/4 IN",
+     "id": "5dfa6acb2057600ac95e79fb",
+     "modified_date": "2023-08-31T10:06:00-05:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "10",
+     "re_order_turnaround_time": "2",
+     "status": "ACTIVE",
+     "stock_number": "32075371001",
+     "total_on_hand": "15",
+     "total_value": "1244.2485",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "82.9499",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-006",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Etherwan Switch Power Supply\nCommon Name: Etherwan Switch Power Supply\nTracking Type: FINANCIAL\nStock Number: 20621750012\nCategory: Ethernet Switches & Cradlepoint Equipment\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 64\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 0\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Etherwan Switch Power Supply",
+    "unit_price": 64.0,
+    "quantity_in_stock": 0
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "20621750012",
+    "raw": {
+     "category": "Ethernet Switches & Cradlepoint Equipment",
+     "common_name": "Etherwan Switch Power Supply",
+     "financial_name": "Etherwan Switch Power Supply",
+     "id": "5dfa6acc2057600ac95e7a29",
+     "modified_date": "2021-02-09T19:06:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "0",
+     "status": "ACTIVE",
+     "stock_number": "20621750012",
+     "total_on_hand": "0",
+     "total_value": "0",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "64",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-007",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Pedestrian Button Base, Polara Bulldog\nCommon Name: Pedestrian Button Base, Polara Bulldog\nTracking Type: FINANCIAL\nStock Number: 55089620007\nCategory: Pedestrian Buttons and Beepers\nObject: 7127 |  Electrical/lighting\nUnit Cost: 16.969\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 50\nTotal On Hand: 23\nTotal Value: 390.287\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "Pedestrian Button Base, Polara Bulldog",
+    "unit_price": 16.969,
+    "quantity_in_stock": 23
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 3 decimals (16.969); rounding to cents (16.97) is the invited deviation - the record states the exact figure; Total Value 390.287 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55089620007",
+    "raw": {
+     "category": "Pedestrian Buttons and Beepers",
+     "common_name": "Pedestrian Button Base, Polara Bulldog",
+     "financial_name": "Pedestrian Button Base, Polara Bulldog",
+     "id": "5dfa6aca2057600ac95e79c3",
+     "modified_date": "2024-11-12T09:30:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "50",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55089620007",
+     "total_on_hand": "23",
+     "total_value": "390.287",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "16.969",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-008",
+   "gradient": "clean",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Detection, Currux - 4 Approach\nCommon Name: Detection, Currux - 4 Approach\nTracking Type: FINANCIAL\nStock Number: 55091780016\nCategory: Video Detection Equipment\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 15015\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 15\nTotal Value: 225225\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Detection, Currux - 4 Approach",
+    "unit_price": 15015.0,
+    "quantity_in_stock": 15
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55091780016",
+    "raw": {
+     "category": "Video Detection Equipment",
+     "common_name": "Detection, Currux - 4 Approach",
+     "financial_name": "Detection, Currux - 4 Approach",
+     "id": "67345be4384f2b02fa054430",
+     "modified_date": "2024-11-12T08:19:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55091780016",
+     "total_on_hand": "15",
+     "total_value": "225225",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "15015",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-009",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Tomar Dual Channel Preemption Card\nCommon Name: Tomar Dual Channel Preemption Card\nTracking Type: FINANCIAL\nStock Number: 55081270011\nCategory: Preemption\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 1526.179998\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 0\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Tomar Dual Channel Preemption Card",
+    "unit_price": 1526.179998,
+    "quantity_in_stock": 0
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 6 decimals (1526.179998); rounding to cents (1526.18) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55081270011",
+    "raw": {
+     "category": "Preemption",
+     "common_name": "Tomar Dual Channel Preemption Card",
+     "financial_name": "Tomar Dual Channel Preemption Card",
+     "id": "5dfa6ada2057600ac95e7ac8",
+     "modified_date": "2021-02-09T19:06:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "0",
+     "status": "ACTIVE",
+     "stock_number": "55081270011",
+     "total_on_hand": "0",
+     "total_value": "0",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "1526.179998",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-010",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: LED Red Arrow with Molex connectors\nCommon Name: LED Red Arrow with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440004\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 36.1891\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 40\nTotal On Hand: 483\nTotal Value: 17479.3353\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "LED Red Arrow with Molex connectors",
+    "unit_price": 36.1891,
+    "quantity_in_stock": 483
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (36.1891); rounding to cents (36.19) is the invited deviation - the record states the exact figure; Total Value 17479.3353 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088440004",
+    "raw": {
+     "category": "LEDs",
+     "common_name": "LED Red Arrow with Molex connectors",
+     "financial_name": "LED Red Arrow with Molex connectors",
+     "id": "5dfa6ad22057600ac95e7a90",
+     "modified_date": "2024-11-12T12:01:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "40",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088440004",
+     "total_on_hand": "483",
+     "total_value": "17479.3353",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "36.1891",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-011",
+   "gradient": "clean",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Controller, ATC, Small Form Factor\nCommon Name: Controller, ATC, Small Form Factor\nTracking Type: FINANCIAL\nStock Number: 55081300005\nCategory: Signal Controllers and Cabinets\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 2350\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 2\nTotal Value: 4700\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "Controller, ATC, Small Form Factor",
+    "unit_price": 2350.0,
+    "quantity_in_stock": 2
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55081300005",
+    "raw": {
+     "category": "Signal Controllers and Cabinets",
+     "common_name": "Controller, ATC, Small Form Factor",
+     "financial_name": "Controller, ATC, Small Form Factor",
+     "id": "5dfa6acb2057600ac95e7a01",
+     "modified_date": "2024-11-12T12:11:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55081300005",
+     "total_on_hand": "2",
+     "total_value": "4700",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "2350",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-012",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: ATC Conflict Monitor -  CMU, 2212 ATC\nCommon Name: ATC Conflict Monitor -  CMU, 2212 ATC\nTracking Type: FINANCIAL\nStock Number: 55081510008\nCategory: Signal Controllers and Cabinets\nObject: 7127 |  Electrical/lighting\nUnit Cost: 924.381\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 15\nTotal Value: 13865.715\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "ATC Conflict Monitor -  CMU, 2212 ATC",
+    "unit_price": 924.381,
+    "quantity_in_stock": 15
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 3 decimals (924.381); rounding to cents (924.38) is the invited deviation - the record states the exact figure; Total Value 13865.715 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55081510008",
+    "raw": {
+     "category": "Signal Controllers and Cabinets",
+     "common_name": "ATC Conflict Monitor -  CMU, 2212 ATC",
+     "financial_name": "ATC Conflict Monitor -  CMU, 2212 ATC",
+     "id": "605a2dc38280ea001b95bf0b",
+     "modified_date": "2024-11-12T12:07:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55081510008",
+     "total_on_hand": "15",
+     "total_value": "13865.715",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "924.381",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-013",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Mallory Beeper SC110DPR\nCommon Name: Beeper, Mallory, SC110DPR (Blue Tape)\nTracking Type: FINANCIAL\nStock Number: 55088760012\nCategory: Pedestrian Buttons and Beepers\nObject: 7127 |  Electrical/lighting\nUnit Cost: 61.1279\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 20\nTotal On Hand: 34\nTotal Value: 2078.3486\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Mallory Beeper SC110DPR",
+    "unit_price": 61.1279,
+    "quantity_in_stock": 34
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "Beeper, Mallory, SC110DPR (Blue Tape)"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'Mallory Beeper SC110DPR' (primary: the first-listed, system-of-record name) and Common Name 'Beeper, Mallory, SC110DPR (Blue Tape)' (defensible alternative). unit_price: Unit Cost is stated to 4 decimals (61.1279); rounding to cents (61.13) is the invited deviation - the record states the exact figure; Total Value 2078.3486 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088760012",
+    "raw": {
+     "category": "Pedestrian Buttons and Beepers",
+     "common_name": "Beeper, Mallory, SC110DPR (Blue Tape)",
+     "financial_name": "Mallory Beeper SC110DPR",
+     "id": "5dfa6ad02057600ac95e7a51",
+     "modified_date": "2023-09-01T09:52:00-05:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "20",
+     "re_order_turnaround_time": "2",
+     "status": "ACTIVE",
+     "stock_number": "55088760012",
+     "total_on_hand": "34",
+     "total_value": "2078.3486",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "61.1279",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-014",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: CABLE, CAT 6, Out Door Rated, UV Protected\nCommon Name: CABLE, CAT 6, Regular (No Gel)\nTracking Type: FINANCIAL\nStock Number: 72523300006\nCategory: Cables\nObject: 7145 |  Elctrcal conductors-wire&cable\nUnit Cost: 0.44\nUnit of Measure: FT\nStatus: ACTIVE\nRe-Order Threshold: 5000\nTotal On Hand: 10000\nTotal Value: 4400\nRe-Order Turnaround Time: 2\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "CABLE, CAT 6, Out Door Rated, UV Protected",
+    "unit_price": 0.44,
+    "quantity_in_stock": 10000
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "CABLE, CAT 6, Regular (No Gel)"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'CABLE, CAT 6, Out Door Rated, UV Protected' (primary: the first-listed, system-of-record name) and Common Name 'CABLE, CAT 6, Regular (No Gel)' (defensible alternative). quantity_in_stock: Unit of Measure FT: Total On Hand 10000 is a length count; the stated figure is the quantity.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "72523300006",
+    "raw": {
+     "category": "Cables",
+     "common_name": "CABLE, CAT 6, Regular (No Gel)",
+     "financial_name": "CABLE, CAT 6, Out Door Rated, UV Protected",
+     "id": "6979c1055730f6068be6e28f",
+     "modified_date": "2026-01-27T14:07:00-06:00",
+     "object": "7145 |  Elctrcal conductors-wire&cable",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5000",
+     "re_order_turnaround_time": "2",
+     "status": "ACTIVE",
+     "stock_number": "72523300006",
+     "total_on_hand": "10000",
+     "total_value": "4400",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "0.44",
+     "unit_of_measure": "FT"
+    }
+   }
+  },
+  {
+   "id": "s5n-015",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Slip Fitter, 4-way for 4\" pole\nCommon Name: Slip Fitter, 4-way for 4\" pole\nTracking Type: FINANCIAL\nStock Number: 55088760004\nCategory: Pedestrian Signals\nObject: 7127 |  Electrical/lighting\nUnit Cost: 47.511713\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 25\nTotal On Hand: 34\nTotal Value: 1615.398242\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Slip Fitter, 4-way for 4\" pole",
+    "unit_price": 47.511713,
+    "quantity_in_stock": 34
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 6 decimals (47.511713); rounding to cents (47.51) is the invited deviation - the record states the exact figure; Total Value 1615.398242 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088760004",
+    "raw": {
+     "category": "Pedestrian Signals",
+     "common_name": "Slip Fitter, 4-way for 4\" pole",
+     "financial_name": "Slip Fitter, 4-way for 4\" pole",
+     "id": "5dfa6ac62057600ac95e7970",
+     "modified_date": "2024-11-12T09:45:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "25",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088760004",
+     "total_on_hand": "34",
+     "total_value": "1615.398242",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "47.511713",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-016",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: CCTV Camera, high rise\nCommon Name: CCTV Camera, Hanwha high rise\nTracking Type: FINANCIAL\nStock Number: 84084280021\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 2204.48\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 2\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "CCTV Camera, high rise",
+    "unit_price": 2204.48,
+    "quantity_in_stock": 0
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "CCTV Camera, Hanwha high rise"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: the record carries two names - Financial Name 'CCTV Camera, high rise' (primary: the first-listed, system-of-record name) and Common Name 'CCTV Camera, Hanwha high rise' (defensible alternative). quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "84084280021",
+    "raw": {
+     "category": "Communications & Monitoring",
+     "common_name": " CCTV Camera, Hanwha high rise",
+     "financial_name": " CCTV Camera, high rise",
+     "id": "63ead021e2272300262feb64",
+     "modified_date": "2025-05-06T08:19:00-05:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "2",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "84084280021",
+     "total_on_hand": "0",
+     "total_value": "0",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "2204.48",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-017",
+   "gradient": "clean",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Opticom 721 Two Directions Single Channel Receiver\nCommon Name: Opticom 721 Two Directions Single Channel Receiver\nTracking Type: FINANCIAL\nStock Number: 55081270020\nCategory: Preemption\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 484\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 0\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Opticom 721 Two Directions Single Channel Receiver",
+    "unit_price": 484.0,
+    "quantity_in_stock": 0
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55081270020",
+    "raw": {
+     "category": "Preemption",
+     "common_name": "Opticom 721 Two Directions Single Channel Receiver",
+     "financial_name": "Opticom 721 Two Directions Single Channel Receiver",
+     "id": "5dfa6ad02057600ac95e7a5b",
+     "modified_date": "2021-02-09T19:06:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "0",
+     "status": "ACTIVE",
+     "stock_number": "55081270020",
+     "total_on_hand": "0",
+     "total_value": "0",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "484",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-018",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: EN-EH-500-SBX, HARMONY\nCommon Name: EN-EH-500-SBX, HARMONY\nTracking Type: FINANCIAL\nStock Number: 55088770010\nCategory: Communications & Monitoring\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 2370.3333\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 1\nTotal On Hand: 0\nTotal Value: 0\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "EN-EH-500-SBX, HARMONY",
+    "unit_price": 2370.3333,
+    "quantity_in_stock": 0
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (2370.3333); rounding to cents (2370.33) is the invited deviation - the record states the exact figure; Total Value 0 is the extended value, not the unit price. quantity_in_stock: Total On Hand is 0 - stated, not silent.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088770010",
+    "raw": {
+     "category": "Communications & Monitoring",
+     "common_name": "EN-EH-500-SBX, HARMONY",
+     "financial_name": "EN-EH-500-SBX, HARMONY",
+     "id": "5dfa6acb2057600ac95e7a0f",
+     "modified_date": "2025-11-04T10:32:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "1",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088770010",
+     "total_on_hand": "0",
+     "total_value": "0",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "2370.3333",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-019",
+   "gradient": "clean",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: ATC Cabinet Power Supply\nCommon Name: ATC Cabinet Power Supply\nTracking Type: FINANCIAL\nStock Number: 55081270030\nCategory: Miscellaneous\nObject: 7122 |  Hardware/wire/steel\nUnit Cost: 442\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 3\nTotal Value: 1326\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "ATC Cabinet Power Supply",
+    "unit_price": 442.0,
+    "quantity_in_stock": 3
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55081270030",
+    "raw": {
+     "category": "Miscellaneous",
+     "common_name": "ATC Cabinet Power Supply",
+     "financial_name": "ATC Cabinet Power Supply",
+     "id": "60fb04c9c8ff12001e64b78d",
+     "modified_date": "2024-11-12T12:22:00-06:00",
+     "object": "7122 |  Hardware/wire/steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55081270030",
+     "total_on_hand": "3",
+     "total_value": "1326",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "442",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-020",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Louver, 12\", GPL w/ Slotted Full Circle Visor\nCommon Name: Louver, 12\", GPL w/ Slotted Full Circle Visor\nTracking Type: FINANCIAL\nStock Number: 55088800008\nCategory: Signal Heads\nObject: 7127 |  Electrical/lighting\nUnit Cost: 152.5336\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 20\nTotal On Hand: 94\nTotal Value: 14338.1584\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Louver, 12\", GPL w/ Slotted Full Circle Visor",
+    "unit_price": 152.5336,
+    "quantity_in_stock": 94
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (152.5336); rounding to cents (152.53) is the invited deviation - the record states the exact figure; Total Value 14338.1584 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088800008",
+    "raw": {
+     "category": "Signal Heads",
+     "common_name": "Louver, 12\", GPL w/ Slotted Full Circle Visor",
+     "financial_name": "Louver, 12\", GPL w/ Slotted Full Circle Visor",
+     "id": "5dfa6ac42057600ac95e7930",
+     "modified_date": "2024-11-12T09:36:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "20",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088800008",
+     "total_on_hand": "94",
+     "total_value": "14338.1584",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "152.5336",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-021",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Acorn Pole Top for 4\" pole\nCommon Name: Acorn Pole Top for 4\" pole\nTracking Type: FINANCIAL\nStock Number: 55088760011\nCategory: Misc. Items\nObject: 7127 |  Electrical/lighting\nUnit Cost: 21.3328\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 50\nTotal On Hand: 41\nTotal Value: 874.6448\nRe-Order Turnaround Time: 3\nRe-Order Status: Re-Order Needed",
+   "ground_truth": {
+    "item_name": "Acorn Pole Top for 4\" pole",
+    "unit_price": 21.3328,
+    "quantity_in_stock": 41
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (21.3328); rounding to cents (21.33) is the invited deviation - the record states the exact figure; Total Value 874.6448 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088760011",
+    "raw": {
+     "category": "Misc. Items",
+     "common_name": "Acorn Pole Top for 4\" pole",
+     "financial_name": "Acorn Pole Top for 4\" pole",
+     "id": "5dfa6ac72057600ac95e7988",
+     "modified_date": "2024-11-12T09:43:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Re-Order Needed",
+     "re_order_threshold": "50",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088760011",
+     "total_on_hand": "41",
+     "total_value": "874.6448",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "21.3328",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-022",
+   "gradient": "clean",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Grounding Plates\nCommon Name: Grounding Plates\nTracking Type: FINANCIAL\nStock Number: 28540660001\nCategory: Miscellaneous\nObject: 7127 |  Electrical/lighting\nUnit Cost: 121.45\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 5\nTotal On Hand: 178\nTotal Value: 21618.1\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Grounding Plates",
+    "unit_price": 121.45,
+    "quantity_in_stock": 178
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "28540660001",
+    "raw": {
+     "category": "Miscellaneous",
+     "common_name": "Grounding Plates",
+     "financial_name": "Grounding Plates",
+     "id": "6298fbe0582cd7001e49efb7",
+     "modified_date": "2023-08-31T09:57:00-05:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "5",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "28540660001",
+     "total_on_hand": "178",
+     "total_value": "21618.1",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "121.45",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-023",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: LED Amber Ball with Molex connectors\nCommon Name: LED Amber Ball with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440002\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 32.4408\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 130\nTotal On Hand: 287\nTotal Value: 9310.5096\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "LED Amber Ball with Molex connectors",
+    "unit_price": 32.4408,
+    "quantity_in_stock": 287
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (32.4408); rounding to cents (32.44) is the invited deviation - the record states the exact figure; Total Value 9310.5096 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088440002",
+    "raw": {
+     "category": "LEDs",
+     "common_name": "LED Amber Ball with Molex connectors",
+     "financial_name": "LED Amber Ball with Molex connectors",
+     "id": "5dfa6ac92057600ac95e7995",
+     "modified_date": "2024-11-12T12:03:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "130",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088440002",
+     "total_on_hand": "287",
+     "total_value": "9310.5096",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "32.4408",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-024",
+   "gradient": "clean",
+   "target_field": "quantity_in_stock",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: Single Davitt Extension Arm (galvanized)\nCommon Name: Single Davitt Extension Arm (galvanized)\nTracking Type: FINANCIAL\nStock Number: 55085590010\nCategory: Arms\nObject: 7148 |  Poles - towers - steel\nUnit Cost: 1221\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 1\nTotal On Hand: 9\nTotal Value: 10989\nRe-Order Turnaround Time: 8\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "Single Davitt Extension Arm (galvanized)",
+    "unit_price": 1221.0,
+    "quantity_in_stock": 9
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55085590010",
+    "raw": {
+     "category": "Arms",
+     "common_name": "Single Davitt Extension Arm (galvanized)",
+     "financial_name": "Single Davitt Extension Arm (galvanized)",
+     "id": "5dfa6ad82057600ac95e7ab6",
+     "modified_date": "2023-08-31T14:03:00-05:00",
+     "object": "7148 |  Poles - towers - steel",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "1",
+     "re_order_turnaround_time": "8",
+     "status": "ACTIVE",
+     "stock_number": "55085590010",
+     "total_on_hand": "9",
+     "total_value": "10989",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "1221",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-025",
+   "gradient": "near_tie",
+   "target_field": "unit_price",
+   "field_classes": {
+    "item_name": "clean",
+    "unit_price": "near_tie",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Financial Name: LED Amber Arrow with Molex connectors\nCommon Name: LED Amber Arrow with Molex connectors\nTracking Type: FINANCIAL\nStock Number: 55088440005\nCategory: LEDs\nObject: 7127 |  Electrical/lighting\nUnit Cost: 40.6399\nUnit of Measure: EA\nStatus: ACTIVE\nRe-Order Threshold: 85\nTotal On Hand: 382\nTotal Value: 15524.4418\nRe-Order Turnaround Time: 3\nRe-Order Status: Not Needed",
+   "ground_truth": {
+    "item_name": "LED Amber Arrow with Molex connectors",
+    "unit_price": 40.6399,
+    "quantity_in_stock": 382
+   },
+   "acceptable_alternatives": [],
+   "other_field_alternatives": {},
+   "rationale": "unit_price: Unit Cost is stated to 4 decimals (40.6399); rounding to cents (40.64) is the invited deviation - the record states the exact figure; Total Value 15524.4418 is the extended value, not the unit price.",
+   "source": {
+    "dataset": "data.austintexas.gov/hcaw-evi2",
+    "row_key": "stock_number",
+    "key": "55088440005",
+    "raw": {
+     "category": "LEDs",
+     "common_name": "LED Amber Arrow with Molex connectors",
+     "financial_name": "LED Amber Arrow with Molex connectors",
+     "id": "5dfa6ac72057600ac95e7990",
+     "modified_date": "2024-11-12T12:01:00-06:00",
+     "object": "7127 |  Electrical/lighting",
+     "published_date": "2026-09-08T23:13:18.000",
+     "re_order_status": "Not Needed",
+     "re_order_threshold": "85",
+     "re_order_turnaround_time": "3",
+     "status": "ACTIVE",
+     "stock_number": "55088440005",
+     "total_on_hand": "382",
+     "total_value": "15524.4418",
+     "tracking_type": "FINANCIAL",
+     "unit_cost": "40.6399",
+     "unit_of_measure": "EA"
+    }
+   }
+  },
+  {
+   "id": "s5n-026",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 246323\nCategory: AMERICAN WHITE\nDescription: MENAGE A TROIS LIGHT PINOT GRIGIO 750ML\nSize: 750ML\nTotal Inventory: 204\nPrice: 12.99",
+   "ground_truth": {
+    "item_name": "MENAGE A TROIS LIGHT PINOT GRIGIO 750ML",
+    "unit_price": 12.99,
+    "quantity_in_stock": 204
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "MENAGE A TROIS LIGHT PINOT GRIGIO"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'MENAGE A TROIS LIGHT PINOT GRIGIO 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['MENAGE A TROIS LIGHT PINOT GRIGIO'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "246323",
+    "raw": {
+     "category": "AMERICAN WHITE",
+     "code": "246323",
+     "description": "MENAGE A TROIS LIGHT PINOT GRIGIO 750ML",
+     "price": "12.99",
+     "size": "750ML",
+     "totalinventory": "204"
+    }
+   }
+  },
+  {
+   "id": "s5n-027",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 43931\nCategory: AMERICAN RED\nDescription: ST FRANCIS SONOMA CAB VV 750ML\nSize: 750ML\nTotal Inventory: 552\nPrice: 21.99",
+   "ground_truth": {
+    "item_name": "ST FRANCIS SONOMA CAB VV 750ML",
+    "unit_price": 21.99,
+    "quantity_in_stock": 552
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "ST FRANCIS SONOMA CAB VV"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'ST FRANCIS SONOMA CAB VV 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ST FRANCIS SONOMA CAB VV'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "43931",
+    "raw": {
+     "category": "AMERICAN RED",
+     "code": "43931",
+     "description": "ST FRANCIS SONOMA CAB VV 750ML",
+     "price": "21.99",
+     "size": "750ML",
+     "totalinventory": "552"
+    }
+   }
+  },
+  {
+   "id": "s5n-028",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 425419\nCategory: AMERICAN RED\nDescription: ACROBAT P/NOIR - 750ML\nSize: 750ML\nTotal Inventory: 324\nPrice: 19.99",
+   "ground_truth": {
+    "item_name": "ACROBAT P/NOIR - 750ML",
+    "unit_price": 19.99,
+    "quantity_in_stock": 324
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "ACROBAT P/NOIR"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'ACROBAT P/NOIR - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ACROBAT P/NOIR'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "425419",
+    "raw": {
+     "category": "AMERICAN RED",
+     "code": "425419",
+     "description": "ACROBAT P/NOIR - 750ML",
+     "price": "19.99",
+     "size": "750ML",
+     "totalinventory": "324"
+    }
+   }
+  },
+  {
+   "id": "s5n-029",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "ambiguous"
+   },
+   "document": "Code: 246628\nCategory: SESSION RTD\nDescription: SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)\nSize: 12pk\nTotal Inventory: 40032\nPrice: 25.99",
+   "ground_truth": {
+    "item_name": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)",
+    "unit_price": 25.99,
+    "quantity_in_stock": 40032
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "SURFSIDE LEMONADE VARIETY PACK"
+    },
+    {
+     "item_name": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN"
+    }
+   ],
+   "other_field_alternatives": {
+    "quantity_in_stock": [
+     3336,
+     1668
+    ]
+   },
+   "rationale": "item_name: Description 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SURFSIDE LEMONADE VARIETY PACK', 'SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN'] are defensible. quantity_in_stock: Total Inventory 40032 = 3336 twelve-packs = 1668 cases of 2/12PK; the record states 40032 (primary, as stated); the per-12-pack (3336) and per-case (1668) readings are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "246628",
+    "raw": {
+     "category": "SESSION RTD",
+     "code": "246628",
+     "description": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)",
+     "price": "25.99",
+     "size": "12pk",
+     "totalinventory": "40032"
+    }
+   }
+  },
+  {
+   "id": "s5n-030",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 79600\nCategory: ITALIAN RED WINE\nDescription: DAVINCI CHIANTI DOCG - 750ML\nSize: 750ML\nTotal Inventory: 360\nPrice: 14.99",
+   "ground_truth": {
+    "item_name": "DAVINCI CHIANTI DOCG - 750ML",
+    "unit_price": 14.99,
+    "quantity_in_stock": 360
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "DAVINCI CHIANTI DOCG"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'DAVINCI CHIANTI DOCG - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DAVINCI CHIANTI DOCG'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "79600",
+    "raw": {
+     "category": "ITALIAN RED WINE",
+     "code": "79600",
+     "description": "DAVINCI CHIANTI DOCG - 750ML",
+     "price": "14.99",
+     "size": "750ML",
+     "totalinventory": "360"
+    }
+   }
+  },
+  {
+   "id": "s5n-031",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 88516\nCategory: SPARKLING\nDescription: CHANDON GARDEN SPRITZER - 750ML\nSize: 750ML\nTotal Inventory: 114\nPrice: 27.99",
+   "ground_truth": {
+    "item_name": "CHANDON GARDEN SPRITZER - 750ML",
+    "unit_price": 27.99,
+    "quantity_in_stock": 114
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "CHANDON GARDEN SPRITZER"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'CHANDON GARDEN SPRITZER - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CHANDON GARDEN SPRITZER'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "88516",
+    "raw": {
+     "category": "SPARKLING",
+     "code": "88516",
+     "description": "CHANDON GARDEN SPRITZER - 750ML",
+     "price": "27.99",
+     "size": "750ML",
+     "totalinventory": "114"
+    }
+   }
+  },
+  {
+   "id": "s5n-032",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 85700\nCategory: WINE CANS\nDescription: DARK HORSE ROSE BUBBLES - CAN - 375ML\nSize: 375ML\nTotal Inventory: 264\nPrice: 5.99",
+   "ground_truth": {
+    "item_name": "DARK HORSE ROSE BUBBLES - CAN - 375ML",
+    "unit_price": 5.99,
+    "quantity_in_stock": 264
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "DARK HORSE ROSE BUBBLES"
+    },
+    {
+     "item_name": "DARK HORSE ROSE BUBBLES - CAN"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'DARK HORSE ROSE BUBBLES - CAN - 375ML' embeds the packaging/size token(s) that the Size field (375ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DARK HORSE ROSE BUBBLES', 'DARK HORSE ROSE BUBBLES - CAN'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "85700",
+    "raw": {
+     "category": "WINE CANS",
+     "code": "85700",
+     "description": "DARK HORSE ROSE BUBBLES - CAN - 375ML",
+     "price": "5.99",
+     "size": "375ML",
+     "totalinventory": "264"
+    }
+   }
+  },
+  {
+   "id": "s5n-033",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 87416\nCategory: SPARKLING\nDescription: ANDRE WHITE CHAMPAGNE - 750ML\nSize: 750ML\nTotal Inventory: 840\nPrice: 9.99",
+   "ground_truth": {
+    "item_name": "ANDRE WHITE CHAMPAGNE - 750ML",
+    "unit_price": 9.99,
+    "quantity_in_stock": 840
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "ANDRE WHITE CHAMPAGNE"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'ANDRE WHITE CHAMPAGNE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['ANDRE WHITE CHAMPAGNE'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "87416",
+    "raw": {
+     "category": "SPARKLING",
+     "code": "87416",
+     "description": "ANDRE WHITE CHAMPAGNE - 750ML",
+     "price": "9.99",
+     "size": "750ML",
+     "totalinventory": "840"
+    }
+   }
+  },
+  {
+   "id": "s5n-034",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 355790\nCategory: ITALIAN WHITE WINE\nDescription: STELLA ROSA WATERMELON - 750ML\nSize: 750ML\nTotal Inventory: 300\nPrice: 13.99",
+   "ground_truth": {
+    "item_name": "STELLA ROSA WATERMELON - 750ML",
+    "unit_price": 13.99,
+    "quantity_in_stock": 300
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "STELLA ROSA WATERMELON"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'STELLA ROSA WATERMELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA WATERMELON'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "355790",
+    "raw": {
+     "category": "ITALIAN WHITE WINE",
+     "code": "355790",
+     "description": "STELLA ROSA WATERMELON - 750ML",
+     "price": "13.99",
+     "size": "750ML",
+     "totalinventory": "300"
+    }
+   }
+  },
+  {
+   "id": "s5n-035",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 50253\nCategory: IMPORTED CORDIALS\nDescription: SUNTORY MIDORI MELON - 750ML\nSize: 750ML\nTotal Inventory: 144\nPrice: 20.99",
+   "ground_truth": {
+    "item_name": "SUNTORY MIDORI MELON - 750ML",
+    "unit_price": 20.99,
+    "quantity_in_stock": 144
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "SUNTORY MIDORI MELON"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'SUNTORY MIDORI MELON - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['SUNTORY MIDORI MELON'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "50253",
+    "raw": {
+     "category": "IMPORTED CORDIALS",
+     "code": "50253",
+     "description": "SUNTORY MIDORI MELON - 750ML",
+     "price": "20.99",
+     "size": "750ML",
+     "totalinventory": "144"
+    }
+   }
+  },
+  {
+   "id": "s5n-036",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 80616\nCategory: AMERICAN WHITE\nDescription: FREI BROTHERS CHARD - 750ML\nSize: 750ML\nTotal Inventory: 168\nPrice: 18.99",
+   "ground_truth": {
+    "item_name": "FREI BROTHERS CHARD - 750ML",
+    "unit_price": 18.99,
+    "quantity_in_stock": 168
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "FREI BROTHERS CHARD"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'FREI BROTHERS CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FREI BROTHERS CHARD'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "80616",
+    "raw": {
+     "category": "AMERICAN WHITE",
+     "code": "80616",
+     "description": "FREI BROTHERS CHARD - 750ML",
+     "price": "18.99",
+     "size": "750ML",
+     "totalinventory": "168"
+    }
+   }
+  },
+  {
+   "id": "s5n-037",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "ambiguous"
+   },
+   "document": "Code: 23070\nCategory: IMPORTED CAN BEER\nDescription: CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)\nSize: 12pk\nTotal Inventory: 37476\nPrice: 19.99",
+   "ground_truth": {
+    "item_name": "CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)",
+    "unit_price": 19.99,
+    "quantity_in_stock": 37476
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "CORONA EXTRA"
+    },
+    {
+     "item_name": "CORONA EXTRA 2/12 CAN"
+    }
+   ],
+   "other_field_alternatives": {
+    "quantity_in_stock": [
+     3123
+    ]
+   },
+   "rationale": "item_name: Description 'CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)' embeds the packaging/size token(s) that the Size field (12pk) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CORONA EXTRA', 'CORONA EXTRA 2/12 CAN'] are defensible. quantity_in_stock: Total Inventory 37476 = 3123 twelve-packs (2/12 CAN); the record states 37476 (primary, as stated); the per-12-pack reading (3123) is defensible (37476/24 is not integral).",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "23070",
+    "raw": {
+     "category": "IMPORTED CAN BEER",
+     "code": "23070",
+     "description": "CORONA EXTRA 2/12 CAN - 12.0Z (12-Pack)",
+     "price": "19.99",
+     "size": "12pk",
+     "totalinventory": "37476"
+    }
+   }
+  },
+  {
+   "id": "s5n-038",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 49247\nCategory: TEQUILA\nDescription: DON JULIO TEQUILA - REPOSADO - 750ML\nSize: 750ML\nTotal Inventory: 1506\nPrice: 51.99",
+   "ground_truth": {
+    "item_name": "DON JULIO TEQUILA - REPOSADO - 750ML",
+    "unit_price": 51.99,
+    "quantity_in_stock": 1506
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "DON JULIO TEQUILA - REPOSADO"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'DON JULIO TEQUILA - REPOSADO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['DON JULIO TEQUILA - REPOSADO'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "49247",
+    "raw": {
+     "category": "TEQUILA",
+     "code": "49247",
+     "description": "DON JULIO TEQUILA - REPOSADO - 750ML",
+     "price": "51.99",
+     "size": "750ML",
+     "totalinventory": "1506"
+    }
+   }
+  },
+  {
+   "id": "s5n-039",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 170872\nCategory: WINE CANS\nDescription: UNDERWOOD P/GRIS CAN 355ML\nSize: 355ML\nTotal Inventory: 168\nPrice: 7.99",
+   "ground_truth": {
+    "item_name": "UNDERWOOD P/GRIS CAN 355ML",
+    "unit_price": 7.99,
+    "quantity_in_stock": 168
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "UNDERWOOD P/GRIS CAN"
+    },
+    {
+     "item_name": "UNDERWOOD P/GRIS"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'UNDERWOOD P/GRIS CAN 355ML' embeds the packaging/size token(s) that the Size field (355ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['UNDERWOOD P/GRIS CAN', 'UNDERWOOD P/GRIS'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "170872",
+    "raw": {
+     "category": "WINE CANS",
+     "code": "170872",
+     "description": "UNDERWOOD P/GRIS CAN 355ML",
+     "price": "7.99",
+     "size": "355ML",
+     "totalinventory": "168"
+    }
+   }
+  },
+  {
+   "id": "s5n-040",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 337031\nCategory: AMERICAN RED\nDescription: TORTOISE CREEK P/NOIR MISSION GROVE - 750ML\nSize: 750ML\nTotal Inventory: 96\nPrice: 17.99",
+   "ground_truth": {
+    "item_name": "TORTOISE CREEK P/NOIR MISSION GROVE - 750ML",
+    "unit_price": 17.99,
+    "quantity_in_stock": 96
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "TORTOISE CREEK P/NOIR MISSION GROVE"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'TORTOISE CREEK P/NOIR MISSION GROVE - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['TORTOISE CREEK P/NOIR MISSION GROVE'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "337031",
+    "raw": {
+     "category": "AMERICAN RED",
+     "code": "337031",
+     "description": "TORTOISE CREEK P/NOIR MISSION GROVE - 750ML",
+     "price": "17.99",
+     "size": "750ML",
+     "totalinventory": "96"
+    }
+   }
+  },
+  {
+   "id": "s5n-041",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 26948\nCategory: AUSTRALIAN\nDescription: YELLOW TAIL MERLOT - 1.5L\nSize: 1.5L\nTotal Inventory: 930\nPrice: 13.99",
+   "ground_truth": {
+    "item_name": "YELLOW TAIL MERLOT - 1.5L",
+    "unit_price": 13.99,
+    "quantity_in_stock": 930
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "YELLOW TAIL MERLOT"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'YELLOW TAIL MERLOT - 1.5L' embeds the packaging/size token(s) that the Size field (1.5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['YELLOW TAIL MERLOT'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "26948",
+    "raw": {
+     "category": "AUSTRALIAN",
+     "code": "26948",
+     "description": "YELLOW TAIL MERLOT - 1.5L",
+     "price": "13.99",
+     "size": "1.5L",
+     "totalinventory": "930"
+    }
+   }
+  },
+  {
+   "id": "s5n-042",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 77324\nCategory: STRAIGHT BOURBON WHISKEY\nDescription: FOUR ROSES YELLOW LABEL - 750ML\nSize: 750ML\nTotal Inventory: 528\nPrice: 21.99",
+   "ground_truth": {
+    "item_name": "FOUR ROSES YELLOW LABEL - 750ML",
+    "unit_price": 21.99,
+    "quantity_in_stock": 528
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "FOUR ROSES YELLOW LABEL"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'FOUR ROSES YELLOW LABEL - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FOUR ROSES YELLOW LABEL'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "77324",
+    "raw": {
+     "category": "STRAIGHT BOURBON WHISKEY",
+     "code": "77324",
+     "description": "FOUR ROSES YELLOW LABEL - 750ML",
+     "price": "21.99",
+     "size": "750ML",
+     "totalinventory": "528"
+    }
+   }
+  },
+  {
+   "id": "s5n-043",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 81589\nCategory: AMERICAN WHITE\nDescription: BAREFOOT BUTTERY CHARD - 750ML\nSize: 750ML\nTotal Inventory: 204\nPrice: 7.99",
+   "ground_truth": {
+    "item_name": "BAREFOOT BUTTERY CHARD - 750ML",
+    "unit_price": 7.99,
+    "quantity_in_stock": 204
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "BAREFOOT BUTTERY CHARD"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'BAREFOOT BUTTERY CHARD - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['BAREFOOT BUTTERY CHARD'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "81589",
+    "raw": {
+     "category": "AMERICAN WHITE",
+     "code": "81589",
+     "description": "BAREFOOT BUTTERY CHARD - 750ML",
+     "price": "7.99",
+     "size": "750ML",
+     "totalinventory": "204"
+    }
+   }
+  },
+  {
+   "id": "s5n-044",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 241466\nCategory: DOMESTIC LIQUOR SPECIALTY\nDescription: 99 SCHNAPPS APPLE - 50ML\nSize: 50ML\nTotal Inventory: 8880\nPrice: 0.99",
+   "ground_truth": {
+    "item_name": "99 SCHNAPPS APPLE - 50ML",
+    "unit_price": 0.99,
+    "quantity_in_stock": 8880
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "99 SCHNAPPS APPLE"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description '99 SCHNAPPS APPLE - 50ML' embeds the packaging/size token(s) that the Size field (50ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['99 SCHNAPPS APPLE'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "241466",
+    "raw": {
+     "category": "DOMESTIC LIQUOR SPECIALTY",
+     "code": "241466",
+     "description": "99 SCHNAPPS APPLE - 50ML",
+     "price": "0.99",
+     "size": "50ML",
+     "totalinventory": "8880"
+    }
+   }
+  },
+  {
+   "id": "s5n-045",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 349462\nCategory: ITALIAN ROSE WINE\nDescription: STELLA ROSA BERRY - 750ML\nSize: 750ML\nTotal Inventory: 180\nPrice: 13.99",
+   "ground_truth": {
+    "item_name": "STELLA ROSA BERRY - 750ML",
+    "unit_price": 13.99,
+    "quantity_in_stock": 180
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "STELLA ROSA BERRY"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'STELLA ROSA BERRY - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['STELLA ROSA BERRY'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "349462",
+    "raw": {
+     "category": "ITALIAN ROSE WINE",
+     "code": "349462",
+     "description": "STELLA ROSA BERRY - 750ML",
+     "price": "13.99",
+     "size": "750ML",
+     "totalinventory": "180"
+    }
+   }
+  },
+  {
+   "id": "s5n-046",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 20460\nCategory: BLENDED WHISKEY\nDescription: SEAGRAM'S 7 CROWN - 1.75L\nSize: 1.75L\nTotal Inventory: 384\nPrice: 21.99",
+   "ground_truth": {
+    "item_name": "SEAGRAM'S 7 CROWN - 1.75L",
+    "unit_price": 21.99,
+    "quantity_in_stock": 384
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "SEAGRAM'S 7 CROWN"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description \"SEAGRAM'S 7 CROWN - 1.75L\" embeds the packaging/size token(s) that the Size field (1.75L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) [\"SEAGRAM'S 7 CROWN\"] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "20460",
+    "raw": {
+     "category": "BLENDED WHISKEY",
+     "code": "20460",
+     "description": "SEAGRAM'S 7 CROWN - 1.75L",
+     "price": "21.99",
+     "size": "1.75L",
+     "totalinventory": "384"
+    }
+   }
+  },
+  {
+   "id": "s5n-047",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 85197\nCategory: AMERICAN TABLE WINE\nDescription: FRANZIA SUMMIT CHILL RED BIB - 5L\nSize: 5L\nTotal Inventory: 168\nPrice: 19.99",
+   "ground_truth": {
+    "item_name": "FRANZIA SUMMIT CHILL RED BIB - 5L",
+    "unit_price": 19.99,
+    "quantity_in_stock": 168
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "FRANZIA SUMMIT CHILL RED BIB"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'FRANZIA SUMMIT CHILL RED BIB - 5L' embeds the packaging/size token(s) that the Size field (5L) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FRANZIA SUMMIT CHILL RED BIB'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "85197",
+    "raw": {
+     "category": "AMERICAN TABLE WINE",
+     "code": "85197",
+     "description": "FRANZIA SUMMIT CHILL RED BIB - 5L",
+     "price": "19.99",
+     "size": "5L",
+     "totalinventory": "168"
+    }
+   }
+  },
+  {
+   "id": "s5n-048",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 68187\nCategory: PORT\nDescription: FONSECA BIN 27 PORTO - 750ML\nSize: 750ML\nTotal Inventory: 132\nPrice: 22.99",
+   "ground_truth": {
+    "item_name": "FONSECA BIN 27 PORTO - 750ML",
+    "unit_price": 22.99,
+    "quantity_in_stock": 132
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "FONSECA BIN 27 PORTO"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'FONSECA BIN 27 PORTO - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['FONSECA BIN 27 PORTO'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "68187",
+    "raw": {
+     "category": "PORT",
+     "code": "68187",
+     "description": "FONSECA BIN 27 PORTO - 750ML",
+     "price": "22.99",
+     "size": "750ML",
+     "totalinventory": "132"
+    }
+   }
+  },
+  {
+   "id": "s5n-049",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 324028\nCategory: NON-ALCOHOLIC MIXERS\nDescription: GEORGES BLOODY MARY MILD - 32.0Z\nSize: 32.0Z\nTotal Inventory: 96\nPrice: 8.99",
+   "ground_truth": {
+    "item_name": "GEORGES BLOODY MARY MILD - 32.0Z",
+    "unit_price": 8.99,
+    "quantity_in_stock": 96
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "GEORGES BLOODY MARY MILD"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'GEORGES BLOODY MARY MILD - 32.0Z' embeds the packaging/size token(s) that the Size field (32.0Z) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['GEORGES BLOODY MARY MILD'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "324028",
+    "raw": {
+     "category": "NON-ALCOHOLIC MIXERS",
+     "code": "324028",
+     "description": "GEORGES BLOODY MARY MILD - 32.0Z",
+     "price": "8.99",
+     "size": "32.0Z",
+     "totalinventory": "96"
+    }
+   }
+  },
+  {
+   "id": "s5n-050",
+   "gradient": "ambiguous",
+   "target_field": "item_name",
+   "field_classes": {
+    "item_name": "ambiguous",
+    "unit_price": "clean",
+    "quantity_in_stock": "clean"
+   },
+   "document": "Code: 42636\nCategory: TEQUILA\nDescription: CASA NOBLE REPOSADO TEQ - 750ML\nSize: 750ML\nTotal Inventory: 30\nPrice: 56.99",
+   "ground_truth": {
+    "item_name": "CASA NOBLE REPOSADO TEQ - 750ML",
+    "unit_price": 56.99,
+    "quantity_in_stock": 30
+   },
+   "acceptable_alternatives": [
+    {
+     "item_name": "CASA NOBLE REPOSADO TEQ"
+    }
+   ],
+   "other_field_alternatives": {},
+   "rationale": "item_name: Description 'CASA NOBLE REPOSADO TEQ - 750ML' embeds the packaging/size token(s) that the Size field (750ML) carries separately; primary = the Description verbatim (the record's item description as given); stripped reading(s) ['CASA NOBLE REPOSADO TEQ'] are defensible.",
+   "source": {
+    "dataset": "data.montgomerycountymd.gov/ib5t-5ncy",
+    "row_key": "code",
+    "key": "42636",
+    "raw": {
+     "category": "TEQUILA",
+     "code": "42636",
+     "description": "CASA NOBLE REPOSADO TEQ - 750ML",
+     "price": "56.99",
+     "size": "750ML",
+     "totalinventory": "30"
+    }
+   }
+  }
+ ]
+}

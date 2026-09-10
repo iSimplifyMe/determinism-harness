@@ -103,6 +103,11 @@ SUBSTRATE_ORDER = (
 # Runner mode groupings: one run targets one credential family, like
 # study 3's one-box-per-run.
 STUDY5_API_SUBSTRATES = ("haiku_1p", "sonnet_1p", "sonnet_bedrock")
+# Natural arm (PROTOCOL section 7): the two 1P substrates only — the
+# primary-substrate candidates — plus the local boxes; Bedrock's
+# cross-door contrast is registered on the primary corpus alone (spend
+# envelope, owner call 2026-09-09).
+STUDY5_NATURAL_API_SUBSTRATES = ("haiku_1p", "sonnet_1p")
 STUDY5_LOCAL_SUBSTRATES_BY_BOX = {
     "cuda": ("local_20b_cuda",),
     "metal": ("local_qwen_metal",),
@@ -174,6 +179,11 @@ def _item_record(substrate, cfg, arm, corpus_item, template_id, prompt,
     if corpus_item:
         meta["gradient"] = corpus_item["gradient"]
         meta["target_field"] = corpus_item["target_field"]
+        # Natural-arm items name their source dataset so reports can
+        # stratify by provenance; primary items carry no such key, so
+        # their records (and the schedule digest) are unchanged.
+        if corpus_item.get("source"):
+            meta["source"] = corpus_item["source"]["dataset"]
     if control:
         meta["control"] = control
     return {

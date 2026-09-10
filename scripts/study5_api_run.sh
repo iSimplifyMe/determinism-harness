@@ -1,12 +1,14 @@
 #!/bin/bash
 # Study-5 API run chain (attended; PREREGISTRATION-v5 sections 7-8).
-# Usage: study5_api_run.sh pilot|full
+# Usage: study5_api_run.sh pilot|full|natural
 #
 # This script IS the ordering enforcement:
-#   - any run refuses while the fixture corpus is unfrozen
+#   - any run refuses while its fixture corpus is unfrozen
 #     (corpus-freeze commit precedes the first model call against items)
-#   - a FULL (confirmatory) run additionally refuses until the
+#   - a FULL or NATURAL (confirmatory) run additionally refuses until the
 #     `prereg-v5` tag exists (freeze precedes the first confirmatory call)
+#   - natural = the held-out natural arm (PROTOCOL section 7): 50 items
+#     x 5 templates x {haiku_1p, sonnet_1p} + 50 x 5 haiku resample = 750
 # Preflight is hard: creds resolve, AWS identity answers, and the dry-run
 # schedule matches the registered call count, else nothing is spent.
 #
@@ -14,10 +16,13 @@
 # pattern) - never exported to the environment of anything but the
 # runner, never printed, never in this file.
 set -u
-MODE_ARG="${1:?usage: study5_api_run.sh pilot|full}"
+MODE_ARG="${1:?usage: study5_api_run.sh pilot|full|natural}"
+CORPUS="fixtures/study5/corpus.json"
 case "$MODE_ARG" in
-  pilot) MODE="study5-pilot-api"; EXPECT_CALLS=420;  WINDOW="pilot" ;;
-  full)  MODE="study5-full-api";  EXPECT_CALLS=3000; WINDOW="peak" ;;
+  pilot)   MODE="study5-pilot-api";   EXPECT_CALLS=420;  WINDOW="pilot" ;;
+  full)    MODE="study5-full-api";    EXPECT_CALLS=3000; WINDOW="peak" ;;
+  natural) MODE="study5-natural-api"; EXPECT_CALLS=750;  WINDOW="peak"
+           CORPUS="fixtures/study5/natural_corpus.json" ;;
   *) echo "unknown mode: $MODE_ARG"; exit 2 ;;
 esac
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
@@ -26,15 +31,15 @@ log() { echo "[study5-api-$MODE_ARG $(date -u +%H:%M:%SZ)] $*"; }
 
 # --- Gate 1: corpus frozen -------------------------------------------------
 FROZEN=$(python3 -c "
-import json; print(json.load(open('fixtures/study5/corpus.json'))['meta']['frozen'])")
+import json; print(json.load(open('$CORPUS'))['meta']['frozen'])")
 if [ "$FROZEN" != "True" ]; then
-  log "REFUSED: corpus meta.frozen is $FROZEN - freeze the corpus (its own"
+  log "REFUSED: $CORPUS meta.frozen is $FROZEN - freeze the corpus (its own"
   log "tagged commit) before any model call against corpus items."
   exit 3
 fi
 
-# --- Gate 2 (full only): prereg tag exists ---------------------------------
-if [ "$MODE_ARG" = "full" ]; then
+# --- Gate 2 (confirmatory: full + natural): prereg tag exists --------------
+if [ "$MODE_ARG" = "full" ] || [ "$MODE_ARG" = "natural" ]; then
   if [ -z "$(git tag -l prereg-v5)" ]; then
     log "REFUSED: no prereg-v5 tag - the confirmatory run cannot precede"
     log "the frozen preregistration."

@@ -145,8 +145,15 @@ STUDY5_MODES = (
     "study5-full-api",
     "study5-pilot-local",
     "study5-full-local",
+    "study5-natural-api",
+    "study5-natural-local",
 )
-STUDY5_LOCAL_MODES = ("study5-pilot-local", "study5-full-local")
+STUDY5_LOCAL_MODES = (
+    "study5-pilot-local", "study5-full-local", "study5-natural-local",
+)
+# Held-out natural arm: same schedule shape over the natural corpus
+# (fixtures/study5/natural_corpus.json), confirmatory only (no pilot).
+STUDY5_NATURAL_MODES = ("study5-natural-api", "study5-natural-local")
 MODES = (
     ("pilot", "full", "positive-control", "effort-sweep")
     + STUDY2_MODES
@@ -857,10 +864,12 @@ def build_schedule(mode, box=None, repeats=None):
                         door_key, task_key, "default", r, control="q5_default"
                     ))
     elif mode in STUDY5_MODES:
+        from harness.study5_fixtures import NATURAL_CORPUS_PATH
         from harness.study5_fixtures import load_corpus as load_s5_corpus
         from harness.study5_schedule import (
             STUDY5_API_SUBSTRATES,
             STUDY5_LOCAL_SUBSTRATES_BY_BOX,
+            STUDY5_NATURAL_API_SUBSTRATES,
             build_study5_items,
             pilot_corpus,
         )
@@ -872,9 +881,14 @@ def build_schedule(mode, box=None, repeats=None):
                     f"{sorted(STUDY5_LOCAL_SUBSTRATES_BY_BOX)} (got {box})"
                 )
             substrates = STUDY5_LOCAL_SUBSTRATES_BY_BOX[box]
+        elif mode in STUDY5_NATURAL_MODES:
+            substrates = STUDY5_NATURAL_API_SUBSTRATES
         else:
             substrates = STUDY5_API_SUBSTRATES
-        corpus = load_s5_corpus()
+        if mode in STUDY5_NATURAL_MODES:
+            corpus = load_s5_corpus(NATURAL_CORPUS_PATH)
+        else:
+            corpus = load_s5_corpus()
         if mode.startswith("study5-pilot"):
             corpus = pilot_corpus(corpus)
         items = build_study5_items(corpus, substrates=substrates)
@@ -1404,6 +1418,9 @@ def main():
             manifest["exploratory"] = True
     elif args.mode in STUDY5_MODES:
         from harness.study5_fixtures import CORPUS_PATH as S5_CORPUS_PATH
+        from harness.study5_fixtures import (
+            NATURAL_CORPUS_PATH as S5_NATURAL_PATH,
+        )
         from harness.study5_fixtures import load_corpus as load_s5_corpus
         from harness.study5_schedule import (
             RESAMPLE_N,
@@ -1411,10 +1428,14 @@ def main():
             RESAMPLE_TEMPLATE,
         )
 
-        s5_corpus = load_s5_corpus()
-        with open(S5_CORPUS_PATH, "rb") as fh:
+        natural = args.mode in STUDY5_NATURAL_MODES
+        s5_corpus_path = S5_NATURAL_PATH if natural else S5_CORPUS_PATH
+        s5_corpus = load_s5_corpus(s5_corpus_path)
+        with open(s5_corpus_path, "rb") as fh:
             corpus_sha = sha256_hex(fh.read())
         manifest["schema"] = 5
+        manifest["corpus_arm"] = "natural" if natural else "primary"
+        manifest["corpus_file"] = os.path.basename(str(s5_corpus_path))
         manifest["planes"] = sorted({it["plane"] for it in schedule})
         manifest["substrates"] = sorted(
             {it["meta"]["substrate"] for it in schedule}
