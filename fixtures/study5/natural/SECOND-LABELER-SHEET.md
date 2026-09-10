@@ -6,11 +6,15 @@ check on the first labeler's conventions, and reading them first would defeat it
 
 For each item fill in:
 
-- `item_name`, `unit_price` (number), `quantity_in_stock` (integer) — what a careful
-  cataloger would report for this record; `null` where the record is silent.
+- `item_name`, `unit_price` (number only, no `$`), `quantity_in_stock` (integer only) —
+  what a careful cataloger would report for this record; `null` where the record is silent.
 - `class`: `clean` (one reading) / `near_tie` (one correct reading, but a token invites
-  a specific misread) / `ambiguous` (two readings an expert could defend — give both).
+  a specific misread) / `ambiguous` (two readings an expert could defend — list both).
+- Two readings: separate them with ` | ` (space, pipe, space), your primary FIRST,
+  e.g. `- item_name: ACME WIDGET 750ML | ACME WIDGET`. One value per line otherwise.
 - `note`: one line, optional.
+
+Fill the lines in place and save this file; say "sheet done" when finished.
 
 Return the completed sheet (or just the filled blocks) — agreement is computed at
 freeze on the three field values and the class.
