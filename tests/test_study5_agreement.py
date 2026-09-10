@@ -23,29 +23,42 @@ from harness.study5_natural import check_corpus
 
 
 def _fill(sheet_text, values):
-    """Fill the shipped sheet: values = {item_id: {field: str}}."""
+    """Refill the shipped sheet: every field line is blanked, then
+    values = {item_id: {field: str}} are written in. Blocks absent from
+    values end up unlabeled whatever the shipped sheet carries."""
     out = []
     current = None
     for line in sheet_text.splitlines():
         if line.startswith("## "):
             current = line[3:].strip()
         for field in ("item_name", "unit_price", "quantity_in_stock", "class", "note"):
-            if line.startswith(f"- {field}:") and current in values \
-                    and field in values[current]:
-                line = f"- {field}: {values[current][field]}"
+            if line.startswith(f"- {field}:"):
+                value = values.get(current, {}).get(field, "")
+                line = f"- {field}: {value}".rstrip()
         out.append(line)
     return "\n".join(out)
 
 
 class TestSheetGrammar(unittest.TestCase):
-    def test_shipped_sheet_parses_unlabeled(self):
+    def test_shipped_sheet_parses_twenty_blocks(self):
         sheet = parse_sheet(SHEET_PATH.read_text())
         self.assertEqual(len(sheet), 20)
-        for entry in sheet.values():
+        blank = parse_sheet(_fill(SHEET_PATH.read_text(), {}))
+        for entry in blank.values():
             self.assertEqual(entry["item_name"], [])
             self.assertEqual(entry["unit_price"], [])
             self.assertEqual(entry["quantity_in_stock"], [])
             self.assertIsNone(entry["class"])
+
+    def test_non_class_value_counted_not_fatal(self):
+        text = "## s5n-001\n```\nX: y\n```\n- item_name: A\n- class: Poles\n"
+        sheet = parse_sheet(text)
+        self.assertEqual(sheet["s5n-001"]["class"], "poles")
+        corpus = load_corpus(NATURAL_CORPUS_PATH)
+        summary = compare(corpus, sheet)
+        self.assertEqual(summary["class"]["n"], 0)
+        self.assertEqual(summary["class"]["unlabeled"], 1)
+        self.assertEqual(summary["class"]["invalid"], [{"id": "s5n-001", "value": "poles"}])
 
     def test_readings_null_and_alternatives(self):
         text = (

@@ -46,7 +46,241 @@
   "labeling": {
    "primary_labeler": "session labeler (Claude, 2026-09-09): every label assigned from the rendered documents under PROTOCOL section 7 conventions, blind to any model output (zero model calls against any item)",
    "second_labeler": "owner: 20-item sample (first 10 items per source in draw order), labeled from natural/SECOND-LABELER-SHEET.md before reading PROTOCOL section 7 or this file; agreement computed at freeze",
-   "agreement": null
+   "agreement": {
+    "computed_utc": "2026-09-10T14:43:21.759619+00:00",
+    "sheet_items": 20,
+    "items_labeled": 20,
+    "fields": {
+     "item_name": {
+      "n": 20,
+      "strict": 7,
+      "within": 10,
+      "covered": 7,
+      "unlabeled": 0,
+      "strict_rate": 0.35,
+      "within_rate": 0.5,
+      "covered_rate": 0.35
+     },
+     "unit_price": {
+      "n": 20,
+      "strict": 20,
+      "within": 20,
+      "covered": 20,
+      "unlabeled": 0,
+      "strict_rate": 1.0,
+      "within_rate": 1.0,
+      "covered_rate": 1.0
+     },
+     "quantity_in_stock": {
+      "n": 18,
+      "strict": 18,
+      "within": 18,
+      "covered": 18,
+      "unlabeled": 2,
+      "strict_rate": 1.0,
+      "within_rate": 1.0,
+      "covered_rate": 1.0
+     }
+    },
+    "class": {
+     "n": 20,
+     "agree": 13,
+     "agree_rate": 0.65,
+     "kappa_3class": 0.3693693693693693,
+     "kappa_clean_vs_not": 0.41176470588235303,
+     "unlabeled": 0,
+     "invalid": []
+    },
+    "disagreements": [
+     {
+      "id": "s5n-001",
+      "field": "item_name",
+      "first_labeler": "POLES, TRAFFIC SIGNAL, STEEL TYPE 2W",
+      "second_labeler": [
+       "Pole, Signal, Galvanized, Type 2W"
+      ],
+      "within_recorded": true,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-002",
+      "field": "item_name",
+      "first_labeler": "100 Amp Breaker Panel",
+      "second_labeler": [
+       "Breaker Panel, 100 AMP"
+      ],
+      "within_recorded": true,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-003",
+      "field": "item_name",
+      "first_labeler": "School Beacon Cabinet Time Clock/Switch & Sensor",
+      "second_labeler": [
+       "School Beacon Cabinet Time Clock/Switch"
+      ],
+      "within_recorded": true,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-026",
+      "field": "item_name",
+      "first_labeler": "MENAGE A TROIS LIGHT PINOT GRIGIO 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-027",
+      "field": "item_name",
+      "first_labeler": "ST FRANCIS SONOMA CAB VV 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-028",
+      "field": "item_name",
+      "first_labeler": "ACROBAT P/NOIR - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-029",
+      "field": "item_name",
+      "first_labeler": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-030",
+      "field": "item_name",
+      "first_labeler": "DAVINCI CHIANTI DOCG - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-031",
+      "field": "item_name",
+      "first_labeler": "CHANDON GARDEN SPRITZER - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-032",
+      "field": "item_name",
+      "first_labeler": "DARK HORSE ROSE BUBBLES - CAN - 375ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-033",
+      "field": "item_name",
+      "first_labeler": "ANDRE WHITE CHAMPAGNE - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-034",
+      "field": "item_name",
+      "first_labeler": "STELLA ROSA WATERMELON - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     },
+     {
+      "id": "s5n-035",
+      "field": "item_name",
+      "first_labeler": "SUNTORY MIDORI MELON - 750ML",
+      "second_labeler": [
+       null
+      ],
+      "within_recorded": false,
+      "covered": false,
+      "target_field": true
+     }
+    ],
+    "class_disagreements": [
+     {
+      "id": "s5n-001",
+      "first_labeler": "ambiguous",
+      "second_labeler": "near_tie",
+      "note": "category=Poles"
+     },
+     {
+      "id": "s5n-002",
+      "first_labeler": "ambiguous",
+      "second_labeler": "near_tie",
+      "note": "category=Misc. Items"
+     },
+     {
+      "id": "s5n-003",
+      "first_labeler": "ambiguous",
+      "second_labeler": "near_tie",
+      "note": "category=Flashers"
+     },
+     {
+      "id": "s5n-004",
+      "first_labeler": "near_tie",
+      "second_labeler": "clean",
+      "note": "category=Communications & Monitoring"
+     },
+     {
+      "id": "s5n-007",
+      "first_labeler": "near_tie",
+      "second_labeler": "clean",
+      "note": "category=Pedestrian Buttons and Beepers"
+     },
+     {
+      "id": "s5n-009",
+      "first_labeler": "near_tie",
+      "second_labeler": "clean",
+      "note": "category=Preemption"
+     },
+     {
+      "id": "s5n-010",
+      "first_labeler": "near_tie",
+      "second_labeler": "clean",
+      "note": "category=LEDs"
+     }
+    ]
+   }
   }
  },
  "items": [

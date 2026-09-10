@@ -146,6 +146,7 @@ def compare(corpus, sheet):
     disagreements = []
     class_pairs = []
     class_disagreements = []
+    class_invalid = []
     class_unlabeled = 0
     items_labeled = 0
     for item_id, entry in sheet.items():
@@ -180,10 +181,13 @@ def compare(corpus, sheet):
         theirs_class = entry["class"]
         if theirs_class is None:
             class_unlabeled += 1
+        elif theirs_class not in GRADIENTS:
+            # Not one of the three classes (e.g. the record's category was
+            # entered): counted as unlabeled, listed so it can be re-asked.
+            class_unlabeled += 1
+            class_invalid.append({"id": item_id, "value": theirs_class})
         else:
             any_field = True
-            if theirs_class not in GRADIENTS:
-                raise ValueError(f"{item_id}: class {theirs_class!r} not in {GRADIENTS}")
             class_pairs.append((item["gradient"], theirs_class))
             if theirs_class != item["gradient"]:
                 class_disagreements.append({
@@ -221,6 +225,7 @@ def compare(corpus, sheet):
             "kappa_3class": cohen_kappa(class_pairs),
             "kappa_clean_vs_not": cohen_kappa(collapsed),
             "unlabeled": class_unlabeled,
+            "invalid": class_invalid,
         },
         "disagreements": disagreements,
         "class_disagreements": class_disagreements,
@@ -249,6 +254,7 @@ def render_markdown(summary):
         f"kappa 3-class {_fmt(cls['kappa_3class'])}, "
         f"kappa clean-vs-not {_fmt(cls['kappa_clean_vs_not'])}, "
         f"unlabeled {cls['unlabeled']}"
+        + (f" (of which not a class value: {len(cls['invalid'])})" if cls["invalid"] else "")
     )
     if summary["disagreements"]:
         lines.append("")

@@ -38,11 +38,11 @@ Re-Order Turnaround Time: 8
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Pole, Signal, Galvanized, Type 2W
+- unit_price:6719.5152
+- quantity_in_stock:9
+- class:near_tie
+- note: category=Poles
 
 ## s5n-002
 
@@ -63,11 +63,11 @@ Re-Order Turnaround Time: 2
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Breaker Panel, 100 AMP
+- unit_price:123.2989
+- quantity_in_stock:8
+- class:near_tie
+- note: category=Misc. Items
 
 ## s5n-003
 
@@ -88,11 +88,11 @@ Re-Order Turnaround Time: 4
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:School Beacon Cabinet Time Clock/Switch
+- unit_price:799
+- quantity_in_stock:14
+- class:near_tie
+- note: category=Flashers
 
 ## s5n-004
 
@@ -113,11 +113,11 @@ Re-Order Turnaround Time: 3
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:CCTV Camera Pendant Mount 1.5 NPT, 120" Galvanized Cable
+- unit_price:250.7273
+- quantity_in_stock:7
+- class: clean
+- note: category=Communications & Monitoring
 
 ## s5n-005
 
@@ -138,11 +138,11 @@ Re-Order Turnaround Time: 2
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:CLIPS BANDING SS 3/4 IN
+- unit_price:82.9499
+- quantity_in_stock:15
+- class: ambiguous
+- note: category=Banding Equipment
 
 ## s5n-006
 
@@ -162,11 +162,11 @@ Total Value: 0
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Etherwan Switch Power Supply
+- unit_price:64
+- quantity_in_stock:0
+- class: clean
+- note: category=Ethernet Switches & Cradlepoint Equipment
 
 ## s5n-007
 
@@ -187,11 +187,11 @@ Re-Order Turnaround Time: 3
 Re-Order Status: Re-Order Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Pedestrian Button Base, Polara Bulldog
+- unit_price:16.969
+- quantity_in_stock:23
+- class: clean
+- note: category=Pedestrian Buttons and Beepers
 
 ## s5n-008
 
@@ -212,11 +212,11 @@ Re-Order Turnaround Time: 3
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Detection, Currux - 4 Approach
+- unit_price:15015
+- quantity_in_stock:15
+- class:clean
+- note: category=Video Detection Equipment
 
 ## s5n-009
 
@@ -236,11 +236,11 @@ Total Value: 0
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:Tomar Dual Channel Preemption Card
+- unit_price:1526.179998
+- quantity_in_stock:0
+- class:clean
+- note: category=Preemption
 
 ## s5n-010
 
@@ -261,11 +261,11 @@ Re-Order Turnaround Time: 3
 Re-Order Status: Not Needed
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:LED Red Arrow with Molex connectors
+- unit_price:36.1891
+- quantity_in_stock:483
+- class:clean
+- note: category=LEDs
 
 ## s5n-026
 
@@ -278,11 +278,11 @@ Total Inventory: 204
 Price: 12.99
 ```
 
-- item_name:
-- unit_price:
+- item_name:null
+- unit_price:12.99
 - quantity_in_stock:
-- class:
-- note:
+- class:ambiguous
+- note: category=AMERICAN WHITE
 
 ## s5n-027
 
@@ -295,11 +295,11 @@ Total Inventory: 552
 Price: 21.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:21.99
+- quantity_in_stock:552
+- class:ambiguous
+- note: category=AMERICAN RED
 
 ## s5n-028
 
@@ -312,11 +312,11 @@ Total Inventory: 324
 Price: 19.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:19.99
+- quantity_in_stock:324
+- class:ambiguous
+- note: category=AMERICAN RED
 
 ## s5n-029
 
@@ -329,11 +329,11 @@ Total Inventory: 40032
 Price: 25.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:25.99
+- quantity_in_stock:40032
+- class:ambiguous
+- note: category=SESSION RTD
 
 ## s5n-030
 
@@ -346,11 +346,11 @@ Total Inventory: 360
 Price: 14.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:14.99
+- quantity_in_stock:360
+- class:ambiguous
+- note: category=ITALIAN RED WINE
 
 ## s5n-031
 
@@ -363,11 +363,11 @@ Total Inventory: 114
 Price: 27.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:27.99
+- quantity_in_stock:114
+- class:ambiguous
+- note: category=SPARKLING
 
 ## s5n-032
 
@@ -380,11 +380,11 @@ Total Inventory: 264
 Price: 5.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:5.99
+- quantity_in_stock:264
+- class:ambiguous
+- note: category=WINE CANS
 
 ## s5n-033
 
@@ -397,11 +397,11 @@ Total Inventory: 840
 Price: 9.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null	
+- unit_price:9.99
+- quantity_in_stock:840
+- class:ambiguous
+- note: category=SPARKLING
 
 ## s5n-034
 
@@ -414,11 +414,11 @@ Total Inventory: 300
 Price: 13.99
 ```
 
-- item_name:
-- unit_price:
-- quantity_in_stock:
-- class:
-- note:
+- item_name:null
+- unit_price:13.99
+- quantity_in_stock:300
+- class:ambiguous
+- note: category=ITALIAN WHITE WINE
 
 ## s5n-035
 
@@ -431,8 +431,8 @@ Total Inventory: 144
 Price: 20.99
 ```
 
-- item_name:
-- unit_price:
+- item_name:null
+- unit_price:20.99
 - quantity_in_stock:
-- class:
-- note:
+- class:ambiguous
+- note: category=IMPORTED CORDIALS
