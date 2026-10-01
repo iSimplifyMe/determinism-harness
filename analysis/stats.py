@@ -195,3 +195,56 @@ def stratified_tost(strata, delta, alpha=0.05):
         "delta": delta,
         "alpha": alpha,
     }
+
+
+def newcombe_diff_ci(x1, n1, x2, n2, z=Z95):
+    """Newcombe (1998) hybrid score interval for p1 - p2 (his method 10):
+    each arm's Wilson interval, combined in quadrature around the observed
+    difference. Study 5's registered interval for the risk difference —
+    it stays inside [-1, 1] and behaves at 0 and 1, where Wald does not.
+    """
+    if n1 <= 0 or n2 <= 0:
+        raise ValueError("arm sizes must be positive")
+    p1, p2 = x1 / n1, x2 / n2
+    l1, u1 = wilson_interval(x1, n1, z)
+    l2, u2 = wilson_interval(x2, n2, z)
+    diff = p1 - p2
+    lower = diff - math.sqrt((p1 - l1) ** 2 + (u2 - p2) ** 2)
+    upper = diff + math.sqrt((u1 - p1) ** 2 + (p2 - l2) ** 2)
+    return max(-1.0, lower), min(1.0, upper)
+
+
+def _log_comb(n, k):
+    return math.lgamma(n + 1) - math.lgamma(k + 1) - math.lgamma(n - k + 1)
+
+
+def fisher_exact(a, b, c, d):
+    """Two-sided Fisher exact test on the 2x2 table [[a, b], [c, d]].
+
+    Standard small-p-value definition (the one R's fisher.test uses): the
+    sum of the hypergeometric probabilities of every table with the
+    observed margins that is no more probable than the observed table,
+    with the same 1+1e-7 tie tolerance as binom_test. A table with an
+    empty row or column has one possible outcome and returns 1.0.
+    """
+    for cell in (a, b, c, d):
+        if cell < 0:
+            raise ValueError("cells must be non-negative")
+    row1, col1, n = a + b, a + c, a + b + c + d
+    if n == 0:
+        raise ValueError("empty table")
+    lo, hi = max(0, row1 + col1 - n), min(row1, col1)
+    log_denom = _log_comb(n, col1)
+
+    def pmf(x):
+        return math.exp(
+            _log_comb(row1, x) + _log_comb(n - row1, col1 - x) - log_denom
+        )
+
+    threshold = pmf(a) * (1.0 + 1e-7)
+    total = 0.0
+    for x in range(lo, hi + 1):
+        prob = pmf(x)
+        if prob <= threshold:
+            total += prob
+    return min(1.0, total)
