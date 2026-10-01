@@ -3,7 +3,7 @@
     "study": "study5-confidence-signal",
     "planned_n": 150,
     "batch_authored": 150,
-    "frozen": false,
+    "frozen": true,
     "authoring": {
       "method": "single-author v0, session 2026-08-31; ground truth and gradient class assigned at authoring, blind to any model output",
       "note": "independent labeling pending the collaborator decision - see PROTOCOL.md section 4"

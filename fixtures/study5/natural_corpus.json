@@ -3,7 +3,7 @@
   "study": "study5-confidence-signal",
   "arm": "natural",
   "planned_n": 50,
-  "frozen": false,
+  "frozen": true,
   "sources": [
    {
     "key": "austin",
