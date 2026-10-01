@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "done": 420,
+  "expected": 420,
+  "failures": 0,
+  "fatal_worker_errors": [],
+  "finished_utc": "2026-10-01T04:19:27.004351+00:00",
+  "retries": 0,
+  "run_name": "pilot-study5-pilot-api-20261001T041614Z"
+}
