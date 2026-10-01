@@ -116,7 +116,7 @@ class TestDryRun(unittest.TestCase):
                 manifest = json.load(fh)
             self.assertEqual(manifest["schema"], 5)
             self.assertTrue(manifest["pilot"])
-            self.assertFalse(manifest["corpus_frozen"])
+            self.assertTrue(manifest["corpus_frozen"])
             self.assertEqual(manifest["corpus_n_total"], 150)
             self.assertEqual(manifest["items_in_run"], 21)
             self.assertEqual(

@@ -182,8 +182,11 @@ class TestCommittedCorpus(unittest.TestCase):
             self.primary["meta"]["instruction_templates"],
         )
 
-    def test_unfrozen_until_the_freeze_commit(self):
-        self.assertFalse(self.corpus["meta"]["frozen"])
+    def test_frozen_since_the_freeze_commit(self):
+        # Flipped by the study5-corpus-frozen commit (2026-10-01); both
+        # corpora stay frozen from that commit onward.
+        self.assertTrue(self.corpus["meta"]["frozen"])
+        self.assertTrue(self.primary["meta"]["frozen"])
 
     def test_second_labeler_sheet_lists_the_declared_sample(self):
         sheet = (NATURAL_DIR / "SECOND-LABELER-SHEET.md").read_text()
@@ -266,7 +269,7 @@ class TestNaturalSchedule(unittest.TestCase):
             self.assertEqual(manifest["corpus_arm"], "natural")
             self.assertEqual(manifest["corpus_file"], "natural_corpus.json")
             self.assertFalse(manifest["pilot"])
-            self.assertFalse(manifest["corpus_frozen"])
+            self.assertTrue(manifest["corpus_frozen"])
             self.assertEqual(manifest["corpus_n_total"], NATURAL_N)
             self.assertEqual(manifest["items_in_run"], NATURAL_N)
             self.assertEqual(
