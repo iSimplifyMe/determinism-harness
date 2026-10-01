@@ -1,0 +1,178 @@
+{
+  "class": {
+    "agree": 17,
+    "agree_rate": 0.85,
+    "invalid": [],
+    "kappa_3class": 0.7142857142857143,
+    "kappa_clean_vs_not": 1.0,
+    "n": 20,
+    "unlabeled": 0
+  },
+  "class_disagreements": [
+    {
+      "first_labeler": "ambiguous",
+      "id": "s5n-001",
+      "note": "category=Poles",
+      "second_labeler": "near_tie"
+    },
+    {
+      "first_labeler": "ambiguous",
+      "id": "s5n-002",
+      "note": "category=Misc. Items",
+      "second_labeler": "near_tie"
+    },
+    {
+      "first_labeler": "ambiguous",
+      "id": "s5n-003",
+      "note": "category=Flashers",
+      "second_labeler": "near_tie"
+    }
+  ],
+  "computed_utc": "2026-09-10T14:47:30.994489+00:00",
+  "disagreements": [
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "MENAGE A TROIS LIGHT PINOT GRIGIO 750ML",
+      "id": "s5n-026",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "ST FRANCIS SONOMA CAB VV 750ML",
+      "id": "s5n-027",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "ACROBAT P/NOIR - 750ML",
+      "id": "s5n-028",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "SURFSIDE LEMONADE VARIETY PACK 2/12PK 12OZ CAN - 12.0Z (12-Pack)",
+      "id": "s5n-029",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "DAVINCI CHIANTI DOCG - 750ML",
+      "id": "s5n-030",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "CHANDON GARDEN SPRITZER - 750ML",
+      "id": "s5n-031",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "DARK HORSE ROSE BUBBLES - CAN - 375ML",
+      "id": "s5n-032",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "ANDRE WHITE CHAMPAGNE - 750ML",
+      "id": "s5n-033",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "STELLA ROSA WATERMELON - 750ML",
+      "id": "s5n-034",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    },
+    {
+      "covered": false,
+      "field": "item_name",
+      "first_labeler": "SUNTORY MIDORI MELON - 750ML",
+      "id": "s5n-035",
+      "second_labeler": [
+        null
+      ],
+      "target_field": true,
+      "within_recorded": true
+    }
+  ],
+  "fields": {
+    "item_name": {
+      "covered": 10,
+      "covered_rate": 0.5,
+      "n": 20,
+      "strict": 10,
+      "strict_rate": 0.5,
+      "unlabeled": 0,
+      "within": 20,
+      "within_rate": 1.0
+    },
+    "quantity_in_stock": {
+      "covered": 18,
+      "covered_rate": 1.0,
+      "n": 18,
+      "strict": 18,
+      "strict_rate": 1.0,
+      "unlabeled": 2,
+      "within": 18,
+      "within_rate": 1.0
+    },
+    "unit_price": {
+      "covered": 20,
+      "covered_rate": 1.0,
+      "n": 20,
+      "strict": 20,
+      "strict_rate": 1.0,
+      "unlabeled": 0,
+      "within": 20,
+      "within_rate": 1.0
+    }
+  },
+  "items_labeled": 20,
+  "sheet_items": 20
+}
