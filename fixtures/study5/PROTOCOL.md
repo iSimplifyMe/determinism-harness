@@ -1,10 +1,12 @@
 # Study 5 fixture corpus — labeling protocol (v0, 2026-08-31)
 
-**Status: DRAFT — nothing frozen.** `corpus.json` `meta.frozen` is `false` and flips only in the
-gate-2 freeze commit, after the collaborator decision resolves (see §4). Everything here is
-revisable until PREREG v5 freeze; after that, the corpus and this protocol are immutable and the
-freeze commit hash is the reference. **2026-09-09:** mitigation 2 (§4) is now built — a held-out
-natural arm, §7, with its own file `natural_corpus.json` that freezes in the same commit.
+**Status: CORPUS FROZEN 2026-10-01** — commit `dc1a688`, tag `study5-corpus-frozen`: `meta.frozen`
+flipped to `true` in both corpora (the two flags only) at 04:15:03Z, before the first model call
+against any item (the pilot run began 04:16:14Z). Items, labels, templates, and provenance are
+immutable from that commit, and it is the reference. The collaborator path did not resolve by
+2026-09-30; the owner froze solo with mitigation 2 in place (§4, §7). This protocol's text stays
+revisable until PREREG v5 freeze. **2026-09-09:** mitigation 2 (§4) was built — a held-out
+natural arm, §7, with its own file `natural_corpus.json`, frozen in the same commit.
 
 Study context: does disagreement between semantically identical, independently worded asks
 predict which answers are actually wrong? The corpus is the answer key that makes "wrong"
@@ -89,18 +91,21 @@ and it is why mitigation 1 or 2 is required rather than optional.
 - Run `python3 -m unittest tests.test_study5_fixtures` after every batch; the validator is the
   protocol's mechanical half and must stay green.
 
-## 6. Freeze checklist (gate 2 exit — do not check any box early)
+## 6. Freeze checklist (gate 2 exit — closed 2026-10-01)
 
-- [ ] Collaborator decision resolved (in with labels received, or out with mitigation 2 resolved by Joe)
-- [ ] Full n authored, gradient balance recorded
-- [ ] Independent labels merged + adjudication log committed (if path 1)
-- [ ] Validator green on the full corpus
-- [ ] Natural arm (§7): second-labeler agreement recorded in `natural_corpus.json`
-      `meta.labeling.agreement`, adjudication noted, any excluded ids listed by date
-- [ ] Natural arm (§7): `python3 -m harness.study5_natural check` CLEAN and
+- [x] Collaborator decision resolved (in with labels received, or out with mitigation 2 resolved by Joe)
+      — out: no reply to the 2026-08-31 outreach or the 2026-09-10 follow-up by 2026-09-30;
+      mitigation 2 built 2026-09-09 (§7); owner's word to freeze solo, 2026-09-30
+- [x] Full n authored, gradient balance recorded — primary 150 (50/50/50), natural 50 (32/0/18)
+- [ ] Independent labels merged + adjudication log committed (if path 1) — not applicable, path 1
+      was not taken
+- [x] Validator green on the full corpus — freeze-script gates, 2026-10-01
+- [x] Natural arm (§7): second-labeler agreement recorded in `natural_corpus.json`
+      `meta.labeling.agreement`, adjudication noted, any excluded ids listed by date — none excluded
+- [x] Natural arm (§7): `python3 -m harness.study5_natural check` CLEAN and
       `validate_natural_corpus` clean at the freeze commit
-- [ ] `meta.frozen: true` in BOTH `corpus.json` and `natural_corpus.json`, one dedicated
-      commit, tagged, pushed BEFORE any pilot call
+- [x] `meta.frozen: true` in BOTH `corpus.json` and `natural_corpus.json`, one dedicated
+      commit, tagged, pushed BEFORE any pilot call — `dc1a688`, tag `study5-corpus-frozen`
 
 ## 7. Held-out natural arm (mitigation 2 — added 2026-09-09)
 

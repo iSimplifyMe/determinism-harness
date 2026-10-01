@@ -1,11 +1,14 @@
 # Pre-registration v5 (DRAFT — NOT FROZEN): The Confidence-Signal Study — Is Ask-Twice an Error Detector?
 
-**Status: DRAFT. Nothing in this document is frozen, no confirmatory
-call has been made, and zero model calls have been made against the
-fixture corpus.** The freeze checklist is section 10; freeze happens
-only after (a) the collaborator decision resolves and the corpus freezes
-(its own tagged commit), and (b) the pilot's power calculation is
-computed for the estimator registered in section 6. Tag at freeze:
+**Status: DRAFT. The analysis design in this document is not frozen and
+no confirmatory call has been made.** The fixture corpus froze
+2026-10-01 (commit `dc1a688`, tag `study5-corpus-frozen`); the pilot —
+exploratory, 21 primary-corpus items, 420 API calls and 211 local calls
+— ran after that tag and its records are committed. The freeze
+checklist is section 10; freeze happens only after (a) the collaborator
+decision resolves and the corpus freezes (its own tagged commit, done),
+and (b) the pilot's power calculation is computed for the estimator
+registered in section 6. Tag at freeze:
 `prereg-v5`, pushed before the first confirmatory call, same
 third-party-checkable ordering as studies 1–4.
 
@@ -225,16 +228,21 @@ public repo as in studies 1–4.
 
 ## 10. Freeze checklist (every box before `prereg-v5` is tagged)
 
-- [ ] Collaborator decision resolved; corpus labeling path recorded
+- [x] Collaborator decision resolved; corpus labeling path recorded
       (independent labels merged + adjudication log, or the solo
-      mitigation resolved by owner decision)
-- [ ] Corpus frozen: `meta.frozen: true` in BOTH `corpus.json` and
+      mitigation resolved by owner decision) — solo: no collaborator
+      reply by 2026-09-30; the held-out natural arm and the
+      gradient-frozen-pre-data rule are the mitigations in force
+- [x] Corpus frozen: `meta.frozen: true` in BOTH `corpus.json` and
       `natural_corpus.json`, dedicated commit, tagged, pushed — BEFORE
-      any pilot call
-- [ ] Natural arm: second-labeler agreement recorded, adjudication
+      any pilot call — `dc1a688`, tag `study5-corpus-frozen`,
+      2026-10-01T04:15:03Z
+- [x] Natural arm: second-labeler agreement recorded, adjudication
       noted, `harness.study5_natural check` CLEAN at the freeze commit
-- [ ] Pilot run (both credential families), records committed,
-      labeled exploratory
+- [x] Pilot run (both credential families), records committed,
+      labeled exploratory — 2026-10-01: API 420 calls (1P key + AWS),
+      cuda 211 calls; `runs/pilot-study5-pilot-api-20261001T041614Z`,
+      `runs/local-study5-pilot-local-20261001T042804Z`
 - [ ] Power calculation for the section-6 estimator from pilot
       variance; primary substrate resolved by the section-6 rule
 - [ ] H3 equivalence bounds set; section 6 finalized
