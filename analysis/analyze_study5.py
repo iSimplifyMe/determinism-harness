@@ -15,9 +15,10 @@ plus the fixture corpus, and computes the design's endpoints:
   agreeing items. k-sets generalize pairs to "any disagreement among k
   asks".
 
-Point estimates and raw counts only: interval estimators are registered
-at prereg v5 with the power calc (study-1 lesson — never bolt an
-estimator on after the fact). Stdlib only.
+Raw counts and point estimates everywhere, plus the estimators prereg v5
+section 6 names for the item table (Newcombe interval on the risk
+difference, Fisher exact, Wilson intervals on catch and false-alarm
+rates) in each block's `inference`. Stdlib only.
 """
 import argparse
 import json
@@ -25,6 +26,8 @@ import os
 import re
 from collections import defaultdict
 from datetime import datetime, timezone
+
+from analysis import stats
 
 FENCE_RE = re.compile(r"\A\s*```(?:json)?\s*\n(.*?)\n?```\s*\Z", re.DOTALL)
 
@@ -64,6 +67,26 @@ def parse_response(text):
     if not isinstance(obj, dict):
         return "fail", None
     return mode, obj
+
+
+_FENCE_ANYWHERE_RE = re.compile(r"```(?:json)?\s*\n(.*?)\n?```", re.DOTALL)
+
+
+def fence_plus_text(text):
+    """True when a response fails validation ONLY because prose sits
+    outside an otherwise valid fenced JSON object (the model answered,
+    then explained itself). Descriptive accounting: the response is still
+    a validation failure and is still excluded from every comparison."""
+    if not isinstance(text, str) or parse_response(text)[0] != "fail":
+        return False
+    match = _FENCE_ANYWHERE_RE.search(text)
+    if not match:
+        return False
+    try:
+        obj = json.loads(match.group(1).strip())
+    except (ValueError, TypeError):
+        return False
+    return isinstance(obj, dict)
 
 
 _WS_RE = re.compile(r"\s+")
@@ -131,6 +154,67 @@ def answer_correct(corpus_item, answer_obj, lenient=False):
     return False
 
 
+ANSWER_CLASSES = ("right", "alt", "superset", "abstain", "other")
+
+
+def answer_class(corpus_item, answer_obj):
+    """Descriptive class of an answer on the item's target field. It sits
+    beside strict/lenient scoring and never replaces it:
+
+    - right:    equals the ground truth (strict-correct)
+    - alt:      equals a recorded acceptable alternative (lenient-correct)
+    - superset: item_name only - the answer is the key's name plus the
+                document text that follows it (a wider span of the same
+                listing line; a naming-scope convention, not a misread)
+    - abstain:  null where the key states a value
+    - other:    everything else (a misread, a format error)
+    """
+    if answer_correct(corpus_item, answer_obj):
+        return "right"
+    if answer_correct(corpus_item, answer_obj, lenient=True):
+        return "alt"
+    field = corpus_item["target_field"]
+    given = answer_obj.get(field)
+    truth = corpus_item["ground_truth"][field]
+    if given is None:
+        return "abstain"
+    if field == "item_name" and isinstance(given, str) and isinstance(truth, str):
+        answer = canonical_field(field, given)
+        key = canonical_field(field, truth)
+        document = _WS_RE.sub(" ", corpus_item.get("document", ""))
+        if answer != key and answer.startswith(key) and answer in document:
+            return "superset"
+    return "other"
+
+
+def inference(a, b, c, d):
+    """Registered estimators (prereg v5 section 6) for the item table
+    with rows disagree/agree and columns wrong/right: risk difference
+    with its Newcombe hybrid-Wilson 95% interval, two-sided Fisher exact
+    p, and Wilson 95% intervals on the catch and false-alarm rates.
+    Anything undefined on an empty row or column is None."""
+    disagree, agree = a + b, c + d
+    wrong, right = a + c, b + d
+    out = {
+        "table": {"wrong_disagree": a, "right_disagree": b,
+                  "wrong_agree": c, "right_agree": d},
+        "risk_difference": None, "risk_difference_ci95": None,
+        "fisher_p": None, "catch_rate_ci95": None,
+        "false_alarm_rate_ci95": None,
+    }
+    if disagree and agree:
+        out["risk_difference"] = a / disagree - c / agree
+        out["risk_difference_ci95"] = list(
+            stats.newcombe_diff_ci(a, disagree, c, agree)
+        )
+        out["fisher_p"] = stats.fisher_exact(a, b, c, d)
+    if wrong:
+        out["catch_rate_ci95"] = list(stats.wilson_interval(a, wrong))
+    if right:
+        out["false_alarm_rate_ci95"] = list(stats.wilson_interval(b, right))
+    return out
+
+
 def fields_disagree(obj_a, obj_b, field):
     return canonical_field(field, obj_a.get(field)) != canonical_field(
         field, obj_b.get(field)
@@ -153,7 +237,7 @@ def index_records(records):
     parsed = defaultdict(list)
     counts = {
         "in": 0, "excluded_control": 0, "not_ok": 0,
-        "parse_fail": 0, "fenced": 0,
+        "parse_fail": 0, "parse_fail_fence_plus_text": 0, "fenced": 0,
     }
     for record in records:
         meta = record_meta(record)
@@ -168,6 +252,8 @@ def index_records(records):
         mode, obj = parse_response(text)
         if mode == "fail":
             counts["parse_fail"] += 1
+            if fence_plus_text(text):
+                counts["parse_fail_fence_plus_text"] += 1
             continue
         if mode == "fenced":
             counts["fenced"] += 1
@@ -205,6 +291,10 @@ def _rates(rows):
         "p_wrong_given_disagree": p_wrong_disagree,
         "p_wrong_given_agree": p_wrong_agree,
         "relative_risk": relative_risk,
+        "inference": inference(
+            wrong_in_disagree, false_alarms, wrong_in_agree,
+            len(agree) - wrong_in_agree,
+        ),
     }
 
 
@@ -222,6 +312,7 @@ def kset_analysis(parsed, corpus_items, substrate, template_ids,
     rows = []
     excluded = 0
     per_gradient = defaultdict(list)
+    by_class = defaultdict(lambda: {"n": 0, "disagree": 0})
     for item in corpus_items:
         answers = [
             _first_answer(parsed, substrate, item["id"], t)
@@ -240,7 +331,13 @@ def kset_analysis(parsed, corpus_items, substrate, template_ids,
         wrong = not answer_correct(item, reference, lenient=lenient)
         rows.append((disagree, wrong))
         per_gradient[item["gradient"]].append((disagree, wrong))
+        klass = answer_class(item, reference)
+        by_class[klass]["n"] += 1
+        by_class[klass]["disagree"] += int(disagree)
     out = _rates(rows)
+    out["reference_classes"] = {
+        k: dict(by_class[k]) for k in ANSWER_CLASSES if k in by_class
+    }
     out["k"] = len(template_ids)
     out["templates"] = list(template_ids)
     out["reference_template"] = reference_template

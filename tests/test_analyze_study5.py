@@ -4,11 +4,14 @@ on constructed truth tables so every rate is hand-checkable."""
 import unittest
 
 from analysis.analyze_study5 import (
+    answer_class,
     answer_correct,
     canonical_field,
     cross_pair_analysis,
+    fence_plus_text,
     fields_disagree,
     index_records,
+    inference,
     kset_analysis,
     parse_response,
     resample_analysis,
@@ -270,6 +273,146 @@ class TestCrossAndResample(unittest.TestCase):
         out = resample_analysis(parsed, [item("s5-001")], "haiku_1p", "t1")
         self.assertEqual(out["excluded_missing"], 1)
         self.assertEqual(out["n_items"], 0)
+
+
+
+class TestAnswerClass(unittest.TestCase):
+    def _item(self, **kw):
+        it = item("s5-x", **kw)
+        it["document"] = (
+            "Item Corvid 3000 Optical Mouse, wireless, black. "
+            "$18.99 per piece. Stock: 44."
+        )
+        return it
+
+    def _obj(self, **kw):
+        import json
+        return json.loads(answer(**kw))
+
+    def test_right_and_alt(self):
+        it = self._item(alts=[{"item_name": "Corvid Mouse"}])
+        self.assertEqual(answer_class(it, self._obj()), "right")
+        self.assertEqual(
+            answer_class(it, self._obj(name="Corvid Mouse")), "alt"
+        )
+
+    def test_superset_is_the_key_plus_following_document_text(self):
+        it = self._item()
+        self.assertEqual(
+            answer_class(
+                it, self._obj(name="Corvid 3000 Optical Mouse, wireless, black")
+            ),
+            "superset",
+        )
+        # whitespace differences do not change the class
+        self.assertEqual(
+            answer_class(
+                it, self._obj(name="Corvid 3000 Optical Mouse,  wireless")
+            ),
+            "superset",
+        )
+
+    def test_listing_prefix_and_invented_text_are_other(self):
+        it = self._item()
+        # the registered near-tie distractor is a misread, not a superset
+        self.assertEqual(
+            answer_class(it, self._obj(name="Item Corvid 3000 Optical Mouse")),
+            "other",
+        )
+        self.assertEqual(
+            answer_class(
+                it, self._obj(name="Corvid 3000 Optical Mouse (deluxe)")
+            ),
+            "other",
+        )
+
+    def test_null_where_the_key_states_a_value_is_abstain(self):
+        it = self._item(target="unit_price")
+        self.assertEqual(answer_class(it, self._obj(price=None)), "abstain")
+
+    def test_superset_only_applies_to_names(self):
+        it = self._item(target="unit_price")
+        self.assertEqual(answer_class(it, self._obj(price=18.0)), "other")
+
+    def test_kset_reports_reference_classes(self):
+        it = self._item()
+        long_name = "Corvid 3000 Optical Mouse, wireless, black"
+        records = [
+            record("haiku_1p", "s5-x", "t1", answer(name=long_name)),
+            record("haiku_1p", "s5-x", "t2", answer(name=long_name)),
+        ]
+        parsed, _ = index_records(records)
+        out = kset_analysis(parsed, [it], "haiku_1p", ("t1", "t2"))
+        self.assertEqual(out["n_wrong"], 1)       # wrong by the key
+        self.assertEqual(out["n_disagree"], 0)    # and agreed with itself
+        self.assertEqual(out["reference_classes"],
+                         {"superset": {"n": 1, "disagree": 0}})
+
+
+class TestInference(unittest.TestCase):
+    def test_full_table(self):
+        out = inference(9, 3, 20, 118)
+        self.assertAlmostEqual(out["risk_difference"], 9 / 12 - 20 / 138)
+        lower, upper = out["risk_difference_ci95"]
+        self.assertLess(lower, out["risk_difference"])
+        self.assertGreater(upper, out["risk_difference"])
+        self.assertGreater(lower, 0.0)
+        self.assertLess(out["fisher_p"], 0.001)
+        self.assertEqual(out["table"]["right_agree"], 118)
+        low, high = out["catch_rate_ci95"]
+        self.assertTrue(low < 9 / 29 < high)
+
+    def test_empty_row_leaves_the_contrast_undefined(self):
+        out = inference(0, 0, 4, 16)
+        self.assertIsNone(out["risk_difference"])
+        self.assertIsNone(out["fisher_p"])
+        self.assertIsNotNone(out["catch_rate_ci95"])
+        self.assertEqual(out["catch_rate_ci95"][0], 0.0)
+
+    def test_no_wrong_items_has_no_catch_rate(self):
+        out = inference(0, 2, 0, 18)
+        self.assertIsNone(out["catch_rate_ci95"])
+        self.assertIsNotNone(out["false_alarm_rate_ci95"])
+
+    def test_rates_blocks_carry_inference(self):
+        it = item("s5-y")
+        records = [
+            record("sonnet_1p", "s5-y", "t1", answer()),
+            record("sonnet_1p", "s5-y", "t2", answer()),
+        ]
+        parsed, _ = index_records(records)
+        out = kset_analysis(parsed, [it], "sonnet_1p", ("t1", "t2"))
+        self.assertEqual(out["inference"]["table"]["right_agree"], 1)
+        self.assertIn("inference", out["by_gradient"]["near_tie"])
+
+
+class TestFencePlusText(unittest.TestCase):
+    FENCED = '```json\n{"item_name": "X", "unit_price": null}\n```'
+
+    def test_valid_responses_are_not_flagged(self):
+        self.assertFalse(fence_plus_text(self.FENCED))
+        self.assertFalse(fence_plus_text('{"item_name": "X"}'))
+
+    def test_fence_followed_by_a_note_is_flagged(self):
+        text = self.FENCED + "\n\nNote: the price is ambiguous."
+        self.assertEqual(parse_response(text)[0], "fail")
+        self.assertTrue(fence_plus_text(text))
+
+    def test_prose_without_a_valid_fenced_object_is_not_flagged(self):
+        self.assertFalse(fence_plus_text("I cannot tell."))
+        self.assertFalse(fence_plus_text("```json\nnot json\n```\nNote."))
+        self.assertFalse(fence_plus_text(None))
+
+    def test_counted_separately_and_still_excluded(self):
+        note = self.FENCED + "\n\nNote: ambiguous."
+        records = [
+            record("haiku_1p", "s5-z", "t1", note),
+            record("haiku_1p", "s5-z", "t2", "garbage"),
+        ]
+        parsed, counts = index_records(records)
+        self.assertEqual(counts["parse_fail"], 2)
+        self.assertEqual(counts["parse_fail_fence_plus_text"], 1)
+        self.assertEqual(len(parsed), 0)
 
 
 if __name__ == "__main__":
