@@ -1,7 +1,9 @@
 """Canary run evaluation against committed baselines.
 
 Alarm semantics (design doc 2026-07-30):
-- RED    something a consumer would page on: transport failures, a wrong
+- RED    something a consumer would page on: transport failures, a
+         delivered response that stopped abnormally (a refusal or any other
+         stop_reason != end_turn, reported per cell, not as transport), a wrong
          extraction value, an off-set classification label, a structured
          object outside the baseline golden set, a parse/schema failure,
          or a response-model identity change (the dated-Haiku anchor and
@@ -45,9 +47,19 @@ def evaluate_canary(records, baselines):
     grouped = defaultdict(list)
     observed_models = defaultdict(set)
     transport_failures = 0
+    calls_per_cell = Counter(record.get("cell") for record in records)
+    # A delivered response that did not end normally is NOT a transport
+    # failure: the call succeeded and the model (or the door's safety layer)
+    # stopped it. Keyed by (cell, stop_reason) so the alarm names the cell.
+    abnormal_stops = Counter()
     for record in records:
-        if not record.get("ok") or record.get("stop_reason") != "end_turn":
+        if not record.get("ok"):
             transport_failures += 1
+            continue
+        if record.get("stop_reason") != "end_turn":
+            abnormal_stops[
+                (record.get("cell"), record.get("stop_reason"))
+            ] += 1
             continue
         grouped[record["cell"]].append(record)
         if record.get("response_model"):
@@ -57,8 +69,24 @@ def evaluate_canary(records, baselines):
     if transport_failures:
         red.append({
             "check": "transport",
-            "detail": f"{transport_failures} failed/abnormal calls",
+            "detail": f"{transport_failures} failed calls",
         })
+    for (cell, reason), count in sorted(
+        abnormal_stops.items(), key=lambda item: (str(item[0][0]), str(item[0][1]))
+    ):
+        check = "refusal" if reason == "refusal" else "abnormal_stop"
+        red.append({
+            "check": f"{check}:{cell}",
+            "detail": (
+                f"{count} of {calls_per_cell[cell]} calls returned "
+                f"stop_reason={reason}"
+            ),
+        })
+    refusals = sum(
+        count for (_, reason), count in abnormal_stops.items()
+        if reason == "refusal"
+    )
+    other_abnormal = sum(abnormal_stops.values()) - refusals
 
     for model, observed in sorted(observed_models.items()):
         allowed = set(baselines.get("response_models", {}).get(model, []))
@@ -185,6 +213,8 @@ def evaluate_canary(records, baselines):
         "totals": {
             "records_in": len(records),
             "transport_failures": transport_failures,
+            "refusals": refusals,
+            "abnormal_stops": other_abnormal,
             "cells_probed": len(grouped),
         },
         "cells": cells_out,
@@ -228,7 +258,9 @@ def main():
         f"CANARY {result['status']} — red={len(result['red'])} "
         f"yellow={len(result['yellow'])} over "
         f"{result['totals']['records_in']} calls "
-        f"({result['totals']['transport_failures']} transport failures)"
+        f"({result['totals']['transport_failures']} transport failures, "
+        f"{result['totals']['refusals']} refusals, "
+        f"{result['totals']['abnormal_stops']} abnormal stops)"
     )
     for item in result["red"]:
         print(f"  RED    {item['check']}: {item['detail']}")

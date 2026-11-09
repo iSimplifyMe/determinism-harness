@@ -254,6 +254,46 @@ class TestEvaluateCanary(unittest.TestCase):
         records.append(failed)
         result = evaluate_canary(records, self.baselines)
         self.assertEqual(result["status"], "RED")
+        self.assertEqual([r["check"] for r in result["red"]], ["transport"])
+        self.assertEqual(result["totals"]["transport_failures"], 1)
+        self.assertEqual(result["totals"]["refusals"], 0)
+
+    def test_refusal_is_red_and_names_the_cell_not_transport(self):
+        records = self._green_run()
+        for text in ("", GOOD_SJ[:20]):  # empty and cut mid-object
+            refused = _canary_record("opus-5", "structured_json", "bedrock",
+                                     "adaptive", text)
+            refused["stop_reason"] = "refusal"
+            records.append(refused)
+        cell = records[-1]["cell"]
+        result = evaluate_canary(records, self.baselines)
+        self.assertEqual(result["status"], "RED")
+        self.assertEqual(
+            result["red"],
+            [{"check": f"refusal:{cell}",
+              "detail": "2 of 12 calls returned stop_reason=refusal"}],
+        )
+        self.assertEqual(result["totals"]["transport_failures"], 0)
+        self.assertEqual(result["totals"]["refusals"], 2)
+        self.assertEqual(result["totals"]["abnormal_stops"], 0)
+        # The refused calls stay out of the cell's content checks.
+        self.assertEqual(result["cells"][cell]["n"], 10)
+
+    def test_other_abnormal_stop_is_red_with_its_reason(self):
+        records = self._green_run()
+        cut = _canary_record("opus-5", "extraction", "bedrock", "adaptive",
+                             "PO-836")
+        cut["stop_reason"] = "max_tokens"
+        records.append(cut)
+        result = evaluate_canary(records, self.baselines)
+        self.assertEqual(result["status"], "RED")
+        self.assertEqual(
+            result["red"],
+            [{"check": f"abnormal_stop:{cut['cell']}",
+              "detail": "1 of 4 calls returned stop_reason=max_tokens"}],
+        )
+        self.assertEqual(result["totals"]["abnormal_stops"], 1)
+        self.assertEqual(result["totals"]["refusals"], 0)
 
 
 if __name__ == "__main__":
