@@ -1,0 +1,226 @@
+{
+  "baselines_generated_utc": "2026-07-30T22:57:41.969674+00:00",
+  "cells": {
+    "haiku-4-5|classification|anthropic_api|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 394.0,
+      "n": 3
+    },
+    "haiku-4-5|classification|bedrock|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 468.0,
+      "n": 3
+    },
+    "haiku-4-5|classification|p_aws|none": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 528.0,
+      "n": 3
+    },
+    "haiku-4-5|extraction|anthropic_api|none": {
+      "latency_ms_p50": 467.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|extraction|bedrock|none": {
+      "latency_ms_p50": 496.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|extraction|p_aws|none": {
+      "latency_ms_p50": 521.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "haiku-4-5|structured_json|anthropic_api|none": {
+      "fence_band": [
+        1,
+        7
+      ],
+      "fenced": 3,
+      "latency_ms_p50": 857.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "haiku-4-5|structured_json|bedrock|none": {
+      "fence_band": [
+        0,
+        4
+      ],
+      "fenced": 2,
+      "latency_ms_p50": 633.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "haiku-4-5|structured_json|p_aws|none": {
+      "fence_band": [
+        1,
+        6
+      ],
+      "fenced": 1,
+      "latency_ms_p50": 736.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|classification|anthropic_api|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1149.0,
+      "n": 3
+    },
+    "opus-5|classification|bedrock|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 962.0,
+      "n": 3
+    },
+    "opus-5|classification|p_aws|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 949.0,
+      "n": 3
+    },
+    "opus-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 896.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 977.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 1075.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "opus-5|structured_json|anthropic_api|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 2133.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|structured_json|bedrock|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 1924.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "opus-5|structured_json|p_aws|adaptive": {
+      "fence_band": [
+        0,
+        0
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 1832.0,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|classification|anthropic_api|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 853.0,
+      "n": 3
+    },
+    "sonnet-5|classification|bedrock|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1092.0,
+      "n": 3
+    },
+    "sonnet-5|classification|p_aws|adaptive": {
+      "flips": 0,
+      "labels": {
+        "BILLING": 3
+      },
+      "latency_ms_p50": 1322.0,
+      "n": 3
+    },
+    "sonnet-5|extraction|anthropic_api|adaptive": {
+      "latency_ms_p50": 860.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|extraction|bedrock|adaptive": {
+      "latency_ms_p50": 1115.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|extraction|p_aws|adaptive": {
+      "latency_ms_p50": 1365.0,
+      "n": 3,
+      "wrong_values": []
+    },
+    "sonnet-5|structured_json|anthropic_api|adaptive": {
+      "fence_band": [
+        0,
+        4
+      ],
+      "fenced": 0,
+      "latency_ms_p50": 1089.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|structured_json|bedrock|adaptive": {
+      "fence_band": [
+        6,
+        10
+      ],
+      "fenced": 9,
+      "latency_ms_p50": 1672.5,
+      "n": 10,
+      "parsed": 10
+    },
+    "sonnet-5|structured_json|p_aws|adaptive": {
+      "fence_band": [
+        6,
+        10
+      ],
+      "fenced": 7,
+      "latency_ms_p50": 1745.0,
+      "n": 10,
+      "parsed": 10
+    }
+  },
+  "generated_utc": "2026-11-11T15:06:16.486384+00:00",
+  "inputs": [
+    "runs/canary-canary-20261111T150505Z.jsonl"
+  ],
+  "red": [],
+  "status": "GREEN",
+  "totals": {
+    "abnormal_stops": 0,
+    "cells_probed": 27,
+    "records_in": 144,
+    "refusals": 0,
+    "transport_failures": 0
+  },
+  "yellow": []
+}
